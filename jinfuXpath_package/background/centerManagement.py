@@ -1,0 +1,9 @@
+centerManagement="/html/body/div/div/div[2]/div[1]/ul/div[3]/li/span"#中心管理
+xinzengzhongxin="/html/body/div/div/div[2]/div[2]/div[2]/form/div[3]/div/button"
+fanhui="/html/body/div/div/div[2]/div[2]/div[2]/div/div/form/div[9]/div/button[1]"
+bianji="/html/body/div/div/div[2]/div[2]/div[2]/div[1]/div/div[3]/table/tbody/tr[1]/td[7]/div/button[2]/span"
+jinrongpeizhi = "/html/body/div/div/div[2]/div[2]/div[2]/div[1]/div/div[3]/table/tbody/tr[1]/td[7]/div/button[1]/span"
+xinzengqudao  = "/html/body/div/div/div[2]/div[2]/div[2]/form/div[1]/div/button/span"
+guanbi = "/html/body/div[1]/div/div[2]/div[2]/div[2]/div[4]/div/div[1]/button/i"
+shunxushezhi = "/html/body/div/div/div[2]/div[2]/div[2]/form/div[2]/div/button"
+queding = "/html/body/div[1]/div/div[2]/div[2]/div[2]/div[3]/div/div[2]/div/div[4]/button"

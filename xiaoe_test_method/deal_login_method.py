@@ -1,0 +1,50 @@
+from selenium.webdriver.common.by import By
+from base.base import Base
+from xiaoe_data import deal
+import time
+from xiaoeXapth_package.deal_or_bidOpen.login_registerORselect_role import LoginORrole
+from selenium.webdriver.common.action_chains import ActionChains
+
+class Login(Base):
+    loginORrole = LoginORrole()
+    """
+    创建测试数据
+    分别对应长度正常、小于、大于
+    """
+
+
+    def username_send_keys(self,i):
+        self.send_keys(self.loginORrole.username_locator, deal.usernameList[int(i)])
+        self.drive.implicitly_wait(5)
+
+    def password_send_keys(self,i):
+        self.send_keys(self.loginORrole.password_locator, deal.passwordList[int(i)])
+        self.drive.implicitly_wait(5)
+
+    def verification_send_keys(self):#输入验证码
+        self.savePictrue(self.loginORrole.picture_locator)#保存验证码图片
+        self.drive.implicitly_wait(5)
+        verification = self.getPicPassword()#识别图片验证码
+        self.drive.implicitly_wait(5)
+        self.send_keys(self.loginORrole.pictrue_input_locator,verification)#输入验证码
+        self.drive.implicitly_wait(5)
+
+    def loginButton_click(self):
+        self.click(self.loginButton_locator)
+        self.drive.implicitly_wait(5)
+
+    def mouse_susepension(self):#鼠标悬浮在弹窗上
+        self.move_mouse(self.log_locator)
+
+    def get_alert_text(self):#获取弹窗文本
+        msg = self.alert(self.log_locator)
+        time.sleep(1)
+        return msg
+
+    def move_mouse_login_button(self):
+        self.move_mouse(self.loginButton_locator)
+
+
+if __name__ == '__main__':
+    base = Base()
+
