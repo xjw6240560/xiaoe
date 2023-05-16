@@ -103,7 +103,7 @@ class Base:
         # drive.switch_to.window(n[-1])
         self.drive.get(url)
         time.sleep(2)
-    def open_deal_url(self):
+    def open_deal_url(self):#交易平台
         """
         打开交易平台登录页面
         :return:
