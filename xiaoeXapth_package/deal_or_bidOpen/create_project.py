@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from base.base import Base
+import time
 class CreateProjectMethod(Base):
     addtime = 25
     addTenderProjectButton = "//div[contains(text(),'招标项目')]/following-sibling::button//span[contains(text(),'新增招标项目')]"#新增招标项目
@@ -11,12 +12,18 @@ class CreateProjectMethod(Base):
     build = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'施工')]"#招标类型（施工）
     projectType = "//label[contains(text(),'项目类型:')]/following-sibling::div/div/div/input"#项目类型
     houseBuild = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'房屋建筑')]"#项目类型（房屋建设）
-    tenderWay = "//label[contains(text(),'招标方式:')]/following-sibling::div/div/div/input"#招标方式
+    tenderWay = "//label[contains(text(),'招标方式:')]/following-sibling::div/div/div/div/input"#招标方式
     openTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'公开招标')]"#招标方式（公开招标）
-    tenderOrganizationWay = "//label[contains(text(),'招标组织方式:')]/following-sibling::div/div/div/input"#招标组织方式
+    inviteTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'邀请招标')]"#招标方式（邀请招标）
+    inviteBid = "//label[contains(text(),'方式:')]/following-sibling::div/div/div/following-sibling::button/span[contains(text(),'邀请投标人')]"#邀请投标人按钮
+    enterpriseInput = "//div[contains(text(),'邀请投标单位')]/following-sibling::div[1]/div/div/input"#企业输入框
+    find = "//button//span[contains(text(),'查找')]"#查找
+    add = "//div//span[contains(text(),'添加')]"#添加企业
+    close = "//div[contains(text(),'邀请投标单位')]/preceding-sibling::div[text()='×']"#点击关闭
+    tenderOrganizationType = "//label[contains(text(),'招标组织方式:')]/following-sibling::div/div/div/input"#招标组织方式
     oneselfTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'自主招标')]"#自主招标
     entrustTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'委托招标')]"#委托招标
-    projectPlace = "//label[contains(text(),'项目地点')]/following-sibling::div/div/textarea"#项目地点
+    projectPlace = "//label[contains(text(),'项目地点')]/following-sibling::div/div/input"#项目地点
     projectPrice = "//label[contains(text(),'项目估算价')]/following-sibling::div/div/input"#项目估算价
     projectDate =  "//label[contains(text(),'工期')]/following-sibling::div/div/input"#工期
     tenderLinkMan = "//label[contains(text(),'招标人联系人')]/following-sibling::div/div/input"#招标联系人
@@ -51,7 +58,7 @@ class CreateProjectMethod(Base):
     #采购
     purchaseType = "//label[contains(text(),'采购类型:')]/following-sibling::div/div/div/input"#采购类型
     purchaseBuild = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'工程类')]"#采购类型(工程类)
-    purchaseWay = "//label[contains(text(),'采购方式:')]/following-sibling::div/div/div/input"#采购方式
+    purchaseWay = "//label[contains(text(),'采购方式:')]/following-sibling::div/div/div/div/input"#采购方式
     purchasePrice = "//label[contains(text(),'采购预算')]/following-sibling::div/div/input"#采购预算
 
     purchaseType_locator = (By.XPATH,purchaseType)
@@ -72,7 +79,13 @@ class CreateProjectMethod(Base):
     houseBuild_locator = (By.XPATH,houseBuild)
     tenderWay_locator = (By.XPATH,tenderWay)
     openTender_locator = (By.XPATH,openTender)
-    tenderOrganizationWay_locator = (By.XPATH,tenderOrganizationWay)
+    inviteTender_locator = (By.XPATH,inviteTender)
+    inviteBid_locator = (By.XPATH,inviteBid)
+    enterpriseInput_locator = (By.XPATH,enterpriseInput)
+    find_locator = (By.XPATH,find)
+    add_locator = (By.XPATH,add)
+    close_locator = (By.XPATH,close)
+    tenderOrganizationType_locator = (By.XPATH,tenderOrganizationType)
     oneselfTender_locator = (By.XPATH,oneselfTender)
     entrustTender_locator = (By.XPATH,entrustTender)
     projectPlace_locator = (By.XPATH,projectPlace)
@@ -143,8 +156,35 @@ class CreateProjectMethod(Base):
     def openTender_click(self):#点击公开招标
         self.click(self.openTender_locator)
 
-    def tenderOrganizationWay_click(self):#点击招标组织方式
-        self.click(self.tenderOrganizationWay_locator)
+    def inviteTender_click(self):#点击邀请招标
+        self.click(self.inviteTender_locator)
+
+    def inviteBid_click(self):#点击邀请投标人按钮
+        self.click(self.inviteBid_locator)
+
+    def enterpriseInput_send_keys(self,enterpriseName):#输入企业名称
+        self.send_keys(self.enterpriseInput_locator,enterpriseName)
+
+    def find_click(self):#点击查找企业按钮
+        self.click(self.find_locator)
+
+    def add_click(self):#点击添加企业
+        self.click(self.add_locator)
+
+    def close_click(self):#点击关闭
+        self.click(self.close_locator)
+
+    def addEnterprise(self,number,enterpriseName):#添加投标人企业
+        for i in range(number):
+            self.js_xpath_removeAttribute(self.enterpriseInput_locator)
+            time.sleep(0.2)
+            self.enterpriseInput_send_keys(enterpriseName=enterpriseName[i])#输入企业名称
+            time.sleep(0.1)
+            self.find_click()#点击查找
+            self.add_click()#点击添加企业
+
+    def tenderOrganizationType_click(self):#点击招标组织方式
+        self.click(self.tenderOrganizationType_locator)
 
     def oneselfTender_click(self):#点击自主招标
         self.click(self.oneselfTender_locator)

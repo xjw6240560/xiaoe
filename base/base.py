@@ -136,12 +136,12 @@ class Base:
             return db
         except Exception:
             raise ("数据库连接失败")
-    def insert_projectData(self,projectNumber,projectType,tenderType):#插入项目数据
+    def insert_projectData(self,projectNumber,projectType,tenderOrganizationType,tenderWay):#插入项目数据
         db = self.connect_mysql()
         cursor = db.cursor()
-        sql = 'insert into project (projectNumber,projectType,tenderType) values(%s,%s,%s)'
+        sql = 'insert into project (projectNumber,projectType,tenderOrganizationType,tenderWay) values(%s,%s,%s,%s)'
         try:
-            cursor.execute(sql,(projectNumber,projectType,tenderType))
+            cursor.execute(sql,(projectNumber,projectType,tenderOrganizationType,tenderWay))
             db.commit()
             print("项目信息添加成功！")
         except Exception:
@@ -156,7 +156,6 @@ class Base:
         try:
             cursor.execute(sql,(projectNumber,username,password,judgeName))
             db.commit()
-            print("专家账号密码添加成功！")
         except Exception:
             db.rollback()
             print("专家账号密码添加失败！")
@@ -193,7 +192,7 @@ class Base:
     def select_project(self,projectNumber):#查询项目数据
         db = self.connect_mysql()#连接数据库
         cursor = db.cursor()#创建游标
-        sql = 'select projectType,tenderType,evaluationBidWay,judgeNumber from project where projectNumber = %s'
+        sql = 'select projectType,tenderOrganizationType,evaluationBidWay,judgeNumber,tenderWay from project where projectNumber = %s'
         try:
             cursor.execute(sql,projectNumber)
             result = cursor.fetchall()
@@ -347,6 +346,10 @@ class Base:
         """
         js_code = 'document.getElementById("'+str(id)+'").scrollBy(0, '+str(distance)+')'
         self.drive.execute_script(js_code)
+
+    def js_xpath_removeAttribute(self,locator):#js移除属性
+        element = self.find_element(locator,5)
+        self.drive.execute_script('arguments[0].removeAttribute(\"readonly\")',element)
 
     def upload_file(self,fileType):#上传文件
         time.sleep(2)

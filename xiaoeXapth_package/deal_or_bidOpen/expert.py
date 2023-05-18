@@ -69,7 +69,7 @@ class Expert(Base):
                 pic = self.getPicPassword()
                 self.send_keys(self.img_input_locator,pic)
                 self.click(self.login_button_locator)#点击登录按钮
-                time.sleep(0.2)
+                time.sleep(0.5)
                 nowUrl = self.get_nowUrl()#获取当前url地址
                 if str(nowUrl) != "http://expert.jiaoyi.com/#/login":
                     if isAgree[0] == "disAgree" :
@@ -87,12 +87,22 @@ class Expert(Base):
     def electGroup_click(self):#点击推选组长
         self.click(self.electGroup_locator)#点击推选组长
 
-    def elect_click(self,judgeNumber):#点击推选
-        num = random.randint(1,judgeNumber)
+    def elect_click(self,judgeCount):#点击推选
+        num = random.randint(1,judgeCount)
         choose = "//p[contains(text(),'评委"+str(num)+"')]/following-sibling::div/button/span[contains(text(),'推选')]"#推选
         # choose = "//p[contains(text(),'评委1')]/following-sibling::div/button/span[contains(text(),'推选')]"#推选
         choose_locator = (By.XPATH,choose)
         self.click(choose_locator)#点击推选
+
+    def select_group(self,username,password,judgesCount):#选择组长
+        for i in range(len(username)):
+            self.login(username=username[i],password=password[i])
+            self.electGroup_click()#点击推选组长
+            try:
+                self.elect_click(judgesCount)#点击推选
+            except:
+                print("已经推荐过了")
+
 
     def get_group(self):#获取组长评委
         review = self.get_text(self.group_locator)

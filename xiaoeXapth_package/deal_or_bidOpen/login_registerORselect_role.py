@@ -79,7 +79,7 @@ class LoginORrole(Base):
                 yzm = self.getPicPassword()
                 self.send_keys(self.pictrue_input_locator,yzm)
                 self.click(self.login_btn_locator)
-                time.sleep(0.3)
+                time.sleep(0.5)
                 nowUrl = self.get_nowUrl()#获取当前的Url
                 self.drive.implicitly_wait(2)
                 if str(nowUrl) != "http://user.jiaoyi.com/#/login":
@@ -96,7 +96,6 @@ class LoginORrole(Base):
             self.tenderAgency_click()#点击招标代理
         else:
             print("招标类型错误"+tenderType)
-
 
     def pictrue_input_send_keys(self):
         self.send_keys(self.pictrue_input_locator,"1")

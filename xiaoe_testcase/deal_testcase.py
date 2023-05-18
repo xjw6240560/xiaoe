@@ -8,11 +8,13 @@ from xiaoeXapth_package.deal_or_bidOpen.evaluationBid_entrance import Evaluation
 from xiaoeXapth_package.deal_or_bidOpen.expert import Expert
 from base.base import Base
 class CreateProject(unittest.TestCase):
-    username = ["15222222222","15260621329","13954214241","15255555555","15244444444","15245454544","15233333333","15287654321","15288888888","15277777777"]
+    username = ["15222222222","15260621329","13954214241","15255555555","15244444444","15233333333","15287654321","15288888888","15277777777"]
+    enterpriseName = ["福建尤建科技有限公司","福建省佳美集团公司厦门分公司","江西湘昌建设有限公司","天一科技有限公司","德安县2023年老旧小区改造工程（一期）项目EPC总承包","厦门城市开发建设有限公司","江西九润建设工程有限公司","江西省本善建筑有限公司","建银工程咨询有限责任公司"]
     username1 = ["15212345678","15287654321","13412841346"]
     password = ["ndx111","111111"]
-    projectNumber = "20230515095535"#项目编号
-    tenderType = "0"#自主招标0或者委托招标1
+    projectNumber = "20230518170029"#项目编号
+    tenderOrganizationType = "0"#自主招标0或者委托招标1
+    tenderWay = 1#公开招标0、邀请招标1
     def setUp(self):
         self.base = Base()
         self.createProjectMethod = CreateProjectMethod()
@@ -26,9 +28,10 @@ class CreateProject(unittest.TestCase):
         try:
             self.result1 = self.base.select_project(self.projectNumber)
             self.projectType_sql = self.result1[0]
-            self.tenderType_sql = self.result1[1]
+            self.tenderOrganizationType_sql = self.result1[1]
             self.evaluationBidWay = self.result1[2]
             self.judgesCount =self.result1[3]
+            self.tenderWay_sql = self.result1[4]
         except:
             print("项目信息查询失败")
 
@@ -60,17 +63,23 @@ class CreateProject(unittest.TestCase):
         self.createProjectMethod.projectType_click()#点击项目类型
         self.createProjectMethod.houseBuild_click()#点击房屋建设
         self.createProjectMethod.tenderWay_click()#点击招标方式
-        self.createProjectMethod.openTender_click()#点击公开招标
-        self.createProjectMethod.tenderOrganizationWay_click()#点击招标组织方式
+        if self.tenderWay == 0:
+            self.createProjectMethod.openTender_click()#点击公开招标
+        elif self.tenderWay == 1:
+            self.createProjectMethod.inviteTender_click()#点击邀请招标
+            self.createProjectMethod.inviteBid_click()#点击邀请投标人
+            self.createProjectMethod.addEnterprise(len(self.enterpriseName),enterpriseName=self.enterpriseName)
+            self.createProjectMethod.close_click()#点击关闭
+        self.createProjectMethod.projectPlace_send_keys()#输入项目地址
+        self.createProjectMethod.projectPrice_send_keys()#输入项目估算价
+        self.createProjectMethod.projectDate_send_keys()#输入工期
+        self.createProjectMethod.tenderLinkMan_send_keys()#输入联系人
+        self.createProjectMethod.tenderLinkManNumber_send_keys()#输入联系人手机号
+        self.createProjectMethod.linkPlace_send_keys()#输入联系地址
+        self.createProjectMethod.tenderOrganizationType_click()#点击招标组织方式
         #自主招标
-        if self.tenderType =="0":
+        if self.tenderOrganizationType =="0":
             self.createProjectMethod.oneselfTender_click()#选择自主招标
-            self.createProjectMethod.projectPlace_send_keys()#输入项目地址
-            self.createProjectMethod.projectPrice_send_keys()#输入项目估算价
-            self.createProjectMethod.projectDate_send_keys()#输入工期
-            self.createProjectMethod.tenderLinkMan_send_keys()#输入联系人
-            self.createProjectMethod.tenderLinkManNumber_send_keys()#输入联系人手机号
-            self.createProjectMethod.linkPlace_send_keys()#输入联系地址
             self.createProjectMethod.sectionNumber_send_keys()#输入标段编号
             self.createProjectMethod.sectionName_send_keys()#输入标段名称
             self.createProjectMethod.tenderFileBeginTime_send_keys()#输入招标文件领取开始时间
@@ -100,18 +109,12 @@ class CreateProject(unittest.TestCase):
             self.createProjectMethod.upload_file("pdf")#上传招标公告
             self.createProjectMethod.tenderFile_click()#点击招标文件按钮
             self.createProjectMethod.upload_file("pdf")#上传招标文件
-            time.sleep(0.5)
-            self.createProjectMethod.saveButton_click()#点击登录按钮
+            time.sleep(0.3)
+            self.createProjectMethod.saveButton_click()#点击保存按钮
             time.sleep(0.5)
         #委托招标
-        elif self.tenderType == "1":
+        elif self.tenderOrganizationType == "1":
             self.createProjectMethod.entrustTender_click()#委托招标
-            self.createProjectMethod.projectPlace_send_keys()#输入项目地址
-            self.createProjectMethod.projectPrice_send_keys()#输入项目估算价
-            self.createProjectMethod.projectDate_send_keys()#输入工期
-            self.createProjectMethod.tenderLinkMan_send_keys()#输入联系人
-            self.createProjectMethod.tenderLinkManNumber_send_keys()#输入联系人手机号
-            self.createProjectMethod.linkPlace_send_keys()#输入联系地址
             self.createProjectMethod.tenderGency_click()#点击招标代理
             self.createProjectMethod.input_enterprise_send_keys()#输入招标代理名称
             self.createProjectMethod.search_click()#点击搜索企业
@@ -119,13 +122,9 @@ class CreateProject(unittest.TestCase):
             time.sleep(0.5)
             self.createProjectMethod.saveButton_click()#点击保存
             time.sleep(0.5)
-            # self.base.open_deal_url()
-            # self.loginORrole.jiaoyi_login(1)
-            # self.home_page_or_workbench.select_tender_edit(projectNumber=projectNumber,projectType = "engineer")
-
         else:
             print("招标类型不符")
-        self.base.insert_projectData(projectNumber=projectNumber,projectType="engineer",tenderType=self.tenderType)#数据库创建项目
+        self.base.insert_projectData(projectNumber=projectNumber,projectType="engineer",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)#数据库创建项目
     """
     创建项目（政采项目）
     """
@@ -142,16 +141,22 @@ class CreateProject(unittest.TestCase):
         self.createProjectMethod.InvestprojectUnicode_send_keys()#投资项目统一代码
         self.createProjectMethod.purchaseType_click()#采购类型
         self.createProjectMethod.purchaseBuild_click()#建筑材料
-        self.createProjectMethod.tenderOrganizationWay_click()#点击招标组织方式
-        if self.tenderType == "0":
+        self.createProjectMethod.purchaseWay_click()#采购方式
+        if self.tenderWay == 0:
+            self.createProjectMethod.openTender_click()#点击公开招标
+        elif self.tenderWay == 1:
+            self.createProjectMethod.inviteTender_click()#点击邀请招标
+            self.createProjectMethod.inviteBid_click()#点击邀请投标人
+            self.createProjectMethod.addEnterprise(len(self.enterpriseName),enterpriseName=self.enterpriseName)
+            self.createProjectMethod.close_click()#点击关闭
+        self.createProjectMethod.purchasePrice_send_keys()#采购预算
+        self.createProjectMethod.projectPlace_send_keys()#输入项目地址
+        self.createProjectMethod.tenderLinkMan_send_keys()#输入联系人
+        self.createProjectMethod.tenderLinkManNumber_send_keys()#输入联系人手机号
+        self.createProjectMethod.linkPlace_send_keys()#输入联系地址
+        self.createProjectMethod.tenderOrganizationType_click()#点击招标组织方式
+        if self.tenderOrganizationType == "0":
             self.createProjectMethod.oneselfTender_click()#自主招标
-            self.createProjectMethod.purchaseWay_click()#采购方式
-            self.createProjectMethod.openTender_click()#公开招标
-            self.createProjectMethod.purchasePrice_send_keys()#采购预算
-            self.createProjectMethod.projectPlace_send_keys()#输入项目地址
-            self.createProjectMethod.tenderLinkMan_send_keys()#输入联系人
-            self.createProjectMethod.tenderLinkManNumber_send_keys()#输入联系人手机号
-            self.createProjectMethod.linkPlace_send_keys()#输入联系地址
             self.createProjectMethod.sectionNumber_send_keys()#输入标段编号
             self.createProjectMethod.sectionName_send_keys()#输入标段名称
             self.createProjectMethod.tenderFileBeginTime_send_keys()#输入招标文件领取开始时间
@@ -183,15 +188,8 @@ class CreateProject(unittest.TestCase):
             self.createProjectMethod.upload_file("pdf")#上传招标文件
             time.sleep(1)
             self.createProjectMethod.saveButton_click()#点击登录
-        elif self.tenderType == "1":
+        elif self.tenderOrganizationType == "1":
             self.createProjectMethod.entrustTender_click()#委托招标
-            self.createProjectMethod.purchaseWay_click()#采购方式
-            self.createProjectMethod.openTender_click()#公开招标
-            self.createProjectMethod.purchasePrice_send_keys()#采购预算
-            self.createProjectMethod.projectPlace_send_keys()#输入项目地址
-            self.createProjectMethod.tenderLinkMan_send_keys()#输入联系人
-            self.createProjectMethod.tenderLinkManNumber_send_keys()#输入联系人手机号
-            self.createProjectMethod.linkPlace_send_keys()#输入联系地址
             self.createProjectMethod.tenderGency_click()#点击招标代理
             self.createProjectMethod.input_enterprise_send_keys()#输入招标代理企业名称
             self.createProjectMethod.search_click()#点击搜索
@@ -201,7 +199,7 @@ class CreateProject(unittest.TestCase):
             time.sleep(2)
         else:
             print("项目类型不符")
-        self.base.insert_projectData(projectNumber=projectNumber,projectType="purchase",tenderType=self.tenderType)
+        self.base.insert_projectData(projectNumber=projectNumber,projectType="purchase",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)
     """
     线下报名
     """
@@ -214,7 +212,7 @@ class CreateProject(unittest.TestCase):
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
             try:
-                self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql)#点击工作台
+                self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
             except:
                 print("账号"+self.username[i]+"未找到"+self.projectNumber+"该项目")
                 self.createProjectMethod.open_deal_url()
@@ -246,7 +244,7 @@ class CreateProject(unittest.TestCase):
                 self.home_page_or_workbench.tenderFileAffirm_click()#确认撤回
                 self.home_page_or_workbench.bidFileImg_click()#点击上传投标文件图片
             self.home_page_or_workbench.upload_file("pdf")#选择投标文件图片
-            time.sleep(0.5)
+            time.sleep(0.3)
             self.home_page_or_workbench.saveBidFile_click()#点击保存
             time.sleep(0.5)
             self.createProjectMethod.open_deal_url()#进入登录页面
@@ -370,7 +368,7 @@ class CreateProject(unittest.TestCase):
     录入唱标信息
     """
     def test_input_bidMessage(self):#输入唱标信息
-        self.loginORrole.jiaoyi_login(self.tenderType_sql)
+        self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)
         self.home_page_or_workbench.openBidEntrance_click()#点击开标入口
         time.sleep(1)
@@ -414,7 +412,7 @@ class CreateProject(unittest.TestCase):
     def test_add_evaluationBidWay(self):
         evaluationBidWay = 0 #0表示综合,1表示均值,2表示最低,3表示最高
         judgeNumber = 5#评委数量
-        self.loginORrole.jiaoyi_login(self.tenderType_sql)#选择招标人或者招标代理
+        self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)#选择招标人或者招标代理
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)#工程或者采购工作台选择
         try:
             self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
@@ -437,8 +435,8 @@ class CreateProject(unittest.TestCase):
     """
     def test_09_add_evaluationBid_and_judge(self):#添加评标办法和添加评委(自主招标)
         evaluationBidWay = 1 #0表示综合,1表示均值,2表示最低,3表示最高
-        judgeNumber = 7 #评委数量
-        self.loginORrole.jiaoyi_login(self.tenderType_sql)#选择招标人或者招标代理
+        judgeNumber = 15 #评委数量
+        self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)#选择招标人或者招标代理
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)#工程或者采购工作台选择
         try:
             self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
@@ -460,7 +458,7 @@ class CreateProject(unittest.TestCase):
     保存评委名称、账号和密码
     """
     def test_save_username_password(self):#保存评委账号和密码
-        self.loginORrole.jiaoyi_login(self.tenderType_sql)
+        self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)
         self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
         self.evaluationBid_entrance.affirmJudge_click()#点击确认评委
@@ -472,19 +470,22 @@ class CreateProject(unittest.TestCase):
     def test_elect_group(self):#推荐组长
         username = self.expert_username
         password = self.expert_password
-        for i in range(len(username)):
-            self.expert.login(username=username[i],password=password[i])
-            self.expert.electGroup_click()#点击推选组长
+        # for i in range(len(username)):
+        #     self.expert.login(username=username[i],password=password[i])
+        #     self.expert.electGroup_click()#点击推选组长
+        #     try:
+        #         self.expert.elect_click(self.judgesCount)#点击推选
+        #     except:
+        #         print("已经推荐过了")
+        #     time.sleep(0.5)
+        self.expert.select_group(username=username,password=password,judgesCount=self.judgesCount)
+        while True:
             try:
-                self.expert.elect_click(self.judgesCount)#点击推选
+                self.expert.get_group()#输出组长是那个评委
+                break
             except:
-                print("已经推荐过了")
-            time.sleep(0.5)
-        try:
-            self.expert.get_group()#输出组长是那个评委
-        except:
-
-            print("票数相同,没有选出组长！！！")
+                self.expert.select_group(username=username,password=password,judgesCount=self.judgesCount)
+                # print("票数相同,没有选出组长！！！")
     """
     评分,在运行报错时，需要输入评分点个数score_count = 个数 + 1,score_count初始值为0
     """
@@ -526,11 +527,8 @@ class CreateProject(unittest.TestCase):
 
 
     def tearDown(self):
-        self.createProjectMethod.close()
-
+        self.base.close()
 
 
 if __name__ == '__main__':
     unittest.main()
-
-

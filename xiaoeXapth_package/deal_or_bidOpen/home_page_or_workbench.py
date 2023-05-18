@@ -155,11 +155,13 @@ class Home_page_or_workbench(Base):
     engineerBusiness = "//div[@class='el-submenu__title']//span[text()='工程业务']"#工程业务
     tenderProject = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标项目')]"#招标项目(工程)
     engineerTenderNotice = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标公告')]"#招标公告（工程）
+    engineerTenderInvite = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'投标邀请')]"#投标邀请
     engineerApplyProject = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'报名项目')]"#报名项目
 
     engineerTenderNotice_locator = (By.XPATH,engineerTenderNotice)
     engineerBusiness_locator = (By.XPATH,engineerBusiness)
     tenderProject_locator = (By.XPATH,tenderProject)
+    engineerTenderInvite_locator = (By.XPATH,engineerTenderInvite)
     engineerApplyProject_locator = (By.XPATH,engineerApplyProject)
 
     def engineerBusiness_click(self):#点击工程业务
@@ -171,6 +173,9 @@ class Home_page_or_workbench(Base):
     def engineerTenderNotice_click(self):#点击招标公告(工程)
         self.click(self.engineerTenderNotice_locator)
 
+    def engineerTenderInvite_click(self):#点击工程招标邀请
+        self.click(self.engineerTenderInvite_locator)
+
     def tenderProject_click(self):#点击招标项目
         self.click(self.tenderProject_locator)
 
@@ -180,12 +185,14 @@ class Home_page_or_workbench(Base):
     purchaseBusiness = "//div[@class='el-submenu__title']//span[contains(text(),'政采业务')]"#政采业务
     purchaseTenderproject = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标项目')]"#招标项目(政采)
     purchaseTenderNotice = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标公告')]"#招标公告
+    purchaseTenderInvite = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'投标邀请')]"#投标邀请
     purchaseApplyProject = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'报名项目')]"
 
 
     purchaseBusiness_locator = (By.XPATH,purchaseBusiness)
     purchaseTenderProject_locator = (By.XPATH,purchaseTenderproject)
     purchaseTenderNotice_locator = (By.XPATH,purchaseTenderNotice)
+    purchaseTenderInvite_locator = (By.XPATH,purchaseTenderInvite)
     purchaseApplyProject_locator = (By.XPATH,purchaseApplyProject)
 
 
@@ -195,15 +202,27 @@ class Home_page_or_workbench(Base):
     def purchaseApplyProject_click(self):#点击报名项目（政采）
         self.click(self.purchaseApplyProject_locator)
 
+    def purchaseTenderInvite_click(self):#点击政采邀请招标
+        self.click(self.purchaseTenderInvite_locator)
 
-    def select_apply(self,projectNumber,projectType):#点击报名
+    def select_apply(self,projectNumber,projectType,tenderWay):#点击报名
         if projectType == "engineer":#工程
             self.engineerBusiness_click()#点击工程项目
-            self.engineerTenderNotice_click()#点击招标公告
+            if tenderWay == 0:
+                self.engineerTenderNotice_click()#点击招标公告
+            elif tenderWay == 1:
+                self.engineerTenderInvite_click()#点击投标邀请
+            else:
+                print("招标方式输入错入！，0表示公开招标，1表示邀请招标")
             self.apply_click(projectNumber)
         elif projectType == "purchase" :#政采
             self.purchaseBusiness_click()#点击采购项目
-            self.purchaseTenderNotice_click()#点击招标公告（政采）
+            if tenderWay == 0:
+                self.purchaseTenderNotice_click()#点击招标公告（政采）
+            elif tenderWay == 1:
+                self.purchaseTenderInvite_click()#点击政采招标邀请
+            else:
+                print("招标方式输入错入！，0表示公开招标，1表示邀请招标")
             self.apply_click(projectNumber)
         else:
             print("项目类型错误"+projectType)
