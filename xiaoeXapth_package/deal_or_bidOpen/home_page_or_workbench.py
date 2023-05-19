@@ -78,7 +78,7 @@ class Home_page_or_workbench(Base):
         self.click(workbench_locator)
 
     def tender_edit_click(self,projectNumber):#招标人编辑
-        edit = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[6]/div/span[text()='编辑']"#点击工作台
+        edit = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[6]/div/span[text()='编辑']"#点击编辑
         edit_locator = (By.XPATH,edit)
         self.click(edit_locator)
 

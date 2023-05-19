@@ -33,6 +33,9 @@ class CreateProjectMethod(Base):
     input_enterprise = "//span[contains(text(),'搜索')]/../preceding-sibling::div/input[@placeholder='请输入企业名称']"#输入招标代理企业名称
     search = "//span[contains(text(),'搜索')]"#点击搜索
     selectTenderGency = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td//span[contains(text(),'选择')]"#选择招标代理
+    gencyLinkPlace = "//label[contains(text(),'代理联系人手机号:')]/ancestor::div/following-sibling::div/div/div/div/input"#代理联系地址
+    gencyLinkMan = "//label[text()='代理联系人:']/following-sibling::div/div[1]/input"#招标代理联系人
+    gencyLinkManNumber = "//label[text()='代理联系人手机号:']/following-sibling::div/div/input"#代理联系人手机号
     sectionNumber = "//label[contains(text(),'标段编号:')]/following-sibling::div/div/input"#标段编号
     sectionName = "//label[contains(text(),'标段名称:')]/following-sibling::div/div/input"#标段名称
     tenderFileBeginTime = "//label[contains(text(),'招标文件领取开始时间:')]/following-sibling::div/div/input"#招标文件领取开始时间
@@ -98,6 +101,10 @@ class CreateProjectMethod(Base):
     input_enterprise_locator = (By.XPATH,input_enterprise)
     search_locator = (By.XPATH,search)
     selectTenderGency_locator = (By.XPATH,selectTenderGency)
+    gencyLinkPlace_loactor = (By.XPATH,gencyLinkPlace)
+    gencyLinkMan_locator = (By.XPATH,gencyLinkMan)
+    gencyLinkManNumber_locator = (By.XPATH,gencyLinkManNumber)
+
     sectionNumber_locator = (By.XPATH,sectionNumber)
     sectionName_locator = (By.XPATH,sectionName)
     tenderFileBeginTime_locator = (By.XPATH,tenderFileBeginTime)
@@ -213,6 +220,15 @@ class CreateProjectMethod(Base):
     def linkPlace_send_keys(self):#输入联系地址
         self.send_keys(self.linkPlace_locator,"江西省九江市濂溪县")
 
+    def gencyLinkPlace_send_keys(self):#输入代理联系地址
+        self.send_keys(self.gencyLinkPlace_loactor,'厦门市湖里区鼎丰财富中心')
+
+    def gencyLinkMan_send_keys(self):#输入代理联系人
+        self.send_keys(self.gencyLinkMan_locator,"谢先生")
+
+    def gencyLinkManNumber_send_keys(self):#输入代理联系人手机号
+        self.send_keys(self.gencyLinkManNumber_locator,'15212121212')
+
     def tenderGency_click(self):#点击招标代理
         self.click(self.tenderGency_locator)
 
@@ -288,6 +304,40 @@ class CreateProjectMethod(Base):
 
     def saveButton_click(self):#点击保存
         self.click(self.saveButton_locator)
+        
+    def perfectProjectMessage(self):#完善项目信息
+        self.sectionNumber_send_keys()#输入标段编号
+        self.sectionName_send_keys()#输入标段名称
+        self.tenderFileBeginTime_send_keys()#输入招标文件领取开始时间
+        self.projectPlace_click()#点击项目地址
+        self.tenderFileEndTime_send_keys()#输入招标文件领取截止时间
+        self.projectPlace_click()#点击项目地址
+        self.applyBeginTime_send_keys()#输入报名开始时间
+        self.projectPlace_click()#点击项目地址
+        self.applyEndTime_send_keys()#输入报名截止时间
+        self.projectPlace_click()#点击项目地址
+        self.quizEndTime_send_keys()#输入提问截止时间
+        self.projectPlace_click()#点击项目地址
+        self.answerEndTime_send_keys()#输入答疑截止时间
+        self.projectPlace_click()#点击项目地址
+        self.bidFileEndTime_send_keys()#输入投标文件递交截止时间
+        self.projectPlace_click()#点击项目地址
+        self.bidOpenTime_send_keys()#输入开标时间
+        self.projectPlace_click()#点击项目地址
+        self.tenderFileCost_send_keys()#输入招标文件费用
+        self.marginPaymentWay_click()#点击保证金缴纳方式
+        # self.offlinePayment_click()#点击线下缴纳
+        # self.EVE_click()#点击保函申请
+        self.EVE_or_offlinePayment_click()#点击线上和线下
+        self.marginSum_send_keys()#输入保证金金额
+        self.marginEndTime_send_keys()#输入保证金戒指递交时间
+        self.tenderNotice_click()#点击招标公告按钮
+        self.upload_file("pdf")#上传招标公告
+        self.tenderFile_click()#点击招标文件按钮
+        self.upload_file("pdf")#上传招标文件
+        time.sleep(0.3)
+        self.saveButton_click()#点击保存按钮
+        time.sleep(0.5)
 
 #政采项目
 

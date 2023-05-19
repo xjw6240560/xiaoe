@@ -12,8 +12,8 @@ class CreateProject(unittest.TestCase):
     enterpriseName = ["福建尤建科技有限公司","福建省佳美集团公司厦门分公司","江西湘昌建设有限公司","天一科技有限公司","德安县2023年老旧小区改造工程（一期）项目EPC总承包","厦门城市开发建设有限公司","江西九润建设工程有限公司","江西省本善建筑有限公司","建银工程咨询有限责任公司"]
     username1 = ["15212345678","15287654321","13412841346"]
     password = ["ndx111","111111"]
-    projectNumber = "20230518170029"#项目编号
-    tenderOrganizationType = "0"#自主招标0或者委托招标1
+    projectNumber = "20230519135749"#项目编号
+    tenderOrganizationType = "1"#自主招标0或者委托招标1
     tenderWay = 1#公开招标0、邀请招标1
     def setUp(self):
         self.base = Base()
@@ -80,38 +80,7 @@ class CreateProject(unittest.TestCase):
         #自主招标
         if self.tenderOrganizationType =="0":
             self.createProjectMethod.oneselfTender_click()#选择自主招标
-            self.createProjectMethod.sectionNumber_send_keys()#输入标段编号
-            self.createProjectMethod.sectionName_send_keys()#输入标段名称
-            self.createProjectMethod.tenderFileBeginTime_send_keys()#输入招标文件领取开始时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.tenderFileEndTime_send_keys()#输入招标文件领取截止时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.applyBeginTime_send_keys()#输入报名开始时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.applyEndTime_send_keys()#输入报名截止时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.quizEndTime_send_keys()#输入提问截止时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.answerEndTime_send_keys()#输入答疑截止时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.bidFileEndTime_send_keys()#输入投标文件递交截止时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.bidOpenTime_send_keys()#输入开标时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.tenderFileCost_send_keys()#输入招标文件费用
-            self.createProjectMethod.marginPaymentWay_click()#点击保证金缴纳方式
-            # self.createProjectMethod.offlinePayment_click()#点击线下缴纳
-            # self.createProjectMethod.EVE_click()#点击保函申请
-            self.createProjectMethod.EVE_or_offlinePayment_click()#点击线上和线下
-            self.createProjectMethod.marginSum_send_keys()#输入保证金金额
-            self.createProjectMethod.marginEndTime_send_keys()#输入保证金戒指递交时间
-            self.createProjectMethod.tenderNotice_click()#点击招标公告按钮
-            self.createProjectMethod.upload_file("pdf")#上传招标公告
-            self.createProjectMethod.tenderFile_click()#点击招标文件按钮
-            self.createProjectMethod.upload_file("pdf")#上传招标文件
-            time.sleep(0.3)
-            self.createProjectMethod.saveButton_click()#点击保存按钮
-            time.sleep(0.5)
+            self.createProjectMethod.perfectProjectMessage()#完善项目信息
         #委托招标
         elif self.tenderOrganizationType == "1":
             self.createProjectMethod.entrustTender_click()#委托招标
@@ -122,6 +91,17 @@ class CreateProject(unittest.TestCase):
             time.sleep(0.5)
             self.createProjectMethod.saveButton_click()#点击保存
             time.sleep(0.5)
+            self.createProjectMethod.open_deal_url()
+            self.loginORrole.login(self.username1[2],self.password[1])#登入交易平台
+            self.loginORrole.tenderAgency_click()#点击招标人
+            self.createProjectMethod.handle_skip(-1)#跳转句柄
+            self.home_page_or_workbench.engineerBusiness_click()#点击工程业务
+            self.home_page_or_workbench.tenderProject_click()#点击招标项目
+            self.home_page_or_workbench.tender_edit_click(projectNumber=projectNumber)#招标代理点击编辑
+            self.createProjectMethod.gencyLinkMan_send_keys()#输入代理联系人
+            self.createProjectMethod.gencyLinkManNumber_send_keys()#输入代理联系人手机号
+            self.createProjectMethod.gencyLinkPlace_send_keys()#输入代理联系地址
+            self.createProjectMethod.perfectProjectMessage()#完善企业信息
         else:
             print("招标类型不符")
         self.base.insert_projectData(projectNumber=projectNumber,projectType="engineer",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)#数据库创建项目
@@ -157,46 +137,27 @@ class CreateProject(unittest.TestCase):
         self.createProjectMethod.tenderOrganizationType_click()#点击招标组织方式
         if self.tenderOrganizationType == "0":
             self.createProjectMethod.oneselfTender_click()#自主招标
-            self.createProjectMethod.sectionNumber_send_keys()#输入标段编号
-            self.createProjectMethod.sectionName_send_keys()#输入标段名称
-            self.createProjectMethod.tenderFileBeginTime_send_keys()#输入招标文件领取开始时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.tenderFileEndTime_send_keys()#输入招标文件领取截止时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.applyBeginTime_send_keys()#输入报名开始时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.applyEndTime_send_keys()#输入报名截止时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.quizEndTime_send_keys()#输入提问截止时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.answerEndTime_send_keys()#输入答疑截止时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.bidFileEndTime_send_keys()#输入投标文件递交截止时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.bidOpenTime_send_keys()#输入开标时间
-            self.createProjectMethod.projectPlace_click()#点击项目地址
-            self.createProjectMethod.tenderFileCost_send_keys()#输入招标文件费用
-            self.createProjectMethod.marginPaymentWay_click()#点击保证金缴纳方式
-            # self.createProjectMethod.offlinePayment_click()#点击线下缴纳
-            # self.createProjectMethod.EVE_click()#点击保函申请
-            self.createProjectMethod.EVE_or_offlinePayment_click()#线上和线下一起
-            self.createProjectMethod.marginSum_send_keys()#输入保证金金额
-            self.createProjectMethod.marginEndTime_send_keys()#输入保证金戒指递交时间
-            self.createProjectMethod.tenderNotice_click()#点击招标公告按钮
-            self.createProjectMethod.upload_file("pdf")#上传招标公告
-            self.createProjectMethod.tenderFile_click()#点击招标文件按钮
-            self.createProjectMethod.upload_file("pdf")#上传招标文件
-            time.sleep(1)
-            self.createProjectMethod.saveButton_click()#点击登录
+            self.createProjectMethod.perfectProjectMessage()#完善项目信息
         elif self.tenderOrganizationType == "1":
             self.createProjectMethod.entrustTender_click()#委托招标
             self.createProjectMethod.tenderGency_click()#点击招标代理
             self.createProjectMethod.input_enterprise_send_keys()#输入招标代理企业名称
             self.createProjectMethod.search_click()#点击搜索
             self.createProjectMethod.selectTenderGency_click()#选择招标代理
-            time.sleep(1)
+            time.sleep(0.2)
             self.createProjectMethod.saveButton_click()#点击保存
-            time.sleep(2)
+            time.sleep(0.3)
+            self.createProjectMethod.open_deal_url()
+            self.loginORrole.login(self.username1[2],self.password[1])#登入交易平台
+            self.loginORrole.tenderAgency_click()#点击招标代理
+            self.createProjectMethod.handle_skip(-1)#跳转句柄
+            self.home_page_or_workbench.purchaseBusiness_click()#点击政采业务
+            self.home_page_or_workbench.purchaseTenderProject_click()#点击政采招标项目
+            self.home_page_or_workbench.tender_edit_click(projectNumber = projectNumber)#招标代理点击编辑
+            self.createProjectMethod.gencyLinkMan_send_keys()#输入代理联系人
+            self.createProjectMethod.gencyLinkManNumber_send_keys()#输入代理联系人手机号
+            self.createProjectMethod.gencyLinkPlace_send_keys()#输入代理联系地址
+            self.createProjectMethod.perfectProjectMessage()#完善企业信息
         else:
             print("项目类型不符")
         self.base.insert_projectData(projectNumber=projectNumber,projectType="purchase",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)
