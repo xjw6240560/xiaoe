@@ -135,9 +135,43 @@ class CreateProjectMethod(Base):
         projectNumber = self.get_nowTime_formatting()
         self.send_keys(self.projectNumber_locator,projectNumber)
         return projectNumber
-    def projectName_send_keys(self):#输入项目名称
-        self.send_keys(self.projectName_locator,"测试项目"+self.get_nowTime_formatting())
-        # self.send_keys(self.projectName_locator,"工程委托线下")
+
+    def projectName_send_keys(self,projectType,tenderOrganizationType,tenderWay):#输入项目名称
+        if projectType == "工程":
+            if tenderOrganizationType == "0":
+                if tenderWay == 0:
+                    self.send_keys(self.projectName_locator,"工程自主公开招标项目"+self.get_nowTime_formatting())
+                elif tenderWay == 1:
+                    self.send_keys(self.projectName_locator,"工程自主邀请招标项目"+self.get_nowTime_formatting())
+                else:
+                    print("招标方式不正确："+tenderWay)
+            elif tenderOrganizationType == "1":
+                if tenderWay == 0:
+                    self.send_keys(self.projectName_locator,"工程委托公开招标项目"+self.get_nowTime_formatting())
+                elif tenderWay == 1:
+                    self.send_keys(self.projectName_locator,"工程委托邀请招标项目"+self.get_nowTime_formatting())
+                else:
+                    print("招标方式不正确："+tenderWay)
+            else:
+                print("招标组织方式不正确："+tenderOrganizationType)
+        elif projectType == "政采":
+            if tenderOrganizationType == "0":
+                if tenderWay == 0:
+                    self.send_keys(self.projectName_locator,"政采自主公开招标项目"+self.get_nowTime_formatting())
+                elif tenderWay == 1:
+                    self.send_keys(self.projectName_locator,"政采自主邀请招标项目"+self.get_nowTime_formatting())
+                else:
+                    print("招标方式不正确："+tenderWay)
+            elif tenderOrganizationType == "1":
+                if tenderWay == 0:
+                    self.send_keys(self.projectName_locator,"政采委托公开招标项目"+self.get_nowTime_formatting())
+                elif tenderWay == 1:
+                    self.send_keys(self.projectName_locator,"政采委托邀请招标项目"+self.get_nowTime_formatting())
+                else:
+                    print("招标方式不正确："+tenderWay)
+            else:
+                print("招标组织方式不正确："+tenderOrganizationType)
+
 
     def projectAuditNumber_send_keys(self):#输入项目审批文号
         self.send_keys(self.projectAuditNumber_locator,"项目审批文号342300")

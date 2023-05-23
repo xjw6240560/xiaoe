@@ -13,8 +13,8 @@ class CreateProject(unittest.TestCase):
     username1 = ["15212345678","15287654321","13412841346"]
     password = ["ndx111","111111"]
     projectNumber = "20230519135749"#项目编号
-    tenderOrganizationType = "1"#自主招标0或者委托招标1
-    tenderWay = 1#公开招标0、邀请招标1
+    tenderOrganizationType = "0"#自主招标0或者委托招标1
+    tenderWay = 0#公开招标0、邀请招标1
     def setUp(self):
         self.base = Base()
         self.createProjectMethod = CreateProjectMethod()
@@ -54,7 +54,7 @@ class CreateProject(unittest.TestCase):
         self.home_page_or_workbench.tenderProject_click()#点击招标项目
         self.createProjectMethod.addTenderProject_click()#点击新增招标项目
         projectNumber = self.createProjectMethod.projectNumber_send_keys()#输入项目编号
-        self.createProjectMethod.projectName_send_keys()#输入项目名称
+        self.createProjectMethod.projectName_send_keys(projectType="工程",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)#输入项目名称
         self.createProjectMethod.projectAuditNumber_send_keys()#输入项目审批文号
         self.createProjectMethod.InvestprojectUnicode_send_keys()#投资项目统一代码
         self.createProjectMethod.tenderType_click()#点击招标类型
@@ -116,7 +116,7 @@ class CreateProject(unittest.TestCase):
         self.home_page_or_workbench.purchaseTenderProject_click()#点击招标项目
         self.createProjectMethod.addTenderProject_click()#点击新增项目
         projectNumber = self.createProjectMethod.projectNumber_send_keys()#输入招标项目编号
-        self.createProjectMethod.projectName_send_keys()#输入项目名称
+        self.createProjectMethod.projectName_send_keys(projectType="政采",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)#输入项目名称
         self.createProjectMethod.projectAuditNumber_send_keys()#输入项目审批文号
         self.createProjectMethod.InvestprojectUnicode_send_keys()#投资项目统一代码
         self.createProjectMethod.purchaseType_click()#采购类型

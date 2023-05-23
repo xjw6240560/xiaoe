@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="47656d0a-778f-45bd-bbdb-56529caaddaa" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoe_testcase/1.png" afterPath="$PROJECT_DIR$/xiaoe_testcase/1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/home_page_or_workbench.py" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/home_page_or_workbench.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" afterPath="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" />
     </list>
     <ignored path="untitled.iws" />
@@ -45,25 +43,25 @@
       <file leaf-file-name="deal_testcase.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34723788">
-              <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="103" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.67363346">
+              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <element signature="e#1126#2190#0" expanded="false" />
-                <element signature="e#5908#9251#0" expanded="false" />
-                <element signature="e#9331#11698#0" expanded="false" />
-                <element signature="e#11781#13628#0" expanded="false" />
-                <element signature="e#13700#14857#0" expanded="false" />
-                <element signature="e#14924#15863#0" expanded="false" />
-                <element signature="e#15942#16996#0" expanded="false" />
-                <element signature="e#17076#17582#0" expanded="false" />
-                <element signature="e#17687#18858#0" expanded="false" />
-                <element signature="e#18951#20287#0" expanded="false" />
-                <element signature="e#20411#21779#0" expanded="false" />
-                <element signature="e#21875#22339#0" expanded="false" />
-                <element signature="e#22410#23196#0" expanded="false" />
-                <element signature="e#23317#24542#0" expanded="false" />
-                <element signature="e#24608#24960#0" expanded="false" />
+                <element signature="e#6000#9435#0" expanded="false" />
+                <element signature="e#9515#11882#0" expanded="false" />
+                <element signature="e#11965#13812#0" expanded="false" />
+                <element signature="e#13884#15041#0" expanded="false" />
+                <element signature="e#15108#16047#0" expanded="false" />
+                <element signature="e#16126#17180#0" expanded="false" />
+                <element signature="e#17260#17766#0" expanded="false" />
+                <element signature="e#17871#19042#0" expanded="false" />
+                <element signature="e#19135#20471#0" expanded="false" />
+                <element signature="e#20595#21963#0" expanded="false" />
+                <element signature="e#22059#22523#0" expanded="false" />
+                <element signature="e#22594#23380#0" expanded="false" />
+                <element signature="e#23501#24726#0" expanded="false" />
+                <element signature="e#24792#25144#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -73,10 +71,11 @@
         <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="80" selection-start-line="36" selection-start-column="80" selection-end-line="36" selection-end-column="80" />
+              <caret line="138" column="8" selection-start-line="138" selection-start-column="8" selection-end-line="138" selection-end-column="8" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
-                <element signature="e#15302#16682#0" expanded="false" />
+                <element signature="e#9434#11233#0" expanded="false" />
+                <element signature="e#17011#18391#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -189,7 +188,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -224,7 +223,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -248,7 +247,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Python tests.Unittest CreateProject.test_03_purchase">
+  <component name="RunManager" selected="Python tests.Unittest CreateProject.test_01_engineering">
     <configuration default="false" name="Unittest CreateProject.test_judgeAffirm" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -490,8 +489,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_03_purchase" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_01_engineering" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_01_engineering" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_03_purchase" />
         <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_06_signIn_online" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_05_apply_offline" />
         <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_judgeAffirm" />
@@ -512,15 +511,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_CreateProject_test_01_engineering - 2023.05.19 at 14h 49m 29s.xml">
-      <configuration name="Unittest CreateProject.test_01_engineering" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_CreateProject_test_01_engineering - 2023.05.19 at 14h 51m 44s.xml">
-      <configuration name="Unittest CreateProject.test_01_engineering" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_CreateProject_test_01_engineering - 2023.05.19 at 14h 53m 25s.xml">
-      <configuration name="Unittest CreateProject.test_01_engineering" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittest_CreateProject_test_01_engineering - 2023.05.19 at 14h 56m 34s.xml">
       <configuration name="Unittest CreateProject.test_01_engineering" configurationId="tests" />
     </history-entry>
@@ -530,10 +520,19 @@
     <history-entry file="Unittest_CreateProject_test_01_engineering - 2023.05.19 at 14h 59m 22s.xml">
       <configuration name="Unittest CreateProject.test_01_engineering" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittest_CreateProject_test_01_engineering - 2023.05.23 at 11h 24m 23s.xml">
+      <configuration name="Unittest CreateProject.test_01_engineering" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_CreateProject_test_01_engineering - 2023.05.23 at 11h 30m 33s.xml">
+      <configuration name="Unittest CreateProject.test_01_engineering" configurationId="tests" />
+    </history-entry>
     <history-entry file="Unittest_CreateProject_test_03_purchase - 2023.05.19 at 15h 00m 23s.xml">
       <configuration name="Unittest CreateProject.test_03_purchase" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittest_CreateProject_test_03_purchase - 2023.05.19 at 15h 01m 31s.xml">
+      <configuration name="Unittest CreateProject.test_03_purchase" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_CreateProject_test_03_purchase - 2023.05.23 at 11h 26m 10s.xml">
       <configuration name="Unittest CreateProject.test_03_purchase" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittest_CreateProject_test_06_signIn_online - 2023.05.19 at 14h 03m 14s.xml">
@@ -553,7 +552,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1048" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1048" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16227607" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -561,19 +560,19 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.71693987" sideWeight="0.5068493" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4295082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5409836" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2885246" sideWeight="0.49420443" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38864627" sideWeight="0.49315068" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.452459" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="848" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5136612" sideWeight="0.49420443" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.452459" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -616,7 +615,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="208" />
+      <option name="time" value="210" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -985,35 +984,36 @@
     <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="80" selection-start-line="36" selection-start-column="80" selection-end-line="36" selection-end-column="80" />
+          <caret line="138" column="8" selection-start-line="138" selection-start-column="8" selection-end-line="138" selection-end-column="8" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#15302#16682#0" expanded="false" />
+            <element signature="e#9434#11233#0" expanded="false" />
+            <element signature="e#17011#18391#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34723788">
-          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="103" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.67363346">
+          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
             <element signature="e#1126#2190#0" expanded="false" />
-            <element signature="e#5908#9251#0" expanded="false" />
-            <element signature="e#9331#11698#0" expanded="false" />
-            <element signature="e#11781#13628#0" expanded="false" />
-            <element signature="e#13700#14857#0" expanded="false" />
-            <element signature="e#14924#15863#0" expanded="false" />
-            <element signature="e#15942#16996#0" expanded="false" />
-            <element signature="e#17076#17582#0" expanded="false" />
-            <element signature="e#17687#18858#0" expanded="false" />
-            <element signature="e#18951#20287#0" expanded="false" />
-            <element signature="e#20411#21779#0" expanded="false" />
-            <element signature="e#21875#22339#0" expanded="false" />
-            <element signature="e#22410#23196#0" expanded="false" />
-            <element signature="e#23317#24542#0" expanded="false" />
-            <element signature="e#24608#24960#0" expanded="false" />
+            <element signature="e#6000#9435#0" expanded="false" />
+            <element signature="e#9515#11882#0" expanded="false" />
+            <element signature="e#11965#13812#0" expanded="false" />
+            <element signature="e#13884#15041#0" expanded="false" />
+            <element signature="e#15108#16047#0" expanded="false" />
+            <element signature="e#16126#17180#0" expanded="false" />
+            <element signature="e#17260#17766#0" expanded="false" />
+            <element signature="e#17871#19042#0" expanded="false" />
+            <element signature="e#19135#20471#0" expanded="false" />
+            <element signature="e#20595#21963#0" expanded="false" />
+            <element signature="e#22059#22523#0" expanded="false" />
+            <element signature="e#22594#23380#0" expanded="false" />
+            <element signature="e#23501#24726#0" expanded="false" />
+            <element signature="e#24792#25144#0" expanded="false" />
           </folding>
         </state>
       </provider>
