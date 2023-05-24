@@ -71,7 +71,7 @@ class Expert(Base):
                 self.click(self.login_button_locator)#点击登录按钮
                 time.sleep(0.5)
                 nowUrl = self.get_nowUrl()#获取当前url地址
-                if str(nowUrl) != "http://expert.jiaoyi.com/#/login":
+                if str(nowUrl) != Base.expert_login_url:
                     if isAgree[0] == "disAgree" :
                         self.click(self.know_locator)
                         self.update_isAgree(username,"consent")

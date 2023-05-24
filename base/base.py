@@ -9,8 +9,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 from pywinauto.keyboard import send_keys
 import random
 import pymysql
-
-class Base:
+from xiaoe_data.test_deal_data import Test_deal_data
+from xiaoe_data.formal_deal_data import Formal_deal_data
+class Base(Test_deal_data):
     drive = webdriver.Chrome()
     drive.maximize_window()
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -108,7 +109,7 @@ class Base:
         打开交易平台登录页面
         :return:
         """
-        login_url = "http://user.jiaoyi.com/#/login"
+        login_url = self.deal_login_url
         self.drive.get(login_url)
         self.drive.maximize_window()
         time.sleep(1)
@@ -125,7 +126,7 @@ class Base:
     def connect_mysql(self):
         """连接mysql数据库"""
         try:
-            db = pymysql.connect(
+            conn = pymysql.connect(
             host='localhost',
             port=3306,
             user='root',
@@ -133,116 +134,115 @@ class Base:
             db='ceshi',
             charset='utf8'
             )
-            return db
+            cursor = conn.cursor()#创建游标
+            return conn,cursor
         except Exception:
             raise ("数据库连接失败")
-    def insert_projectData(self,projectNumber,projectType,tenderOrganizationType,tenderWay):#插入项目数据
-        db = self.connect_mysql()
-        cursor = db.cursor()
-        sql = 'insert into project (projectNumber,projectType,tenderOrganizationType,tenderWay) values(%s,%s,%s,%s)'
-        try:
-            cursor.execute(sql,(projectNumber,projectType,tenderOrganizationType,tenderWay))
-            db.commit()
-            print("项目信息添加成功！")
-        except Exception:
-            db.rollback()
-            print("项目信息添加失败！")
-        db.close()
+    def close_conn(self,conn,cursor):
+        conn.close()
         cursor.close()
-    def insert_expertData(self,projectNumber,username,password,judgeName):#插入专家账号密码
-        db = self.connect_mysql()
-        cursor = db.cursor()
-        sql = 'insert into expert (projectNumber,username,password,judgeName) values(%s,%s,%s,%s)'
+    def insert_and_update_sql(self,sql,*args):#添加数据
+        conn,cursor = self.connect_mysql()#连接数据库
         try:
-            cursor.execute(sql,(projectNumber,username,password,judgeName))
-            db.commit()
-        except Exception:
-            db.rollback()
-            print("专家账号密码添加失败！")
-        db.close()
-        cursor.close()
-    def update_evaluationBidWay(self,evaluationBidWay,judgeNumber,projectNumber):#更新评标办法类型和评委个数
-        db = self.connect_mysql()
-        cursor = db.cursor()
-        sql = 'update project set evaluationBidWay = %s , judgeNumber = %s where projectNumber = %s'
-        try:
-            cursor.execute(sql,(evaluationBidWay,judgeNumber,projectNumber))
-            db.commit()
-            print("评标类型和评委个数更新成功！")
-        except Exception:
-            db.rollback()
-            print("评标类型和评委个数更新失败！")
-        db.close()
-        cursor.close()
+            cursor.execute(sql,args)
+            conn.commit()
+        except:
+            conn.rollback()
+            print("添加数据库失败！！！")
+        self.close_conn(conn=conn,cursor=cursor)
 
-    def update_isAgree(self,username,isAgree):
-        db = self.connect_mysql()
-        cursor = db.cursor()
+    def query_sql(self,sql,*args):#查询数据查询
+        conn,cursor = self.connect_mysql()#连接数据库
+        try:
+            cursor.execute(sql,args)
+            result = cursor.fetchall()
+            return result
+        except:
+            print("查询数据库失败！！！")
+        self.close_conn(conn=conn,cursor=cursor)
+
+    # def insert_expertData(self,projectNumber,username,password,judgeName):#插入专家账号密码
+    #     db = self.connect_mysql()
+    #     cursor = db.cursor()
+    #     sql = 'insert into expert (projectNumber,username,password,judgeName) values(%s,%s,%s,%s)'
+    #     try:
+    #         cursor.execute(sql,(projectNumber,username,password,judgeName))
+    #         db.commit()
+    #     except Exception:
+    #         db.rollback()
+    #         print("专家账号密码添加失败！")
+    #     db.close()
+    #     cursor.close()
+    # def update_evaluationBidWay(self,evaluationBidWay,judgeNumber,projectNumber):#更新评标办法类型和评委个数
+    #     db = self.connect_mysql()
+    #     cursor = db.cursor()
+    #     sql = 'update project set evaluationBidWay = %s , judgeNumber = %s where projectNumber = %s'
+    #     try:
+    #         cursor.execute(sql,(evaluationBidWay,judgeNumber,projectNumber))
+    #         db.commit()
+    #         print("评标类型和评委个数更新成功！")
+    #     except Exception:
+    #         db.rollback()
+    #         print("评标类型和评委个数更新失败！")
+    #     db.close()
+    #     cursor.close()
+    #
+    def update_isAgree(self,isAgree,username):
         sql = 'update expert set isAgree = %s where username = %s'
         try:
-            cursor.execute(sql,(isAgree,username))
-            db.commit()
-            print("是否确认更新成功！")
-        except Exception:
-            db.rollback()
-            print("是否确认更新失败！")
-        db.close()
-        cursor.close()
+            self.insert_and_update_sql(sql,isAgree,username)
+        except:
+            print("协议同意失败！！！")
 
-    def select_project(self,projectNumber):#查询项目数据
-        db = self.connect_mysql()#连接数据库
-        cursor = db.cursor()#创建游标
+    def query_projectData(self,projectNumber):#查询项目数据
         sql = 'select projectType,tenderOrganizationType,evaluationBidWay,judgeNumber,tenderWay from project where projectNumber = %s'
         try:
-            cursor.execute(sql,projectNumber)
-            result = cursor.fetchall()
-            for i in result:
-                return i
-            print("项目信息查询成功！")
+            result = self.query_sql(sql,projectNumber)
+            # print(result[0])
+            return result[0]
         except:
-            raise Exception("项目信息查询失败！")
-        db.close()
-        cursor.close()
-    def select_expert(self,projectNumber):#查询专家数据库
-        expert_name = []
-        expert_username = []
-        expert_password = []
-        db = self.connect_mysql()#连接数据库
-        cursor = db.cursor()#创建游标
-        sql = 'select username,password,judgeName from expert where projectNumber = %s'
-        try:
-            cursor.execute(sql,projectNumber)
-            result = cursor.fetchall()
-            for i in result:
-                expert_username.append(i[0])
-                expert_password.append(i[1])
-                expert_name.append(i[2])
-            print("专家账号查询成功！")
-            return expert_username,expert_password,expert_name
-        except:
-            print("专家账号查询失败——1！")
-        db.close()
-        cursor.close()
+            print("项目数据查询失败！！！")
 
-    def select_isAgree(self,username):
-        db = self.connect_mysql()#连接数据库
-        cursor = db.cursor()#创建游标
-        sql = 'select isAgree from expert where username = %s'
-        try:
-            cursor.execute(sql,username)
-            expert_isAgree = cursor.fetchone()
-            return expert_isAgree
-        except:
-            raise Exception("是否同意协议查询失败！")
-        db.close()
-        cursor.close()
+    # def select_expert(self,projectNumber):#查询专家数据库
+    #     expert_name = []
+    #     expert_username = []
+    #     expert_password = []
+    #     db = self.connect_mysql()#连接数据库
+    #     cursor = db.cursor()#创建游标
+    #     sql = 'select username,password,judgeName from expert where projectNumber = %s'
+    #     try:
+    #         cursor.execute(sql,projectNumber)
+    #         result = cursor.fetchall()
+    #         for i in result:
+    #             expert_username.append(i[0])
+    #             expert_password.append(i[1])
+    #             expert_name.append(i[2])
+    #         print("专家账号查询成功！")
+    #         return expert_username,expert_password,expert_name
+    #     except:
+    #         print("专家账号查询失败——1！")
+    #     db.close()
+    #     cursor.close()
+    #
+    # def select_isAgree(self,username):
+    #     db = self.connect_mysql()#连接数据库
+    #     cursor = db.cursor()#创建游标
+    #     sql = 'select isAgree from expert where username = %s'
+    #     try:
+    #         cursor.execute(sql,username)
+    #         expert_isAgree = cursor.fetchone()
+    #         return expert_isAgree
+    #     except:
+    #         print("是否同意协议查询失败！")
+    #     db.close()
+    #     cursor.close()
 
     def get_nowUrl(self):#获取当前页面的url
         nowUrl = self.drive.current_url
         return nowUrl
 
     def open_expert_url(self):#专家
-        login_url = "http://expert.jiaoyi.com/#/login"
+        login_url = self.expert_login_url
         self.drive.get(login_url)
         self.drive.maximize_window()
         time.sleep(1)
@@ -287,7 +287,7 @@ class Base:
         # :return: 返回元素本身
         # """
         try:
-            element = WebDriverWait(self.drive, timeout).until(EC.presence_of_element_located(locator))
+            element = WebDriverWait(self.drive, timeout).until(EC.visibility_of_element_located(locator))
             return element
         except:
             print(str({locator})+'元素未找到')
@@ -339,11 +339,11 @@ class Base:
         self.drive.execute_script(js_code)
 
     def roll_Id(self,id,distance=100000):#根据指定元素id进行滑动
-        """
-        :param classname: 指定窗口的id
-        :param distance: 需要滑动的距离
-        :return:
-        """
+        # """
+        # :param classname: 指定窗口的id
+        # :param distance: 需要滑动的距离
+        # :return:
+        # """
         js_code = 'document.getElementById("'+str(id)+'").scrollBy(0, '+str(distance)+')'
         self.drive.execute_script(js_code)
 
@@ -422,5 +422,4 @@ class Base:
 
 if __name__ == '__main__':
     base = Base()
-
 

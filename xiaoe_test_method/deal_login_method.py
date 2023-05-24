@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from base.base import Base
-from xiaoe_data import deal
+from xiaoe_data import test_deal_data
 import time
 from xiaoeXapth_package.deal_or_bidOpen.login_registerORselect_role import LoginORrole
 from selenium.webdriver.common.action_chains import ActionChains
@@ -14,11 +14,11 @@ class Login(Base):
 
 
     def username_send_keys(self,i):
-        self.send_keys(self.loginORrole.username_locator, deal.usernameList[int(i)])
+        self.send_keys(self.loginORrole.username_locator, test_deal_data.usernameList[int(i)])
         self.drive.implicitly_wait(5)
 
     def password_send_keys(self,i):
-        self.send_keys(self.loginORrole.password_locator, deal.passwordList[int(i)])
+        self.send_keys(self.loginORrole.password_locator, test_deal_data.passwordList[int(i)])
         self.drive.implicitly_wait(5)
 
     def verification_send_keys(self):#输入验证码

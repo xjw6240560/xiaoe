@@ -12,5 +12,3 @@ from functools import reduce
 # L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
 # L1 = sorted(L,key = lambda x : x[0],reverse = True)
 # print(L1)
-nowUrl = "http://user.jiaoyi.com/#/login"
-print(nowUrl != "http://user.jiaoyi.com/#/login")

@@ -373,6 +373,14 @@ class CreateProjectMethod(Base):
         self.saveButton_click()#点击保存按钮
         time.sleep(0.5)
 
+    def insert_projectData(self,projectNumber,projectType,tenderOrganizationType,tenderWay):#插入项目数据
+        self.connect_mysql()
+        sql = 'insert into project (projectNumber,projectType,tenderOrganizationType,tenderWay) values(%s,%s,%s,%s)'
+        try:
+            self.insert_and_update_sql(sql,projectNumber,projectType,tenderOrganizationType,tenderWay)
+        except:
+            print("项目更新失败！！！")
+
 #政采项目
 
     def purchaseType_click(self):#采购类型

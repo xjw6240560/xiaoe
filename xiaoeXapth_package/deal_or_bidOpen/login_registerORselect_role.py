@@ -82,7 +82,7 @@ class LoginORrole(Base):
                 time.sleep(0.5)
                 nowUrl = self.get_nowUrl()#获取当前的Url
                 self.drive.implicitly_wait(2)
-                if str(nowUrl) != "http://user.jiaoyi.com/#/login":
+                if str(nowUrl) != Base.deal_login_url:
                     break
         except:
             pass

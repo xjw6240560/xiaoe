@@ -234,7 +234,7 @@ class Home_page_or_workbench(Base):
         self.click(self.purchaseTenderProject_locator)
 
     def apply_click(self,projectNumber):
-        applyButton = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[5]/div/span[text()='报名']"#点击报名
+        applyButton = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[6]/div/span[text()='报名']"#点击报名
         apply_locator = (By.XPATH,applyButton)#选择报名项目编号
         self.click(apply_locator)
 

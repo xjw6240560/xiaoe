@@ -1,5 +1,5 @@
 from xiaoe_test_method.deal_login_method import Login
-from xiaoe_data import deal
+from xiaoe_data import test_deal_data
 import time
 import datetime
 import unittest
@@ -28,7 +28,7 @@ class Login_TeatCase(unittest.TestCase):
 
     def test_deal_login(self):
 
-        for i in range(len(deal.usernameList)):
+        for i in range(len(test_deal_data.usernameList)):
             for j in range(100):
                 try:
                     self.login.username_send_keys(i)
@@ -42,8 +42,8 @@ class Login_TeatCase(unittest.TestCase):
                     if log is not None:
                         if log != "图形验证码错误":
                             print("-------------"+log+"------------")
-                            print("账号："+deal.usernameList[i])
-                            print("密码："+deal.passwordList[i])
+                            print("账号：" + test_deal_data.usernameList[i])
+                            print("密码：" + test_deal_data.passwordList[i])
                             print("###############################################################")
                             break
                 except:
