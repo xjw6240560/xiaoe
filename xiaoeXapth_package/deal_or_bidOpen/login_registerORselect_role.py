@@ -5,7 +5,7 @@ class LoginORrole(Base):
     #登录
     code_login = "//div//span[contains(text(),'验证码登录')]"
     username_input = "//input[@placeholder='请输入账户']"
-    number_input = "//input[@placeholder='请输入手机号']"#手机号
+    number_input = "//input[@placeholder='请输入手机号']"#手机号抽取系统
     password_input = "//input[@placeholder='请输入登录密码']"
     login_button = "//button[@class='el-button w-full el-button--primary']//span[text()='登录']"
     pictrue_input = "//input[@placeholder='请输入验证码']"
@@ -89,10 +89,10 @@ class LoginORrole(Base):
 
     def jiaoyi_login(self,tenderType):#招标人或者招标代理选择
         if tenderType == "0" :
-            self.login(username="15212345678",password="ndx111")
+            self.login(username=Base.username1[0],password="ndx111")
             self.tenderee_click()#点击招标人
         elif tenderType == "1" :
-            self.login(username="13412841346",password="111111")
+            self.login(username=Base.username1[2],password=Base.password[1])
             self.tenderAgency_click()#点击招标代理
         else:
             print("招标类型错误"+tenderType)

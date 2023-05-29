@@ -74,7 +74,7 @@ class Expert(Base):
                 if str(nowUrl) != Base.expert_login_url:
                     if isAgree[0] == "disAgree" :
                         self.click(self.know_locator)
-                        self.update_isAgree(username,"consent")
+                        self.update_isAgree("consent",username)
                         break
                     elif isAgree[0] == "consent":
                         print("专家协议同意已经确认过"+isAgree)

@@ -1,4 +1,5 @@
 import time
+import csv
 import datetime
 from urllib import request
 from selenium.webdriver.common.action_chains import ActionChains
@@ -15,6 +16,8 @@ class Base(Test_deal_data):
     drive = webdriver.Chrome()
     drive.maximize_window()
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    csv_place = "C:\\Users\\111\\Desktop\\pythonScriptGenerate\\data.csv"#数据地址
+    script_place = "C:\\Users\\111\\Desktop\\pythonScriptGenerate\\pythonScript.txt"#存放xpath地址
     def open_userUrl_cookie(self):
         # """
         # 打开登录地址传入cookie，再打开首页地址
@@ -161,38 +164,49 @@ class Base(Test_deal_data):
             print("查询数据库失败！！！")
         self.close_conn(conn=conn,cursor=cursor)
 
-    # def insert_expertData(self,projectNumber,username,password,judgeName):#插入专家账号密码
-    #     db = self.connect_mysql()
-    #     cursor = db.cursor()
-    #     sql = 'insert into expert (projectNumber,username,password,judgeName) values(%s,%s,%s,%s)'
-    #     try:
-    #         cursor.execute(sql,(projectNumber,username,password,judgeName))
-    #         db.commit()
-    #     except Exception:
-    #         db.rollback()
-    #         print("专家账号密码添加失败！")
-    #     db.close()
-    #     cursor.close()
-    # def update_evaluationBidWay(self,evaluationBidWay,judgeNumber,projectNumber):#更新评标办法类型和评委个数
-    #     db = self.connect_mysql()
-    #     cursor = db.cursor()
-    #     sql = 'update project set evaluationBidWay = %s , judgeNumber = %s where projectNumber = %s'
-    #     try:
-    #         cursor.execute(sql,(evaluationBidWay,judgeNumber,projectNumber))
-    #         db.commit()
-    #         print("评标类型和评委个数更新成功！")
-    #     except Exception:
-    #         db.rollback()
-    #         print("评标类型和评委个数更新失败！")
-    #     db.close()
-    #     cursor.close()
-    #
+    def insert_expertData(self,projectNumber,username,password,judgeName):#插入专家账号密码
+        conn,cursor = self.connect_mysql()
+        sql = 'insert into expert (projectNumber,username,password,judgeName) values(%s,%s,%s,%s)'
+        try:
+            cursor.execute(sql,(projectNumber,username,password,judgeName))
+            conn.commit()
+        except Exception:
+            conn.rollback()
+            print("专家账号密码添加失败！")
+        conn.close()
+        cursor.close()
+    def update_evaluationBidWay(self,evaluationBidWay,judgeNumber,projectNumber):#更新评标办法类型和评委个数
+        conn,cursor, = self.connect_mysql()
+        sql = 'update project set evaluationBidWay = %s , judgeNumber = %s where projectNumber = %s'
+        try:
+            cursor.execute(sql,(evaluationBidWay,judgeNumber,projectNumber))
+            conn.commit()
+            print("评标类型和评委个数更新成功！")
+        except Exception:
+            conn.rollback()
+            print("评标类型和评委个数更新失败！")
+        conn.close()
+        cursor.close()
+
     def update_isAgree(self,isAgree,username):
         sql = 'update expert set isAgree = %s where username = %s'
         try:
             self.insert_and_update_sql(sql,isAgree,username)
         except:
             print("协议同意失败！！！")
+
+    def clear_text(self,url):#清空文本
+        open(url,'w').close()
+
+    def read_data_csv(self):#读取数据csv
+        with open(self.csv_place) as f:
+            result = csv.reader(f)
+            data = [row for row in result]
+            return data
+
+    def text_enter(self):#文本换行
+        with open(self.script_place,'a+',encoding="gbk") as f:
+            f.write("\n")
 
     def query_projectData(self,projectNumber):#查询项目数据
         sql = 'select projectType,tenderOrganizationType,evaluationBidWay,judgeNumber,tenderWay from project where projectNumber = %s'
@@ -203,39 +217,38 @@ class Base(Test_deal_data):
         except:
             print("项目数据查询失败！！！")
 
-    # def select_expert(self,projectNumber):#查询专家数据库
-    #     expert_name = []
-    #     expert_username = []
-    #     expert_password = []
-    #     db = self.connect_mysql()#连接数据库
-    #     cursor = db.cursor()#创建游标
-    #     sql = 'select username,password,judgeName from expert where projectNumber = %s'
-    #     try:
-    #         cursor.execute(sql,projectNumber)
-    #         result = cursor.fetchall()
-    #         for i in result:
-    #             expert_username.append(i[0])
-    #             expert_password.append(i[1])
-    #             expert_name.append(i[2])
-    #         print("专家账号查询成功！")
-    #         return expert_username,expert_password,expert_name
-    #     except:
-    #         print("专家账号查询失败——1！")
-    #     db.close()
-    #     cursor.close()
-    #
-    # def select_isAgree(self,username):
-    #     db = self.connect_mysql()#连接数据库
-    #     cursor = db.cursor()#创建游标
-    #     sql = 'select isAgree from expert where username = %s'
-    #     try:
-    #         cursor.execute(sql,username)
-    #         expert_isAgree = cursor.fetchone()
-    #         return expert_isAgree
-    #     except:
-    #         print("是否同意协议查询失败！")
-    #     db.close()
-    #     cursor.close()
+    def select_expert(self,projectNumber):#查询专家数据库
+        expert_name = []
+        expert_username = []
+        expert_password = []
+        conn,cursor = self.connect_mysql()#连接数据库
+        sql = 'select username,password,judgeName from expert where projectNumber = %s'
+        try:
+            cursor.execute(sql,projectNumber)
+            result = cursor.fetchall()
+            for i in result:
+                expert_username.append(i[0])
+                expert_password.append(i[1])
+                expert_name.append(i[2])
+            print("专家账号查询成功！")
+            return expert_username,expert_password,expert_name
+        except:
+            print("专家账号查询失败——1！")
+        conn.close()
+        cursor.close()
+
+    def select_isAgree(self,username):
+        conn,cursor = self.connect_mysql()#连接数据库
+
+        sql = 'select isAgree from expert where username = %s'
+        try:
+            cursor.execute(sql,username)
+            expert_isAgree = cursor.fetchone()
+            return expert_isAgree
+        except:
+            print("是否同意协议查询失败！")
+        conn.close()
+        cursor.close()
 
     def get_nowUrl(self):#获取当前页面的url
         nowUrl = self.drive.current_url
@@ -300,7 +313,7 @@ class Base(Test_deal_data):
         # :return:
         # """
         element = self.find_element(locator, 5)
-        time.sleep(0.2)
+        time.sleep(0.15)
         element.click()
 
     def send_keys(self, locator, text):
@@ -311,7 +324,7 @@ class Base(Test_deal_data):
         """
         element = self.find_element(locator,5)
         element.clear()
-        time.sleep(0.2)
+        time.sleep(0.15)
         element.send_keys(text)
 
     def get_text(self,locator):#将鼠标移动到指定元素并获取文本
@@ -356,7 +369,7 @@ class Base(Test_deal_data):
         if fileType == "pdf":
             send_keys("C:\\Users\\111\\Desktop\\招标文件.pdf")
         elif fileType == "img":
-            send_keys("C:\\Users\\111\\Desktop\\background.png")
+            send_keys(r"C:\Users\111\Pictures\mypictures\测试电子回单.png")
         send_keys("{VK_RETURN}")
 
     def move_mouse(self,locator):#鼠标移动到指定元素
@@ -420,6 +433,6 @@ class Base(Test_deal_data):
         """
         self.drive.quit()
 
-if __name__ == '__main__':
-    base = Base()
+# if __name__ == '__main__':
+    # base = Base()
 

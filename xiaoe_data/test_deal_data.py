@@ -7,3 +7,5 @@ class Test_deal_data:
     projectNumber = "20230524094050"#项目编号
     deal_login_url = "http://user.jiaoyi.com/#/login"
     expert_login_url = "http://expert.jiaoyi.com/#/login"
+    extract_login_url = "http://drawexpert.jiaoyi.com/#/"#抽取系统登录地址
+    environment = "测试"

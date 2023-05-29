@@ -12,8 +12,8 @@ class CreateProject(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20230524142716"#项目编号
-    tenderOrganizationType = "1"#自主招标0或者委托招标1
+    projectNumber = "20230529171207"#项目编号
+    tenderOrganizationType = "0"#自主招标0或者委托招标1
     tenderWay = 0#公开招标0、邀请招标1
     def setUp(self):
         self.base = Base()
@@ -34,15 +34,15 @@ class CreateProject(unittest.TestCase):
             self.tenderWay_sql = self.result1[4]
         except:
             print("项目信息查询失败")
-        #
-        # #查询专家账号和密码
-        # try:
-        #     self.result2 = self.base.select_expert(self.projectNumber)
-        #     self.expert_username = self.result2[0]
-        #     self.expert_password = self.result2[1]
-        #     self.expert_name = self.result2[2]
-        # except:
-        #     print("专家账号查询失败——2")
+
+        #查询专家账号和密码
+        try:
+            self.result2 = self.base.select_expert(self.projectNumber)
+            self.expert_username = self.result2[0]
+            self.expert_password = self.result2[1]
+            self.expert_name = self.result2[2]
+        except:
+            print("专家账号查询失败——2")
     """
     创建项目（工程项目）
     """
@@ -366,125 +366,125 @@ class CreateProject(unittest.TestCase):
             time.sleep(0.3)
             self.bidOpen.resultAffirm_click()#点击投标结果弹窗确认
             self.createProjectMethod.open_deal_url()
-    # """
-    # 添加评标办法
-    # 需要注意参数，评标类型
-    # """
-    # def test_add_evaluationBidWay(self):
-    #     evaluationBidWay = 0 #0表示综合,1表示均值,2表示最低,3表示最高
-    #     judgeNumber = 5#评委数量
-    #     self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)#选择招标人或者招标代理
-    #     self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)#工程或者采购工作台选择
-    #     try:
-    #         self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
-    #         self.evaluationBid_entrance.nowEvaluationBidWay_click()#点击当前评标办法
-    #         self.evaluationBid_entrance.choose_EvaluationBidWay(evaluationBidWay)#选择评标办法----0表示综合,1表示均值,2表示最低,3表示最高
-    #         for i in range(1,3):
-    #             self.evaluationBid_entrance.addScore_click()#点击添加评分点
-    #             self.evaluationBid_entrance.scoreInput_send_keys(i)#输入评分点
-    #             self.evaluationBid_entrance.mustType_click(i)#是否必须1表示非必须，2表示必须
-    #             self.evaluationBid_entrance.reviewStandard_send_keys(i)#输入评分标准
-    #             self.evaluationBid_entrance.addScoreSave_click()#点击评分点保存
-    #         self.evaluationBid_entrance.saveEvaluationBidWay_click()#点击保存评标办法
-    #         self.evaluationBid_entrance.saveEvaluationBidWayAffirm_click()#点击保存评标办法确定
-    #     except:
-    #         self.evaluationBid_entrance.close_click()
-    #     self.base.update_evaluationBidWay(evaluationBidWay=evaluationBidWay,judgeNumber= judgeNumber,projectNumber=self.projectNumber)#更新评标办法
-    # """
-    # 切换模板和添加评委
-    # 需要注意参数，评标类型
-    # """
-    # def test_09_add_evaluationBid_and_judge(self):#添加评标办法和添加评委(自主招标)
-    #     evaluationBidWay = 1 #0表示综合,1表示均值,2表示最低,3表示最高
-    #     judgeNumber = 15 #评委数量
-    #     self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)#选择招标人或者招标代理
-    #     self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)#工程或者采购工作台选择
-    #     try:
-    #         self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
-    #         self.evaluationBid_entrance.nowEvaluationBidWay_click()#点击当前评标办法
-    #         self.evaluationBid_entrance.choose_EvaluationBidWay(evaluationBidWay)#选择评标办法----0表示综合,1表示均值,2表示最低,3表示最高
-    #         self.evaluationBid_entrance.cutEvaluationBidWay_click()#点击切换评标办法
-    #         self.evaluationBid_entrance.clickEvaluationBidWay_click()#点击评标办法
-    #         self.evaluationBid_entrance.selectEvaluationBidWay_click()#选择评标办法
-    #         self.evaluationBid_entrance.cutEvaluationBidWayAffirm_click()#确认切换评标办法
-    #         self.evaluationBid_entrance.saveEvaluationBidWay_click()#点击保存评标办法
-    #         self.evaluationBid_entrance.saveEvaluationBidWayAffirm_click()#点击确认保存评标办法
-    #     except:
-    #         self.evaluationBid_entrance.close_click()
-    #     self.evaluationBid_entrance.affirmJudge_click()#点击确认评委
-    #     self.evaluationBid_entrance.create_judge(judgeNumber)#添加评委
-    #     self.base.update_evaluationBidWay(evaluationBidWay=evaluationBidWay,judgeNumber=judgeNumber,projectNumber=self.projectNumber)
-    #
-    # """
-    # 保存评委名称、账号和密码
-    # """
-    # def test_save_username_password(self):#保存评委账号和密码
-    #     self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)
-    #     self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)
-    #     self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
-    #     self.evaluationBid_entrance.affirmJudge_click()#点击确认评委
-    #     self.evaluationBid_entrance.judgeNumber_click()#评委账号管理
-    #     self.evaluationBid_entrance.save_judge_username_password(self.projectNumber,self.judgesCount)
+    """
+    添加评标办法
+    需要注意参数，评标类型
+    """
+    def test_add_evaluationBidWay(self):
+        evaluationBidWay = 0 #0表示综合,1表示均值,2表示最低,3表示最高
+        judgeNumber = 5#评委数量
+        self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)#选择招标人或者招标代理
+        self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)#工程或者采购工作台选择
+        try:
+            self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
+            self.evaluationBid_entrance.nowEvaluationBidWay_click()#点击当前评标办法
+            self.evaluationBid_entrance.choose_EvaluationBidWay(evaluationBidWay)#选择评标办法----0表示综合,1表示均值,2表示最低,3表示最高
+            for i in range(1,3):
+                self.evaluationBid_entrance.addScore_click()#点击添加评分点
+                self.evaluationBid_entrance.scoreInput_send_keys(i)#输入评分点
+                self.evaluationBid_entrance.mustType_click(i)#是否必须1表示非必须，2表示必须
+                self.evaluationBid_entrance.reviewStandard_send_keys(i)#输入评分标准
+                self.evaluationBid_entrance.addScoreSave_click()#点击评分点保存
+            self.evaluationBid_entrance.saveEvaluationBidWay_click()#点击保存评标办法
+            self.evaluationBid_entrance.saveEvaluationBidWayAffirm_click()#点击保存评标办法确定
+        except:
+            self.evaluationBid_entrance.close_click()
+        self.base.update_evaluationBidWay(evaluationBidWay=evaluationBidWay,judgeNumber= judgeNumber,projectNumber=self.projectNumber)#更新评标办法
+    """
+    切换模板和添加评委
+    需要注意参数，评标类型
+    """
+    def test_09_add_evaluationBid_and_judge(self):#添加评标办法和添加评委(自主招标)
+        evaluationBidWay = 1 #0表示综合,1表示均值,2表示最低,3表示最高
+        judgeNumber = 5 #评委数量
+        self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)#选择招标人或者招标代理
+        self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)#工程或者采购工作台选择
+        try:
+            self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
+            self.evaluationBid_entrance.nowEvaluationBidWay_click()#点击当前评标办法
+            self.evaluationBid_entrance.choose_EvaluationBidWay(evaluationBidWay)#选择评标办法----0表示综合,1表示均值,2表示最低,3表示最高
+            self.evaluationBid_entrance.cutEvaluationBidWay_click()#点击切换评标办法
+            self.evaluationBid_entrance.clickEvaluationBidWay_click()#点击评标办法
+            self.evaluationBid_entrance.selectEvaluationBidWay_click()#选择评标办法
+            self.evaluationBid_entrance.cutEvaluationBidWayAffirm_click()#确认切换评标办法
+            self.evaluationBid_entrance.saveEvaluationBidWay_click()#点击保存评标办法
+            self.evaluationBid_entrance.saveEvaluationBidWayAffirm_click()#点击确认保存评标办法
+        except:
+            self.evaluationBid_entrance.close_click()
+        self.evaluationBid_entrance.affirmJudge_click()#点击确认评委
+        self.evaluationBid_entrance.create_judge(judgeNumber)#添加评委
+        self.base.update_evaluationBidWay(evaluationBidWay=evaluationBidWay,judgeNumber=judgeNumber,projectNumber=self.projectNumber)
+
+    """
+    保存评委名称、账号和密码
+    """
+    def test_save_username_password(self):#保存评委账号和密码
+        self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)
+        self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)
+        self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
+        self.evaluationBid_entrance.affirmJudge_click()#点击确认评委
+        self.evaluationBid_entrance.judgeNumber_click()#评委账号管理
+        self.evaluationBid_entrance.save_judge_username_password(self.projectNumber,self.judgesCount)
     """
     推选组长
     """
-    # def test_elect_group(self):#推荐组长
-    #     username = self.expert_username
-    #     password = self.expert_password
-    #     # for i in range(len(username)):
-    #     #     self.expert.login(username=username[i],password=password[i])
-    #     #     self.expert.electGroup_click()#点击推选组长
-    #     #     try:
-    #     #         self.expert.elect_click(self.judgesCount)#点击推选
-    #     #     except:
-    #     #         print("已经推荐过了")
-    #     #     time.sleep(0.5)
-    #     self.expert.select_group(username=username,password=password,judgesCount=self.judgesCount)
-    #     while True:
-    #         try:
-    #             self.expert.get_group()#输出组长是那个评委
-    #             break
-    #         except:
-    #             self.expert.select_group(username=username,password=password,judgesCount=self.judgesCount)
-    #             # print("票数相同,没有选出组长！！！")
+    def test_elect_group(self):#推荐组长
+        username = self.expert_username
+        password = self.expert_password
+        # for i in range(len(username)):
+        #     self.expert.login(username=username[i],password=password[i])
+        #     self.expert.electGroup_click()#点击推选组长
+        #     try:
+        #         self.expert.elect_click(self.judgesCount)#点击推选
+        #     except:
+        #         print("已经推荐过了")
+        #     time.sleep(0.5)
+        self.expert.select_group(username=username,password=password,judgesCount=self.judgesCount)
+        while True:
+            try:
+                self.expert.get_group()#输出组长是那个评委
+                break
+            except:
+                self.expert.select_group(username=username,password=password,judgesCount=self.judgesCount)
+                # print("票数相同,没有选出组长！！！")
     """
     评分,在运行报错时，需要输入评分点个数score_count = 个数 + 1,score_count初始值为0
     """
-    # def test_judge_score(self):#评分
-    #     expert_username = self.expert_username#获取账号
-    #     expert_password = self.expert_password#获取密码
-    #     expert_name = self.expert_name#获取评委名称
-    #     enterprise_count = 0#企业个数
-    #     input_count = 0#评分点个数
-    #     for i in range(len(expert_username)):
-    #         self.expert.login(username=expert_username[i],password=expert_password[i])
-    #         print("----------------------------------"+str(expert_name[i])+"----------------------------------")
-    #         type = self.expert.review_click(self.evaluationBidWay)#专家选择评标类型,type用来判断是通过式，还是分值式
-    #         # self.expert.click(self.expert.review1_locator)
-    #         # type = 1
-    #         if enterprise_count == 0 and input_count == 0:
-    #             count = self.expert.enterprise_review(type= type)#企业评审
-    #             enterprise_count = count[0]
-    #             input_count = count[1]
-    #         else:
-    #             self.expert.enterprise_review(type= type,enterprise_count=enterprise_count,input_count=input_count)#企业评审
-    #         time.sleep(0.2)
-    #         try:
-    #             self.expert.submit_result_click()#点击提交审核结果
-    #             self.expert.submitResult_affirm_click()#点击确认
-    #             time.sleep(0.5)
-    #         except :
-    #             continue
-    # """
-    # 评委确认
-    # """
-    # def test_judgeAffirm(self):
-    #     expert_username = self.expert_username#获取账号
-    #     expert_password = self.expert_password#获取密码
-    #     for i in range(len(expert_username)):
-    #         self.expert.login(username=expert_username[i],password=expert_password[i])
-    #         self.expert.judgeSignature_click()#点击评委签章
-    #         self.expert.signature_examine(self.evaluationBidWay)#点击确认
+    def test_judge_score(self):#评分
+        expert_username = self.expert_username#获取账号
+        expert_password = self.expert_password#获取密码
+        expert_name = self.expert_name#获取评委名称
+        enterprise_count = 0#企业个数
+        input_count = 0#评分点个数
+        for i in range(len(expert_username)):
+            self.expert.login(username=expert_username[i],password=expert_password[i])
+            print("----------------------------------"+str(expert_name[i])+"----------------------------------")
+            type = self.expert.review_click(self.evaluationBidWay)#专家选择评标类型,type用来判断是通过式，还是分值式
+            # self.expert.click(self.expert.review1_locator)
+            # type = 1
+            if enterprise_count == 0 and input_count == 0:
+                count = self.expert.enterprise_review(type= type)#企业评审
+                enterprise_count = count[0]
+                input_count = count[1]
+            else:
+                self.expert.enterprise_review(type= type,enterprise_count=enterprise_count,input_count=input_count)#企业评审
+            time.sleep(0.2)
+            try:
+                self.expert.submit_result_click()#点击提交审核结果
+                self.expert.submitResult_affirm_click()#点击确认
+                time.sleep(0.5)
+            except :
+                continue
+    """
+    评委确认
+    """
+    def test_judgeAffirm(self):
+        expert_username = self.expert_username#获取账号
+        expert_password = self.expert_password#获取密码
+        for i in range(len(expert_username)):
+            self.expert.login(username=expert_username[i],password=expert_password[i])
+            self.expert.judgeSignature_click()#点击评委签章
+            self.expert.signature_examine(self.evaluationBidWay)#点击确认
 
 
     def tearDown(self):

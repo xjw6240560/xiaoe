@@ -220,7 +220,7 @@ class CreateProjectMethod(Base):
             self.js_xpath_removeAttribute(self.enterpriseInput_locator)
             time.sleep(0.2)
             self.enterpriseInput_send_keys(enterpriseName=enterpriseName[i])#输入企业名称
-            time.sleep(0.1)
+            time.sleep(0.2)
             self.find_click()#点击查找
             self.add_click()#点击添加企业
 
@@ -267,7 +267,11 @@ class CreateProjectMethod(Base):
         self.click(self.tenderGency_locator)
 
     def input_enterprise_send_keys(self):#输入招标代理企业信息
-        self.send_keys(self.input_enterprise_locator,'甘肃省胸补声蕊秘咨询股份有限公司')
+        if Base.environment == "正式":
+            self.send_keys(self.input_enterprise_locator,'厦门城市开发建设有限公司')
+        elif Base.environment == "测试":
+            self.send_keys(self.input_enterprise_locator,'甘肃省胸补声蕊秘咨询股份有限公司')
+
 
     def search_click(self):#点击搜索
         self.click(self.search_locator)
@@ -394,7 +398,6 @@ class CreateProjectMethod(Base):
 
     def purchasePrice_send_keys(self):#采购预算
         self.send_keys(self.purchasePrice_locator,"120.12")
-
 
 
 
