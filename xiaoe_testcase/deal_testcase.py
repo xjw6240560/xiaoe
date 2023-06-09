@@ -7,14 +7,14 @@ from xiaoeXapth_package.deal_or_bidOpen.login_registerORselect_role import Login
 from xiaoeXapth_package.deal_or_bidOpen.evaluationBid_entrance import EvaluationBid_entrance
 from xiaoeXapth_package.deal_or_bidOpen.expert import Expert
 from base.base import Base
-class CreateProject(unittest.TestCase):
+class Deal_testcase(unittest.TestCase):
     username = Base.username
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20230529171207"#项目编号
+    projectNumber = "20230608174201"#项目编号
     tenderOrganizationType = "0"#自主招标0或者委托招标1
-    tenderWay = 0#公开招标0、邀请招标1
+    tenderWay = 2 #公开招标0、邀请招标1、竞争性磋商2
     def setUp(self):
         self.base = Base()
         self.createProjectMethod = CreateProjectMethod()
@@ -32,6 +32,9 @@ class CreateProject(unittest.TestCase):
             self.evaluationBidWay = self.result1[2]
             self.judgesCount =self.result1[3]
             self.tenderWay_sql = self.result1[4]
+            self.applyNumber = self.result1[5]
+            self.enterpriseCount = self.result1[6]
+            self.ratingPointCount = self.result1[7]
         except:
             print("项目信息查询失败")
 
@@ -129,6 +132,8 @@ class CreateProject(unittest.TestCase):
             self.createProjectMethod.inviteBid_click()#点击邀请投标人
             self.createProjectMethod.addEnterprise(len(self.enterpriseName),enterpriseName=self.enterpriseName)
             self.createProjectMethod.close_click()#点击关闭
+        elif self.tenderWay == 2:
+            self.createProjectMethod.competitionConsult_click()#点击竞争性磋商
         self.createProjectMethod.purchasePrice_send_keys()#采购预算
         self.createProjectMethod.projectPlace_send_keys()#输入项目地址
         self.createProjectMethod.tenderLinkMan_send_keys()#输入联系人
@@ -165,11 +170,10 @@ class CreateProject(unittest.TestCase):
     线下报名
     """
     def test_05_apply_offline(self):#报名(线下)状态
-        count = 0
         for i in range(len(self.username)):
-            # count = count +1
-            # if count == 6 :
-            #     break
+            self.base.update_applyNumber(i,projectNumber=self.projectNumber)
+            if i == 4 :
+                break
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
             try:
@@ -198,12 +202,18 @@ class CreateProject(unittest.TestCase):
             self.home_page_or_workbench.returnButton_click()#点击返回
             self.home_page_or_workbench.margin_back_click()#保证金返回
             self.home_page_or_workbench.uploadBidFile_click()#点击上传投标文件
+            self.home_page_or_workbench.bid_price_send_keys()#输入投标价
+            self.home_page_or_workbench.duration_send_keys()#输入工期
+            self.home_page_or_workbench.quality_send_keys()#输入质量标准
             try:
-                self.home_page_or_workbench.bidFileImg_click()#点击上传投标文件图片
+                self.home_page_or_workbench.tender_notice_click()#点击招标公告
             except:
                 self.home_page_or_workbench.recallTenderFile_click()#撤回标书
                 self.home_page_or_workbench.tenderFileAffirm_click()#确认撤回
-                self.home_page_or_workbench.bidFileImg_click()#点击上传投标文件图片
+                self.home_page_or_workbench.bid_price_send_keys()#输入投标价
+                self.home_page_or_workbench.duration_send_keys()#输入工期
+                self.home_page_or_workbench.quality_send_keys()#输入质量标准
+                self.home_page_or_workbench.tender_notice_click()#点击招标公告
             self.home_page_or_workbench.upload_file("pdf")#选择投标文件图片
             time.sleep(0.3)
             self.home_page_or_workbench.saveBidFile_click()#点击保存
@@ -236,22 +246,28 @@ class CreateProject(unittest.TestCase):
             self.home_page_or_workbench.returnButton_click()#点击返回
             self.home_page_or_workbench.margin_back_click()
             self.home_page_or_workbench.uploadBidFile_click()#点击上传投标文件
+            self.home_page_or_workbench.bid_price_send_keys()#输入投标价
+            self.home_page_or_workbench.duration_send_keys()#输入工期
+            self.home_page_or_workbench.quality_send_keys()#输入质量标准
             try:
-                self.home_page_or_workbench.bidFileImg_click()#点击上传投标文件图片
+                self.home_page_or_workbench.tender_notice_click()#点击招标公告
             except:
                 self.home_page_or_workbench.recallTenderFile_click()#撤回标书
                 self.home_page_or_workbench.tenderFileAffirm_click()#确认撤回
-                self.home_page_or_workbench.bidFileImg_click()#点击上传投标文件图片
-            self.home_page_or_workbench.upload_file("pdf")#选择投标文件
-            time.sleep(0.5)
+                self.home_page_or_workbench.bid_price_send_keys()#输入投标价
+                self.home_page_or_workbench.duration_send_keys()#输入工期
+                self.home_page_or_workbench.quality_send_keys()#输入质量标准
+                self.home_page_or_workbench.tender_notice_click()#点击招标公告
+            self.home_page_or_workbench.upload_file("pdf")#选择投标文件图片
+            time.sleep(0.3)
             self.home_page_or_workbench.saveBidFile_click()#点击保存
             time.sleep(0.5)
-            self.createProjectMethod.open_deal_url()
+            self.createProjectMethod.open_deal_url()#进入登录页面
     """
     签到
     """
     def test_06_signIn_online(self):#签到
-        for i in range(len(self.username)):
+        for i in range(self.applyNumber):
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
             try:
@@ -277,32 +293,10 @@ class CreateProject(unittest.TestCase):
             time.sleep(0.2)
             self.createProjectMethod.open_deal_url()
     """
-    发送信息
-    """
-    def test_send_message(self):
-        for i in range(len(self.username)):
-            self.loginORrole.login(username=self.username[i],password=self.password[0])
-            self.loginORrole.bidder_click()#点击投标人
-            try:
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
-            except:
-                self.home_page_or_workbench.engpriseName_move()#悬浮在企业名称位置
-                time.sleep(0.3)
-                self.home_page_or_workbench.quitLogin_click()#点击推出登录
-                continue
-            self.home_page_or_workbench.openBidEntrance_click()#点击开标入口
-            time.sleep(0.3)
-            self.createProjectMethod.handle_skip(-1)
-            self.bidOpen.message_input_send_keys()#发送信息
-            self.createProjectMethod.handle_skip(0)
-            self.home_page_or_workbench.engpriseName_move()#悬浮在企业名称位置
-            time.sleep(0.5)
-            self.home_page_or_workbench.quitLogin_click()#点击推出登录
-    """
     解密投标文件
     """
     def test_07_apply_online(self):#解密投标文件
-        for i in range(len(self.username)):
+        for i in range(self.applyNumber):
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
             try:
@@ -326,23 +320,10 @@ class CreateProject(unittest.TestCase):
             time.sleep(0.2)
             self.createProjectMethod.open_deal_url()
     """
-    录入唱标信息
-    """
-    def test_input_bidMessage(self):#输入唱标信息
-        self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)
-        self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)
-        self.home_page_or_workbench.openBidEntrance_click()#点击开标入口
-        time.sleep(1)
-        self.createProjectMethod.handle_skip(-1)
-        self.bidOpen.input_bidMessage_button_click()#点击录入唱标信息按钮
-        self.bidOpen.input_bidMessage_send_keys(2080)#录入唱标信息
-        self.bidOpen.bidMessage_saveButton_click()#保存唱标信息
-        time.sleep(1)
-    """
     提出异议和确认唱标结果
     """
     def test_08_objection_or_affirmBidResult(self):#提出异议和确认唱标结果
-        for i in range(len(self.username)):
+        for i in range(self.applyNumber):
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
             try:
@@ -372,7 +353,7 @@ class CreateProject(unittest.TestCase):
     """
     def test_add_evaluationBidWay(self):
         evaluationBidWay = 0 #0表示综合,1表示均值,2表示最低,3表示最高
-        judgeNumber = 5#评委数量
+        judgeNumber = 3#评委数量
         self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)#选择招标人或者招标代理
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)#工程或者采购工作台选择
         try:
@@ -395,8 +376,8 @@ class CreateProject(unittest.TestCase):
     需要注意参数，评标类型
     """
     def test_09_add_evaluationBid_and_judge(self):#添加评标办法和添加评委(自主招标)
-        evaluationBidWay = 1 #0表示综合,1表示均值,2表示最低,3表示最高
-        judgeNumber = 5 #评委数量
+        evaluationBidWay = 4#0表示综合,1表示均值,2表示最低,3表示最高,4代表竞争性磋商
+        judgeNumber = 3 #评委数量
         self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)#选择招标人或者招标代理
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)#工程或者采购工作台选择
         try:
@@ -411,63 +392,39 @@ class CreateProject(unittest.TestCase):
             self.evaluationBid_entrance.saveEvaluationBidWayAffirm_click()#点击确认保存评标办法
         except:
             self.evaluationBid_entrance.close_click()
-        self.evaluationBid_entrance.affirmJudge_click()#点击确认评委
-        self.evaluationBid_entrance.create_judge(judgeNumber)#添加评委
         self.base.update_evaluationBidWay(evaluationBidWay=evaluationBidWay,judgeNumber=judgeNumber,projectNumber=self.projectNumber)
-
-    """
-    保存评委名称、账号和密码
-    """
-    def test_save_username_password(self):#保存评委账号和密码
-        self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)
-        self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)
-        self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
-        self.evaluationBid_entrance.affirmJudge_click()#点击确认评委
-        self.evaluationBid_entrance.judgeNumber_click()#评委账号管理
-        self.evaluationBid_entrance.save_judge_username_password(self.projectNumber,self.judgesCount)
     """
     推选组长
     """
     def test_elect_group(self):#推荐组长
         username = self.expert_username
         password = self.expert_password
-        # for i in range(len(username)):
-        #     self.expert.login(username=username[i],password=password[i])
-        #     self.expert.electGroup_click()#点击推选组长
-        #     try:
-        #         self.expert.elect_click(self.judgesCount)#点击推选
-        #     except:
-        #         print("已经推荐过了")
-        #     time.sleep(0.5)
-        self.expert.select_group(username=username,password=password,judgesCount=self.judgesCount)
+        self.expert.select_group(username=username,password=password,projectNumber=self.projectNumber,name=self.expert_name)
         while True:
             try:
                 self.expert.get_group()#输出组长是那个评委
                 break
             except:
-                self.expert.select_group(username=username,password=password,judgesCount=self.judgesCount)
+                self.expert.select_group(username=username,password=password,projectNumber=self.projectNumber,name=self.expert_name)
                 # print("票数相同,没有选出组长！！！")
     """
-    评分,在运行报错时，需要输入评分点个数score_count = 个数 + 1,score_count初始值为0
+    注意输入评标类型是那个
     """
     def test_judge_score(self):#评分
+        buttonCount = 1#用来判断是哪个评标类型
         expert_username = self.expert_username#获取账号
         expert_password = self.expert_password#获取密码
         expert_name = self.expert_name#获取评委名称
-        enterprise_count = 0#企业个数
-        input_count = 0#评分点个数
         for i in range(len(expert_username)):
-            self.expert.login(username=expert_username[i],password=expert_password[i])
+            self.result1 = self.base.query_projectData(self.projectNumber)
+            enterpriseCount = self.result1[6]
+            self.expert.login(username=expert_username[i],password=expert_password[i],projectNumber = self.projectNumber)
             print("----------------------------------"+str(expert_name[i])+"----------------------------------")
-            type = self.expert.review_click(self.evaluationBidWay)#专家选择评标类型,type用来判断是通过式，还是分值式
-            # self.expert.click(self.expert.review1_locator)
-            # type = 1
-            if enterprise_count == 0 and input_count == 0:
-                count = self.expert.enterprise_review(type= type)#企业评审
-                enterprise_count = count[0]
-                input_count = count[1]
+            self.expert.review_click(buttonCount)#专家选择评标类型,type用来判断是通过式，还是分值式
+            if enterpriseCount == '0':
+                self.expert.enterprise_review(projectNumber=self.projectNumber)#企业评审
             else:
-                self.expert.enterprise_review(type= type,enterprise_count=enterprise_count,input_count=input_count)#企业评审
+                self.expert.enterprise_review(projectNumber=self.projectNumber,enterprise_count=str(enterpriseCount))#企业评审
             time.sleep(0.2)
             try:
                 self.expert.submit_result_click()#点击提交审核结果
@@ -482,10 +439,9 @@ class CreateProject(unittest.TestCase):
         expert_username = self.expert_username#获取账号
         expert_password = self.expert_password#获取密码
         for i in range(len(expert_username)):
-            self.expert.login(username=expert_username[i],password=expert_password[i])
+            self.expert.login(username=expert_username[i],password=expert_password[i],projectNumber = self.projectNumber)
             self.expert.judgeSignature_click()#点击评委签章
             self.expert.signature_examine(self.evaluationBidWay)#点击确认
-
 
     def tearDown(self):
         self.base.close()

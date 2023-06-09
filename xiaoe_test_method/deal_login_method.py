@@ -5,13 +5,12 @@ import time
 from xiaoeXapth_package.deal_or_bidOpen.login_registerORselect_role import LoginORrole
 from selenium.webdriver.common.action_chains import ActionChains
 
-class Login(Base):
+class LoginTest(Base):
     loginORrole = LoginORrole()
     """
     创建测试数据
     分别对应长度正常、小于、大于
     """
-
 
     def username_send_keys(self,i):
         self.send_keys(self.loginORrole.username_locator, test_deal_data.usernameList[int(i)])

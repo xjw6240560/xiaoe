@@ -2,19 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47656d0a-778f-45bd-bbdb-56529caaddaa" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tool/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tool/generate_script.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/login.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test.py" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jinfu_testcase/1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/log.ini.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/expert_extract.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/home_page.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xiaoe_testcase/extract_system_testcase.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xiaoe_testcase/web.log" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/build/deal_create_project_testcase/Analysis-00.toc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/build/deal_create_project_testcase/EXE-00.toc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/build/deal_create_project_testcase/PKG-00.toc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/build/deal_create_project_testcase/PYZ-00.pyz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/build/deal_create_project_testcase/PYZ-00.toc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/build/deal_create_project_testcase/base_library.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/build/deal_create_project_testcase/deal_create_project_testcase.exe.manifest" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/build/deal_create_project_testcase/deal_create_project_testcase.pkg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/build/deal_create_project_testcase/warn-deal_create_project_testcase.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/build/deal_create_project_testcase/xref-deal_create_project_testcase.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/deal_create_project_testcase.spec" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/default.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/dist/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/xiaoe_testcase/dist/deal_create_project_testcase.exe" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoe_testcase/1.png" afterPath="$PROJECT_DIR$/xiaoe_testcase/1.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/base.py" afterPath="$PROJECT_DIR$/base/base.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo1.py" afterPath="$PROJECT_DIR$/demo1.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/generate_script.py" afterPath="$PROJECT_DIR$/tool/generate_script.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/evaluationBid_entrance.py" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/evaluationBid_entrance.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/home_page_or_workbench.py" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/home_page_or_workbench.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/login_registerORselect_role.py" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/login_registerORselect_role.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/login.py" afterPath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/login.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoe_data/formal_deal_data.py" afterPath="$PROJECT_DIR$/xiaoe_data/formal_deal_data.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoe_data/test_deal_data.py" afterPath="$PROJECT_DIR$/xiaoe_data/test_deal_data.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoe_test_method/deal_login_method.py" afterPath="$PROJECT_DIR$/xiaoe_test_method/deal_login_method.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoe_testcase/deal_login_testcase.py" afterPath="$PROJECT_DIR$/xiaoe_testcase/deal_login_testcase.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" afterPath="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" />
     </list>
     <ignored path="untitled.iws" />
@@ -40,13 +64,13 @@
         <entry file="file://$PROJECT_DIR$/base/base.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="373" column="0" selection-start-line="373" selection-start-column="0" selection-end-line="373" selection-end-column="0" />
+              <caret line="224" column="69" selection-start-line="224" selection-start-column="69" selection-end-line="224" selection-end-column="69" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <element signature="e#4581#8141#0" expanded="false" />
-                <element signature="e#8182#8378#0" expanded="false" />
-                <element signature="e#8420#10457#0" expanded="false" />
-                <element signature="e#10725#10918#0" expanded="false" />
+                <element signature="e#4591#8151#0" expanded="false" />
+                <element signature="e#8192#8388#0" expanded="false" />
+                <element signature="e#8430#10467#0" expanded="false" />
+                <element signature="e#10979#11172#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -55,52 +79,22 @@
       <file leaf-file-name="deal_testcase.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.782167">
-              <caret line="110" column="16" selection-start-line="110" selection-start-column="16" selection-end-line="110" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.46275395">
+              <caret line="433" column="24" selection-start-line="433" selection-start-column="24" selection-end-line="433" selection-end-column="24" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <element signature="e#851#1918#0" expanded="false" />
-                <element signature="e#1998#5666#0" expanded="false" />
-                <element signature="e#5743#9193#0" expanded="false" />
-                <element signature="e#9273#11640#0" expanded="false" />
-                <element signature="e#11723#13570#0" expanded="false" />
-                <element signature="e#13642#14799#0" expanded="false" />
-                <element signature="e#14866#15805#0" expanded="false" />
-                <element signature="e#15884#16938#0" expanded="false" />
-                <element signature="e#17018#17524#0" expanded="false" />
-                <element signature="e#17629#18800#0" expanded="false" />
-                <element signature="e#18893#20229#0" expanded="false" />
-                <element signature="e#20353#21720#0" expanded="false" />
-                <element signature="e#21816#22280#0" expanded="false" />
-                <element signature="e#22351#23137#0" expanded="false" />
-                <element signature="e#23258#24483#0" expanded="false" />
-                <element signature="e#24549#24901#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_project.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="345" column="36" selection-start-line="345" selection-start-column="36" selection-end-line="345" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-                <element signature="e#9434#11233#0" expanded="false" />
-                <element signature="e#17165#18545#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login_registerORselect_role.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/login_registerORselect_role.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#2156#5824#0" expanded="false" />
+                <element signature="e#5901#9457#0" expanded="false" />
+                <element signature="e#9537#12336#0" expanded="false" />
+                <element signature="e#12419#14687#0" expanded="false" />
+                <element signature="e#14759#15914#0" expanded="false" />
+                <element signature="e#15993#17045#0" expanded="false" />
+                <element signature="e#17150#18319#0" expanded="false" />
+                <element signature="e#18412#19748#0" expanded="false" />
+                <element signature="e#19872#21117#0" expanded="false" />
+                <element signature="e#21188#21688#0" expanded="false" />
+                <element signature="e#21764#22929#0" expanded="false" />
+                <element signature="e#22995#23382#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -110,7 +104,17 @@
         <entry file="file://$PROJECT_DIR$/xiaoe_data/test_deal_data.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+              <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="evaluationBid_entrance.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/evaluationBid_entrance.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="96" column="68" selection-start-line="96" selection-start-column="68" selection-end-line="96" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -120,8 +124,67 @@
         <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/home_page_or_workbench.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
+              <caret line="241" column="33" selection-start-line="241" selection-start-column="33" selection-end-line="241" selection-end-column="33" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home_page.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/extract_system/home_page.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create_project.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="174" column="65" selection-start-line="174" selection-start-column="65" selection-end-line="174" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="expert.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="194" column="70" selection-start-line="194" selection-start-column="70" selection-end-line="194" selection-end-column="70" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#5087#5492#0" expanded="false" />
+                <element signature="e#9136#10264#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="extract_system_testcase.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xiaoe_testcase/extract_system_testcase.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+              <folding>
+                <element signature="e#33#48#0" expanded="true" />
+                <element signature="e#414#1158#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="expert_extract.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/extract_system/expert_extract.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+              <folding>
+                <element signature="e#33#59#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -141,22 +204,32 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/home_page_or_workbench.py" />
         <option value="$PROJECT_DIR$/xiaoe_data/deal.py" />
-        <option value="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/demo2.py" />
         <option value="$PROJECT_DIR$/tool/demo2.py" />
         <option value="$PROJECT_DIR$/tool/generate_locator.py" />
-        <option value="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" />
         <option value="$PROJECT_DIR$/tool/generate_method.py" />
-        <option value="$PROJECT_DIR$/xiaoe_data/formal_deal_data.py" />
-        <option value="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/login_registerORselect_role.py" />
-        <option value="$PROJECT_DIR$/xiaoeXapth_package/extract_system/login.py" />
         <option value="$PROJECT_DIR$/tool/generate_xpath.py" />
-        <option value="$PROJECT_DIR$/tool/generate_script.py" />
+        <option value="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/login_registerORselect_role.py" />
+        <option value="$PROJECT_DIR$/log/log.ini.py" />
+        <option value="$PROJECT_DIR$/jinfu_testcase/extract_system_testcase.py" />
+        <option value="$PROJECT_DIR$/xiaoe_testcase/log.txt" />
         <option value="$PROJECT_DIR$/xiaoe_data/test_deal_data.py" />
+        <option value="$PROJECT_DIR$/xiaoe_data/formal_deal_data.py" />
+        <option value="$PROJECT_DIR$/xiaoeXapth_package/extract_system/login.py" />
+        <option value="$PROJECT_DIR$/demo1.py" />
+        <option value="$PROJECT_DIR$/xiaoeXapth_package/extract_system/home_page.py" />
+        <option value="$PROJECT_DIR$/xiaoe_test_method/deal_login_method.py" />
+        <option value="$PROJECT_DIR$/xiaoe_testcase/deal_login_testcase.py" />
+        <option value="$PROJECT_DIR$/tool/generate_script.py" />
+        <option value="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" />
+        <option value="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/home_page_or_workbench.py" />
+        <option value="$PROJECT_DIR$/xiaoeXapth_package/extract_system/expert_extract.py" />
+        <option value="$PROJECT_DIR$/xiaoe_testcase/extract_system_testcase.py" />
+        <option value="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/evaluationBid_entrance.py" />
         <option value="$PROJECT_DIR$/base/base.py" />
+        <option value="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py" />
         <option value="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" />
       </list>
     </option>
@@ -220,14 +293,92 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="xiaoe_data" />
+              <option name="myItemId" value="xiaoe_testcase" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xiaoeXapth_package" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xiaoeXapth_package" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extract_system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xiaoeXapth_package" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="deal_or_bidOpen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="base" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -253,30 +404,13 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\111\PycharmProjects\untitled\xiaoe_testcase" />
       <recent name="C:\Users\111\PycharmProjects\untitled\tool" />
       <recent name="C:\Users\111\PycharmProjects\untitled\xiaoe_test_method" />
-      <recent name="C:\Users\111\PycharmProjects\untitled\xiaoe_testcase" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest CreateProject.test_03_purchase">
-    <configuration default="false" name="generate_script" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tool" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="untitled" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tool/generate_script.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest CreateProject.test_01_engineering" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Unittest Deal_testcase.test_judge_score">
+    <configuration default="false" name="Unittest Deal_testcase.test_03_purchase" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -287,8 +421,8 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="untitled" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" />
-      <option name="CLASS_NAME" value="CreateProject" />
-      <option name="METHOD_NAME" value="test_01_engineering" />
+      <option name="CLASS_NAME" value="Deal_testcase" />
+      <option name="METHOD_NAME" value="test_03_purchase" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -298,7 +432,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest CreateProject.test_05_apply_offline" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest Deal_testcase.test_05_apply_offline" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -309,7 +443,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="untitled" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" />
-      <option name="CLASS_NAME" value="CreateProject" />
+      <option name="CLASS_NAME" value="Deal_testcase" />
       <option name="METHOD_NAME" value="test_05_apply_offline" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
@@ -320,7 +454,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest CreateProject.test_06_signIn_online" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest Extract_system.test_save_expert" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -330,9 +464,9 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="untitled" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" />
-      <option name="CLASS_NAME" value="CreateProject" />
-      <option name="METHOD_NAME" value="test_06_signIn_online" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xiaoe_testcase/extract_system_testcase.py" />
+      <option name="CLASS_NAME" value="Extract_system" />
+      <option name="METHOD_NAME" value="test_save_expert" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -342,7 +476,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest CreateProject.test_03_purchase" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest Deal_testcase.test_elect_group" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -353,8 +487,30 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="untitled" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" />
-      <option name="CLASS_NAME" value="CreateProject" />
-      <option name="METHOD_NAME" value="test_03_purchase" />
+      <option name="CLASS_NAME" value="Deal_testcase" />
+      <option name="METHOD_NAME" value="test_elect_group" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest Deal_testcase.test_judge_score" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xiaoe_testcase" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="untitled" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" />
+      <option name="CLASS_NAME" value="Deal_testcase" />
+      <option name="METHOD_NAME" value="test_judge_score" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -487,19 +643,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.generate_script" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_01_engineering" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_05_apply_offline" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_06_signIn_online" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_03_purchase" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest Deal_testcase.test_03_purchase" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest Deal_testcase.test_05_apply_offline" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest Extract_system.test_save_expert" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest Deal_testcase.test_elect_group" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest Deal_testcase.test_judge_score" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_03_purchase" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_06_signIn_online" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_05_apply_offline" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest CreateProject.test_01_engineering" />
-        <item index="4" class="java.lang.String" itemvalue="Python.generate_script" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest Deal_testcase.test_judge_score" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest Deal_testcase.test_elect_group" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest Extract_system.test_save_expert" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest Deal_testcase.test_05_apply_offline" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest Deal_testcase.test_03_purchase" />
       </list>
     </recent_temporary>
   </component>
@@ -517,35 +673,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_CreateProject_test_01_engineering - 2023.05.29 at 16h 48m 35s.xml">
-      <configuration name="Unittest CreateProject.test_01_engineering" configurationId="tests" />
+    <history-entry file="Unittest_Deal_testcase_test_judge_score - 2023.06.09 at 11h 21m 16s.xml">
+      <configuration name="Unittest Deal_testcase.test_judge_score" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CreateProject_test_01_engineering - 2023.05.29 at 17h 02m 01s.xml">
-      <configuration name="Unittest CreateProject.test_01_engineering" configurationId="tests" />
+    <history-entry file="Unittest_Deal_testcase_test_judge_score - 2023.06.09 at 11h 21m 51s.xml">
+      <configuration name="Unittest Deal_testcase.test_judge_score" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CreateProject_test_01_engineering - 2023.05.29 at 17h 12m 47s.xml">
-      <configuration name="Unittest CreateProject.test_01_engineering" configurationId="tests" />
+    <history-entry file="Unittest_Deal_testcase_test_judge_score - 2023.06.09 at 11h 24m 58s.xml">
+      <configuration name="Unittest Deal_testcase.test_judge_score" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CreateProject_test_03_purchase - 2023.05.29 at 17h 23m 14s.xml">
-      <configuration name="Unittest CreateProject.test_03_purchase" configurationId="tests" />
+    <history-entry file="Unittest_Deal_testcase_test_judge_score - 2023.06.09 at 11h 28m 00s.xml">
+      <configuration name="Unittest Deal_testcase.test_judge_score" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CreateProject_test_05_apply_offline - 2023.05.29 at 17h 03m 12s.xml">
-      <configuration name="Unittest CreateProject.test_05_apply_offline" configurationId="tests" />
+    <history-entry file="Unittest_Deal_testcase_test_judge_score - 2023.06.09 at 11h 32m 02s.xml">
+      <configuration name="Unittest Deal_testcase.test_judge_score" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CreateProject_test_05_apply_offline - 2023.05.29 at 17h 05m 28s.xml">
-      <configuration name="Unittest CreateProject.test_05_apply_offline" configurationId="tests" />
+    <history-entry file="Unittest_Deal_testcase_test_judge_score - 2023.06.09 at 11h 37m 27s.xml">
+      <configuration name="Unittest Deal_testcase.test_judge_score" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CreateProject_test_05_apply_offline - 2023.05.29 at 17h 08m 13s.xml">
-      <configuration name="Unittest CreateProject.test_05_apply_offline" configurationId="tests" />
+    <history-entry file="Unittest_Deal_testcase_test_judge_score - 2023.06.09 at 11h 39m 13s.xml">
+      <configuration name="Unittest Deal_testcase.test_judge_score" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CreateProject_test_05_apply_offline - 2023.05.29 at 17h 08m 58s.xml">
-      <configuration name="Unittest CreateProject.test_05_apply_offline" configurationId="tests" />
+    <history-entry file="Unittest_Deal_testcase_test_judge_score - 2023.06.09 at 11h 42m 17s.xml">
+      <configuration name="Unittest Deal_testcase.test_judge_score" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CreateProject_test_05_apply_offline - 2023.05.29 at 17h 16m 25s.xml">
-      <configuration name="Unittest CreateProject.test_05_apply_offline" configurationId="tests" />
+    <history-entry file="Unittest_Deal_testcase_test_judge_score - 2023.06.09 at 11h 43m 34s.xml">
+      <configuration name="Unittest Deal_testcase.test_judge_score" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CreateProject_test_06_signIn_online - 2023.05.29 at 17h 20m 00s.xml">
-      <configuration name="Unittest CreateProject.test_06_signIn_online" configurationId="tests" />
+    <history-entry file="Unittest_Deal_testcase_test_judge_score - 2023.06.09 at 11h 47m 42s.xml">
+      <configuration name="Unittest Deal_testcase.test_judge_score" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -558,17 +714,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1048" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1048" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16227607" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1975764" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.71693987" sideWeight="0.5068493" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4295082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5409836" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21748634" sideWeight="0.49420443" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29289618" sideWeight="0.49420443" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56393445" sideWeight="0.49315068" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56284153" sideWeight="0.49315068" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.452459" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -621,60 +777,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="224" />
+      <option name="time" value="237" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jinfu_test_method/userTestMethod/bid_flow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Python/Python310/Lib/site-packages/pywinauto/keyboard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33295712">
-          <caret line="699" column="8" selection-start-line="699" selection-start-column="8" selection-end-line="699" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Python/Python310/Lib/site-packages/appium/webdriver/webelement.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33295712">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Demo.spec">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Python/Python310/Lib/urllib/request.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1217587">
-          <caret line="227" column="8" selection-start-line="227" selection-start-column="8" selection-end-line="227" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Python/Python310/Lib/site-packages/selenium/webdriver/support/wait.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="11" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm50/system/python_stubs/-1478645837/_random.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33295712">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Python/Python310/Lib/random.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8408578">
@@ -700,13 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3327338">
           <caret line="541" column="8" selection-start-line="541" selection-start-column="8" selection-end-line="541" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Python/Python310/Lib/site-packages/ddddocr/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.7866817">
-          <caret line="1598" column="8" selection-start-line="1598" selection-start-column="8" selection-end-line="1598" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -773,20 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm50/system/python_stubs/-1478645837/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63993174">
-          <caret line="502" column="5" selection-start-line="502" selection-start-column="5" selection-end-line="502" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xiaoe_test_method/deal_login_method.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9322799">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Python/Python310/Lib/site-packages/selenium/webdriver/common/action_chains.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -822,31 +908,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5756208">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xiaoe_testcase/deal_login_testcase.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/createEnterprise.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17937219">
           <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/bidOpen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="108" column="8" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -864,13 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/evaluationBid_entrance.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="153" column="8" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/1.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -880,13 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="475" column="42" selection-start-line="475" selection-start-column="42" selection-end-line="475" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="202" column="56" selection-start-line="202" selection-start-column="56" selection-end-line="202" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -901,33 +952,102 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06764374">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python/Python310/Lib/site-packages/ddddocr/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.84761906">
+          <caret line="1622" column="35" selection-start-line="1622" selection-start-column="35" selection-end-line="1622" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jinfu_testcase/1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jinfu_testcase/background_UserManagement_testcase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.3047404">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jinfu_testcase/usertestcase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaoe_testcase/web.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22857143">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/log.ini.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.101580136">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xiaoe_data/formal_deal_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/generate_script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="66" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
-          <folding />
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/extract_system/login.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40650406">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding>
-            <element signature="e#33#76#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Demo.spec">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm50/system/python_stubs/-1478645837/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69560045">
+          <caret line="5377" column="54" selection-start-line="5377" selection-start-column="54" selection-end-line="5377" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="81" column="16" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaoe_testcase/deal_login_testcase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.747198">
+          <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaoe_test_method/deal_login_method.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/bidOpen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22799097">
+          <caret line="80" column="45" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -935,22 +1055,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/base/base.py">
+    <entry file="file://$PROJECT_DIR$/tool/generate_script.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="373" column="0" selection-start-line="373" selection-start-column="0" selection-end-line="373" selection-end-column="0" />
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="174" column="65" selection-start-line="174" selection-start-column="65" selection-end-line="174" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/extract_system/expert_extract.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#4581#8141#0" expanded="false" />
-            <element signature="e#8182#8378#0" expanded="false" />
-            <element signature="e#8420#10457#0" expanded="false" />
-            <element signature="e#10725#10918#0" expanded="false" />
+            <element signature="e#33#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -958,53 +1086,90 @@
     <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/home_page_or_workbench.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
+          <caret line="241" column="33" selection-start-line="241" selection-start-column="33" selection-end-line="241" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/evaluationBid_entrance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="68" selection-start-line="96" selection-start-column="68" selection-end-line="96" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/extract_system/home_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaoe_testcase/extract_system_testcase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+          <folding>
+            <element signature="e#33#48#0" expanded="true" />
+            <element signature="e#414#1158#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xiaoe_data/test_deal_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py">
+    <entry file="file://$PROJECT_DIR$/base/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="345" column="36" selection-start-line="345" selection-start-column="36" selection-end-line="345" selection-end-column="36" />
+          <caret line="224" column="69" selection-start-line="224" selection-start-column="69" selection-end-line="224" selection-end-column="69" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#9434#11233#0" expanded="false" />
-            <element signature="e#17165#18545#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#4591#8151#0" expanded="false" />
+            <element signature="e#8192#8388#0" expanded="false" />
+            <element signature="e#8430#10467#0" expanded="false" />
+            <element signature="e#10979#11172#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="194" column="70" selection-start-line="194" selection-start-column="70" selection-end-line="194" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#5087#5492#0" expanded="false" />
+            <element signature="e#9136#10264#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.782167">
-          <caret line="110" column="16" selection-start-line="110" selection-start-column="16" selection-end-line="110" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.46275395">
+          <caret line="433" column="24" selection-start-line="433" selection-start-column="24" selection-end-line="433" selection-end-column="24" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#851#1918#0" expanded="false" />
-            <element signature="e#1998#5666#0" expanded="false" />
-            <element signature="e#5743#9193#0" expanded="false" />
-            <element signature="e#9273#11640#0" expanded="false" />
-            <element signature="e#11723#13570#0" expanded="false" />
-            <element signature="e#13642#14799#0" expanded="false" />
-            <element signature="e#14866#15805#0" expanded="false" />
-            <element signature="e#15884#16938#0" expanded="false" />
-            <element signature="e#17018#17524#0" expanded="false" />
-            <element signature="e#17629#18800#0" expanded="false" />
-            <element signature="e#18893#20229#0" expanded="false" />
-            <element signature="e#20353#21720#0" expanded="false" />
-            <element signature="e#21816#22280#0" expanded="false" />
-            <element signature="e#22351#23137#0" expanded="false" />
-            <element signature="e#23258#24483#0" expanded="false" />
-            <element signature="e#24549#24901#0" expanded="false" />
+            <element signature="e#2156#5824#0" expanded="false" />
+            <element signature="e#5901#9457#0" expanded="false" />
+            <element signature="e#9537#12336#0" expanded="false" />
+            <element signature="e#12419#14687#0" expanded="false" />
+            <element signature="e#14759#15914#0" expanded="false" />
+            <element signature="e#15993#17045#0" expanded="false" />
+            <element signature="e#17150#18319#0" expanded="false" />
+            <element signature="e#18412#19748#0" expanded="false" />
+            <element signature="e#19872#21117#0" expanded="false" />
+            <element signature="e#21188#21688#0" expanded="false" />
+            <element signature="e#21764#22929#0" expanded="false" />
+            <element signature="e#22995#23382#0" expanded="false" />
           </folding>
         </state>
       </provider>

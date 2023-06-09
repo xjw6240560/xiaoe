@@ -10,6 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from pywinauto.keyboard import send_keys
 import random
 import pymysql
+import re
 from xiaoe_data.test_deal_data import Test_deal_data
 from xiaoe_data.formal_deal_data import Formal_deal_data
 class Base(Test_deal_data):
@@ -116,6 +117,15 @@ class Base(Test_deal_data):
         self.drive.get(login_url)
         self.drive.maximize_window()
         time.sleep(1)
+    def open_extract_system_url(self):#专家抽取系统
+        """
+        打开专家抽取系统登录页面
+        :return:
+        """
+        login_url = self.extract_login_url
+        self.drive.get(login_url)
+        self.drive.maximize_window()
+        time.sleep(1)
 
     def open_manage_url(self):
         """
@@ -186,7 +196,7 @@ class Base(Test_deal_data):
             conn.rollback()
             print("评标类型和评委个数更新失败！")
         conn.close()
-        cursor.close()
+        cursor.close()#
 
     def update_isAgree(self,isAgree,username):
         sql = 'update expert set isAgree = %s where username = %s'
@@ -195,24 +205,59 @@ class Base(Test_deal_data):
         except:
             print("协议同意失败！！！")
 
+    def update_enterprise_count(self,enterpriseCount,projectNumber):#更新企业数量
+        sql = 'update project set enterpriseCount = %s where projectNumber = %s'
+        try:
+            self.insert_and_update_sql(sql,enterpriseCount,projectNumber)
+        except:
+            print("企业数量更新失败！！！")
+
+    def update_ratingPoint_count(self,ratingPointCount,ratingType,projectNumber):#更新评分点数量
+        sql = 'update project set ratingPointCount = %s,ratingType = %s where projectNumber = %s'
+        try:
+            self.insert_and_update_sql(sql,ratingPointCount,ratingType,projectNumber)
+        except:
+            print("企业数量更新失败！！！")
+
+    def update_applyNumber(self,applyNumber,projectNumber):#更新报名人数
+        sql = 'update project set applyNumber = %s where projectNumber = %s'
+        try:
+            self.insert_and_update_sql(sql,applyNumber,projectNumber)
+        except:
+            print("报名人数更新失败！！！")
+
     def clear_text(self,url):#清空文本
         open(url,'w').close()
 
-    def read_data_csv(self):#读取数据csv
+    def read_data_csv(self,begin,end = None):#读取数据csv非负数
+        data = []
+        begin = self.nonnegative(begin)#用于判断是否为非负数
+        if end is None:
+            begin,end = 0,begin
+        elif begin > end:
+                raise Exception("begin不能比end大！！！")
         with open(self.csv_place) as f:
             result = csv.reader(f)
-            data = [row for row in result]
+            for index,row in enumerate(result):
+                if index+1 >= begin and index+1 <= end:
+                    data.append(row)
             return data
+
+    def nonnegative(self,number):#判断是否为非负数
+        number = str(number)#用于去除开头的0
+        if re.match('^\d*$',number):
+            return int(number)
+        else:
+            raise Exception("你输入的不是正整数！！！")
 
     def text_enter(self):#文本换行
         with open(self.script_place,'a+',encoding="gbk") as f:
             f.write("\n")
 
     def query_projectData(self,projectNumber):#查询项目数据
-        sql = 'select projectType,tenderOrganizationType,evaluationBidWay,judgeNumber,tenderWay from project where projectNumber = %s'
+        sql = 'select projectType,tenderOrganizationType,evaluationBidWay,judgeNumber,tenderWay,applyNumber,enterpriseCount,ratingPointCount,ratingType from project where projectNumber = %s'
         try:
             result = self.query_sql(sql,projectNumber)
-            # print(result[0])
             return result[0]
         except:
             print("项目数据查询失败！！！")
@@ -270,6 +315,11 @@ class Base(Test_deal_data):
         pic_url = pic.get_attribute('src')
         request.urlretrieve(pic_url,'1.png')
 
+    def return_picture(self,locator):#返回验证码
+        self.savePictrue(locator)
+        code = self.getPicPassword()
+        return code
+
     def is_disabled(self,locator):#判断按钮是否禁用
         pic = self.find_element(locator,3)
         time.sleep(0.2)
@@ -313,7 +363,7 @@ class Base(Test_deal_data):
         # :return:
         # """
         element = self.find_element(locator, 5)
-        time.sleep(0.15)
+        time.sleep(0.2)
         element.click()
 
     def send_keys(self, locator, text):
@@ -367,7 +417,7 @@ class Base(Test_deal_data):
     def upload_file(self,fileType):#上传文件
         time.sleep(2)
         if fileType == "pdf":
-            send_keys("C:\\Users\\111\\Desktop\\招标文件.pdf")
+            send_keys("C:\\Users\\111\\Desktop\\不同大小的文件和图片\\招标文件.pdf")
         elif fileType == "img":
             send_keys(r"C:\Users\111\Pictures\mypictures\测试电子回单.png")
         send_keys("{VK_RETURN}")
@@ -388,6 +438,10 @@ class Base(Test_deal_data):
         nowTime_noSumbol = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         return nowTime_noSumbol
 
+    def get_nowData(self):#获取当前年月日
+        timenow = datetime.datetime.now()
+        return timenow.strftime("%Y-%m-%d")
+
     def get_nowtime(self,min):#获取当前时间加n分钟
         timenow = datetime.datetime.now()
         addTime = timenow+datetime.timedelta(minutes=min)
@@ -405,7 +459,6 @@ class Base(Test_deal_data):
         n = self.drive.window_handles
         time.sleep(0.5)
         self.drive.switch_to.window(n[num])
-        self.drive.implicitly_wait(5)
 
     def random_code(self):#产生3个随机的大写字母
         char1 = ''
@@ -433,6 +486,6 @@ class Base(Test_deal_data):
         """
         self.drive.quit()
 
-# if __name__ == '__main__':
-    # base = Base()
-
+if __name__ == '__main__':
+    base = Base()
+    base.open_deal_url()

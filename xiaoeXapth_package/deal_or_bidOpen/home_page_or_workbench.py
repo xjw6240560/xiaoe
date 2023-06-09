@@ -1,4 +1,5 @@
 from base.base import Base
+import random
 from selenium.webdriver.common.by import By
 def workbench(projectNumber):#点击工作台
     workbenchButton = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[5]/div/span[text()='工作台']"#点击工作台
@@ -25,6 +26,10 @@ class Home_page_or_workbench(Base):
     recallTenderFile = "//span[contains(text(),'撤回标书')]"
     tenderFileAffirm = "//button//span[contains(text(),'确 定')]"
     bidFileImg = "//span[contains(text(),'上传标书')]/./following-sibling::div/div/div/img"#点击图片上传投标文件
+    bid_price = "//label[contains(text(),'投标价')]/./following-sibling::div/div/input"#输入投标价
+    duration = "//label[contains(text(),'工期')]/./following-sibling::div/div/input"#输入工期
+    quality = "//label[contains(text(),'质量标准')]/./following-sibling::div/div/input"#输入质量标准
+    tender_notice = "//label[contains(text(),'招标公告')]/./following-sibling::div/div/div/div/div"#招标公告
     saveBidFile = "//span[contains(text(),'提交投标文件')]"#保存投标文件
     commitAudit = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td[7]/div/span[text()='提交审核']"#点击提交审核
     commitAudit_affirm = "//button//span[contains(text(),'确 定')]"#提交审核确定
@@ -51,6 +56,10 @@ class Home_page_or_workbench(Base):
     bidFileImg_locator = (By.XPATH,bidFileImg)
     saveBidFile_locator = (By.XPATH,saveBidFile)
     commitAudit_locator = (By.XPATH,commitAudit)
+    bid_price_locator = (By.XPATH,bid_price)
+    duration_locator = (By.XPATH,duration)
+    quality_locator = (By.XPATH,quality)
+    tender_notice_locator = (By.XPATH,tender_notice)
     commitAudit_affirm_locator = (By.XPATH,commitAudit_affirm)
     openBidEntrance_locator = (By.XPATH,openBidEntrance)
     evaluationBidEntrance_locator = (By.XPATH,evaluationBidEntrance)
@@ -136,6 +145,19 @@ class Home_page_or_workbench(Base):
     def bidFileImg_click(self):#点击上传投标文件图片
         self.click(self.bidFileImg_locator)
 
+    def bid_price_send_keys(self):#输入投标价
+        price = random.randint(100000,10000000)
+        self.send_keys(self.bid_price_locator,price)
+
+    def duration_send_keys(self):#输入工期
+        self.send_keys(self.duration_locator,120)
+
+    def quality_send_keys(self):#输入质量标准
+        self.send_keys(self.quality_locator,"好")
+
+    def tender_notice_click(self):#招标公告
+        self.click(self.tender_notice_locator)
+
     def saveBidFile_click(self):#保存投标文件
         self.click(self.saveBidFile_locator)
 
@@ -217,7 +239,7 @@ class Home_page_or_workbench(Base):
             self.apply_click(projectNumber)
         elif projectType == "purchase" :#政采
             self.purchaseBusiness_click()#点击采购项目
-            if tenderWay == 0:
+            if tenderWay in  (0,2):
                 self.purchaseTenderNotice_click()#点击招标公告（政采）
             elif tenderWay == 1:
                 self.purchaseTenderInvite_click()#点击政采招标邀请

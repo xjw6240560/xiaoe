@@ -4,8 +4,9 @@ class Test_deal_data:
     enterpriseName = ["福建尤建科技有限公司","福建省佳美集团公司厦门分公司","江西湘昌建设有限公司","天一科技有限公司","德安县2023年老旧小区改造工程（一期）项目EPC总承包","厦门城市开发建设有限公司","江西九润建设工程有限公司","江西省本善建筑有限公司","建银工程咨询有限责任公司"]
     username1 = ["15212345678","15287654321","13412841346"]
     password = ["ndx111","111111"]
-    projectNumber = "20230524094050"#项目编号
     deal_login_url = "http://user.jiaoyi.com/#/login"
     expert_login_url = "http://expert.jiaoyi.com/#/login"
     extract_login_url = "http://drawexpert.jiaoyi.com/#/"#抽取系统登录地址
+    extract_username = "15212345678"
+    extract_password = "ndx111"
     environment = "测试"

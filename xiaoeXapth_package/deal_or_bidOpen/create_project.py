@@ -15,6 +15,7 @@ class CreateProjectMethod(Base):
     tenderWay = "//label[contains(text(),'招标方式:')]/following-sibling::div/div/div/div/input"#招标方式
     openTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'公开招标')]"#招标方式（公开招标）
     inviteTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'邀请招标')]"#招标方式（邀请招标）
+    competitionConsult = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'竞争性磋商')]"#竞争性磋商
     inviteBid = "//label[contains(text(),'方式:')]/following-sibling::div/div/div/following-sibling::button/span[contains(text(),'邀请投标人')]"#邀请投标人按钮
     enterpriseInput = "//div[contains(text(),'邀请投标单位')]/following-sibling::div[1]/div/div/input"#企业输入框
     find = "//button//span[contains(text(),'查找')]"#查找
@@ -88,6 +89,7 @@ class CreateProjectMethod(Base):
     find_locator = (By.XPATH,find)
     add_locator = (By.XPATH,add)
     close_locator = (By.XPATH,close)
+    competitionConsult_locator = (By.XPATH,competitionConsult)
     tenderOrganizationType_locator = (By.XPATH,tenderOrganizationType)
     oneselfTender_locator = (By.XPATH,oneselfTender)
     entrustTender_locator = (By.XPATH,entrustTender)
@@ -160,15 +162,19 @@ class CreateProjectMethod(Base):
                     self.send_keys(self.projectName_locator,"政采自主公开招标项目"+self.get_nowTime_formatting())
                 elif tenderWay == 1:
                     self.send_keys(self.projectName_locator,"政采自主邀请招标项目"+self.get_nowTime_formatting())
+                elif tenderWay == 2:
+                    self.send_keys(self.projectName_locator,"政采自主竞争性磋商招标项目"+self.get_nowTime_formatting())
                 else:
-                    print("招标方式不正确："+tenderWay)
+                    print("招标方式不正确："+str(tenderWay))
             elif tenderOrganizationType == "1":
                 if tenderWay == 0:
                     self.send_keys(self.projectName_locator,"政采委托公开招标项目"+self.get_nowTime_formatting())
                 elif tenderWay == 1:
                     self.send_keys(self.projectName_locator,"政采委托邀请招标项目"+self.get_nowTime_formatting())
+                elif tenderWay == 2:
+                    self.send_keys(self.projectName_locator,"政采委托竞争性磋商招标项目"+self.get_nowTime_formatting())
                 else:
-                    print("招标方式不正确："+tenderWay)
+                    print("招标方式不正确："+str(tenderWay))
             else:
                 print("招标组织方式不正确："+tenderOrganizationType)
 
@@ -199,7 +205,8 @@ class CreateProjectMethod(Base):
 
     def inviteTender_click(self):#点击邀请招标
         self.click(self.inviteTender_locator)
-
+    def competitionConsult_click(self):#竞争性磋商
+        self.click(self.competitionConsult_locator)
     def inviteBid_click(self):#点击邀请投标人按钮
         self.click(self.inviteBid_locator)
 

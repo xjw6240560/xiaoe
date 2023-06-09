@@ -8,14 +8,14 @@ from base.base import Base
 class Generate_script(Base):
     base = Base()
     def generate_script_method(self):#生成脚本方法
-        data = self.read_data_csv()
+        data = self.read_data_csv(44,47)#读取数据
         self.base.clear_text(self.script_place)#清除xpath文本
         """
         生成xpath
         """
         for i in data:
             with open(self.script_place,'a+',encoding="gbk") as f:
-                f.write(i[0]+" = "+"\""+i[1]+"\"\n")
+                f.write(i[0]+" = "+"\""+i[1]+"\""+i[3]+"\n")
         self.text_enter()#文本换行
         """
         生成定位器
@@ -28,14 +28,15 @@ class Generate_script(Base):
         生成方法
         """
         for i in data:
-            oneLines = "def "+i[0]+"_"+i[2]+"(self):\n"
-            twoLines = "    self."+i[2]+"(self."+i[0]+"_locator)\n"
+            oneLines = "def "+i[0]+"_"+i[2]+"(self):"+i[3]+"\n"
+            if i[2] == "send_keys":
+                twoLines = "    self."+i[2]+"(self."+i[0]+"_locator,"+i[4]+")\n"
+            else:
+                twoLines = "    self."+i[2]+"(self."+i[0]+"_locator)\n"
             method = [oneLines,twoLines,"\n"]
-            with open(self.script_place,'a+',encoding='utf-8',newline="\n") as f:
+            with open(self.script_place,'a+',encoding='gbk',newline="\n") as f:
                 f.writelines(method)
 
 if __name__ == '__main__':
     generate_script = Generate_script()
     generate_script.generate_script_method()
-
-

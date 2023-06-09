@@ -86,6 +86,7 @@ class EvaluationBid_entrance(Base):
         evaluationBidWay1 = "//span[contains(text(),'均值评标法')]"
         evaluationBidWay2 = "//span[contains(text(),'最低价评标法')]"
         evaluationBidWay3 = "//span[contains(text(),'最高价评标法')]"
+        evaluationBidWay4 = "//span[contains(text(),'竞争性磋商')]"
         if num == 0:
             evaluationBidWay_locator0 = (By.XPATH,evaluationBidWay0)
             self.click(evaluationBidWay_locator0)
@@ -98,6 +99,9 @@ class EvaluationBid_entrance(Base):
         elif num == 3 :
             evaluationBidWay_locator3 = (By.XPATH,evaluationBidWay3)
             self.click(evaluationBidWay_locator3)
+        elif num == 4:
+            evaluationBidWay_locator4 = (By.XPATH,evaluationBidWay4)
+            self.click(evaluationBidWay_locator4)
         else:
             print("评标办法类型错误"+str(num)+"只能输入0到4的整数")
 
@@ -141,14 +145,12 @@ class EvaluationBid_entrance(Base):
 
     def create_judge(self,judgeNumber):#创建评委
         for i in range(judgeNumber):
-            self.drive.implicitly_wait(10)
             self.addJudge_click()#点击添加评委
             self.judgeName_send_keys("评委"+str(i+1))
             self.unit_send_keys()#输入所在单位
             self.title_send_keys()#输入职称
             self.mobile_send_keys()#输入手机号码
             self.addJudgeSave_click()#保存添加评委
-            self.drive.implicitly_wait(3)
             time.sleep(1)
 
     def save_judge_username_password(self,projectNumber,judgesCount):#保存评委账号和密码
