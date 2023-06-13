@@ -12,9 +12,9 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20230608174201"#项目编号
+    projectNumber = "20230613101156"#项目编号
     tenderOrganizationType = "0"#自主招标0或者委托招标1
-    tenderWay = 2 #公开招标0、邀请招标1、竞争性磋商2
+    tenderWay = 1 #公开招标0、邀请招标1、竞争性磋商2
     def setUp(self):
         self.base = Base()
         self.createProjectMethod = CreateProjectMethod()
@@ -408,13 +408,14 @@ class Deal_testcase(unittest.TestCase):
                 self.expert.select_group(username=username,password=password,projectNumber=self.projectNumber,name=self.expert_name)
                 # print("票数相同,没有选出组长！！！")
     """
-    注意输入评标类型是那个
+    开始评标，注意需要输入评标类型是哪个
     """
     def test_judge_score(self):#评分
         buttonCount = 1#用来判断是哪个评标类型
         expert_username = self.expert_username#获取账号
         expert_password = self.expert_password#获取密码
         expert_name = self.expert_name#获取评委名称
+        self.base.update_ratingPoint_count(ratingPointCount='0',ratingType= '0',projectNumber= self.projectNumber)
         for i in range(len(expert_username)):
             self.result1 = self.base.query_projectData(self.projectNumber)
             enterpriseCount = self.result1[6]
@@ -432,6 +433,26 @@ class Deal_testcase(unittest.TestCase):
                 time.sleep(0.5)
             except :
                 continue
+    """
+    二次报价
+    """
+    def test_secondary_quotation(self):#二次报价
+        for i in range(self.applyNumber):
+            self.loginORrole.login(username=self.username[i],password=self.password[0])
+            self.loginORrole.bidder_click()#点击投标人
+            try:
+                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)#选择工作台
+            except:
+                print("账号"+self.username[i]+"未找到"+self.projectNumber+"该项目")
+                self.createProjectMethod.open_deal_url()
+                continue
+            self.home_page_or_workbench.secondaryQuotation_click()#点击二次报价按钮
+            self.home_page_or_workbench.secondaryQuotationInput_send_keys()#输入二次报价
+            self.home_page_or_workbench.secondaryQuotationFile_input_click()#点击上传响应性文件
+            self.base.upload_file('pdf')
+            self.home_page_or_workbench.submitButton_locator_click()#点击提交二次报价按钮
+            self.createProjectMethod.open_deal_url()
+
     """
     评委确认
     """

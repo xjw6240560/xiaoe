@@ -282,12 +282,12 @@ class Base(Test_deal_data):
         conn.close()
         cursor.close()
 
-    def select_isAgree(self,username):
+    def select_isAgree(self,username,projectNumber):
         conn,cursor = self.connect_mysql()#连接数据库
 
-        sql = 'select isAgree from expert where username = %s'
+        sql = 'select isAgree from expert where username = %s and projectNumber = %s'
         try:
-            cursor.execute(sql,username)
+            cursor.execute(sql,(username,projectNumber))
             expert_isAgree = cursor.fetchone()
             return expert_isAgree
         except:
@@ -438,9 +438,10 @@ class Base(Test_deal_data):
         nowTime_noSumbol = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         return nowTime_noSumbol
 
-    def get_nowData(self):#获取当前年月日
-        timenow = datetime.datetime.now()
-        return timenow.strftime("%Y-%m-%d")
+    def get_nowData(self,hours):#获取当前时间加n个小时
+        timenow = datetime.datetime.now().replace(hour=0, minute=0, second=0)
+        addTime = timenow+datetime.timedelta(hours = hours)
+        return addTime.strftime("%Y-%m-%d %H:%M:%S")
 
     def get_nowtime(self,min):#获取当前时间加n分钟
         timenow = datetime.datetime.now()
@@ -488,4 +489,4 @@ class Base(Test_deal_data):
 
 if __name__ == '__main__':
     base = Base()
-    base.open_deal_url()
+    base.get_nowData(2)

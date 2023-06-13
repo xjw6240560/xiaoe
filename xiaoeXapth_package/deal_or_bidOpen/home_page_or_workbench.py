@@ -34,11 +34,16 @@ class Home_page_or_workbench(Base):
     commitAudit = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td[7]/div/span[text()='提交审核']"#点击提交审核
     commitAudit_affirm = "//button//span[contains(text(),'确 定')]"#提交审核确定
     openBidEntrance = "//span[contains(text(),'开标阶段')]/../following-sibling::div[contains(text(),'开标入口')]"#点击开标入口
+    secondaryQuotation = "//span[contains(text(),'开标阶段')]/../following-sibling::div[contains(text(),'二次报价')]"#工作台点击二次报价
+    secondaryQuotationInput = "//label[contains(text(),'二次报价')]/./following-sibling::div/div/div/input"#输入二次报价
+    secondaryQuotationFile = "//label[contains(text(),'上传响应性文件')]/./following-sibling::div/div/div/div/div"#上传响应性文件
+    submitButton = "//button//span[contains(text(),'提交二次报价')]"#提交二次报价按钮
     evaluationBidEntrance = "//span[contains(text(),'开标阶段')]/../following-sibling::div[contains(text(),'评标入口')]"#点击评标入口
     enterpriseName = "//*[@id='header']/div[2]/div[3]/span"#企业名称
     quitLogin = "//li[contains(text(),'修改密码')]/./following-sibling::li[contains(text(),'退出登录')]"#退出登录
 
     linkMan_locator = (By.XPATH,linkMan)
+    submitButton_locator = (By.XPATH,submitButton)
     linkManNumber_locator = (By.XPATH,linkManNumber)
     affirmApply_locator = (By.XPATH,affirmApply)
     auditAffirm_locator = (By.XPATH,auditAffirm)
@@ -53,9 +58,12 @@ class Home_page_or_workbench(Base):
     recallTenderFile_locator = (By.XPATH,recallTenderFile)
     tenderFileAffirm_locator = (By.XPATH,tenderFileAffirm)
     uploadBidFile_locator = (By.XPATH,uploadBidFile)
+    secondaryQuotationInput_locator = (By.XPATH,secondaryQuotationInput)
     bidFileImg_locator = (By.XPATH,bidFileImg)
     saveBidFile_locator = (By.XPATH,saveBidFile)
     commitAudit_locator = (By.XPATH,commitAudit)
+    secondaryQuotation_locator = (By.XPATH,secondaryQuotation)
+    secondaryQuotationFile_locator = (By.XPATH,secondaryQuotationFile)
     bid_price_locator = (By.XPATH,bid_price)
     duration_locator = (By.XPATH,duration)
     quality_locator = (By.XPATH,quality)
@@ -80,6 +88,10 @@ class Home_page_or_workbench(Base):
 
     def affirmApply_click(self):#点击确认报名
         self.click(self.affirmApply_locator)
+
+    def secondaryQuotationInput_send_keys(self):#输入投标价
+        bidprice = random.randint(10000000,800000000)
+        self.send_keys(self.secondaryQuotationInput_locator,bidprice)
 
     def tender_workbench_click(self,projectNumber):#招标人点击工作台
         workbenchButton = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[6]/div/span[text()='工作台']"#点击工作台
@@ -166,6 +178,12 @@ class Home_page_or_workbench(Base):
 
     def evaluationBidEntrance_click(self):#点击评标入口
         self.click(self.evaluationBidEntrance_locator)
+
+    def secondaryQuotation_click(self):#点击二次报价按钮
+        self.click(self.secondaryQuotation_locator)
+
+    def secondaryQuotationFile_input_click(self):#点击上传响应性文件
+        self.click(self.secondaryQuotationFile_locator)
 
     def engpriseName_move(self):#悬浮在企业名称位置
         self.move_mouse(self.enterpriseName_locator)
@@ -301,3 +319,6 @@ class Home_page_or_workbench(Base):
             self.bid_workbench_click(projectNumber)#点击项目对应的工作台
         else:
             print("招标类型不符"+projectType)
+
+    def submitButton_locator_click(self):#点击提交二次报价按钮
+        self.click(self.submitButton_locator)

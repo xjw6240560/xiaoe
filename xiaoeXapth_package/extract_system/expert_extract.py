@@ -1,6 +1,8 @@
 #创建时间  2023-06-01 18:35
 #作者  小酒窝
 from base.base import Base
+import re
+import time
 from selenium.webdriver.common.by import By
 from xiaoe_testcase.deal_testcase import Deal_testcase
 class Expert_extract(Base):
@@ -15,15 +17,18 @@ class Expert_extract(Base):
     evaluation_room2 = "//ul/li/span[contains(text(),'评标室2')]"#点击评标室2
     add_extract_condition = "//div/button/span[contains(text(),'添加抽取条件')]"#点击添加抽取条件
     extract_result = "//div//button[3]//span[text()='抽取结果']"#点击工程抽取结果
-    expert_classify = "//label[contains(text(),'专家分类')]/following-sibling::div/div/div/input"#点击专家分类
+    expert_classify = "//label[contains(text(),'专家分类')]/following-sibling::div/div/div[2]/span/span/i"#点击专家分类
     expertsA = "//li/span[contains(text(),'专家测试库A')]"#点击专家库A
     expertsB = "//li/span[contains(text(),'专家测试库B')]"#点击专家库B
+    expertsC = "//li/span[contains(text(),'专家测试库C')]"#点击专家库C
     expert = "//label[contains(text(),'抽取人数')]/following-sibling::div/div/input[@placeholder='请输入整数']"#输入抽取专家数量
     add_affirm = "//button/span[contains(text(),'取消')]/../following-sibling::button[1]/span[contains(text(),'确认')]"#新增抽取条件确认
     edit = "//button/span[text() = '编辑']"#点击编辑
     delete = "//button/span[text() = '删除']"#点击删除
     extract_expert = "//button/span[contains(text(),'抽取专家')]"#点击抽取专家按钮
-
+    errorTips1 = "//div[contains(text(),'提示')]/./following-sibling::div/div/div/p[1]"#报错提示
+    errorTips2 = "//div[contains(text(),'提示')]/./following-sibling::div/div/div/p[1]"#报错提示
+    error_confirm = "//div[contains(text(),'提示')]/./following-sibling::div/div/button/span[contains(text(),'确认')]"
     tender_linkMan_locator = (By.XPATH,tender_linkMan)
     link_number_locator = (By.XPATH,link_number)
     predict_time_locator = (By.XPATH,predict_time)
@@ -37,22 +42,24 @@ class Expert_extract(Base):
     expert_classify_locator = (By.XPATH,expert_classify)
     expertsA_locator = (By.XPATH,expertsA)
     expertsB_locator = (By.XPATH,expertsB)
+    expertsC_locator = (By.XPATH,expertsC)
+    error_confirm_locator = (By.XPATH,error_confirm)
     expert_locator = (By.XPATH,expert)
     add_affirm_locator = (By.XPATH,add_affirm)
     edit_locator = (By.XPATH,edit)
     delete_locator = (By.XPATH,delete)
     extract_expert_locator = (By.XPATH,extract_expert)
-
+    errorTips_locator1 = (By.XPATH,errorTips1)
+    errorTips_locator2 = (By.XPATH,errorTips2)
     def tender_linkMan_send_keys(self):#输入招标联系人
         self.send_keys(self.tender_linkMan_locator,"谢先生")
 
     def link_number_send_keys(self):#输入联系电话
         self.send_keys(self.link_number_locator,"15212345678")
 
-    def evaluation_time_send_keys(self):#输入评标时长
-        nowData = self.get_nowData()#获取当前日期，年月日
-        nowtime = nowData + " "
-        self.send_keys(self.evaluation_time_locator)
+    def evaluation_time_send_keys(self,hours):#输入评标时长
+        nowData = self.get_nowData(hours)#获取当前日期，年月日
+        self.send_keys(self.evaluation_time_locator,nowData)
     def predict_time_click(self):#点击预计时长
         self.click(self.predict_time_locator)
 
@@ -113,6 +120,12 @@ class Expert_extract(Base):
     def expertsB_click(self):#点击专家库B
         self.click(self.expertsB_locator)
 
+    def expertsC_click(self):#点击专家库C
+        self.click(self.expertsC_locator)
+
+    def error_confirm_click(self):#报错点击确认
+        self.click(self.error_confirm_locator)
+
     def expert_send_keys(self):#输入抽取专家数量
         self.send_keys(self.expert_locator,"3")
 
@@ -128,3 +141,33 @@ class Expert_extract(Base):
     def extract_expert_click(self):#点击抽取专家按钮
         self.click(self.extract_expert_locator)
 
+    def errorTips1_get_text(self):#获取错误文本
+        return self.get_text(self.errorTips_locator1)
+
+    def errorTips2_get_text(self):#获取错误文本
+        return self.get_text(self.errorTips_locator2)
+
+    def is_room_occupy(self):#判断评标室是否被占用
+        self.evaluation_room_input_click()#点击选择评标室
+        self.evaluation_room1_click()#点击选择评标室1
+        self.extract_expert_click()#点击抽取专家按钮
+        try:
+            message = self.errorTips1_get_text()#获取错误信息
+            room1 = re.compile('评标室[1,2]').findall(message)
+            if room1[0] == "评标室1":
+                self.error_confirm_click()#点击确认
+                self.evaluation_room_input_click()#点击选择评标室
+                self.evaluation_room2_click()#点击选择评标室2
+                self.extract_expert_click()#点击抽取专家按钮
+                time.sleep(0.5)
+                try:
+                    message = self.errorTips1_get_text()
+                    room2 = re.compile('评标室[1,2]').findall(message)
+                    self.error_confirm_click()#点击确认
+                    return room2
+                except:
+                    print("评标2没有被占用")
+                    return "break"
+        except:
+            print("评标室1没有被占用")
+            return "break"

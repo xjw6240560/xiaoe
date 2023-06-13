@@ -61,7 +61,7 @@ class Expert(Base):
         self.open_expert_url()
         self.send_keys(self.username_input_locator,username)
         self.send_keys(self.password_input_locator,password)
-        isAgree = self.select_isAgree(username)
+        isAgree = self.select_isAgree(username,projectNumber)
         try:
             for j in range(15):
                 self.savePictrue(self.img_locator)
@@ -102,8 +102,8 @@ class Expert(Base):
             self.electGroup_click()#点击推选组长
             a = random.randint(0,len(username))#随机生成推选评委
             try:
+                time.sleep(1)
                 self.elect_click(name=name[a])#点击推选
-                time.sleep(0.2)
             except:
                 print("已经推荐过了")
 
