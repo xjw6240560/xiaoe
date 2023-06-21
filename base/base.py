@@ -229,19 +229,30 @@ class Base(Test_deal_data):
     def clear_text(self,url):#清空文本
         open(url,'w').close()
 
-    def read_data_csv(self,begin,end = None):#读取数据csv非负数
+    def read_data_csv(self,begin,place,end = None):#读取数据csv非负数
         data = []
         begin = self.nonnegative(begin)#用于判断是否为非负数
         if end is None:
             begin,end = 0,begin
         elif begin > end:
                 raise Exception("begin不能比end大！！！")
-        with open(self.csv_place) as f:
+        with open(place) as f:
             result = csv.reader(f)
             for index,row in enumerate(result):
                 if index+1 >= begin and index+1 <= end:
                     data.append(row)
             return data
+    def write_data_csv(self,date,hours = '0'):#向csv文本写入数据
+        with open(r"C:\Users\111\Desktop\pythonScriptGenerate\freeDate.csv") as f:
+            data=[row for row in csv.reader(f)]
+            with open(r"C:\Users\111\Desktop\pythonScriptGenerate\freeDate.csv","a+") as h:
+                w = csv.writer(h)
+                data[0][1] = hours
+                data[0][0] = date
+                self.clear_text(r"C:\Users\111\Desktop\pythonScriptGenerate\freeDate.csv")
+                for row in data:
+                    w.writerow(row)
+
 
     def nonnegative(self,number):#判断是否为非负数
         number = str(number)#用于去除开头的0
@@ -363,7 +374,25 @@ class Base(Test_deal_data):
         # :return:
         # """
         element = self.find_element(locator, 5)
-        time.sleep(0.2)
+        time.sleep(0.3)
+        element.click()
+
+    def is_click(self,locator):#判断元素是否可点击
+        # """
+        # 判断元素是否可点击
+        # :param locator:
+        # :return:
+        # """
+        element = self.find_element(locator, 2)
+        return element.is_enabled()
+
+    def short_click(self, locator):
+        # """
+        # 点击元素
+        # :param locator:
+        # :return:
+        # """
+        element = self.find_element(locator, 0.1)
         element.click()
 
     def send_keys(self, locator, text):
@@ -375,6 +404,16 @@ class Base(Test_deal_data):
         element = self.find_element(locator,5)
         element.clear()
         time.sleep(0.15)
+        element.send_keys(text)
+
+    def short_send_keys(self, locator, text):#短的
+        """
+        :param locator: 定位器
+        :param text: 输入内容
+        :return:
+        """
+        element = self.find_element(locator,0.1)
+        element.clear()
         element.send_keys(text)
 
     def get_text(self,locator):#将鼠标移动到指定元素并获取文本
@@ -442,7 +481,9 @@ class Base(Test_deal_data):
         timenow = datetime.datetime.now().replace(hour=0, minute=0, second=0)
         addTime = timenow+datetime.timedelta(hours = hours)
         return addTime.strftime("%Y-%m-%d %H:%M:%S")
-
+    def get_date_day(self):#获取当前时间精确到天
+        now_date_day = datetime.datetime.now().strftime("%Y%m%d")
+        return now_date_day
     def get_nowtime(self,min):#获取当前时间加n分钟
         timenow = datetime.datetime.now()
         addTime = timenow+datetime.timedelta(minutes=min)
@@ -489,4 +530,3 @@ class Base(Test_deal_data):
 
 if __name__ == '__main__':
     base = Base()
-    base.get_nowData(2)

@@ -12,9 +12,10 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20230613101156"#项目编号
+    projectNumber = "20230620151411"#项目编号
     tenderOrganizationType = "0"#自主招标0或者委托招标1
-    tenderWay = 1 #公开招标0、邀请招标1、竞争性磋商2
+    tenderWay = 0 #公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
+    role = "0"#角色 0招标人、1招标代理
     def setUp(self):
         self.base = Base()
         self.createProjectMethod = CreateProjectMethod()
@@ -50,14 +51,13 @@ class Deal_testcase(unittest.TestCase):
     创建项目（工程项目）
     """
     def test_01_engineering(self):#工程项目
-        self.loginORrole.login(self.username1[0],self.password[0])#登入交易平台
-        self.loginORrole.tenderee_click()#点击招标人
+        self.loginORrole.jiaoyi_login(role=self.role)#登入交易平台
         self.createProjectMethod.handle_skip(-1)#跳转句柄
         self.home_page_or_workbench.engineerBusiness_click()#点击工程业务
         self.home_page_or_workbench.tenderProject_click()#点击招标项目
         self.createProjectMethod.addTenderProject_click()#点击新增招标项目
         projectNumber = self.createProjectMethod.projectNumber_send_keys()#输入项目编号
-        self.createProjectMethod.projectName_send_keys(projectType="工程",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)#输入项目名称
+        self.createProjectMethod.projectName_send_keys(projectType="engineering",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)#输入项目名称
         self.createProjectMethod.projectAuditNumber_send_keys()#输入项目审批文号
         self.createProjectMethod.InvestprojectUnicode_send_keys()#投资项目统一代码
         self.createProjectMethod.tenderType_click()#点击招标类型
@@ -66,114 +66,53 @@ class Deal_testcase(unittest.TestCase):
         self.createProjectMethod.projectType_click()#点击项目类型
         self.createProjectMethod.houseBuild_click()#点击房屋建设
         self.createProjectMethod.tenderWay_click()#点击招标方式
-        if self.tenderWay == 0:
-            self.createProjectMethod.openTender_click()#点击公开招标
-        elif self.tenderWay == 1:
-            self.createProjectMethod.inviteTender_click()#点击邀请招标
-            self.createProjectMethod.inviteBid_click()#点击邀请投标人
-            self.createProjectMethod.addEnterprise(len(self.enterpriseName),enterpriseName=self.enterpriseName)
-            self.createProjectMethod.close_click()#点击关闭
+        self.createProjectMethod.tender_or_purchase_way(tenderWay=self.tenderWay)#选择招标方式
         self.createProjectMethod.projectPlace_send_keys()#输入项目地址
         self.createProjectMethod.projectPrice_send_keys()#输入项目估算价
         self.createProjectMethod.projectDate_send_keys()#输入工期
         self.createProjectMethod.tenderLinkMan_send_keys()#输入联系人
         self.createProjectMethod.tenderLinkManNumber_send_keys()#输入联系人手机号
         self.createProjectMethod.linkPlace_send_keys()#输入联系地址
-        self.createProjectMethod.tenderOrganizationType_click()#点击招标组织方式
-        #自主招标
-        if self.tenderOrganizationType =="0":
-            self.createProjectMethod.oneselfTender_click()#选择自主招标
-            self.createProjectMethod.perfectProjectMessage()#完善项目信息
-        #委托招标
-        elif self.tenderOrganizationType == "1":
-            self.createProjectMethod.entrustTender_click()#委托招标
-            self.createProjectMethod.tenderGency_click()#点击招标代理
-            self.createProjectMethod.input_enterprise_send_keys()#输入招标代理名称
-            self.createProjectMethod.search_click()#点击搜索企业
-            self.createProjectMethod.selectTenderGency_click()#选择招标代理
-            time.sleep(0.5)
-            self.createProjectMethod.saveButton_click()#点击保存
-            time.sleep(0.5)
-            self.createProjectMethod.open_deal_url()
-            self.loginORrole.login(self.username1[2],self.password[1])#登入交易平台
-            self.loginORrole.tenderAgency_click()#点击招标人
-            self.createProjectMethod.handle_skip(-1)#跳转句柄
-            self.home_page_or_workbench.engineerBusiness_click()#点击工程业务
-            self.home_page_or_workbench.tenderProject_click()#点击招标项目
-            self.home_page_or_workbench.tender_edit_click(projectNumber=projectNumber)#招标代理点击编辑
-            self.createProjectMethod.gencyLinkMan_send_keys()#输入代理联系人
-            self.createProjectMethod.gencyLinkManNumber_send_keys()#输入代理联系人手机号
-            self.createProjectMethod.gencyLinkPlace_send_keys()#输入代理联系地址
-            self.createProjectMethod.perfectProjectMessage()#完善企业信息
-        else:
-            print("招标类型不符")
-        self.createProjectMethod.insert_projectData(projectNumber=projectNumber,projectType="engineer",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)#数据库创建项目
+        self.createProjectMethod.tender_or_tenderAgent(role=self.role,projectNumber=projectNumber,projectType = 'engineering',tenderOrganizationType=self.tenderOrganizationType)
+        if self.role == '1':
+            self.createProjectMethod.insert_projectData(projectNumber=projectNumber,projectType="engineer",tenderOrganizationType='1',tenderWay=self.tenderWay)#数据库创建项目
+        elif self.role == '0':
+            self.createProjectMethod.insert_projectData(projectNumber=projectNumber,projectType="engineer",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)#数据库创建项目
     """
     创建项目（政采项目）
     """
     def test_03_purchase(self):#采购项目
-        self.loginORrole.login(self.username1[0],self.password[0])#登入交易平台
-        self.loginORrole.tenderee_click()#点击招标人
+        self.loginORrole.jiaoyi_login(role=self.role)#登入交易平台
         self.createProjectMethod.handle_skip(-1)#跳转句柄
         self.home_page_or_workbench.purchaseBusiness_click()#点击采购业务
         self.home_page_or_workbench.purchaseTenderProject_click()#点击招标项目
         self.createProjectMethod.addTenderProject_click()#点击新增项目
         projectNumber = self.createProjectMethod.projectNumber_send_keys()#输入招标项目编号
-        self.createProjectMethod.projectName_send_keys(projectType="政采",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)#输入项目名称
+        self.createProjectMethod.projectName_send_keys(projectType="purchase",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)#输入项目名称
         self.createProjectMethod.projectAuditNumber_send_keys()#输入项目审批文号
         self.createProjectMethod.InvestprojectUnicode_send_keys()#投资项目统一代码
         self.createProjectMethod.purchaseType_click()#采购类型
         self.createProjectMethod.purchaseBuild_click()#建筑材料
         self.createProjectMethod.purchaseWay_click()#采购方式
-        if self.tenderWay == 0:
-            self.createProjectMethod.openTender_click()#点击公开招标
-        elif self.tenderWay == 1:
-            self.createProjectMethod.inviteTender_click()#点击邀请招标
-            self.createProjectMethod.inviteBid_click()#点击邀请投标人
-            self.createProjectMethod.addEnterprise(len(self.enterpriseName),enterpriseName=self.enterpriseName)
-            self.createProjectMethod.close_click()#点击关闭
-        elif self.tenderWay == 2:
-            self.createProjectMethod.competitionConsult_click()#点击竞争性磋商
+        self.createProjectMethod.tender_or_purchase_way(tenderWay=self.tenderWay)#选择采购方式
         self.createProjectMethod.purchasePrice_send_keys()#采购预算
         self.createProjectMethod.projectPlace_send_keys()#输入项目地址
         self.createProjectMethod.tenderLinkMan_send_keys()#输入联系人
         self.createProjectMethod.tenderLinkManNumber_send_keys()#输入联系人手机号
         self.createProjectMethod.linkPlace_send_keys()#输入联系地址
-        self.createProjectMethod.tenderOrganizationType_click()#点击招标组织方式
-        if self.tenderOrganizationType == "0":
-            self.createProjectMethod.oneselfTender_click()#自主招标
-            self.createProjectMethod.perfectProjectMessage()#完善项目信息
-        elif self.tenderOrganizationType == "1":
-            self.createProjectMethod.entrustTender_click()#委托招标
-            self.createProjectMethod.tenderGency_click()#点击招标代理
-            self.createProjectMethod.input_enterprise_send_keys()#输入招标代理企业名称
-            self.createProjectMethod.search_click()#点击搜索
-            self.createProjectMethod.selectTenderGency_click()#选择招标代理
-            time.sleep(0.2)
-            self.createProjectMethod.saveButton_click()#点击保存
-            time.sleep(0.3)
-            self.createProjectMethod.open_deal_url()
-            self.loginORrole.login(self.username1[2],self.password[1])#登入交易平台
-            self.loginORrole.tenderAgency_click()#点击招标代理
-            self.createProjectMethod.handle_skip(-1)#跳转句柄
-            self.home_page_or_workbench.purchaseBusiness_click()#点击政采业务
-            self.home_page_or_workbench.purchaseTenderProject_click()#点击政采招标项目
-            self.home_page_or_workbench.tender_edit_click(projectNumber = projectNumber)#招标代理点击编辑
-            self.createProjectMethod.gencyLinkMan_send_keys()#输入代理联系人
-            self.createProjectMethod.gencyLinkManNumber_send_keys()#输入代理联系人手机号
-            self.createProjectMethod.gencyLinkPlace_send_keys()#输入代理联系地址
-            self.createProjectMethod.perfectProjectMessage()#完善企业信息
-        else:
-            print("项目类型不符")
-        self.createProjectMethod.insert_projectData(projectNumber=projectNumber,projectType="purchase",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)
+        self.createProjectMethod.tender_or_tenderAgent(role=self.role,projectNumber=projectNumber,projectType = 'purchase',tenderOrganizationType=self.tenderOrganizationType)
+        if self.role == '1':
+            self.createProjectMethod.insert_projectData(projectNumber=projectNumber,projectType="purchase",tenderOrganizationType='1',tenderWay=self.tenderWay)#数据库创建项目
+        elif self.role == '0':
+            self.createProjectMethod.insert_projectData(projectNumber=projectNumber,projectType="purchase",tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)#数据库创建项目
     """
     线下报名
     """
     def test_05_apply_offline(self):#报名(线下)状态
         for i in range(len(self.username)):
-            self.base.update_applyNumber(i,projectNumber=self.projectNumber)
             if i == 4 :
                 break
+            self.base.update_applyNumber(i+1,projectNumber=self.projectNumber)
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
             try:
@@ -344,8 +283,9 @@ class Deal_testcase(unittest.TestCase):
             self.bidOpen.inputContent_send_keys()#输入异议
             self.bidOpen.raiseObjectionAffirm_click()#确认提出异议
             self.bidOpen.affirmBidResult_click()#确认投标结果
-            time.sleep(0.3)
+            time.sleep(0.2)
             self.bidOpen.resultAffirm_click()#点击投标结果弹窗确认
+            time.sleep(0.3)
             self.createProjectMethod.open_deal_url()
     """
     添加评标办法
@@ -354,7 +294,7 @@ class Deal_testcase(unittest.TestCase):
     def test_add_evaluationBidWay(self):
         evaluationBidWay = 0 #0表示综合,1表示均值,2表示最低,3表示最高
         judgeNumber = 3#评委数量
-        self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)#选择招标人或者招标代理
+        self.loginORrole.jiaoyi_login(self.role)#选择招标人或者招标代理
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)#工程或者采购工作台选择
         try:
             self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
@@ -376,9 +316,14 @@ class Deal_testcase(unittest.TestCase):
     需要注意参数，评标类型
     """
     def test_09_add_evaluationBid_and_judge(self):#添加评标办法和添加评委(自主招标)
-        evaluationBidWay = 4#0表示综合,1表示均值,2表示最低,3表示最高,4代表竞争性磋商
-        judgeNumber = 3 #评委数量
-        self.loginORrole.jiaoyi_login(self.tenderOrganizationType_sql)#选择招标人或者招标代理
+        evaluationBidWay = 6#0表示综合,1表示均值,2表示最低,3表示最高,4代表竞争性磋商,5代表竞争性谈判，6代表单一采购来源
+        judgeNumber = 5 #评委数量
+        if self.tenderOrganizationType_sql == '0':
+            self.loginORrole.login(username=self.username1[0],password=self.password[0])
+            self.loginORrole.tenderee_click()#点击招标人
+        elif self.tenderOrganizationType_sql == '1':
+            self.loginORrole.login(username=self.username1[2],password=self.password[1])
+            self.loginORrole.tenderAgency_click()#点击招标代理
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber,self.projectType_sql)#工程或者采购工作台选择
         try:
             self.home_page_or_workbench.evaluationBidEntrance_click()#点击评标入口
@@ -411,7 +356,7 @@ class Deal_testcase(unittest.TestCase):
     开始评标，注意需要输入评标类型是哪个
     """
     def test_judge_score(self):#评分
-        buttonCount = 1#用来判断是哪个评标类型
+        buttonCount = 3#用来判断是哪个评标类型
         expert_username = self.expert_username#获取账号
         expert_password = self.expert_password#获取密码
         expert_name = self.expert_name#获取评委名称
@@ -421,7 +366,7 @@ class Deal_testcase(unittest.TestCase):
             enterpriseCount = self.result1[6]
             self.expert.login(username=expert_username[i],password=expert_password[i],projectNumber = self.projectNumber)
             print("----------------------------------"+str(expert_name[i])+"----------------------------------")
-            self.expert.review_click(buttonCount)#专家选择评标类型,type用来判断是通过式，还是分值式
+            self.expert.review_click(buttonCount)#专家选择评标类型
             if enterpriseCount == '0':
                 self.expert.enterprise_review(projectNumber=self.projectNumber)#企业评审
             else:
@@ -447,7 +392,11 @@ class Deal_testcase(unittest.TestCase):
                 self.createProjectMethod.open_deal_url()
                 continue
             self.home_page_or_workbench.secondaryQuotation_click()#点击二次报价按钮
-            self.home_page_or_workbench.secondaryQuotationInput_send_keys()#输入二次报价
+            try:
+                self.home_page_or_workbench.secondaryQuotationInput_send_keys()#输入二次报价
+            except:
+                self.createProjectMethod.open_deal_url()
+                continue
             self.home_page_or_workbench.secondaryQuotationFile_input_click()#点击上传响应性文件
             self.base.upload_file('pdf')
             self.home_page_or_workbench.submitButton_locator_click()#点击提交二次报价按钮
@@ -462,7 +411,7 @@ class Deal_testcase(unittest.TestCase):
         for i in range(len(expert_username)):
             self.expert.login(username=expert_username[i],password=expert_password[i],projectNumber = self.projectNumber)
             self.expert.judgeSignature_click()#点击评委签章
-            self.expert.signature_examine(self.evaluationBidWay)#点击确认
+            self.expert.signature_examine()#点击确认
 
     def tearDown(self):
         self.base.close()

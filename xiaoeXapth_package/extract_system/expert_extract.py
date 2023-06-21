@@ -126,8 +126,8 @@ class Expert_extract(Base):
     def error_confirm_click(self):#报错点击确认
         self.click(self.error_confirm_locator)
 
-    def expert_send_keys(self):#输入抽取专家数量
-        self.send_keys(self.expert_locator,"3")
+    def expert_send_keys(self,number):#输入抽取专家数量
+        self.send_keys(self.expert_locator,number)
 
     def add_affirm_click(self):#新增抽取条件确认
         self.click(self.add_affirm_locator)

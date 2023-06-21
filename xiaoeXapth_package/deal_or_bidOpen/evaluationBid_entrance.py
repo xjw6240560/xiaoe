@@ -87,6 +87,8 @@ class EvaluationBid_entrance(Base):
         evaluationBidWay2 = "//span[contains(text(),'最低价评标法')]"
         evaluationBidWay3 = "//span[contains(text(),'最高价评标法')]"
         evaluationBidWay4 = "//span[contains(text(),'竞争性磋商')]"
+        evaluationBidWay5="//span[contains(text(),'最低价评标法(竞争性谈判)')]"
+        evaluationBidWay6="//span[contains(text(),'综合评标法(单一来源采购)')]"
         if num == 0:
             evaluationBidWay_locator0 = (By.XPATH,evaluationBidWay0)
             self.click(evaluationBidWay_locator0)
@@ -102,8 +104,14 @@ class EvaluationBid_entrance(Base):
         elif num == 4:
             evaluationBidWay_locator4 = (By.XPATH,evaluationBidWay4)
             self.click(evaluationBidWay_locator4)
+        elif num == 5:
+            evaluationBidWay_locator5 = (By.XPATH,evaluationBidWay5)
+            self.click(evaluationBidWay_locator5)
+        elif num == 6:
+            evaluationBidWay_locator6 = (By.XPATH,evaluationBidWay6)
+            self.click(evaluationBidWay_locator6)
         else:
-            print("评标办法类型错误"+str(num)+"只能输入0到4的整数")
+            print("评标办法类型错误"+str(num)+"只能输入0到6的整数")
 
         try:
             self.evaluationBidWay_affirm_click()#选择评标办法点击确定

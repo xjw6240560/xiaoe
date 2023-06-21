@@ -28,7 +28,7 @@ class Expert(Base):
     enterprise_input = "//input[@placeholder='请选择']"#点击企业输入框
     submit_result = "//div[contains(text(),'提交评审结果')]"#点击提交审核结果
     submitResult_affirm = "//div[text()='确认']"
-    judgeSignature = "//button//span[contains(text(),'评委签章')]"
+    judgeSignature = "//button//span[contains(text(),'确认评标报告')]"
     judgeAffirm = "//button//span[contains(text(),'评委确认')]"
 
     username_input_locator = (By.XPATH,username_input)
@@ -87,25 +87,32 @@ class Expert(Base):
             pass
 
     def electGroup_click(self):#点击推选组长
-        self.click(self.electGroup_locator)#点击推选组长
+        try:
+            while self.is_click(self.electGroup_locator):
+                self.click(self.electGroup_locator)#点击推选组长
+        except:
+            pass
 
     def elect_click(self,name):#点击推选
         choose = "//p[contains(text(),'"+name+"')]/following-sibling::div/button/span[contains(text(),'推选')]"#推选
-        # choose = "//p[contains(text(),'评委1')]/following-sibling::div/button/span[contains(text(),'推选')]"#推选
         choose_locator = (By.XPATH,choose)
-        self.click(choose_locator)#点击推选
+        while self.is_click(choose_locator):
+            self.click(choose_locator)#点击推选
+            time.sleep(0.2)
 
     def select_group(self,username,password,name,projectNumber):#选择组长
-        for i in range(len(username)):
-            self.login(username=username[i],password=password[i],projectNumber=projectNumber)
-            time.sleep(0.1)
-            self.electGroup_click()#点击推选组长
-            a = random.randint(0,len(username))#随机生成推选评委
-            try:
-                time.sleep(1)
-                self.elect_click(name=name[a])#点击推选
-            except:
-                print("已经推荐过了")
+        if len(username) > 0:
+            for i in range(len(username)):
+                self.login(username=username[i],password=password[i],projectNumber=projectNumber)
+                self.electGroup_click()#点击推选组长
+                try:
+                    a = random.randint(0,len(username))#随机生成推选评委
+                    self.elect_click(name=name[a])#点击推选
+                    time.sleep(1)
+                except:
+                    print("已经推荐过了")
+        else:
+            print('没有保存评委:'+str(len(username)))
 
     def in_project_click(self,projectNumber):
         in_project = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[4]/div/button/span[contains(text(),'进入项目')]"
@@ -151,7 +158,7 @@ class Expert(Base):
         choose_enterprise = "//div//ul//li["+str(num)+"]/span"#选择企业
         choose_enterprise_locator = (By.XPATH,choose_enterprise)
         time.sleep(0.1)
-        self.click(choose_enterprise_locator)
+        self.short_click(choose_enterprise_locator)
 
     def score_send_keys(self,projectNumber,ratingPointCount = 100):#输入分值
         count = 0#用来统计评分点个数
@@ -161,7 +168,7 @@ class Expert(Base):
             score = random.randint(20,40)
             try:#用来判断有多少个评分点
                 time.sleep(0.15)
-                self.send_keys(score_locator,score)
+                self.short_send_keys(score_locator,score)
                 count = count + 1
             except:
                 if i == 1:
@@ -238,35 +245,26 @@ class Expert(Base):
         signature_examine2 = "//div[text()='"+str(num)+"']/ancestor::td/following-sibling::td[3]/div/button/span[contains(text(),'查看')]"
         return signature_examine2
 
-    def signature_examine(self,evaluationBidWay):#点击评委查看和确认
-        if evaluationBidWay == 0:
-            for i in range(1,8):
+    def signature_examine(self):#点击评委查看和确认
+            for i in range(1,10):
                 signature_examine1 = self.examine1(i)
                 signature_examine2 = self.examine2(i)
-                if i == 1 or i == 4:
-                    signature_examine_locator1 = (By.XPATH,signature_examine1)
-                else:
-                    signature_examine_locator1 = (By.XPATH,signature_examine2)
-                self.click(signature_examine_locator1)#点击查看
+                signature_examine_locator1 = (By.XPATH,signature_examine1)
+                signature_examine_locator2 = (By.XPATH,signature_examine2)
+
+                try:
+                    self.short_click(signature_examine_locator2)#点击查看
+                except Exception:
+                    try:
+                        self.short_click(signature_examine_locator1)#点击查看
+                    except:
+                        print("签章结束！")
+                        break
                 time.sleep(0.1)
                 self.roll_Id("pdfFile-dialog")#根据id滑动窗体到底部
                 time.sleep(0.2)
                 self.click(self.judgeAffirm_locator)#评委确认
-        elif evaluationBidWay in (1,2,3):
-            for j in range(1,4):
-                signature_examine1 = self.examine1(j)
-                signature_examine2 = self.examine2(j)
-                if j == 1 or j ==2 :
-                    signature_examine_locator2 = (By.XPATH,signature_examine1)
-                else:
-                    signature_examine_locator2 = (By.XPATH,signature_examine2)
-                time.sleep(0.1)
-                self.click(signature_examine_locator2)#点击查看
-                self.roll_Id("pdfFile-dialog")#根据id滑动窗体到底部
-                time.sleep(0.2)
-                self.click(self.judgeAffirm_locator)#评委确认
-        else:
-            print("评标方式传值错误")
+
 
 
 

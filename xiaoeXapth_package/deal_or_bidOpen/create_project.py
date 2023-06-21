@@ -1,7 +1,12 @@
 from selenium.webdriver.common.by import By
+from xiaoeXapth_package.deal_or_bidOpen.home_page_or_workbench import Home_page_or_workbench
+from xiaoeXapth_package.deal_or_bidOpen.login_registerORselect_role import LoginORrole
 from base.base import Base
 import time
 class CreateProjectMethod(Base):
+    home_page_or_workbench = Home_page_or_workbench()
+    loginORrole = LoginORrole()
+    base = Base()
     addtime = 25
     addTenderProjectButton = "//div[contains(text(),'招标项目')]/following-sibling::button//span[contains(text(),'新增招标项目')]"#新增招标项目
     projectNumber = "//label[contains(text(),'招标项目编号:')]/following-sibling::div/div/input"#项目编号
@@ -15,8 +20,11 @@ class CreateProjectMethod(Base):
     tenderWay = "//label[contains(text(),'招标方式:')]/following-sibling::div/div/div/div/input"#招标方式
     openTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'公开招标')]"#招标方式（公开招标）
     inviteTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'邀请招标')]"#招标方式（邀请招标）
-    competitionConsult = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'竞争性磋商')]"#竞争性磋商
+    competitionConsult = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'竞争性磋商')]"#竞争性磋商谈判
+    competition_negotiate = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'竞争性谈判')]"#点击竞争性谈判
+    single_source_procurement = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'单一来源采购')]"#点击单一来源采购
     inviteBid = "//label[contains(text(),'方式:')]/following-sibling::div/div/div/following-sibling::button/span[contains(text(),'邀请投标人')]"#邀请投标人按钮
+    choose_supplier = "//label[contains(text(),'方式:')]/following-sibling::div/div/div/following-sibling::button/span[contains(text(),'选择供应商')]"#点击选择供应商
     enterpriseInput = "//div[contains(text(),'邀请投标单位')]/following-sibling::div[1]/div/div/input"#企业输入框
     find = "//button//span[contains(text(),'查找')]"#查找
     add = "//div//span[contains(text(),'添加')]"#添加企业
@@ -28,6 +36,13 @@ class CreateProjectMethod(Base):
     projectPrice = "//label[contains(text(),'项目估算价')]/following-sibling::div/div/input"#项目估算价
     projectDate =  "//label[contains(text(),'工期')]/following-sibling::div/div/input"#工期
     tenderLinkMan = "//label[contains(text(),'招标人联系人')]/following-sibling::div/div/input"#招标联系人
+    tenderMan = "//label[text()='招标人:']/following-sibling::div/div/input"#输入招标人
+    tenderManUnicode = "//label[text()='招标人统一信用代码:']/following-sibling::div/div/input"#招标人统一信用代码
+    tenderManBank = "//label[text()='招标人银行开户行:']/following-sibling::div/div/input"#招标人银行开户行
+    tenderManBankNumber = "//label[text()='招标人银行开户账号:']/following-sibling::div/div/input"#招标人银行开户账号
+    agentLinkMan = "//label[text()='代理联系人:']/following-sibling::div/div/input"#代理联系人
+    agentLinkManPhone = "//label[text()='代理联系人手机号:']/following-sibling::div/div/input"#代理联系人手机号
+    agentLinkPlace = "//div[contains(text(),'招标代理信息')]/../following-sibling::div/div/div[5]/div/div/div/input"#招标代理角色联系地址
     tenderLinkManNumber = "//label[contains(text(),'招标人联系人手机号:')]/following-sibling::div/div/input"#招标联系人手机号
     linkPlace = "//label[contains(text(),'联系地址:')]/following-sibling::div/div/input"#联系地址
     tenderGency = "//label[contains(text(),'招标代理:')]/following-sibling::div/div"#招标代理
@@ -82,6 +97,9 @@ class CreateProjectMethod(Base):
     projectType_locator = (By.XPATH,projectType)
     houseBuild_locator = (By.XPATH,houseBuild)
     tenderWay_locator = (By.XPATH,tenderWay)
+    choose_supplier_locator = (By.XPATH,choose_supplier)
+    competition_negotiate_locator = (By.XPATH,competition_negotiate)
+    single_source_procurement_locator = (By.XPATH,single_source_procurement)
     openTender_locator = (By.XPATH,openTender)
     inviteTender_locator = (By.XPATH,inviteTender)
     inviteBid_locator = (By.XPATH,inviteBid)
@@ -89,6 +107,13 @@ class CreateProjectMethod(Base):
     find_locator = (By.XPATH,find)
     add_locator = (By.XPATH,add)
     close_locator = (By.XPATH,close)
+    tenderMan_locator = (By.XPATH,tenderMan)
+    tenderManUnicode_locator = (By.XPATH,tenderManUnicode)
+    tenderManBank_locator = (By.XPATH,tenderManBank)
+    tenderManBankNumber_locator = (By.XPATH,tenderManBankNumber)
+    agentLinkMan_locator = (By.XPATH,agentLinkMan)
+    agentLinkManPhone_locator = (By.XPATH,agentLinkManPhone)
+    agentLinkPlace_locator = (By.XPATH,agentLinkPlace)
     competitionConsult_locator = (By.XPATH,competitionConsult)
     tenderOrganizationType_locator = (By.XPATH,tenderOrganizationType)
     oneselfTender_locator = (By.XPATH,oneselfTender)
@@ -139,7 +164,7 @@ class CreateProjectMethod(Base):
         return projectNumber
 
     def projectName_send_keys(self,projectType,tenderOrganizationType,tenderWay):#输入项目名称
-        if projectType == "工程":
+        if projectType == "engineering":
             if tenderOrganizationType == "0":
                 if tenderWay == 0:
                     self.send_keys(self.projectName_locator,"工程自主公开招标项目"+self.get_nowTime_formatting())
@@ -156,7 +181,7 @@ class CreateProjectMethod(Base):
                     print("招标方式不正确："+tenderWay)
             else:
                 print("招标组织方式不正确："+tenderOrganizationType)
-        elif projectType == "政采":
+        elif projectType == "purchase":
             if tenderOrganizationType == "0":
                 if tenderWay == 0:
                     self.send_keys(self.projectName_locator,"政采自主公开招标项目"+self.get_nowTime_formatting())
@@ -164,6 +189,10 @@ class CreateProjectMethod(Base):
                     self.send_keys(self.projectName_locator,"政采自主邀请招标项目"+self.get_nowTime_formatting())
                 elif tenderWay == 2:
                     self.send_keys(self.projectName_locator,"政采自主竞争性磋商招标项目"+self.get_nowTime_formatting())
+                elif tenderWay == 3:
+                    self.send_keys(self.projectName_locator,"政采自主竞争性谈判招标项目"+self.get_nowTime_formatting())
+                elif tenderWay == 4:
+                    self.send_keys(self.projectName_locator,"政采自主单一采购来源招标项目"+self.get_nowTime_formatting())
                 else:
                     print("招标方式不正确："+str(tenderWay))
             elif tenderOrganizationType == "1":
@@ -173,10 +202,16 @@ class CreateProjectMethod(Base):
                     self.send_keys(self.projectName_locator,"政采委托邀请招标项目"+self.get_nowTime_formatting())
                 elif tenderWay == 2:
                     self.send_keys(self.projectName_locator,"政采委托竞争性磋商招标项目"+self.get_nowTime_formatting())
+                elif tenderWay == 3:
+                    self.send_keys(self.projectName_locator,"政采自主竞争性谈判招标项目"+self.get_nowTime_formatting())
+                elif tenderWay == 4:
+                    self.send_keys(self.projectName_locator,"政采自主单一采购来源招标项目"+self.get_nowTime_formatting())
                 else:
                     print("招标方式不正确："+str(tenderWay))
             else:
                 print("招标组织方式不正确："+tenderOrganizationType)
+        else:
+            print("项目类型不正确！")
 
 
     def projectAuditNumber_send_keys(self):#输入项目审批文号
@@ -205,8 +240,15 @@ class CreateProjectMethod(Base):
 
     def inviteTender_click(self):#点击邀请招标
         self.click(self.inviteTender_locator)
+
     def competitionConsult_click(self):#竞争性磋商
         self.click(self.competitionConsult_locator)
+    def competition_negotiate_click(self):#点击竞争性谈判
+        self.click(self.competition_negotiate_locator)
+
+    def single_source_procurement_click(self):#点击单一来源采购
+        self.click(self.single_source_procurement_locator)
+
     def inviteBid_click(self):#点击邀请投标人按钮
         self.click(self.inviteBid_locator)
 
@@ -221,6 +263,8 @@ class CreateProjectMethod(Base):
 
     def close_click(self):#点击关闭
         self.click(self.close_locator)
+    def choose_supplier_click(self):#点击选择供应商
+        self.click(self.choose_supplier_locator)
 
     def addEnterprise(self,number,enterpriseName):#添加投标人企业
         for i in range(number):
@@ -406,5 +450,90 @@ class CreateProjectMethod(Base):
     def purchasePrice_send_keys(self):#采购预算
         self.send_keys(self.purchasePrice_locator,"120.12")
 
+    def tenderMan_send_keys(self,tenderMan = base.tenderMan):#输入招标人
+        self.send_keys(self.tenderMan_locator,tenderMan)
+
+    def tenderManUnicode_send_keys(self,tenderManUnicode = base.tenderManUnicode):#招标人统一信用代码
+        self.send_keys(self.tenderManUnicode_locator,tenderManUnicode)
+
+    def tenderManBank_send_keys(self):#招标人银行开户行
+        self.send_keys(self.tenderManBank_locator,'厦门建设银行湖里')
+
+    def tenderManBankNumber_send_keys(self):#招标人银行开户账号
+        self.send_keys(self.tenderManBankNumber_locator,'235346452123124')
+
+    def agentLinkMan_send_keys(self):#代理联系人
+        self.send_keys(self.agentLinkMan_locator,'罗女士')
+
+    def agentLinkManPhone_send_keys(self):#代理联系人手机号
+        self.send_keys(self.agentLinkManPhone_locator,'15222222222')
+
+    def agentLinkPlace_send_keys(self):#招标代理角色联系地址
+        self.send_keys(self.agentLinkPlace_locator,'江西省濂溪县桥头村')
+
+    def tender_or_purchase_way(self,tenderWay,enterpriseNumber = 1):#选择招标方式或者采购方式
+        if tenderWay == 0:
+            self.openTender_click()#点击公开招标
+        elif tenderWay == 1:
+            self.inviteTender_click()#点击邀请招标
+            self.inviteBid_click()#点击邀请投标人
+            self.addEnterprise(enterpriseNumber,enterpriseName=self.enterpriseName)
+            self.close_click()#点击关闭
+        elif tenderWay == 2:
+            self.competitionConsult_click()#点击竞争性磋商
+        elif tenderWay == 3:#点击竞争性谈判
+            self.competition_negotiate_click()
+        elif tenderWay == 4:#点击单一采购来源
+            self.single_source_procurement_click()
+            self.choose_supplier_click()#点击选择供应商
+            self.addEnterprise(enterpriseNumber,enterpriseName=self.enterpriseName)
+            self.close_click()#点击关闭
+        else:
+            print("招标方式不正确："+ str(tenderWay))
+
+
+    def tender_or_tenderAgent(self,role,projectNumber,projectType,tenderOrganizationType):#根据角色创建不同的项目 0 招标人 1招标代理
+        if role =='0':
+            self.tenderOrganizationType_click()#点击招标组织方式
+            #自主招标
+            if tenderOrganizationType =="0":
+                self.oneselfTender_click()#选择自主招标
+                self.perfectProjectMessage()#完善项目信息
+            #委托招标
+            elif tenderOrganizationType == "1":
+                self.entrustTender_click()#委托招标
+                self.tenderGency_click()#点击招标代理
+                self.input_enterprise_send_keys()#输入招标代理名称
+                self.search_click()#点击搜索企业
+                self.selectTenderGency_click()#选择招标代理
+                time.sleep(0.5)
+                self.saveButton_click()#点击保存
+                time.sleep(0.5)
+                self.open_deal_url()
+                self.loginORrole.login(self.username1[2],self.password[1])#登入交易平台
+                self.loginORrole.tenderAgency_click()#点击招标人
+                self.handle_skip(-1)#跳转句柄
+                if projectType == 'engineering':
+                    self.home_page_or_workbench.engineerBusiness_click()#点击工程业务
+                    self.home_page_or_workbench.tenderProject_click()#点击招标项目
+                elif projectType == 'purchase':
+                    self.home_page_or_workbench.purchaseBusiness_click()#点击政采业务
+                    self.home_page_or_workbench.purchaseTenderProject_click()#点击政采招标项目
+                self.home_page_or_workbench.tender_edit_click(projectNumber=projectNumber)#招标代理点击编辑
+                self.gencyLinkMan_send_keys()#输入代理联系人
+                self.gencyLinkManNumber_send_keys()#输入代理联系人手机号
+                self.gencyLinkPlace_send_keys()#输入代理联系地址
+                self.perfectProjectMessage()#完善企业信息
+            else:
+                print("招标类型不符")
+        elif role =='1':
+            self.tenderMan_send_keys()#输入招标人'江西转移有限公司'
+            self.tenderManUnicode_send_keys()#招标人统一信用代码'sdchu1293123'
+            self.tenderManBank_send_keys()#招标人银行开户行
+            self.tenderManBankNumber_send_keys()#招标人银行开户账号
+            self.agentLinkMan_send_keys()#代理联系人
+            self.agentLinkManPhone_send_keys()#代理联系人手机号
+            self.agentLinkPlace_send_keys()#招标代理角色联系地址
+            self.perfectProjectMessage()#完善项目信息
 
 

@@ -38,12 +38,16 @@ class Home_page_or_workbench(Base):
     secondaryQuotationInput = "//label[contains(text(),'二次报价')]/./following-sibling::div/div/div/input"#输入二次报价
     secondaryQuotationFile = "//label[contains(text(),'上传响应性文件')]/./following-sibling::div/div/div/div/div"#上传响应性文件
     submitButton = "//button//span[contains(text(),'提交二次报价')]"#提交二次报价按钮
+    recall_file = "//button//span[contains(text(),'撤回文件')]"#点击撤回文件按钮
+    recall_affirm = "//button//span[contains(text(),'确 定')]"#撤回文件确定
     evaluationBidEntrance = "//span[contains(text(),'开标阶段')]/../following-sibling::div[contains(text(),'评标入口')]"#点击评标入口
     enterpriseName = "//*[@id='header']/div[2]/div[3]/span"#企业名称
     quitLogin = "//li[contains(text(),'修改密码')]/./following-sibling::li[contains(text(),'退出登录')]"#退出登录
 
     linkMan_locator = (By.XPATH,linkMan)
     submitButton_locator = (By.XPATH,submitButton)
+    recall_file_locator = (By.XPATH,recall_file)
+    recall_affirm_locator = (By.XPATH,recall_affirm)
     linkManNumber_locator = (By.XPATH,linkManNumber)
     affirmApply_locator = (By.XPATH,affirmApply)
     auditAffirm_locator = (By.XPATH,auditAffirm)
@@ -248,18 +252,18 @@ class Home_page_or_workbench(Base):
     def select_apply(self,projectNumber,projectType,tenderWay):#点击报名
         if projectType == "engineer":#工程
             self.engineerBusiness_click()#点击工程项目
-            if tenderWay == 0:
+            if tenderWay in (0):
                 self.engineerTenderNotice_click()#点击招标公告
             elif tenderWay == 1:
                 self.engineerTenderInvite_click()#点击投标邀请
             else:
-                print("招标方式输入错入！，0表示公开招标，1表示邀请招标")
+                print("招标方式输入错入！工程项目没有："+str(tenderWay))
             self.apply_click(projectNumber)
         elif projectType == "purchase" :#政采
             self.purchaseBusiness_click()#点击采购项目
-            if tenderWay in  (0,2):
+            if tenderWay in  (0,2,3):
                 self.purchaseTenderNotice_click()#点击招标公告（政采）
-            elif tenderWay == 1:
+            elif tenderWay in (1,4):
                 self.purchaseTenderInvite_click()#点击政采招标邀请
             else:
                 print("招标方式输入错入！，0表示公开招标，1表示邀请招标")
@@ -322,3 +326,9 @@ class Home_page_or_workbench(Base):
 
     def submitButton_locator_click(self):#点击提交二次报价按钮
         self.click(self.submitButton_locator)
+
+    def recall_file_click(self):#点击撤回文件按钮
+        self.click(self.recall_file_locator)
+
+    def recall_affirm_click(self):#撤回文件确定
+        self.click(self.recall_affirm_locator)

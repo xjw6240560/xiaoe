@@ -86,15 +86,15 @@ class LoginORrole(Base):
         except:
             pass
 
-    def jiaoyi_login(self,tenderType):#招标人或者招标代理选择
-        if tenderType == "0" :
+    def jiaoyi_login(self,role):#招标人或者招标代理选择
+        if role == "0" :
             self.login(username=Base.username1[0],password="ndx111")
             self.tenderee_click()#点击招标人
-        elif tenderType == "1" :
+        elif role == "1" :
             self.login(username=Base.username1[2],password=Base.password[1])
             self.tenderAgency_click()#点击招标代理
         else:
-            print("招标类型错误"+tenderType)
+            print("招标类型错误"+role)
 
     def pictrue_input_send_keys(self):
         self.send_keys(self.pictrue_input_locator,"1")

@@ -3,20 +3,17 @@
 import unittest
 import time
 from base.base import Base
-import re
 from xiaoeXapth_package.extract_system.login import Login
 from xiaoe_testcase.deal_testcase import Deal_testcase
 from xiaoeXapth_package.extract_system.expert_extract import Expert_extract
 from xiaoeXapth_package.extract_system.home_page import Home_page
 class Extract_system(unittest.TestCase):
-
     def setUp(self):
         self.base = Base()
         self.login = Login()
         self.home_page = Home_page()
         self.expert_extract = Expert_extract()
         self.deal_testcase = Deal_testcase()
-        self.extract_system_login = Login()
         #查询项目信息
         try:
             self.result1 = self.base.query_projectData(self.deal_testcase.projectNumber)
@@ -33,6 +30,10 @@ class Extract_system(unittest.TestCase):
     抽取专家
     """
     def test_extract_expert(self):#抽取专家
+        nowtimeday = self.base.get_date_day()#获取当前日期
+        beforetime = self.base.read_data_csv(begin=1,place=r"C:\Users\111\Desktop\pythonScriptGenerate\freeDate.csv")
+        if int(nowtimeday) > int(beforetime[0][0]) :
+            self.base.write_data_csv(date=nowtimeday)
         self.login.login()
         self.base.handle_skip(0)
         self.home_page.engineering_or_purchase_click(self.projectType_sql)
@@ -55,13 +56,14 @@ class Extract_system(unittest.TestCase):
         self.expert_extract.expertsB_click()#点击专家测试库B
         self.expert_extract.expertsC_click()#点击专家测试库C
         self.expert_extract.expert_classify_click()#点击专家分类
-        self.expert_extract.expert_send_keys()#输入专家数量
+        self.expert_extract.expert_send_keys('3')#输入专家数量
         self.expert_extract.add_affirm_click()#点击确认
-        for i in range(18):
+        for i in range(int(beforetime[0][1]),18):
             self.expert_extract.evaluation_time_send_keys(i)#输入时间
             result = self.expert_extract.is_room_occupy()#判断评标室是否被占用
             if result is not None:
                 if result == "break":
+                    self.base.write_data_csv(date=nowtimeday,hours=i)
                     break
                 else:
                     continue
