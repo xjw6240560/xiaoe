@@ -58,7 +58,8 @@ class Extract_system(unittest.TestCase):
         self.expert_extract.expert_classify_click()#点击专家分类
         self.expert_extract.expert_send_keys('3')#输入专家数量
         self.expert_extract.add_affirm_click()#点击确认
-        for i in range(int(beforetime[0][1]),18):
+        nowtime = self.base.read_data_csv(begin=1,place=r"C:\Users\111\Desktop\pythonScriptGenerate\freeDate.csv")
+        for i in range(int(nowtime[0][1]),18):
             self.expert_extract.evaluation_time_send_keys(i)#输入时间
             result = self.expert_extract.is_room_occupy()#判断评标室是否被占用
             if result is not None:

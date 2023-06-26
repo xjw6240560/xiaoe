@@ -1,6 +1,7 @@
 from base.base import Base
 from selenium.webdriver.common.by import By
 import time
+import traceback
 class LoginORrole(Base):
     #登录
     code_login = "//div//span[contains(text(),'验证码登录')]"
@@ -83,7 +84,9 @@ class LoginORrole(Base):
                 nowUrl = self.get_nowUrl()#获取当前的Url
                 if str(nowUrl) != Base.deal_login_url:
                     break
-        except:
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
             pass
 
     def jiaoyi_login(self,role):#招标人或者招标代理选择

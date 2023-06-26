@@ -2,6 +2,7 @@ from base.base import Base
 from selenium.webdriver.common.by import By
 import time
 import random
+import traceback
 from xiaoeXapth_package.deal_or_bidOpen.evaluationBid_entrance import EvaluationBid_entrance
 
 class Expert(Base):
@@ -79,26 +80,22 @@ class Expert(Base):
                         self.update_isAgree("consent",username)
                         break
                     elif isAgree[0] == "consent":
-                        print("专家协议同意已经确认过"+isAgree)
+                        print("专家协议同意已经确认过"+isAgree[0])
                         break
                     else:
-                        print("专家协议类型错误"+isAgree)
-        except:
-            pass
+                        print("专家协议类型错误"+isAgree[0])
+        except (Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
+            self.update_isAgree("consent",username)
 
     def electGroup_click(self):#点击推选组长
-        try:
-            while self.is_click(self.electGroup_locator):
-                self.click(self.electGroup_locator)#点击推选组长
-        except:
-            pass
+        self.click(self.electGroup_locator)#点击推选组长
 
     def elect_click(self,name):#点击推选
         choose = "//p[contains(text(),'"+name+"')]/following-sibling::div/button/span[contains(text(),'推选')]"#推选
         choose_locator = (By.XPATH,choose)
-        while self.is_click(choose_locator):
-            self.click(choose_locator)#点击推选
-            time.sleep(0.2)
+        self.click(choose_locator)#点击推选
 
     def select_group(self,username,password,name,projectNumber):#选择组长
         if len(username) > 0:
@@ -106,11 +103,12 @@ class Expert(Base):
                 self.login(username=username[i],password=password[i],projectNumber=projectNumber)
                 self.electGroup_click()#点击推选组长
                 try:
-                    a = random.randint(0,len(username))#随机生成推选评委
+                    a =random.randint(0,len(username)-1)#随机生成推选评委
                     self.elect_click(name=name[a])#点击推选
-                    time.sleep(1)
-                except:
-                    print("已经推荐过了")
+                    time.sleep(0.2)
+                except (Exception, BaseException):
+                    exstr = traceback.format_exc()
+                    print(exstr)
         else:
             print('没有保存评委:'+str(len(username)))
 
@@ -168,7 +166,11 @@ class Expert(Base):
             score = random.randint(20,40)
             try:#用来判断有多少个评分点
                 time.sleep(0.15)
-                self.short_send_keys(score_locator,score)
+                if self.is_interactive(score_locator) is True:#判断元素是否可交互
+                    self.short_send_keys(score_locator,score)
+                else:
+                    print('分值式元素不可交互!')
+                    break
                 count = count + 1
             except:
                 if i == 1:
@@ -187,10 +189,13 @@ class Expert(Base):
             result = random.randint(1,2)
             time.sleep(0.1)
             try:#用来判断有多少个评分点
-                if result == 1:
-                    self.click(result_Nopass_locator)
+                if self.is_interactive(result_pass_locator)is True:
+                    if result == 1:
+                        self.click(result_Nopass_locator)
+                    else:
+                        self.click(result_pass_locator)
                 else:
-                    self.click(result_pass_locator)
+                    print('通过是方式元素不可交互!')
                 count = count + 1
             except:
                 if i == 1:

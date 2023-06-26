@@ -29,7 +29,7 @@ class Home_page_or_workbench(Base):
     bid_price = "//label[contains(text(),'投标价')]/./following-sibling::div/div/input"#输入投标价
     duration = "//label[contains(text(),'工期')]/./following-sibling::div/div/input"#输入工期
     quality = "//label[contains(text(),'质量标准')]/./following-sibling::div/div/input"#输入质量标准
-    tender_notice = "//label[contains(text(),'招标公告')]/./following-sibling::div/div/div/div/div"#招标公告
+    bid_file = "//label[contains(text(),'投标文件')]/./following-sibling::div/div/div/div/div"#招标公告
     saveBidFile = "//span[contains(text(),'提交投标文件')]"#保存投标文件
     commitAudit = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td[7]/div/span[text()='提交审核']"#点击提交审核
     commitAudit_affirm = "//button//span[contains(text(),'确 定')]"#提交审核确定
@@ -71,7 +71,7 @@ class Home_page_or_workbench(Base):
     bid_price_locator = (By.XPATH,bid_price)
     duration_locator = (By.XPATH,duration)
     quality_locator = (By.XPATH,quality)
-    tender_notice_locator = (By.XPATH,tender_notice)
+    bid_file_locator = (By.XPATH,bid_file)
     commitAudit_affirm_locator = (By.XPATH,commitAudit_affirm)
     openBidEntrance_locator = (By.XPATH,openBidEntrance)
     evaluationBidEntrance_locator = (By.XPATH,evaluationBidEntrance)
@@ -171,8 +171,8 @@ class Home_page_or_workbench(Base):
     def quality_send_keys(self):#输入质量标准
         self.send_keys(self.quality_locator,"好")
 
-    def tender_notice_click(self):#招标公告
-        self.click(self.tender_notice_locator)
+    def bid_file_click(self):#招标公告
+        self.click(self.bid_file_locator)
 
     def saveBidFile_click(self):#保存投标文件
         self.click(self.saveBidFile_locator)
@@ -252,7 +252,7 @@ class Home_page_or_workbench(Base):
     def select_apply(self,projectNumber,projectType,tenderWay):#点击报名
         if projectType == "engineer":#工程
             self.engineerBusiness_click()#点击工程项目
-            if tenderWay in (0):
+            if tenderWay ==0:
                 self.engineerTenderNotice_click()#点击招标公告
             elif tenderWay == 1:
                 self.engineerTenderInvite_click()#点击投标邀请

@@ -1,5 +1,6 @@
 import time
 import unittest
+import traceback
 from xiaoeXapth_package.deal_or_bidOpen.home_page_or_workbench import Home_page_or_workbench
 from xiaoeXapth_package.deal_or_bidOpen.bidOpen import BidOpen
 from xiaoeXapth_package.deal_or_bidOpen.create_project import CreateProjectMethod
@@ -12,9 +13,9 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20230620151411"#项目编号
+    projectNumber = "20230526122955"#项目编号
     tenderOrganizationType = "0"#自主招标0或者委托招标1
-    tenderWay = 0 #公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
+    tenderWay = 1 #公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     role = "0"#角色 0招标人、1招标代理
     def setUp(self):
         self.base = Base()
@@ -36,8 +37,9 @@ class Deal_testcase(unittest.TestCase):
             self.applyNumber = self.result1[5]
             self.enterpriseCount = self.result1[6]
             self.ratingPointCount = self.result1[7]
-        except:
-            print("项目信息查询失败")
+        except (Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
 
         #查询专家账号和密码
         try:
@@ -45,8 +47,9 @@ class Deal_testcase(unittest.TestCase):
             self.expert_username = self.result2[0]
             self.expert_password = self.result2[1]
             self.expert_name = self.result2[2]
-        except:
-            print("专家账号查询失败——2")
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
     """
     创建项目（工程项目）
     """
@@ -117,8 +120,9 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.bidder_click()#点击投标人
             try:
                 self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
-            except:
-                print("账号"+self.username[i]+"未找到"+self.projectNumber+"该项目")
+            except(Exception,BaseException):
+                error = traceback.format_exc()
+                print(error)
                 self.createProjectMethod.open_deal_url()
                 continue
             time.sleep(0.2)
@@ -145,14 +149,14 @@ class Deal_testcase(unittest.TestCase):
             self.home_page_or_workbench.duration_send_keys()#输入工期
             self.home_page_or_workbench.quality_send_keys()#输入质量标准
             try:
-                self.home_page_or_workbench.tender_notice_click()#点击招标公告
+                self.home_page_or_workbench.bid_file_click()#点击招标公告
             except:
                 self.home_page_or_workbench.recallTenderFile_click()#撤回标书
                 self.home_page_or_workbench.tenderFileAffirm_click()#确认撤回
                 self.home_page_or_workbench.bid_price_send_keys()#输入投标价
                 self.home_page_or_workbench.duration_send_keys()#输入工期
                 self.home_page_or_workbench.quality_send_keys()#输入质量标准
-                self.home_page_or_workbench.tender_notice_click()#点击招标公告
+                self.home_page_or_workbench.bid_file_click()#点击招标公告
             self.home_page_or_workbench.upload_file("pdf")#选择投标文件图片
             time.sleep(0.3)
             self.home_page_or_workbench.saveBidFile_click()#点击保存
@@ -167,8 +171,9 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.bidder_click()#点击投标人
             try:
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
-            except:
-                print("账号"+self.username[i]+"未找到"+self.projectNumber+"该项目")
+            except(Exception,BaseException):
+                error = traceback.format_exc()
+                print(error)
                 self.createProjectMethod.open_deal_url()
                 continue
             self.home_page_or_workbench.marginPay_click()#点击保证金缴纳
@@ -189,14 +194,14 @@ class Deal_testcase(unittest.TestCase):
             self.home_page_or_workbench.duration_send_keys()#输入工期
             self.home_page_or_workbench.quality_send_keys()#输入质量标准
             try:
-                self.home_page_or_workbench.tender_notice_click()#点击招标公告
+                self.home_page_or_workbench.bid_file_click()#点击投标文件
             except:
                 self.home_page_or_workbench.recallTenderFile_click()#撤回标书
                 self.home_page_or_workbench.tenderFileAffirm_click()#确认撤回
                 self.home_page_or_workbench.bid_price_send_keys()#输入投标价
                 self.home_page_or_workbench.duration_send_keys()#输入工期
                 self.home_page_or_workbench.quality_send_keys()#输入质量标准
-                self.home_page_or_workbench.tender_notice_click()#点击招标公告
+                self.home_page_or_workbench.bid_file_click()#点击投标文件
             self.home_page_or_workbench.upload_file("pdf")#选择投标文件图片
             time.sleep(0.3)
             self.home_page_or_workbench.saveBidFile_click()#点击保存
@@ -211,8 +216,9 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.bidder_click()#点击投标人
             try:
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
-            except:
-                print("账号"+self.username[i]+"未找到"+self.projectNumber+"该项目")
+            except(Exception,BaseException):
+                error = traceback.format_exc()
+                print(error)
                 self.createProjectMethod.open_deal_url()
                 continue
             self.home_page_or_workbench.openBidEntrance_click()#点击开标入口
@@ -240,8 +246,9 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.bidder_click()#点击投标人
             try:
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)#选择工作台
-            except:
-                print("账号"+self.username[i]+"未找到"+self.projectNumber+"该项目")
+            except(Exception,BaseException):
+                error = traceback.format_exc()
+                print(error)
                 self.createProjectMethod.open_deal_url()
                 continue
             self.home_page_or_workbench.openBidEntrance_click()#点击开标入口
@@ -267,8 +274,9 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.bidder_click()#点击投标人
             try:
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
-            except:
-                print("账号"+self.username[i]+"未找到"+self.projectNumber+"该项目")
+            except(Exception,BaseException):
+                error = traceback.format_exc()
+                print(error)
                 self.createProjectMethod.open_deal_url()
                 continue
             self.home_page_or_workbench.openBidEntrance_click()#点击开标入口
@@ -308,7 +316,9 @@ class Deal_testcase(unittest.TestCase):
                 self.evaluationBid_entrance.addScoreSave_click()#点击评分点保存
             self.evaluationBid_entrance.saveEvaluationBidWay_click()#点击保存评标办法
             self.evaluationBid_entrance.saveEvaluationBidWayAffirm_click()#点击保存评标办法确定
-        except:
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
             self.evaluationBid_entrance.close_click()
         self.base.update_evaluationBidWay(evaluationBidWay=evaluationBidWay,judgeNumber= judgeNumber,projectNumber=self.projectNumber)#更新评标办法
     """
@@ -335,7 +345,9 @@ class Deal_testcase(unittest.TestCase):
             self.evaluationBid_entrance.cutEvaluationBidWayAffirm_click()#确认切换评标办法
             self.evaluationBid_entrance.saveEvaluationBidWay_click()#点击保存评标办法
             self.evaluationBid_entrance.saveEvaluationBidWayAffirm_click()#点击确认保存评标办法
-        except:
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
             self.evaluationBid_entrance.close_click()
         self.base.update_evaluationBidWay(evaluationBidWay=evaluationBidWay,judgeNumber=judgeNumber,projectNumber=self.projectNumber)
     """
@@ -349,14 +361,15 @@ class Deal_testcase(unittest.TestCase):
             try:
                 self.expert.get_group()#输出组长是那个评委
                 break
-            except:
+            except (Exception, BaseException):
+                exstr = traceback.format_exc()
+                print(exstr)
                 self.expert.select_group(username=username,password=password,projectNumber=self.projectNumber,name=self.expert_name)
-                # print("票数相同,没有选出组长！！！")
     """
     开始评标，注意需要输入评标类型是哪个
     """
     def test_judge_score(self):#评分
-        buttonCount = 3#用来判断是哪个评标类型
+        buttonCount = 1#用来判断是哪个评标类型
         expert_username = self.expert_username#获取账号
         expert_password = self.expert_password#获取密码
         expert_name = self.expert_name#获取评委名称
@@ -376,7 +389,9 @@ class Deal_testcase(unittest.TestCase):
                 self.expert.submit_result_click()#点击提交审核结果
                 self.expert.submitResult_affirm_click()#点击确认
                 time.sleep(0.5)
-            except :
+            except (Exception,BaseException):
+                error = traceback.format_exc()
+                print(error)
                 continue
     """
     二次报价
@@ -387,14 +402,17 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.bidder_click()#点击投标人
             try:
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)#选择工作台
-            except:
-                print("账号"+self.username[i]+"未找到"+self.projectNumber+"该项目")
+            except(Exception,BaseException):
+                error = traceback.format_exc()
+                print(error)
                 self.createProjectMethod.open_deal_url()
                 continue
             self.home_page_or_workbench.secondaryQuotation_click()#点击二次报价按钮
             try:
                 self.home_page_or_workbench.secondaryQuotationInput_send_keys()#输入二次报价
-            except:
+            except(Exception,BaseException):
+                error = traceback.format_exc()
+                print(error)
                 self.createProjectMethod.open_deal_url()
                 continue
             self.home_page_or_workbench.secondaryQuotationFile_input_click()#点击上传响应性文件
@@ -403,7 +421,7 @@ class Deal_testcase(unittest.TestCase):
             self.createProjectMethod.open_deal_url()
 
     """
-    评委确认
+    确认评标报告
     """
     def test_judgeAffirm(self):
         expert_username = self.expert_username#获取账号

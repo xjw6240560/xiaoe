@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from xiaoeXapth_package.deal_or_bidOpen.home_page_or_workbench import Home_page_or_workbench
 from xiaoeXapth_package.deal_or_bidOpen.login_registerORselect_role import LoginORrole
 from base.base import Base
+import traceback
 import time
 class CreateProjectMethod(Base):
     home_page_or_workbench = Home_page_or_workbench()
@@ -433,8 +434,9 @@ class CreateProjectMethod(Base):
         sql = 'insert into project (projectNumber,projectType,tenderOrganizationType,tenderWay) values(%s,%s,%s,%s)'
         try:
             self.insert_and_update_sql(sql,projectNumber,projectType,tenderOrganizationType,tenderWay)
-        except:
-            print("项目更新失败！！！")
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
 
 #政采项目
 
@@ -527,8 +529,8 @@ class CreateProjectMethod(Base):
             else:
                 print("招标类型不符")
         elif role =='1':
-            self.tenderMan_send_keys()#输入招标人'江西转移有限公司'
-            self.tenderManUnicode_send_keys()#招标人统一信用代码'sdchu1293123'
+            self.tenderMan_send_keys('江西转移有限公司')#输入招标人'江西转移有限公司'
+            self.tenderManUnicode_send_keys('sdchu1293123')#招标人统一信用代码'sdchu1293123'
             self.tenderManBank_send_keys()#招标人银行开户行
             self.tenderManBankNumber_send_keys()#招标人银行开户账号
             self.agentLinkMan_send_keys()#代理联系人

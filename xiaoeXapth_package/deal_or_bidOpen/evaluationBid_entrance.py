@@ -1,6 +1,7 @@
 from base.base import Base
 from selenium.webdriver.common.by import By
 import time
+import traceback
 class EvaluationBid_entrance(Base):
     nowEvaluationBidWay = "//span[contains(text(),'当前评标办法')]/../div/div/input"#当前评标办法input
     evaluationBidWay_affirm = "//span[contains(text(),'取消')]/../following-sibling::button/span[contains(text(),'确定')]"#评标办法点击确定
@@ -115,7 +116,9 @@ class EvaluationBid_entrance(Base):
 
         try:
             self.evaluationBidWay_affirm_click()#选择评标办法点击确定
-        except:
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
             print("当前是该评标办法无需切换")
 
     def evaluationBidWay_affirm_click(self):#选择评标办法点击确定
@@ -174,7 +177,9 @@ class EvaluationBid_entrance(Base):
                 username = self.get_text(judgeUsername_locator)
                 password = self.get_text(judgePassword_locator)
                 self.insert_expertData(projectNumber=projectNumber,username=username,password=password,judgeName=name)
-            except:
+            except(Exception,BaseException):
+                error = traceback.format_exc()
+                print(error)
                 print("------------评委个数为"+str(i+1)+"------------")
 
 

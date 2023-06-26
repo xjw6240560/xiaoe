@@ -18,9 +18,9 @@ class Expert_extract(Base):
     add_extract_condition = "//div/button/span[contains(text(),'添加抽取条件')]"#点击添加抽取条件
     extract_result = "//div//button[3]//span[text()='抽取结果']"#点击工程抽取结果
     expert_classify = "//label[contains(text(),'专家分类')]/following-sibling::div/div/div[2]/span/span/i"#点击专家分类
-    expertsA = "//li/span[contains(text(),'专家测试库A')]"#点击专家库A
-    expertsB = "//li/span[contains(text(),'专家测试库B')]"#点击专家库B
-    expertsC = "//li/span[contains(text(),'专家测试库C')]"#点击专家库C
+    expertsA = "//li/span[contains(text(),'桥梁公路类别')]"#桥梁公路类别
+    expertsB = "//li/span[contains(text(),'政采类别专家')]"#政采类别专家
+    expertsC = "//li/span[contains(text(),'工程类专家')]"#工程类专家
     expert = "//label[contains(text(),'抽取人数')]/following-sibling::div/div/input[@placeholder='请输入整数']"#输入抽取专家数量
     add_affirm = "//button/span[contains(text(),'取消')]/../following-sibling::button[1]/span[contains(text(),'确认')]"#新增抽取条件确认
     edit = "//button/span[text() = '编辑']"#点击编辑

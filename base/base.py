@@ -9,11 +9,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from pywinauto.keyboard import send_keys
 import random
+import traceback
 import pymysql
 import re
 from xiaoe_data.test_deal_data import Test_deal_data
 from xiaoe_data.formal_deal_data import Formal_deal_data
-class Base(Test_deal_data):
+class Base(Formal_deal_data):
     drive = webdriver.Chrome()
     drive.maximize_window()
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -149,8 +150,9 @@ class Base(Test_deal_data):
             )
             cursor = conn.cursor()#创建游标
             return conn,cursor
-        except Exception:
-            raise ("数据库连接失败")
+        except (Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
     def close_conn(self,conn,cursor):
         conn.close()
         cursor.close()
@@ -159,9 +161,10 @@ class Base(Test_deal_data):
         try:
             cursor.execute(sql,args)
             conn.commit()
-        except:
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
             conn.rollback()
-            print("添加数据库失败！！！")
         self.close_conn(conn=conn,cursor=cursor)
 
     def query_sql(self,sql,*args):#查询数据查询
@@ -170,8 +173,9 @@ class Base(Test_deal_data):
             cursor.execute(sql,args)
             result = cursor.fetchall()
             return result
-        except:
-            print("查询数据库失败！！！")
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
         self.close_conn(conn=conn,cursor=cursor)
 
     def insert_expertData(self,projectNumber,username,password,judgeName):#插入专家账号密码
@@ -180,9 +184,13 @@ class Base(Test_deal_data):
         try:
             cursor.execute(sql,(projectNumber,username,password,judgeName))
             conn.commit()
-        except Exception:
+        except (Exception,BaseException) as e:
+            error = traceback.format_exc()
+            if str(e).find('Duplicate entry') > 0:
+                print('评委已经添加!')
+            else:
+                print(error)
             conn.rollback()
-            print("专家账号密码添加失败！")
         conn.close()
         cursor.close()
     def update_evaluationBidWay(self,evaluationBidWay,judgeNumber,projectNumber):#更新评标办法类型和评委个数
@@ -192,9 +200,10 @@ class Base(Test_deal_data):
             cursor.execute(sql,(evaluationBidWay,judgeNumber,projectNumber))
             conn.commit()
             print("评标类型和评委个数更新成功！")
-        except Exception:
+        except (Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
             conn.rollback()
-            print("评标类型和评委个数更新失败！")
         conn.close()
         cursor.close()#
 
@@ -202,29 +211,33 @@ class Base(Test_deal_data):
         sql = 'update expert set isAgree = %s where username = %s'
         try:
             self.insert_and_update_sql(sql,isAgree,username)
-        except:
-            print("协议同意失败！！！")
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
 
     def update_enterprise_count(self,enterpriseCount,projectNumber):#更新企业数量
         sql = 'update project set enterpriseCount = %s where projectNumber = %s'
         try:
             self.insert_and_update_sql(sql,enterpriseCount,projectNumber)
-        except:
-            print("企业数量更新失败！！！")
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
 
     def update_ratingPoint_count(self,ratingPointCount,ratingType,projectNumber):#更新评分点数量
         sql = 'update project set ratingPointCount = %s,ratingType = %s where projectNumber = %s'
         try:
             self.insert_and_update_sql(sql,ratingPointCount,ratingType,projectNumber)
-        except:
-            print("企业数量更新失败！！！")
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
 
     def update_applyNumber(self,applyNumber,projectNumber):#更新报名人数
         sql = 'update project set applyNumber = %s where projectNumber = %s'
         try:
             self.insert_and_update_sql(sql,applyNumber,projectNumber)
-        except:
-            print("报名人数更新失败！！！")
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
 
     def clear_text(self,url):#清空文本
         open(url,'w').close()
@@ -270,8 +283,9 @@ class Base(Test_deal_data):
         try:
             result = self.query_sql(sql,projectNumber)
             return result[0]
-        except:
-            print("项目数据查询失败！！！")
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
 
     def select_expert(self,projectNumber):#查询专家数据库
         expert_name = []
@@ -286,10 +300,10 @@ class Base(Test_deal_data):
                 expert_username.append(i[0])
                 expert_password.append(i[1])
                 expert_name.append(i[2])
-            print("专家账号查询成功！")
             return expert_username,expert_password,expert_name
-        except:
-            print("专家账号查询失败——1！")
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
         conn.close()
         cursor.close()
 
@@ -301,8 +315,9 @@ class Base(Test_deal_data):
             cursor.execute(sql,(username,projectNumber))
             expert_isAgree = cursor.fetchone()
             return expert_isAgree
-        except:
-            print("是否同意协议查询失败！")
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            print(error)
         conn.close()
         cursor.close()
 
@@ -361,7 +376,7 @@ class Base(Test_deal_data):
         # :return: 返回元素本身
         # """
         try:
-            element = WebDriverWait(self.drive, timeout).until(EC.visibility_of_element_located(locator))
+            element = WebDriverWait(self.drive, timeout).until(EC.presence_of_element_located(locator))
             return element
         except:
             print(str({locator})+'元素未找到')
@@ -377,7 +392,7 @@ class Base(Test_deal_data):
         time.sleep(0.3)
         element.click()
 
-    def is_click(self,locator):#判断元素是否可点击
+    def is_interactive(self,locator):#判断元素是否可交互
         # """
         # 判断元素是否可点击
         # :param locator:
