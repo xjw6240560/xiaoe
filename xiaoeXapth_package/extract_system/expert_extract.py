@@ -3,10 +3,12 @@
 from base.base import Base
 import re
 import time
+from log.log import Logger
 from selenium.webdriver.common.by import By
 from xiaoe_testcase.deal_testcase import Deal_testcase
 class Expert_extract(Base):
     deal_testcase = Deal_testcase()
+    logger = Logger()
     tender_linkMan = "//label[contains(text(),'招标联系人')]/following-sibling::div/div/input"#输入招标联系人
     link_number = "//label[contains(text(),'联系电话')]/following-sibling::div/div/input"#输入联系电话
     evaluation_time = "//label[contains(text(),'评标时间')]/following-sibling::div/div/input"
@@ -16,7 +18,7 @@ class Expert_extract(Base):
     evaluation_room1 = "//ul/li/span[contains(text(),'评标室1')]"#点击评标室1
     evaluation_room2 = "//ul/li/span[contains(text(),'评标室2')]"#点击评标室2
     add_extract_condition = "//div/button/span[contains(text(),'添加抽取条件')]"#点击添加抽取条件
-    extract_result = "//div//button[3]//span[text()='抽取结果']"#点击工程抽取结果
+    extract_result = "//div//button[3]//span[text()='专家抽取名单']"#点击工程专家抽取名单
     expert_classify = "//label[contains(text(),'专家分类')]/following-sibling::div/div/div[2]/span/span/i"#点击专家分类
     expertsA = "//li/span[contains(text(),'桥梁公路类别')]"#桥梁公路类别
     expertsB = "//li/span[contains(text(),'政采类别专家')]"#政采类别专家
@@ -84,20 +86,19 @@ class Expert_extract(Base):
     def save_judge_username_password(self,projectNumber):#保存评委账号和密码
         count = 0#统计专家个数
         for i in range(1,100):
-            expert_name = "//button//span[text() = '抽取结果']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '"+str(i)+"']/ancestor::td/following-sibling::td[1]"#获取专家姓名
-            expert_username = "//button//span[text() = '抽取结果']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '"+str(i)+"']/ancestor::td/following-sibling::td[2]"#获取专家账号
-            expert_status = "//button//span[text() = '抽取结果']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '"+str(i)+"']/ancestor::td/following-sibling::td[6]"#获取专家状态
+            expert_name = "//button//span[text() = '专家抽取名单']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '"+str(i)+"']/ancestor::td/following-sibling::td[1]"#获取专家姓名
+            expert_username = "//button//span[text() = '专家抽取名单']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '"+str(i)+"']/ancestor::td/following-sibling::td[2]"#获取专家账号
+            expert_status = "//button//span[text() = '专家抽取名单']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '"+str(i)+"']/ancestor::td/following-sibling::td[6]"#获取专家状态
             password = "ndx111"
 
             expert_name_locator = (By.XPATH,expert_name)
             expert_username_locator = (By.XPATH,expert_username)
             expert_status_locator = (By.XPATH,expert_status)
-            try:
-                name = self.get_text(expert_name_locator)
-                username = self.get_text(expert_username_locator)
-                status = self.get_text(expert_status_locator)
-            except:
+            name = self.get_text(expert_name_locator)
+            if name is None:
                 break
+            username = self.get_text(expert_username_locator)
+            status = self.get_text(expert_status_locator)
 
             if status == "正常参加":
                 try:
@@ -109,6 +110,7 @@ class Expert_extract(Base):
                 print("评委："+str(name)+"不符合要求!")
             else:
                 print("评委状态异常："+str(name))
+                break
 
 
     def expert_classify_click(self):#点击专家分类
@@ -147,7 +149,8 @@ class Expert_extract(Base):
     def errorTips2_get_text(self):#获取错误文本
         return self.get_text(self.errorTips_locator2)
 
-    def is_room_occupy(self):#判断评标室是否被占用
+    def is_room_occupy(self,hours):#判断评标室是否被占用
+        nowData = self.get_nowData(hours)#获取当前日期，年月日
         self.evaluation_room_input_click()#点击选择评标室
         self.evaluation_room1_click()#点击选择评标室1
         self.extract_expert_click()#点击抽取专家按钮
@@ -166,8 +169,8 @@ class Expert_extract(Base):
                     self.error_confirm_click()#点击确认
                     return room2
                 except:
-                    print("评标2没有被占用")
+                    self.logger.debugText(projectNumber=self.deal_testcase.projectNumber,errorText = '专家抽取完成,评标室2:'+str(nowData))
                     return "break"
         except:
-            print("评标室1没有被占用")
+            self.logger.debugText(projectNumber=self.deal_testcase.projectNumber,errorText = '专家抽取完成,评标室1:'+str(nowData))
             return "break"

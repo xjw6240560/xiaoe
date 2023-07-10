@@ -1,12 +1,13 @@
 from base.base import Base
 from selenium.webdriver.common.by import By
 import time
+from log.log import Logger
 import random
 import traceback
 from xiaoeXapth_package.deal_or_bidOpen.evaluationBid_entrance import EvaluationBid_entrance
-
 class Expert(Base):
     evaluationBid_entrance = EvaluationBid_entrance()
+    logger = Logger()
     username_input = "//input[@placeholder='请输入账号']"#账号输入框
     password_input = "//input[@placeholder='请输入密码']"#密码输入框
     img = "//input[@placeholder='请输入图形码']/ancestor::div[@class='w-full aui-padded-r-10']/following-sibling::div/img"#图片验证码
@@ -73,21 +74,19 @@ class Expert(Base):
                 time.sleep(0.5)
                 nowUrl = self.get_nowUrl()#获取当前url地址
                 if str(nowUrl) != Base.expert_login_url:
+                    self.drive.implicitly_wait(3)
                     self.in_project_click(projectNumber=projectNumber)
                     time.sleep(0.1)
                     if isAgree[0] == "disAgree" :
                         self.click(self.know_locator)
-                        self.update_isAgree("consent",username)
                         break
                     elif isAgree[0] == "consent":
-                        print("专家协议同意已经确认过"+isAgree[0])
                         break
                     else:
                         print("专家协议类型错误"+isAgree[0])
         except (Exception,BaseException):
             error = traceback.format_exc()
             print(error)
-            self.update_isAgree("consent",username)
 
     def electGroup_click(self):#点击推选组长
         self.click(self.electGroup_locator)#点击推选组长
@@ -106,6 +105,7 @@ class Expert(Base):
                     a =random.randint(0,len(username)-1)#随机生成推选评委
                     self.elect_click(name=name[a])#点击推选
                     time.sleep(0.2)
+                    self.update_isAgree("consent",username[i],projectNumber)
                 except (Exception, BaseException):
                     exstr = traceback.format_exc()
                     print(exstr)
@@ -119,7 +119,7 @@ class Expert(Base):
 
     def get_group(self):#获取组长评委
         review = self.get_text(self.group_locator)
-        print("---------------------"+review+"---------------------")
+        return review
 
     def review_click(self,buttonCount):#专家选择评标类型
         time.sleep(0.2)
@@ -165,7 +165,7 @@ class Expert(Base):
             score_locator = (By.XPATH,score_input)
             score = random.randint(20,40)
             try:#用来判断有多少个评分点
-                time.sleep(0.15)
+                time.sleep(0.5)
                 if self.is_interactive(score_locator) is True:#判断元素是否可交互
                     self.short_send_keys(score_locator,score)
                 else:
@@ -256,14 +256,12 @@ class Expert(Base):
                 signature_examine2 = self.examine2(i)
                 signature_examine_locator1 = (By.XPATH,signature_examine1)
                 signature_examine_locator2 = (By.XPATH,signature_examine2)
-
                 try:
                     self.short_click(signature_examine_locator2)#点击查看
                 except Exception:
                     try:
                         self.short_click(signature_examine_locator1)#点击查看
                     except:
-                        print("签章结束！")
                         break
                 time.sleep(0.1)
                 self.roll_Id("pdfFile-dialog")#根据id滑动窗体到底部

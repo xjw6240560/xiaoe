@@ -38,19 +38,14 @@ class Bidflow(Base):#
     def login(self):
         #输入账号
         self.send_keys(self.usersname_locator,"15212345678")
-        self.drive.implicitly_wait(5)
         #输入密码
         self.send_keys(self.password_locator,"ndx111")
-        self.drive.implicitly_wait(5)
         #保存验证码图片
         self.savePictrue(self.pictrue_locator)
-        self.drive.implicitly_wait(5)
         #识别验证码
         yzm = self.getPicPassword()
-        self.drive.implicitly_wait(5)
         #输入验证码
         self.send_keys(self.pic_input_locator,yzm)
-        self.drive.implicitly_wait(5)
         #点击登入
         self.click(self.login_button_locator)
 

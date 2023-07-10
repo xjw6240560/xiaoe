@@ -29,6 +29,7 @@ class CreateProjectMethod(Base):
     enterpriseInput = "//div[contains(text(),'邀请投标单位')]/following-sibling::div[1]/div/div/input"#企业输入框
     find = "//button//span[contains(text(),'查找')]"#查找
     add = "//div//span[contains(text(),'添加')]"#添加企业
+    isApplyFee = "//label[contains(text(),'是否收取报名费')]/following-sibling::div/div/label//span[text()='否']"
     close = "//div[contains(text(),'邀请投标单位')]/preceding-sibling::div[text()='×']"#点击关闭
     tenderOrganizationType = "//label[contains(text(),'招标组织方式:')]/following-sibling::div/div/div/input"#招标组织方式
     oneselfTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'自主招标')]"#自主招标
@@ -67,7 +68,7 @@ class CreateProjectMethod(Base):
     marginPaymentWay = "//label[contains(text(),'保证金缴纳方式:')]/following-sibling::div/div/div/input"#保证金缴纳方式
     EVE = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'电子保函')]"#保证金缴纳方式(电子保函)
     offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'线下缴纳')]"#保证金缴纳方式(线下缴纳)
-    EVE_or_offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'电子保函或线上缴纳')]"#选择线上和线下
+    EVE_or_offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'电子保函或线下缴纳')]"#选择线上和线下
     marginSum = "//label[contains(text(),'保证金额')]/following-sibling::div/div/input"#保证金额
     marginEndTime = "//label[contains(text(),'保证金缴纳截止时间:')]/following-sibling::div/div/input"#保证金缴纳截止日期
     tenderNotice = "//label[contains(text(),'招标公告:')]/following-sibling::div/div/div/div/div//span"#上传招标公告
@@ -108,6 +109,7 @@ class CreateProjectMethod(Base):
     find_locator = (By.XPATH,find)
     add_locator = (By.XPATH,add)
     close_locator = (By.XPATH,close)
+    isApplyFee_locator = (By.XPATH,isApplyFee)
     tenderMan_locator = (By.XPATH,tenderMan)
     tenderManUnicode_locator = (By.XPATH,tenderManUnicode)
     tenderManBank_locator = (By.XPATH,tenderManBank)
@@ -204,9 +206,9 @@ class CreateProjectMethod(Base):
                 elif tenderWay == 2:
                     self.send_keys(self.projectName_locator,"政采委托竞争性磋商招标项目"+self.get_nowTime_formatting())
                 elif tenderWay == 3:
-                    self.send_keys(self.projectName_locator,"政采自主竞争性谈判招标项目"+self.get_nowTime_formatting())
+                    self.send_keys(self.projectName_locator,"政采委托竞争性谈判招标项目"+self.get_nowTime_formatting())
                 elif tenderWay == 4:
-                    self.send_keys(self.projectName_locator,"政采自主单一采购来源招标项目"+self.get_nowTime_formatting())
+                    self.send_keys(self.projectName_locator,"政采委托单一采购来源招标项目"+self.get_nowTime_formatting())
                 else:
                     print("招标方式不正确："+str(tenderWay))
             else:
@@ -226,6 +228,9 @@ class CreateProjectMethod(Base):
 
     def build_click(self):#点击施工
         self.click(self.build_locator)
+
+    def isApplyFee_click(self):#报名费
+        self.click(self.isApplyFee_locator)
 
     def projectType_click(self):#点击项目类型
         self.click(self.projectType_locator)
@@ -286,13 +291,13 @@ class CreateProjectMethod(Base):
         self.click(self.entrustTender_locator)
 
     def projectPlace_send_keys(self):#输入项目地址
-        self.send_keys(self.projectPlace_locator,"江西省九江市濂溪县")
+        self.send_keys(self.projectPlace_locator,"福建省漳州市")
 
     def projectPlace_click(self):#点击项目地址
         self.click(self.projectPlace_locator)
 
     def projectPrice_send_keys(self):#输入项目估算价
-        self.send_keys(self.projectPrice_locator,"120.12")
+        self.send_keys(self.projectPrice_locator,"15684000")
 
     def projectDate_send_keys(self):#输入工期
         self.send_keys(self.projectDate_locator,"120")
@@ -304,7 +309,7 @@ class CreateProjectMethod(Base):
         self.send_keys(self.tenderLinkManNumber_locator,"15212345678")
 
     def linkPlace_send_keys(self):#输入联系地址
-        self.send_keys(self.linkPlace_locator,"江西省九江市濂溪县")
+        self.send_keys(self.linkPlace_locator,"福建省漳州市")
 
     def gencyLinkPlace_send_keys(self):#输入代理联系地址
         self.send_keys(self.gencyLinkPlace_loactor,'厦门市湖里区鼎丰财富中心')
@@ -377,7 +382,7 @@ class CreateProjectMethod(Base):
         self.click(self.EVE_or_offlinePayment_locator)
 
     def marginSum_send_keys(self):#保证金金额
-        self.send_keys(self.marginSum_locator,"120.12")
+        self.send_keys(self.marginSum_locator,"585000")
 
     def marginEndTime_send_keys(self):#保证金缴纳截止时间
         self.send_keys(self.marginEndTime_locator,self.get_nowtime(self.addtime))
@@ -395,7 +400,7 @@ class CreateProjectMethod(Base):
     def saveButton_click(self):#点击保存
         self.click(self.saveButton_locator)
         
-    def perfectProjectMessage(self):#完善项目信息
+    def perfectProjectMessage(self,role,projectNumber,projectType,tenderOrganizationType,tenderWay):#完善项目信息
         self.sectionNumber_send_keys()#输入标段编号
         self.sectionName_send_keys()#输入标段名称
         self.tenderFileBeginTime_send_keys()#输入招标文件领取开始时间
@@ -420,6 +425,7 @@ class CreateProjectMethod(Base):
         # self.EVE_click()#点击保函申请
         self.EVE_or_offlinePayment_click()#点击线上和线下
         self.marginSum_send_keys()#输入保证金金额
+        # self.isApplyFee_click()#点击是否缴纳报名费
         self.marginEndTime_send_keys()#输入保证金戒指递交时间
         self.tenderNotice_click()#点击招标公告按钮
         self.upload_file("pdf")#上传招标公告
@@ -427,7 +433,17 @@ class CreateProjectMethod(Base):
         self.upload_file("pdf")#上传招标文件
         time.sleep(0.3)
         self.saveButton_click()#点击保存按钮
-        time.sleep(0.5)
+        time.sleep(0.3)
+        errorText = self.home_page_or_workbench.errorMessage_text()
+        if (errorText is not None) and (errorText.find("成功") < 0):
+            self.logger.debugText(errorText=errorText)
+        else:
+            if role == '1':
+                self.insert_projectData(projectNumber=projectNumber,projectType=projectType,tenderOrganizationType='1',tenderWay=tenderWay)#数据库创建项目
+                self.logger.debugText(projectNumber=projectNumber,errorText='项目添加完成！')
+            elif role == '0':
+                self.insert_projectData(projectNumber=projectNumber,projectType=projectType,tenderOrganizationType=tenderOrganizationType,tenderWay=tenderWay)#数据库创建项目
+                self.logger.debugText(projectNumber,'项目添加完成！')
 
     def insert_projectData(self,projectNumber,projectType,tenderOrganizationType,tenderWay):#插入项目数据
         self.connect_mysql()
@@ -436,7 +452,7 @@ class CreateProjectMethod(Base):
             self.insert_and_update_sql(sql,projectNumber,projectType,tenderOrganizationType,tenderWay)
         except(Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.debugText(projectNumber=projectNumber,errorText=error)
 
 #政采项目
 
@@ -494,13 +510,13 @@ class CreateProjectMethod(Base):
             print("招标方式不正确："+ str(tenderWay))
 
 
-    def tender_or_tenderAgent(self,role,projectNumber,projectType,tenderOrganizationType):#根据角色创建不同的项目 0 招标人 1招标代理
+    def tender_or_tenderAgent(self,role,projectNumber,projectType,tenderOrganizationType,tenderWay):#根据角色创建不同的项目 0 招标人 1招标代理
         if role =='0':
             self.tenderOrganizationType_click()#点击招标组织方式
             #自主招标
             if tenderOrganizationType =="0":
                 self.oneselfTender_click()#选择自主招标
-                self.perfectProjectMessage()#完善项目信息
+                self.perfectProjectMessage(role,projectNumber,projectType,tenderOrganizationType,tenderWay)#完善项目信息
             #委托招标
             elif tenderOrganizationType == "1":
                 self.entrustTender_click()#委托招标
@@ -525,7 +541,7 @@ class CreateProjectMethod(Base):
                 self.gencyLinkMan_send_keys()#输入代理联系人
                 self.gencyLinkManNumber_send_keys()#输入代理联系人手机号
                 self.gencyLinkPlace_send_keys()#输入代理联系地址
-                self.perfectProjectMessage()#完善企业信息
+                self.perfectProjectMessage(role,projectNumber,projectType,tenderOrganizationType,tenderWay)#完善企业信息
             else:
                 print("招标类型不符")
         elif role =='1':
@@ -536,6 +552,6 @@ class CreateProjectMethod(Base):
             self.agentLinkMan_send_keys()#代理联系人
             self.agentLinkManPhone_send_keys()#代理联系人手机号
             self.agentLinkPlace_send_keys()#招标代理角色联系地址
-            self.perfectProjectMessage()#完善项目信息
+            self.perfectProjectMessage(role,projectNumber,projectType,tenderOrganizationType,tenderWay)#完善项目信息
 
 

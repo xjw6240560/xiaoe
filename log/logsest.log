@@ -1,0 +1,2031 @@
+[2023-06-29 18:26:36] [DEBUG] 142354353
+[2023-06-29 18:27:08] [DEBUG] 142354353
+[2023-06-29 18:27:08] [DEBUG] 122143
+[2023-06-29 18:27:08] [DEBUG] 122143
+[2023-06-29 18:27:59] [DEBUG] 142354353
+[2023-06-29 18:27:59] [DEBUG] Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 175, in query_sql
+    cursor.execute(sql,args)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 158, in execute
+    result = self._query(query)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 325, in _query
+    conn.query(q)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 549, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 779, in _read_query_result
+    result.read()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 1157, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 729, in _read_packet
+    packet.raise_for_error()
+  File "D:\Python\Python310\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python\Python310\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'ceshi.project1' doesn't exist")
+
+[2023-06-29 18:27:59] [DEBUG] Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 287, in query_projectData
+    return result[0]
+TypeError: 'NoneType' object is not subscriptable
+
+[2023-06-30 09:55:11] [DEBUG] 20230628133541Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 175, in query_sql
+    cursor.execute(sql,args)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 158, in execute
+    result = self._query(query)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 325, in _query
+    conn.query(q)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 549, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 779, in _read_query_result
+    result.read()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 1157, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 729, in _read_packet
+    packet.raise_for_error()
+  File "D:\Python\Python310\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python\Python310\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'ceshi.project1' doesn't exist")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 286, in query_projectData
+    result = self.query_sql(sql,projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 180, in query_sql
+    self.logger.debug(error)
+TypeError: Logger.debug() missing 1 required positional argument: 'message'
+
+[2023-06-30 09:56:16] [DEBUG] 20230628133541
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 175, in query_sql
+    cursor.execute(sql,args)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 158, in execute
+    result = self._query(query)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 325, in _query
+    conn.query(q)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 549, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 779, in _read_query_result
+    result.read()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 1157, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 729, in _read_packet
+    packet.raise_for_error()
+  File "D:\Python\Python310\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python\Python310\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'ceshi.project1' doesn't exist")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 286, in query_projectData
+    result = self.query_sql(sql,projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 180, in query_sql
+    self.logger.debug(error)
+TypeError: Logger.debug() missing 1 required positional argument: 'message'
+
+[2023-06-30 10:07:18] [INFO] Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 175, in query_sql
+    cursor.execute(sql,args)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 158, in execute
+    result = self._query(query)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 325, in _query
+    conn.query(q)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 549, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 779, in _read_query_result
+    result.read()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 1157, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 729, in _read_packet
+    packet.raise_for_error()
+  File "D:\Python\Python310\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python\Python310\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'ceshi.project1' doesn't exist")
+
+[2023-06-30 10:07:18] [DEBUG] 20230628133541
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 287, in query_projectData
+    return result[0]
+TypeError: 'NoneType' object is not subscriptable
+
+[2023-06-30 10:07:45] [DEBUG] 20230630100722
+工程项目添加成功！
+[2023-06-30 10:34:37] [DEBUG] 20230630103414
+工程项目添加成功！
+[2023-06-30 10:56:04] [DEBUG] 20230630113919
+投标文件为空，无法参与开标
+[2023-06-30 11:04:32] [DEBUG] 项目编号：20230630103414投标人：15222222222
+投标文件为空，无法参与开标
+[2023-06-30 11:05:45] [DEBUG] 项目编号：20230630103414  投标人：15222222222
+投标文件为空，无法参与开标
+[2023-06-30 11:24:16] [DEBUG] 项目编号：20230630103414  投标人：15222222222
+投标文件为空，无法参与开标
+[2023-06-30 11:29:08] [DEBUG] 项目编号：20230630103414  投标人：15222222222
+投标文件为空，无法参与开标
+[2023-06-30 11:29:18] [DEBUG] 项目编号：20230630103414  投标人：15260621329
+操作成功
+[2023-06-30 11:29:29] [DEBUG] 项目编号：20230630103414  投标人：13954214241
+操作成功
+[2023-06-30 11:29:38] [DEBUG] 项目编号：20230630103414  投标人：15255555555
+操作成功
+[2023-06-30 11:36:08] [DEBUG] 项目编号：20230630103414  投标人：15222222222
+投标文件为空，无法参与开标
+[2023-06-30 11:36:19] [DEBUG] 项目编号：20230630103414  投标人：15260621329
+未找到解密按钮！
+[2023-06-30 11:36:29] [DEBUG] 项目编号：20230630103414  投标人：13954214241
+未找到解密按钮！
+[2023-06-30 11:36:40] [DEBUG] 项目编号：20230630103414  投标人：15255555555
+未找到解密按钮！
+[2023-06-30 11:39:42] [DEBUG] 项目编号：20230630113919  投标人：
+工程项目添加成功！
+[2023-06-30 11:41:09] [DEBUG] 项目编号：20230630113919  投标人：15222222222
+上传回单
+[2023-06-30 11:41:15] [DEBUG] 项目编号：20230630113919  投标人：15222222222
+上传成功
+[2023-06-30 11:41:16] [DEBUG] 项目编号：20230630113919  投标人：15222222222
+上传投标文件
+[2023-06-30 11:41:23] [DEBUG] 项目编号：20230630113919  投标人：15222222222
+上传成功
+[2023-06-30 11:41:36] [DEBUG] 项目编号：20230630113919  投标人：15260621329
+上传回单
+[2023-06-30 11:41:42] [DEBUG] 项目编号：20230630113919  投标人：15260621329
+上传成功
+[2023-06-30 11:41:43] [DEBUG] 项目编号：20230630113919  投标人：15260621329
+上传投标文件
+[2023-06-30 11:41:50] [DEBUG] 项目编号：20230630113919  投标人：15260621329
+上传成功
+[2023-06-30 11:41:59] [DEBUG] 项目编号：20230630113919  投标人：13954214241
+上传回单
+[2023-06-30 11:42:05] [DEBUG] 项目编号：20230630113919  投标人：13954214241
+上传成功
+[2023-06-30 11:42:06] [DEBUG] 项目编号：20230630113919  投标人：13954214241
+上传投标文件
+[2023-06-30 11:42:12] [DEBUG] 项目编号：20230630113919  投标人：13954214241
+上传成功
+[2023-06-30 11:42:22] [DEBUG] 项目编号：20230630113919  投标人：15255555555
+上传回单
+[2023-06-30 11:42:27] [DEBUG] 项目编号：20230630113919  投标人：15255555555
+上传成功
+[2023-06-30 11:42:29] [DEBUG] 项目编号：20230630113919  投标人：15255555555
+上传投标文件
+[2023-06-30 11:42:35] [DEBUG] 项目编号：20230630113919  投标人：15255555555
+上传成功
+[2023-06-30 13:53:24] [DEBUG] 项目编号：20230630103414  投标人：
+评委已经添加！
+[2023-06-30 13:53:24] [DEBUG] 项目编号：20230630103414  投标人：
+评委已经添加！
+[2023-06-30 13:53:25] [DEBUG] 项目编号：20230630103414  投标人：
+评委已经添加！
+[2023-06-30 15:18:56] [DEBUG] 项目编号：20230630103414  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 423, in test_judge_score
+    self.expert.submit_result_click()#点击提交审核结果
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 241, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 400, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x0116A813+48355]
+	(No symbol) [0x010FC4B1]
+	(No symbol) [0x01005220]
+	(No symbol) [0x01031846]
+	(No symbol) [0x01029F5C]
+	(No symbol) [0x0104A73C]
+	(No symbol) [0x01029A36]
+	(No symbol) [0x0104AA94]
+	(No symbol) [0x0105C922]
+	(No symbol) [0x0104A536]
+	(No symbol) [0x010282DC]
+	(No symbol) [0x010293DD]
+	GetHandleVerifier [0x013CAABD+2539405]
+	GetHandleVerifier [0x0140A78F+2800735]
+	GetHandleVerifier [0x0140456C+2775612]
+	GetHandleVerifier [0x011F51E0+616112]
+	(No symbol) [0x01105F8C]
+	(No symbol) [0x01102328]
+	(No symbol) [0x0110240B]
+	(No symbol) [0x010F4FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-06-30 15:40:56] [DEBUG] 项目编号：20230630103414  投标人：15222222222
+投标文件为空，无法参与开标
+[2023-06-30 15:41:06] [DEBUG] 项目编号：20230630103414  投标人：15260621329
+未找到解密按钮！
+[2023-06-30 15:41:51] [DEBUG] 项目编号：20230630113919  投标人：15222222222
+操作成功
+[2023-06-30 15:42:02] [DEBUG] 项目编号：20230630113919  投标人：15260621329
+操作成功
+[2023-06-30 15:42:11] [DEBUG] 项目编号：20230630113919  投标人：13954214241
+操作成功
+[2023-06-30 15:42:21] [DEBUG] 项目编号：20230630113919  投标人：15255555555
+操作成功
+[2023-06-30 16:05:22] [INFO] Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 164, in insert_and_update_sql
+    cursor.execute(sql,args)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 158, in execute
+    result = self._query(query)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 325, in _query
+    conn.query(q)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 549, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 779, in _read_query_result
+    result.read()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 1157, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 729, in _read_packet
+    packet.raise_for_error()
+  File "D:\Python\Python310\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python\Python310\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1241, 'Operand should contain 1 column(s)')
+
+[2023-06-30 16:05:26] [INFO] Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 164, in insert_and_update_sql
+    cursor.execute(sql,args)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 158, in execute
+    result = self._query(query)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 325, in _query
+    conn.query(q)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 549, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 779, in _read_query_result
+    result.read()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 1157, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 729, in _read_packet
+    packet.raise_for_error()
+  File "D:\Python\Python310\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python\Python310\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1241, 'Operand should contain 1 column(s)')
+
+[2023-06-30 16:05:31] [INFO] Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 164, in insert_and_update_sql
+    cursor.execute(sql,args)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 158, in execute
+    result = self._query(query)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 325, in _query
+    conn.query(q)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 549, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 779, in _read_query_result
+    result.read()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 1157, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 729, in _read_packet
+    packet.raise_for_error()
+  File "D:\Python\Python310\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python\Python310\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1241, 'Operand should contain 1 column(s)')
+
+[2023-06-30 16:05:37] [INFO] Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 164, in insert_and_update_sql
+    cursor.execute(sql,args)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 158, in execute
+    result = self._query(query)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 325, in _query
+    conn.query(q)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 549, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 779, in _read_query_result
+    result.read()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 1157, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 729, in _read_packet
+    packet.raise_for_error()
+  File "D:\Python\Python310\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python\Python310\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1241, 'Operand should contain 1 column(s)')
+
+[2023-06-30 16:05:42] [INFO] Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 164, in insert_and_update_sql
+    cursor.execute(sql,args)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 158, in execute
+    result = self._query(query)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 325, in _query
+    conn.query(q)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 549, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 779, in _read_query_result
+    result.read()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 1157, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 729, in _read_packet
+    packet.raise_for_error()
+  File "D:\Python\Python310\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python\Python310\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1241, 'Operand should contain 1 column(s)')
+
+[2023-06-30 16:05:47] [INFO] Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 164, in insert_and_update_sql
+    cursor.execute(sql,args)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 158, in execute
+    result = self._query(query)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 325, in _query
+    conn.query(q)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 549, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 779, in _read_query_result
+    result.read()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 1157, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 729, in _read_packet
+    packet.raise_for_error()
+  File "D:\Python\Python310\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python\Python310\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1241, 'Operand should contain 1 column(s)')
+
+[2023-06-30 16:48:06] [DEBUG] 项目编号：20230630113919  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 423, in test_judge_score
+    self.expert.submit_result_click()#点击提交审核结果
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 236, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x0029A813+48355]
+	(No symbol) [0x0022C4B1]
+	(No symbol) [0x00135220]
+	(No symbol) [0x00161846]
+	(No symbol) [0x00159F5C]
+	(No symbol) [0x0017A73C]
+	(No symbol) [0x00159A36]
+	(No symbol) [0x0017AA94]
+	(No symbol) [0x0018C922]
+	(No symbol) [0x0017A536]
+	(No symbol) [0x001582DC]
+	(No symbol) [0x001593DD]
+	GetHandleVerifier [0x004FAABD+2539405]
+	GetHandleVerifier [0x0053A78F+2800735]
+	GetHandleVerifier [0x0053456C+2775612]
+	GetHandleVerifier [0x003251E0+616112]
+	(No symbol) [0x00235F8C]
+	(No symbol) [0x00232328]
+	(No symbol) [0x0023240B]
+	(No symbol) [0x00224FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+	(No symbol) [0x00000000]
+
+
+[2023-06-30 16:48:19] [DEBUG] 项目编号：20230630113919  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 423, in test_judge_score
+    self.expert.submit_result_click()#点击提交审核结果
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 236, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x0029A813+48355]
+	(No symbol) [0x0022C4B1]
+	(No symbol) [0x00135220]
+	(No symbol) [0x00161846]
+	(No symbol) [0x00159F5C]
+	(No symbol) [0x0017A73C]
+	(No symbol) [0x00159A36]
+	(No symbol) [0x0017AA94]
+	(No symbol) [0x0018C922]
+	(No symbol) [0x0017A536]
+	(No symbol) [0x001582DC]
+	(No symbol) [0x001593DD]
+	GetHandleVerifier [0x004FAABD+2539405]
+	GetHandleVerifier [0x0053A78F+2800735]
+	GetHandleVerifier [0x0053456C+2775612]
+	GetHandleVerifier [0x003251E0+616112]
+	(No symbol) [0x00235F8C]
+	(No symbol) [0x00232328]
+	(No symbol) [0x0023240B]
+	(No symbol) [0x00224FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+	(No symbol) [0x00000000]
+
+
+[2023-06-30 16:48:31] [DEBUG] 项目编号：20230630113919  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 423, in test_judge_score
+    self.expert.submit_result_click()#点击提交审核结果
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 236, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x0029A813+48355]
+	(No symbol) [0x0022C4B1]
+	(No symbol) [0x00135220]
+	(No symbol) [0x00161846]
+	(No symbol) [0x00159F5C]
+	(No symbol) [0x0017A73C]
+	(No symbol) [0x00159A36]
+	(No symbol) [0x0017AA94]
+	(No symbol) [0x0018C922]
+	(No symbol) [0x0017A536]
+	(No symbol) [0x001582DC]
+	(No symbol) [0x001593DD]
+	GetHandleVerifier [0x004FAABD+2539405]
+	GetHandleVerifier [0x0053A78F+2800735]
+	GetHandleVerifier [0x0053456C+2775612]
+	GetHandleVerifier [0x003251E0+616112]
+	(No symbol) [0x00235F8C]
+	(No symbol) [0x00232328]
+	(No symbol) [0x0023240B]
+	(No symbol) [0x00224FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+	(No symbol) [0x00000000]
+
+
+[2023-06-30 16:48:49] [DEBUG] 项目编号：20230630113919  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 423, in test_judge_score
+    self.expert.submit_result_click()#点击提交审核结果
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 236, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x0029A813+48355]
+	(No symbol) [0x0022C4B1]
+	(No symbol) [0x00135220]
+	(No symbol) [0x00161846]
+	(No symbol) [0x00159F5C]
+	(No symbol) [0x0017A73C]
+	(No symbol) [0x00159A36]
+	(No symbol) [0x0017AA94]
+	(No symbol) [0x0018C922]
+	(No symbol) [0x0017A536]
+	(No symbol) [0x001582DC]
+	(No symbol) [0x001593DD]
+	GetHandleVerifier [0x004FAABD+2539405]
+	GetHandleVerifier [0x0053A78F+2800735]
+	GetHandleVerifier [0x0053456C+2775612]
+	GetHandleVerifier [0x003251E0+616112]
+	(No symbol) [0x00235F8C]
+	(No symbol) [0x00232328]
+	(No symbol) [0x0023240B]
+	(No symbol) [0x00224FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+	(No symbol) [0x00000000]
+
+
+[2023-06-30 19:52:31] [DEBUG] 项目编号：20230630195208  投标人：
+工程项目添加成功！
+[2023-06-30 19:53:36] [DEBUG] 项目编号：20230630195313  投标人：
+工程项目添加成功！
+[2023-07-03 19:04:37] [DEBUG] 项目编号：20230703190415  投标人：
+政采项目添加成功！
+[2023-07-03 19:09:46] [DEBUG] 项目编号：20230703190415  投标人：15222222222
+上传回单
+[2023-07-03 19:09:52] [DEBUG] 项目编号：20230703190415  投标人：15222222222
+上传成功
+[2023-07-03 19:09:53] [DEBUG] 项目编号：20230703190415  投标人：15222222222
+上传投标文件
+[2023-07-03 19:10:00] [DEBUG] 项目编号：20230703190415  投标人：15222222222
+当前项目已开标无法上传投标文件
+[2023-07-03 19:21:25] [DEBUG] 项目编号：20230703192102  投标人：
+政采项目添加成功！
+[2023-07-03 19:22:38] [DEBUG] 项目编号：20230703192216  投标人：
+政采项目添加成功！
+[2023-07-03 20:28:28] [DEBUG] 项目编号：20230703202805  投标人：
+工程项目添加成功！
+[2023-07-03 20:52:57] [DEBUG] 项目编号：20230703205233  投标人：
+工程项目添加成功！
+[2023-07-03 20:54:21] [DEBUG] 项目编号：20230703190415  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 128, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 276, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 289, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-03 21:04:10] [DEBUG] 项目编号：20230703210346  投标人：
+工程项目添加成功！
+[2023-07-03 21:11:37] [DEBUG] 项目编号：20230703211105  投标人：
+工程项目添加成功！
+[2023-07-03 21:15:02] [DEBUG] 项目编号：20230703190415  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 128, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 276, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 289, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-03 21:16:15] [DEBUG] 项目编号：20230703211105  投标人：15222222222
+上传回单
+[2023-07-03 21:16:21] [DEBUG] 项目编号：20230703211105  投标人：15222222222
+上传成功
+[2023-07-03 21:16:22] [DEBUG] 项目编号：20230703211105  投标人：15222222222
+上传投标文件
+[2023-07-03 21:16:29] [DEBUG] 项目编号：20230703211105  投标人：15222222222
+上传成功
+[2023-07-03 22:13:46] [DEBUG] 项目编号：20230703221315  投标人：
+政采项目添加成功！
+[2023-07-03 22:37:11] [DEBUG] 项目编号：20230703223647  投标人：
+工程项目添加成功！
+[2023-07-03 23:52:20] [DEBUG] 项目编号：20230703235158  投标人：
+政采项目添加成功！
+[2023-07-05 10:21:51] [DEBUG] 项目编号：20230705102119  投标人：
+工程项目添加成功！
+[2023-07-05 10:24:14] [DEBUG] 项目编号：20230705102119  投标人：15222222222
+上传回单
+[2023-07-05 10:24:20] [DEBUG] 项目编号：20230705102119  投标人：15222222222
+上传成功
+[2023-07-05 10:24:22] [DEBUG] 项目编号：20230705102119  投标人：15222222222
+上传投标文件
+[2023-07-05 10:24:28] [DEBUG] 项目编号：20230705102119  投标人：15222222222
+上传成功
+[2023-07-05 10:26:54] [DEBUG] 项目编号：20230705102119  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 128, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 267, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 289, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-05 10:27:01] [DEBUG] 项目编号：20230705102119  投标人：15260621329
+上传回单
+[2023-07-05 10:27:07] [DEBUG] 项目编号：20230705102119  投标人：15260621329
+上传成功
+[2023-07-05 10:27:08] [DEBUG] 项目编号：20230705102119  投标人：15260621329
+上传投标文件
+[2023-07-05 10:27:15] [DEBUG] 项目编号：20230705102119  投标人：15260621329
+上传成功
+[2023-07-05 10:27:23] [DEBUG] 项目编号：20230705102119  投标人：13954214241
+上传回单
+[2023-07-05 10:27:29] [DEBUG] 项目编号：20230705102119  投标人：13954214241
+上传成功
+[2023-07-05 10:27:30] [DEBUG] 项目编号：20230705102119  投标人：13954214241
+上传投标文件
+[2023-07-05 10:27:36] [DEBUG] 项目编号：20230705102119  投标人：13954214241
+上传成功
+[2023-07-05 10:27:44] [DEBUG] 项目编号：20230705102119  投标人：15255555555
+上传回单
+[2023-07-05 10:27:50] [DEBUG] 项目编号：20230705102119  投标人：15255555555
+上传成功
+[2023-07-05 10:27:51] [DEBUG] 项目编号：20230705102119  投标人：15255555555
+上传投标文件
+[2023-07-05 10:27:58] [DEBUG] 项目编号：20230705102119  投标人：15255555555
+上传成功
+[2023-07-05 11:01:10] [DEBUG] 项目编号：20230705110045  投标人：
+工程项目添加成功！
+[2023-07-05 11:02:39] [DEBUG] 项目编号：20230705110045  投标人：15222222222
+上传成功
+[2023-07-05 11:02:47] [DEBUG] 项目编号：20230705110045  投标人：15222222222
+上传成功
+[2023-07-05 11:03:04] [DEBUG] 项目编号：20230705110045  投标人：15260621329
+上传成功
+[2023-07-05 11:03:12] [DEBUG] 项目编号：20230705110045  投标人：15260621329
+上传成功
+[2023-07-05 11:05:20] [DEBUG] 项目编号：20230705110045  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 128, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 267, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 289, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-05 11:05:29] [DEBUG] 项目编号：20230705110045  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 128, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 267, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 289, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-05 11:15:14] [DEBUG] 项目编号：20230705110045  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 323, in select_bid_workbench
+    self.engineerApplyProject_click()#点击工程报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 221, in engineerApplyProject_click
+    self.click(self.engineerApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00B7A813+48355]
+	(No symbol) [0x00B0C4B1]
+	(No symbol) [0x00A15220]
+	(No symbol) [0x00A41846]
+	(No symbol) [0x00A39F5C]
+	(No symbol) [0x00A5A73C]
+	(No symbol) [0x00A39A36]
+	(No symbol) [0x00A5AA94]
+	(No symbol) [0x00A6C922]
+	(No symbol) [0x00A5A536]
+	(No symbol) [0x00A382DC]
+	(No symbol) [0x00A393DD]
+	GetHandleVerifier [0x00DDAABD+2539405]
+	GetHandleVerifier [0x00E1A78F+2800735]
+	GetHandleVerifier [0x00E1456C+2775612]
+	GetHandleVerifier [0x00C051E0+616112]
+	(No symbol) [0x00B15F8C]
+	(No symbol) [0x00B12328]
+	(No symbol) [0x00B1240B]
+	(No symbol) [0x00B04FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:15:24] [DEBUG] 项目编号：20230705110045  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 323, in select_bid_workbench
+    self.engineerApplyProject_click()#点击工程报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 221, in engineerApplyProject_click
+    self.click(self.engineerApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00B7A813+48355]
+	(No symbol) [0x00B0C4B1]
+	(No symbol) [0x00A15220]
+	(No symbol) [0x00A41846]
+	(No symbol) [0x00A39F5C]
+	(No symbol) [0x00A5A73C]
+	(No symbol) [0x00A39A36]
+	(No symbol) [0x00A5AA94]
+	(No symbol) [0x00A6C922]
+	(No symbol) [0x00A5A536]
+	(No symbol) [0x00A382DC]
+	(No symbol) [0x00A393DD]
+	GetHandleVerifier [0x00DDAABD+2539405]
+	GetHandleVerifier [0x00E1A78F+2800735]
+	GetHandleVerifier [0x00E1456C+2775612]
+	GetHandleVerifier [0x00C051E0+616112]
+	(No symbol) [0x00B15F8C]
+	(No symbol) [0x00B12328]
+	(No symbol) [0x00B1240B]
+	(No symbol) [0x00B04FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:15:29] [DEBUG] 项目编号：20230705110045  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 323, in select_bid_workbench
+    self.engineerApplyProject_click()#点击工程报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 221, in engineerApplyProject_click
+    self.click(self.engineerApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00B7A813+48355]
+	(No symbol) [0x00B0C4B1]
+	(No symbol) [0x00A15220]
+	(No symbol) [0x00A41846]
+	(No symbol) [0x00A39F5C]
+	(No symbol) [0x00A5A73C]
+	(No symbol) [0x00A39A36]
+	(No symbol) [0x00A5AA94]
+	(No symbol) [0x00A6C922]
+	(No symbol) [0x00A5A536]
+	(No symbol) [0x00A382DC]
+	(No symbol) [0x00A393DD]
+	GetHandleVerifier [0x00DDAABD+2539405]
+	GetHandleVerifier [0x00E1A78F+2800735]
+	GetHandleVerifier [0x00E1456C+2775612]
+	GetHandleVerifier [0x00C051E0+616112]
+	(No symbol) [0x00B15F8C]
+	(No symbol) [0x00B12328]
+	(No symbol) [0x00B1240B]
+	(No symbol) [0x00B04FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:16:31] [DEBUG] 项目编号：20230705110045  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 323, in select_bid_workbench
+    self.engineerApplyProject_click()#点击工程报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 221, in engineerApplyProject_click
+    self.click(self.engineerApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00B7A813+48355]
+	(No symbol) [0x00B0C4B1]
+	(No symbol) [0x00A15220]
+	(No symbol) [0x00A41846]
+	(No symbol) [0x00A39F5C]
+	(No symbol) [0x00A5A73C]
+	(No symbol) [0x00A39A36]
+	(No symbol) [0x00A5AA94]
+	(No symbol) [0x00A6C922]
+	(No symbol) [0x00A5A536]
+	(No symbol) [0x00A382DC]
+	(No symbol) [0x00A393DD]
+	GetHandleVerifier [0x00DDAABD+2539405]
+	GetHandleVerifier [0x00E1A78F+2800735]
+	GetHandleVerifier [0x00E1456C+2775612]
+	GetHandleVerifier [0x00C051E0+616112]
+	(No symbol) [0x00B15F8C]
+	(No symbol) [0x00B12328]
+	(No symbol) [0x00B1240B]
+	(No symbol) [0x00B04FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:16:38] [DEBUG] 项目编号：20230705110045  投标人：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 323, in select_bid_workbench
+    self.engineerApplyProject_click()#点击工程报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 221, in engineerApplyProject_click
+    self.click(self.engineerApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00B7A813+48355]
+	(No symbol) [0x00B0C4B1]
+	(No symbol) [0x00A15220]
+	(No symbol) [0x00A41846]
+	(No symbol) [0x00A39F5C]
+	(No symbol) [0x00A5A73C]
+	(No symbol) [0x00A39A36]
+	(No symbol) [0x00A5AA94]
+	(No symbol) [0x00A6C922]
+	(No symbol) [0x00A5A536]
+	(No symbol) [0x00A382DC]
+	(No symbol) [0x00A393DD]
+	GetHandleVerifier [0x00DDAABD+2539405]
+	GetHandleVerifier [0x00E1A78F+2800735]
+	GetHandleVerifier [0x00E1456C+2775612]
+	GetHandleVerifier [0x00C051E0+616112]
+	(No symbol) [0x00B15F8C]
+	(No symbol) [0x00B12328]
+	(No symbol) [0x00B1240B]
+	(No symbol) [0x00B04FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:22:01] [DEBUG] 项目编号：20230705110045  投标人：
+元素不可交互
+[2023-07-05 11:22:08] [DEBUG] 项目编号：20230705110045  投标人：
+元素不可交互
+[2023-07-05 11:22:15] [DEBUG] 项目编号：20230705110045  投标人：
+元素不可交互
+[2023-07-05 11:32:53] [DEBUG] 项目编号：20230705112645  投标人：
+元素不可交互Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 328, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 253, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00B7A813+48355]
+	(No symbol) [0x00B0C4B1]
+	(No symbol) [0x00A15220]
+	(No symbol) [0x00A41846]
+	(No symbol) [0x00A39F5C]
+	(No symbol) [0x00A5A73C]
+	(No symbol) [0x00A39A36]
+	(No symbol) [0x00A5AA94]
+	(No symbol) [0x00A6C922]
+	(No symbol) [0x00A5A536]
+	(No symbol) [0x00A382DC]
+	(No symbol) [0x00A393DD]
+	GetHandleVerifier [0x00DDAABD+2539405]
+	GetHandleVerifier [0x00E1A78F+2800735]
+	GetHandleVerifier [0x00E1456C+2775612]
+	GetHandleVerifier [0x00C051E0+616112]
+	(No symbol) [0x00B15F8C]
+	(No symbol) [0x00B12328]
+	(No symbol) [0x00B1240B]
+	(No symbol) [0x00B04FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:32:59] [DEBUG] 项目编号：20230705112645  投标人：
+元素不可交互Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 328, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 253, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00B7A813+48355]
+	(No symbol) [0x00B0C4B1]
+	(No symbol) [0x00A15220]
+	(No symbol) [0x00A41846]
+	(No symbol) [0x00A39F5C]
+	(No symbol) [0x00A5A73C]
+	(No symbol) [0x00A39A36]
+	(No symbol) [0x00A5AA94]
+	(No symbol) [0x00A6C922]
+	(No symbol) [0x00A5A536]
+	(No symbol) [0x00A382DC]
+	(No symbol) [0x00A393DD]
+	GetHandleVerifier [0x00DDAABD+2539405]
+	GetHandleVerifier [0x00E1A78F+2800735]
+	GetHandleVerifier [0x00E1456C+2775612]
+	GetHandleVerifier [0x00C051E0+616112]
+	(No symbol) [0x00B15F8C]
+	(No symbol) [0x00B12328]
+	(No symbol) [0x00B1240B]
+	(No symbol) [0x00B04FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:33:07] [DEBUG] 项目编号：20230705112645  投标人：
+元素不可交互Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 328, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 253, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00B7A813+48355]
+	(No symbol) [0x00B0C4B1]
+	(No symbol) [0x00A15220]
+	(No symbol) [0x00A41846]
+	(No symbol) [0x00A39F5C]
+	(No symbol) [0x00A5A73C]
+	(No symbol) [0x00A39A36]
+	(No symbol) [0x00A5AA94]
+	(No symbol) [0x00A6C922]
+	(No symbol) [0x00A5A536]
+	(No symbol) [0x00A382DC]
+	(No symbol) [0x00A393DD]
+	GetHandleVerifier [0x00DDAABD+2539405]
+	GetHandleVerifier [0x00E1A78F+2800735]
+	GetHandleVerifier [0x00E1456C+2775612]
+	GetHandleVerifier [0x00C051E0+616112]
+	(No symbol) [0x00B15F8C]
+	(No symbol) [0x00B12328]
+	(No symbol) [0x00B1240B]
+	(No symbol) [0x00B04FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:34:25] [DEBUG] 项目编号：20230705112645  投标人：
+元素不可交互Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 328, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 253, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00B7A813+48355]
+	(No symbol) [0x00B0C4B1]
+	(No symbol) [0x00A15220]
+	(No symbol) [0x00A41846]
+	(No symbol) [0x00A39F5C]
+	(No symbol) [0x00A5A73C]
+	(No symbol) [0x00A39A36]
+	(No symbol) [0x00A5AA94]
+	(No symbol) [0x00A6C922]
+	(No symbol) [0x00A5A536]
+	(No symbol) [0x00A382DC]
+	(No symbol) [0x00A393DD]
+	GetHandleVerifier [0x00DDAABD+2539405]
+	GetHandleVerifier [0x00E1A78F+2800735]
+	GetHandleVerifier [0x00E1456C+2775612]
+	GetHandleVerifier [0x00C051E0+616112]
+	(No symbol) [0x00B15F8C]
+	(No symbol) [0x00B12328]
+	(No symbol) [0x00B1240B]
+	(No symbol) [0x00B04FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:35:45] [DEBUG] 项目编号：20230705112645  投标人：
+元素不可交互Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 328, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 253, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00B7A813+48355]
+	(No symbol) [0x00B0C4B1]
+	(No symbol) [0x00A15220]
+	(No symbol) [0x00A41846]
+	(No symbol) [0x00A39F5C]
+	(No symbol) [0x00A5A73C]
+	(No symbol) [0x00A39A36]
+	(No symbol) [0x00A5AA94]
+	(No symbol) [0x00A6C922]
+	(No symbol) [0x00A5A536]
+	(No symbol) [0x00A382DC]
+	(No symbol) [0x00A393DD]
+	GetHandleVerifier [0x00DDAABD+2539405]
+	GetHandleVerifier [0x00E1A78F+2800735]
+	GetHandleVerifier [0x00E1456C+2775612]
+	GetHandleVerifier [0x00C051E0+616112]
+	(No symbol) [0x00B15F8C]
+	(No symbol) [0x00B12328]
+	(No symbol) [0x00B1240B]
+	(No symbol) [0x00B04FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:35:53] [DEBUG] 项目编号：20230705112645  投标人：
+元素不可交互Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 328, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 253, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00B7A813+48355]
+	(No symbol) [0x00B0C4B1]
+	(No symbol) [0x00A15220]
+	(No symbol) [0x00A41846]
+	(No symbol) [0x00A39F5C]
+	(No symbol) [0x00A5A73C]
+	(No symbol) [0x00A39A36]
+	(No symbol) [0x00A5AA94]
+	(No symbol) [0x00A6C922]
+	(No symbol) [0x00A5A536]
+	(No symbol) [0x00A382DC]
+	(No symbol) [0x00A393DD]
+	GetHandleVerifier [0x00DDAABD+2539405]
+	GetHandleVerifier [0x00E1A78F+2800735]
+	GetHandleVerifier [0x00E1456C+2775612]
+	GetHandleVerifier [0x00C051E0+616112]
+	(No symbol) [0x00B15F8C]
+	(No symbol) [0x00B12328]
+	(No symbol) [0x00B1240B]
+	(No symbol) [0x00B04FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:55:31] [DEBUG] 项目编号：20230705112645  投标人：
+元素不可交互Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 330, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 255, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x003BA813+48355]
+	(No symbol) [0x0034C4B1]
+	(No symbol) [0x00255220]
+	(No symbol) [0x00281846]
+	(No symbol) [0x00279F5C]
+	(No symbol) [0x0029A73C]
+	(No symbol) [0x00279A36]
+	(No symbol) [0x0029AA94]
+	(No symbol) [0x002AC922]
+	(No symbol) [0x0029A536]
+	(No symbol) [0x002782DC]
+	(No symbol) [0x002793DD]
+	GetHandleVerifier [0x0061AABD+2539405]
+	GetHandleVerifier [0x0065A78F+2800735]
+	GetHandleVerifier [0x0065456C+2775612]
+	GetHandleVerifier [0x004451E0+616112]
+	(No symbol) [0x00355F8C]
+	(No symbol) [0x00352328]
+	(No symbol) [0x0035240B]
+	(No symbol) [0x00344FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:55:38] [DEBUG] 项目编号：20230705112645  投标人：
+元素不可交互Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 330, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 255, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x003BA813+48355]
+	(No symbol) [0x0034C4B1]
+	(No symbol) [0x00255220]
+	(No symbol) [0x00281846]
+	(No symbol) [0x00279F5C]
+	(No symbol) [0x0029A73C]
+	(No symbol) [0x00279A36]
+	(No symbol) [0x0029AA94]
+	(No symbol) [0x002AC922]
+	(No symbol) [0x0029A536]
+	(No symbol) [0x002782DC]
+	(No symbol) [0x002793DD]
+	GetHandleVerifier [0x0061AABD+2539405]
+	GetHandleVerifier [0x0065A78F+2800735]
+	GetHandleVerifier [0x0065456C+2775612]
+	GetHandleVerifier [0x004451E0+616112]
+	(No symbol) [0x00355F8C]
+	(No symbol) [0x00352328]
+	(No symbol) [0x0035240B]
+	(No symbol) [0x00344FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 11:56:59] [DEBUG] 项目编号：20230705112645  投标人：
+元素不可交互Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 330, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 255, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x003BA813+48355]
+	(No symbol) [0x0034C4B1]
+	(No symbol) [0x00255220]
+	(No symbol) [0x00281846]
+	(No symbol) [0x00279F5C]
+	(No symbol) [0x0029A73C]
+	(No symbol) [0x00279A36]
+	(No symbol) [0x0029AA94]
+	(No symbol) [0x002AC922]
+	(No symbol) [0x0029A536]
+	(No symbol) [0x002782DC]
+	(No symbol) [0x002793DD]
+	GetHandleVerifier [0x0061AABD+2539405]
+	GetHandleVerifier [0x0065A78F+2800735]
+	GetHandleVerifier [0x0065456C+2775612]
+	GetHandleVerifier [0x004451E0+616112]
+	(No symbol) [0x00355F8C]
+	(No symbol) [0x00352328]
+	(No symbol) [0x0035240B]
+	(No symbol) [0x00344FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 12:31:25] [DEBUG] 项目编号：20230705112645  投标人：
+元素不可交互Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 228, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 329, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 254, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00E0A813+48355]
+	(No symbol) [0x00D9C4B1]
+	(No symbol) [0x00CA5220]
+	(No symbol) [0x00CD1846]
+	(No symbol) [0x00CC9F5C]
+	(No symbol) [0x00CEA73C]
+	(No symbol) [0x00CC9A36]
+	(No symbol) [0x00CEAA94]
+	(No symbol) [0x00CFC922]
+	(No symbol) [0x00CEA536]
+	(No symbol) [0x00CC82DC]
+	(No symbol) [0x00CC93DD]
+	GetHandleVerifier [0x0106AABD+2539405]
+	GetHandleVerifier [0x010AA78F+2800735]
+	GetHandleVerifier [0x010A456C+2775612]
+	GetHandleVerifier [0x00E951E0+616112]
+	(No symbol) [0x00DA5F8C]
+	(No symbol) [0x00DA2328]
+	(No symbol) [0x00DA240B]
+	(No symbol) [0x00D94FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-05 13:39:25] [DEBUG] 项目编号：20230705102119  投标人：15222222222
+元素不可交互未找到解密按钮！
+[2023-07-05 16:27:57] [DEBUG] 项目编号：20230705102119  投标人or专家：350322198801276850
+确认评标结果完成！！！
+[2023-07-05 16:28:19] [DEBUG] 项目编号：20230705102119  投标人or专家：360731196708052343
+确认评标结果完成！！！
+[2023-07-05 16:28:37] [DEBUG] 项目编号：20230705102119  投标人or专家：510723199804211123
+确认评标结果完成！！！
+[2023-07-05 17:08:38] [DEBUG] 项目编号：20230705110045  投标人or专家：15255555555
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 263, in test_07_apply_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)#选择工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 325, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 116, in bid_workbench_click
+    self.click(workbench_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 395, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-05 17:25:39] [DEBUG] 项目编号：20230705110045  投标人or专家：
+狄红
+[2023-07-05 17:33:04] [DEBUG] 项目编号：20230705110045  投标人or专家：340000199605288019
+确认评标结果完成！！！
+[2023-07-05 17:33:21] [DEBUG] 项目编号：20230705110045  投标人or专家：511129199401049682
+确认评标结果完成！！！
+[2023-07-05 17:33:37] [DEBUG] 项目编号：20230705110045  投标人or专家：540103199910296770
+确认评标结果完成！！！
+[2023-07-05 18:24:41] [DEBUG] 项目编号：20230705173902  投标人or专家：
+没有推选出评委!!!
+[2023-07-05 18:25:32] [DEBUG] 项目编号：20230705173902  投标人or专家：
+组长为:寇伊
+[2023-07-05 18:35:16] [DEBUG] 项目编号：20230705173902  投标人or专家：220100199303227235
+确认评标结果完成！！！
+[2023-07-05 18:35:37] [DEBUG] 项目编号：20230705173902  投标人or专家：340503199212268507
+确认评标结果完成！！！
+[2023-07-05 18:35:57] [DEBUG] 项目编号：20230705173902  投标人or专家：530424199605084823
+确认评标结果完成！！！
+[2023-07-06 10:04:32] [DEBUG] 项目编号：20230706100409  投标人or专家：
+工程项目添加完成！
+[2023-07-06 10:06:23] [DEBUG] 项目编号：20230706100600  投标人or专家：
+工程项目添加完成！
+[2023-07-06 10:20:03] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-07-06 10:21:57] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-07-06 10:21:58] [DEBUG] 项目编号：20230706102135  投标人or专家：
+政采项目添加完成！
+[2023-07-06 10:53:50] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-07-06 10:57:11] [DEBUG] 项目编号：20230706105645  投标人or专家：
+项目添加完成！
+[2023-07-06 10:57:11] [INFO] Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 165, in insert_and_update_sql
+    cursor.execute(sql,args)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 158, in execute
+    result = self._query(query)
+  File "D:\Python\Python310\lib\site-packages\pymysql\cursors.py", line 325, in _query
+    conn.query(q)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 549, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 779, in _read_query_result
+    result.read()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 1157, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python\Python310\lib\site-packages\pymysql\connections.py", line 729, in _read_packet
+    packet.raise_for_error()
+  File "D:\Python\Python310\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python\Python310\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1366, "Incorrect integer value: '//label[contains(text(),'招标方式:')]/following-sibling::div/div/div/div/input' for column 'tenderWay' at row 1")
+
+[2023-07-06 11:05:52] [DEBUG] 项目编号：20230706110526  投标人or专家：
+项目添加完成！
+[2023-07-06 11:16:06] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-07-06 11:28:31] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-07-06 13:37:06] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-07-06 13:56:47] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-07-06 14:27:22] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-07-06 14:46:49] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-07-06 15:12:01] [DEBUG] 项目编号：20230706151136  投标人or专家：
+项目添加完成！
+[2023-07-06 16:09:45] [DEBUG] 项目编号：20230706151136  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 268, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 396, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-06 16:10:54] [DEBUG] 项目编号：20230706151136  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 268, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 396, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-06 16:11:03] [DEBUG] 项目编号：20230706151136  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 268, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 396, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-06 16:11:14] [DEBUG] 项目编号：20230706151136  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 268, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 396, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-06 16:56:24] [DEBUG] 项目编号：20230706151136  投标人or专家：
+组长为:测试23
+[2023-07-06 17:01:38] [DEBUG] 项目编号：20230706151136  投标人or专家：210522199902250232
+确认评标结果完成！！！
+[2023-07-06 17:02:09] [DEBUG] 项目编号：20230706151136  投标人or专家：350322198801276850
+确认评标结果完成！！！
+[2023-07-06 17:02:31] [DEBUG] 项目编号：20230706151136  投标人or专家：530124199405199347
+确认评标结果完成！！！
+[2023-07-06 17:04:00] [DEBUG] 项目编号：20230706170327  投标人or专家：
+项目添加完成！
+[2023-07-06 17:11:08] [DEBUG] 项目编号：20230706171035  投标人or专家：
+项目添加完成！
+[2023-07-06 17:12:57] [DEBUG] 项目编号：20230706171035  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 216, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 330, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 116, in bid_workbench_click
+    self.click(workbench_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 396, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-06 17:13:06] [DEBUG] 项目编号：20230706171035  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 216, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 330, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 116, in bid_workbench_click
+    self.click(workbench_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 396, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-06 17:20:23] [DEBUG] 项目编号：20230706171035  投标人or专家：
+未找到签到按钮！
+[2023-07-06 17:30:22] [DEBUG] 项目编号：20230706172939  投标人or专家：
+项目添加完成！
+[2023-07-06 17:38:29] [DEBUG] 项目编号：20230706173803  投标人or专家：
+项目添加完成！
+[2023-07-06 17:51:08] [DEBUG] 项目编号：20230706175043  投标人or专家：
+项目添加完成！
+[2023-07-06 17:56:14] [DEBUG] 项目编号：20230706175549  投标人or专家：
+项目添加完成！
+[2023-07-06 18:10:58] [DEBUG] 项目编号：20230706172939  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 268, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 396, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-06 18:13:16] [DEBUG] 项目编号：20230706175549  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 277, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 396, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 09:25:03] [DEBUG] 项目编号：20230706172939  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 268, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 396, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 09:27:22] [DEBUG] 项目编号：20230706172939  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 268, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 396, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 09:27:37] [DEBUG] 项目编号：20230706172939  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 268, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 396, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 09:36:31] [DEBUG] 项目编号：20230706172939  投标人or专家：
+未找到签到按钮！
+[2023-07-07 09:36:43] [DEBUG] 项目编号：20230706172939  投标人or专家：
+未找到签到按钮！
+[2023-07-07 09:36:54] [DEBUG] 项目编号：20230706172939  投标人or专家：
+未找到签到按钮！
+[2023-07-07 09:38:35] [DEBUG] 项目编号：20230706172939  投标人or专家：
+未找到签到按钮！
+[2023-07-07 09:38:46] [DEBUG] 项目编号：20230706172939  投标人or专家：
+未找到签到按钮！
+[2023-07-07 09:38:57] [DEBUG] 项目编号：20230706172939  投标人or专家：
+未找到签到按钮！
+[2023-07-07 09:44:39] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-07-07 10:20:53] [DEBUG] 项目编号：20230706172939  投标人or专家：18567985980
+未找到提出异议按钮！
+[2023-07-07 10:21:13] [DEBUG] 项目编号：20230706172939  投标人or专家：17600228350
+未找到提出异议按钮！
+[2023-07-07 10:21:31] [DEBUG] 项目编号：20230706172939  投标人or专家：15260621329
+未找到提出异议按钮！
+[2023-07-07 10:33:03] [DEBUG] 项目编号：20230706172939  投标人or专家：
+没有推选出评委!!!
+[2023-07-07 10:33:03] [DEBUG] 项目编号：20230706172939  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 373, in test_elect_group
+    raise Exception("没有推选出评委!!!")
+Exception: 没有推选出评委!!!
+
+[2023-07-07 10:33:19] [DEBUG] 项目编号：20230706172939  投标人or专家：
+组长为:谢先生
+[2023-07-07 10:39:34] [DEBUG] 项目编号：20230706172939  投标人or专家：420101198101011865
+确认评标结果完成！！！
+[2023-07-07 10:40:04] [DEBUG] 项目编号：20230706172939  投标人or专家：420101198101018549
+确认评标结果完成！！！
+[2023-07-07 10:40:32] [DEBUG] 项目编号：20230706172939  投标人or专家：420101198101019074
+确认评标结果完成！！！
+[2023-07-07 11:02:01] [DEBUG] 项目编号：20230707110135  投标人or专家：
+项目添加完成！
+[2023-07-07 11:06:28] [DEBUG] 项目编号：20230707110135  投标人or专家：18567985980
+该项目为电子保函线上缴纳方式无法上传保证金回单
+[2023-07-07 11:06:36] [DEBUG] 项目编号：20230707110135  投标人or专家：18567985980
+未缴纳保证金无法上传标书
+[2023-07-07 11:24:13] [DEBUG] 项目编号：20230707112339  投标人or专家：
+项目添加完成！
+[2023-07-07 11:49:49] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-07-07 11:52:49] [DEBUG] 项目编号：20230707115222  投标人or专家：
+项目添加完成！
+[2023-07-07 13:37:53] [DEBUG] 项目编号：20230707112339  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 117, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 277, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 394, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 13:38:36] [DEBUG] 项目编号：20230707112339  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 117, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 277, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 394, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 13:54:07] [DEBUG] 项目编号：20230707112339  投标人or专家：
+未找到签到按钮！
+[2023-07-07 13:54:26] [DEBUG] 项目编号：20230707112339  投标人or专家：
+未找到签到按钮！
+[2023-07-07 13:54:44] [DEBUG] 项目编号：20230707112339  投标人or专家：
+未找到签到按钮！
+[2023-07-07 13:55:53] [DEBUG] 项目编号：20230707112339  投标人or专家：
+未找到签到按钮！
+[2023-07-07 13:56:10] [DEBUG] 项目编号：20230707112339  投标人or专家：
+未找到签到按钮！
+[2023-07-07 13:56:27] [DEBUG] 项目编号：20230707112339  投标人or专家：
+未找到签到按钮！
+[2023-07-07 13:56:33] [DEBUG] 项目编号：20230707112339  投标人or专家：15216189856
+投标文件为空，无法参与开标
+[2023-07-07 14:05:22] [DEBUG] 项目编号：20230707140455  投标人or专家：
+项目添加完成！
+[2023-07-07 14:12:16] [DEBUG] 项目编号：20230707112339  投标人or专家：18567985980
+未找到解密按钮！
+[2023-07-07 14:15:10] [DEBUG] 项目编号：20230707112339  投标人or专家：17600228350
+未找到解密按钮！
+[2023-07-07 14:15:22] [DEBUG] 项目编号：20230707112339  投标人or专家：15260621329
+未找到解密按钮！
+[2023-07-07 14:15:28] [DEBUG] 项目编号：20230707112339  投标人or专家：15216189856
+投标文件为空，无法参与开标
+[2023-07-07 14:17:48] [DEBUG] 项目编号：20230707112339  投标人or专家：15216189856
+未找到提出异议按钮！
+[2023-07-07 14:23:42] [DEBUG] 项目编号：20230707112339  投标人or专家：
+组长为:专家3
+[2023-07-07 14:30:22] [DEBUG] 项目编号：20230707112339  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 425, in test_secondary_quotation
+    self.home_page_or_workbench.secondaryQuotationInput_send_keys()#输入二次报价
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 101, in secondaryQuotationInput_send_keys
+    self.send_keys(self.secondaryQuotationInput_locator,bidprice)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 421, in send_keys
+    element.clear()
+AttributeError: 'bool' object has no attribute 'clear'
+
+[2023-07-07 14:34:54] [DEBUG] 项目编号：20230707112339  投标人or专家：420101198101012761
+确认评标结果完成！！！
+[2023-07-07 14:35:20] [DEBUG] 项目编号：20230707112339  投标人or专家：420101198101014679
+确认评标结果完成！！！
+[2023-07-07 14:35:45] [DEBUG] 项目编号：20230707112339  投标人or专家：420101198101014724
+确认评标结果完成！！！
+[2023-07-07 14:59:29] [DEBUG] 项目编号：20230707140455  投标人or专家：
+组长为:专家7
+[2023-07-07 15:08:07] [DEBUG] 项目编号：20230707140455  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 425, in test_secondary_quotation
+    self.home_page_or_workbench.secondaryQuotationInput_send_keys()#输入二次报价
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 101, in secondaryQuotationInput_send_keys
+    self.send_keys(self.secondaryQuotationInput_locator,bidprice)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 421, in send_keys
+    element.clear()
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 117, in clear
+    self._execute(Command.CLEAR_ELEMENT)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 403, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=114.0.5735.134)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x0032A813+48355]
+	(No symbol) [0x002BC4B1]
+	(No symbol) [0x001C5220]
+	(No symbol) [0x001EB37A]
+	(No symbol) [0x0020A73C]
+	(No symbol) [0x001E9A36]
+	(No symbol) [0x0020AA94]
+	(No symbol) [0x0021C922]
+	(No symbol) [0x0020A536]
+	(No symbol) [0x001E82DC]
+	(No symbol) [0x001E93DD]
+	GetHandleVerifier [0x0058AABD+2539405]
+	GetHandleVerifier [0x005CA78F+2800735]
+	GetHandleVerifier [0x005C456C+2775612]
+	GetHandleVerifier [0x003B51E0+616112]
+	(No symbol) [0x002C5F8C]
+	(No symbol) [0x002C2328]
+	(No symbol) [0x002C240B]
+	(No symbol) [0x002B4FF7]
+	BaseThreadInitThunk [0x76676BA9+25]
+	RtlGetFullPathName_UEx [0x77368F9F+1215]
+	RtlGetFullPathName_UEx [0x77368F6D+1165]
+
+
+[2023-07-07 15:11:26] [DEBUG] 项目编号：20230707140455  投标人or专家：420101198101012008
+确认评标结果完成！！！
+[2023-07-07 15:11:54] [DEBUG] 项目编号：20230707140455  投标人or专家：420101198101012155
+确认评标结果完成！！！
+[2023-07-07 15:12:19] [DEBUG] 项目编号：20230707140455  投标人or专家：420101198101015559
+确认评标结果完成！！！
+[2023-07-07 15:23:22] [DEBUG] 项目编号：20230707115222  投标人or专家：
+专家抽取完成,评标室1:2023-07-07 01:00:00
+[2023-07-07 15:27:42] [DEBUG] 项目编号：20230707115222  投标人or专家：
+没有推选出评委!!!
+[2023-07-07 15:27:42] [DEBUG] 项目编号：20230707115222  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 372, in test_elect_group
+    raise Exception("没有推选出评委!!!")
+Exception: 没有推选出评委!!!
+
+[2023-07-07 15:28:03] [DEBUG] 项目编号：20230707115222  投标人or专家：
+组长为:小酒窝
+[2023-07-07 15:33:46] [DEBUG] 项目编号：20230707115222  投标人or专家：235407195106112745
+确认评标结果完成！！！
+[2023-07-07 15:34:08] [DEBUG] 项目编号：20230707115222  投标人or专家：321322199501297393
+确认评标结果完成！！！
+[2023-07-07 15:34:31] [DEBUG] 项目编号：20230707115222  投标人or专家：653129199606025732
+确认评标结果完成！！！
+[2023-07-07 16:42:20] [DEBUG] 项目编号：20230707164155  投标人or专家：
+项目添加完成！
+[2023-07-07 16:58:56] [DEBUG] 项目编号：20230707115222  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 277, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 394, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 16:59:07] [DEBUG] 项目编号：20230707115222  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 277, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 394, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 17:00:06] [DEBUG] 项目编号：20230707164155  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 268, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 290, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 394, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 17:23:57] [DEBUG] 项目编号：20230706095551  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 278, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 394, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 17:24:07] [DEBUG] 项目编号：20230706095551  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 278, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 394, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 17:32:15] [DEBUG] 项目编号：20230706171035  投标人or专家：
+专家抽取完成,评标室2:2023-07-07 01:00:00
+[2023-07-07 17:35:58] [DEBUG] 项目编号：20230707164155  投标人or专家：
+专家抽取完成,评标室1:2023-07-07 02:00:00
+[2023-07-07 17:36:51] [DEBUG] 项目编号：20230707164155  投标人or专家：
+组长为:羽纨
+[2023-07-07 17:41:44] [DEBUG] 项目编号：20230707174115  投标人or专家：
+项目添加完成！
+[2023-07-07 17:54:53] [DEBUG] 项目编号：20230707174115  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 216, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 329, in select_bid_workbench
+    self.purchaseBusiness_click()#点击采购业务
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 283, in purchaseBusiness_click
+    self.click(self.purchaseBusiness_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 394, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-07 18:07:27] [DEBUG] 项目编号：20230707180701  投标人or专家：
+项目添加完成！
+[2023-07-07 18:16:17] [DEBUG] 项目编号：20230707174115  投标人or专家：
+专家抽取完成,评标室2:2023-07-07 02:00:00
+[2023-07-07 18:18:16] [DEBUG] 项目编号：20230707174115  投标人or专家：
+没有推选出评委!!!
+[2023-07-07 18:18:16] [DEBUG] 项目编号：20230707174115  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 372, in test_elect_group
+    raise Exception("没有推选出评委!!!")
+Exception: 没有推选出评委!!!
+
+[2023-07-07 18:18:37] [DEBUG] 项目编号：20230707174115  投标人or专家：
+没有推选出评委!!!
+[2023-07-07 18:18:37] [DEBUG] 项目编号：20230707174115  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 372, in test_elect_group
+    raise Exception("没有推选出评委!!!")
+Exception: 没有推选出评委!!!
+
+[2023-07-07 18:18:55] [DEBUG] 项目编号：20230707174115  投标人or专家：
+没有推选出评委!!!
+[2023-07-07 18:18:55] [DEBUG] 项目编号：20230707174115  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 372, in test_elect_group
+    raise Exception("没有推选出评委!!!")
+Exception: 没有推选出评委!!!
+
+[2023-07-07 18:19:11] [DEBUG] 项目编号：20230707174115  投标人or专家：
+组长为:测试23
+[2023-07-07 18:29:19] [DEBUG] 项目编号：20230707182853  投标人or专家：
+项目添加完成！
+[2023-07-07 18:33:08] [DEBUG] 项目编号：20230707183243  投标人or专家：
+项目添加完成！
+[2023-07-07 18:35:06] [DEBUG] 项目编号：20230707183441  投标人or专家：
+项目添加完成！
+[2023-07-07 18:36:23] [DEBUG] 项目编号：20230707183558  投标人or专家：
+项目添加完成！
+[2023-07-07 19:11:00] [DEBUG] 项目编号：20230707191035  投标人or专家：
+项目添加完成！
+[2023-07-07 19:18:40] [DEBUG] 项目编号：20230707191814  投标人or专家：
+项目添加完成！
+[2023-07-07 19:31:06] [DEBUG] 项目编号：20230707193041  投标人or专家：
+项目添加完成！
+[2023-07-07 19:33:12] [DEBUG] 项目编号：20230707193246  投标人or专家：
+项目添加完成！
+[2023-07-07 19:36:49] [DEBUG] 项目编号：20230707193625  投标人or专家：
+项目添加完成！
+[2023-07-07 19:38:38] [DEBUG] 项目编号：20230707193814  投标人or专家：
+项目添加完成！
+[2023-07-07 19:40:00] [DEBUG] 项目编号：20230707193936  投标人or专家：
+项目添加完成！
+[2023-07-07 19:41:59] [DEBUG] 项目编号：20230707191035  投标人or专家：
+专家抽取完成,评标室1:2023-07-07 03:00:00
+[2023-07-07 19:44:24] [DEBUG] 项目编号：20230707191035  投标人or专家：
+组长为:寇伊
+[2023-07-07 19:48:19] [DEBUG] 项目编号：20230707194755  投标人or专家：
+项目添加完成！
+[2023-07-07 19:49:43] [DEBUG] 项目编号：20230707194917  投标人or专家：
+项目添加完成！
+[2023-07-07 20:04:48] [DEBUG] 项目编号：20230707200423  投标人or专家：
+项目添加完成！
+[2023-07-07 20:08:16] [DEBUG] 项目编号：20230707200752  投标人or专家：
+项目添加完成！
+[2023-07-07 20:10:47] [DEBUG] 项目编号：20230707201023  投标人or专家：
+项目添加完成！
+[2023-07-07 20:25:53] [DEBUG] 项目编号：20230707202528  投标人or专家：
+项目添加完成！
+[2023-07-07 21:02:00] [DEBUG] 项目编号：20230707202528  投标人or专家：
+组长为:专家9
+[2023-07-07 21:04:03] [DEBUG] 项目编号：20230707210338  投标人or专家：
+项目添加完成！
+[2023-07-07 21:35:08] [DEBUG] 项目编号：20230707210338  投标人or专家：
+组长为:专家13
+[2023-07-10 10:16:44] [DEBUG] 项目编号：20230707194917  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 269, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 394, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-10 10:56:30] [DEBUG] 项目编号：20230707194917  投标人or专家：
+专家抽取完成,评标室1:2023-07-10 00:00:00
+[2023-07-10 10:59:13] [DEBUG] 项目编号：20230710105847  投标人or专家：
+项目添加完成！
+[2023-07-10 14:19:04] [DEBUG] 项目编号：20230710141839  投标人or专家：
+项目添加完成！
+[2023-07-10 14:24:53] [DEBUG] 项目编号：20230710142428  投标人or专家：
+项目添加完成！
+[2023-07-10 14:26:25] [DEBUG] 项目编号：20230710142428  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\111\PycharmProjects\untitled\xiaoe_testcase\deal_testcase.py", line 116, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay)#点击工作台
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 269, in select_apply
+    self.apply_click(projectNumber)
+  File "C:\Users\111\PycharmProjects\untitled\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in apply_click
+    self.click(apply_locator)
+  File "C:\Users\111\PycharmProjects\untitled\base\base.py", line 394, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-07-10 14:58:12] [DEBUG] 项目编号：20230710145748  投标人or专家：
+项目添加完成！
+[2023-07-10 15:36:01] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间

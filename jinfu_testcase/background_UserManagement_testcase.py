@@ -14,34 +14,33 @@ class BackgroundUserManagementTestCase(unittest.TestCase):
 
         #点击用户管理
         self.financingInstitution.userManagement_click()
-        self.financingInstitution.drive.implicitly_wait(5)
         time.sleep(1)
     #金融机构测试
     def testFinancingInstitution(self):
 
         #点击金融机构
         self.financingInstitution.financingInstitution_click()
-        self.financingInstitution.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #点击查看
         self.financingInstitution.examine_click()
-        self.financingInstitution.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #点击返回
         self.financingInstitution.backtrack_click()
-        self.financingInstitution.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #点击编辑
         self.financingInstitution.compile_click()
-        self.financingInstitution.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #点击确认
         self.financingInstitution.affirm_click()
-        self.financingInstitution.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
     #企业管理测试
@@ -49,22 +48,18 @@ class BackgroundUserManagementTestCase(unittest.TestCase):
 
         #点击企业管理
         self.enterpriseManagement.enterpriseManagement_click()
-        self.enterpriseManagement.drive.implicitly_wait(5)
         time.sleep(1)
 
         #点击查看
         self.enterpriseManagement.examine_click()
-        self.enterpriseManagement.drive.implicitly_wait(5)
         time.sleep(1)
 
         #点击返回
         self.enterpriseManagement.backtrack_click()
-        self.enterpriseManagement.drive.implicitly_wait(5)
         time.sleep(1)
 
         #点击资质
         self.enterpriseManagement.certification_click()
-        self.enterpriseManagement.drive.implicitly_wait(5)
         time.sleep(1)
 
     #企业资质测试
@@ -72,62 +67,61 @@ class BackgroundUserManagementTestCase(unittest.TestCase):
 
         #点击企业资质
         self.enterpriseCertification.enterpriseCertification_click()
-        self.enterpriseCertification.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #点击新增
         self.enterpriseCertification.append_click()
-        self.enterpriseManagement.drive.implicitly_wait(5)
         time.sleep(1)
 
         #点击企业名称
         self.enterpriseCertification.enterpriseName_click()
-        self.enterpriseCertification.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #选择企业信息
         self.enterpriseCertification.enterpriseMessage_click()
-        self.enterpriseCertification.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #输入证书名称
         self.enterpriseCertification.certificateName_send_keys()
-        self.enterpriseCertification.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #输入证书编号
         self.enterpriseCertification.certificateNumber_send_keys()
-        self.enterpriseCertification.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #点击资质等级
         self.enterpriseCertification.certificationClass_click()
-        self.enterpriseCertification.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #选择证书
         self.enterpriseCertification.certificateSelect_locator()
-        self.enterpriseCertification.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #点击证书编号
         self.enterpriseCertification.certificateNumber_click()
-        self.enterpriseCertification.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #选择有效期
         self.enterpriseCertification.validity_click()
-        self.enterpriseCertification.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #选择图片
         self.enterpriseCertification.picture_send_keys()
-        self.enterpriseCertification.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         #点击确定
         self.enterpriseCertification.affirm_click()
-        self.enterpriseCertification.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
     #

@@ -41,6 +41,7 @@ class Extract_system(unittest.TestCase):
         self.home_page.search_project_click()#点击查找项目
         try:
             self.home_page.extract_expert_click()#点击抽取专家按钮
+            self.home_page.affirm_click()#点击确定
         except:
             self.home_page.apply_select_click(self.projectType_sql)#选择抽取申请
             self.home_page.number_or_name_input_send_keys(self.deal_testcase.projectNumber)#输入项目编号
@@ -61,7 +62,7 @@ class Extract_system(unittest.TestCase):
         nowtime = self.base.read_data_csv(begin=1,place=r"C:\Users\111\Desktop\pythonScriptGenerate\freeDate.csv")
         for i in range(int(nowtime[0][1]),18):
             self.expert_extract.evaluation_time_send_keys(i)#输入时间
-            result = self.expert_extract.is_room_occupy()#判断评标室是否被占用
+            result = self.expert_extract.is_room_occupy(i)#判断评标室是否被占用
             if result is not None:
                 if result == "break":
                     self.base.write_data_csv(date=nowtimeday,hours=i)

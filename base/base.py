@@ -2,6 +2,7 @@ import time
 import csv
 import datetime
 from urllib import request
+from log.log import Logger
 from selenium.webdriver.common.action_chains import ActionChains
 import ddddocr
 from selenium import webdriver
@@ -14,7 +15,8 @@ import pymysql
 import re
 from xiaoe_data.test_deal_data import Test_deal_data
 from xiaoe_data.formal_deal_data import Formal_deal_data
-class Base(Formal_deal_data):
+class Base(Test_deal_data):
+    logger = Logger()
     drive = webdriver.Chrome()
     drive.maximize_window()
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -152,7 +154,7 @@ class Base(Formal_deal_data):
             return conn,cursor
         except (Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.info(error)
     def close_conn(self,conn,cursor):
         conn.close()
         cursor.close()
@@ -163,7 +165,7 @@ class Base(Formal_deal_data):
             conn.commit()
         except(Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.info(error)
             conn.rollback()
         self.close_conn(conn=conn,cursor=cursor)
 
@@ -175,7 +177,7 @@ class Base(Formal_deal_data):
             return result
         except(Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.info(error)
         self.close_conn(conn=conn,cursor=cursor)
 
     def insert_expertData(self,projectNumber,username,password,judgeName):#插入专家账号密码
@@ -187,9 +189,9 @@ class Base(Formal_deal_data):
         except (Exception,BaseException) as e:
             error = traceback.format_exc()
             if str(e).find('Duplicate entry') > 0:
-                print('评委已经添加!')
+                self.logger.debugText(projectNumber,'评委已经添加！')
             else:
-                print(error)
+                self.logger.debugText(projectNumber,error)
             conn.rollback()
         conn.close()
         cursor.close()
@@ -202,18 +204,18 @@ class Base(Formal_deal_data):
             print("评标类型和评委个数更新成功！")
         except (Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.debugText(projectNumber,error)
             conn.rollback()
         conn.close()
         cursor.close()#
 
-    def update_isAgree(self,isAgree,username):
-        sql = 'update expert set isAgree = %s where username = %s'
+    def update_isAgree(self,isAgree,username,projectNumber):
+        sql = 'update expert set isAgree = %s where username = %s and projectNumber = %s'
         try:
-            self.insert_and_update_sql(sql,isAgree,username)
+            self.insert_and_update_sql(sql,isAgree,username,projectNumber)
         except(Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.debugText(projectNumber,error)
 
     def update_enterprise_count(self,enterpriseCount,projectNumber):#更新企业数量
         sql = 'update project set enterpriseCount = %s where projectNumber = %s'
@@ -221,7 +223,7 @@ class Base(Formal_deal_data):
             self.insert_and_update_sql(sql,enterpriseCount,projectNumber)
         except(Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.debugText(projectNumber,error)
 
     def update_ratingPoint_count(self,ratingPointCount,ratingType,projectNumber):#更新评分点数量
         sql = 'update project set ratingPointCount = %s,ratingType = %s where projectNumber = %s'
@@ -229,7 +231,7 @@ class Base(Formal_deal_data):
             self.insert_and_update_sql(sql,ratingPointCount,ratingType,projectNumber)
         except(Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.debugText(projectNumber,error)
 
     def update_applyNumber(self,applyNumber,projectNumber):#更新报名人数
         sql = 'update project set applyNumber = %s where projectNumber = %s'
@@ -237,7 +239,7 @@ class Base(Formal_deal_data):
             self.insert_and_update_sql(sql,applyNumber,projectNumber)
         except(Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.debugText(projectNumber,error)
 
     def clear_text(self,url):#清空文本
         open(url,'w').close()
@@ -285,7 +287,7 @@ class Base(Formal_deal_data):
             return result[0]
         except(Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.debugText(projectNumber,error)
 
     def select_expert(self,projectNumber):#查询专家数据库
         expert_name = []
@@ -303,7 +305,7 @@ class Base(Formal_deal_data):
             return expert_username,expert_password,expert_name
         except(Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.debugText(projectNumber,error)
         conn.close()
         cursor.close()
 
@@ -317,7 +319,7 @@ class Base(Formal_deal_data):
             return expert_isAgree
         except(Exception,BaseException):
             error = traceback.format_exc()
-            print(error)
+            self.logger.debugText(projectNumber,error)
         conn.close()
         cursor.close()
 
@@ -337,7 +339,6 @@ class Base(Formal_deal_data):
         # :return:
         # """
         pic = self.find_element(locator,3)
-        self.drive.implicitly_wait(2)
         pic_url = pic.get_attribute('src')
         request.urlretrieve(pic_url,'1.png')
 
@@ -439,9 +440,12 @@ class Base(Formal_deal_data):
         """
         element = self.find_element(locator,2)
         action_chains = ActionChains(self.drive)
-        action_chains.move_to_element(element).perform()
-        message = element.text
-        return message
+        try:
+            action_chains.move_to_element(element).perform()
+            message = element.text
+            return message
+        except:
+            return None
     def roll_bottom(self):#滚动到最底部
         js = "var q =document.documentElement.scrollTop=10000"
         self.drive.execute_script(js)
@@ -486,7 +490,6 @@ class Base(Formal_deal_data):
         action_chains = ActionChains(self.drive)
         time.sleep(0.2)
         action_chains.move_to_element(element).perform()
-        self.drive.implicitly_wait(1)
 
     def get_nowTime_formatting(self):#获取当前时间没有符号的
         nowTime_noSumbol = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
@@ -513,8 +516,8 @@ class Base(Formal_deal_data):
         return mobile
 
     def handle_skip(self,num):#跳转句柄
-        n = self.drive.window_handles
         time.sleep(0.5)
+        n = self.drive.window_handles
         self.drive.switch_to.window(n[num])
 
     def random_code(self):#产生3个随机的大写字母

@@ -1,5 +1,6 @@
 from base.base import Base
 import random
+import time
 from selenium.webdriver.common.by import By
 def workbench(projectNumber):#点击工作台
     workbenchButton = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[5]/div/span[text()='工作台']"#点击工作台
@@ -22,6 +23,7 @@ class Home_page_or_workbench(Base):
     recallReceipt = "//span[contains(text(),'撤回保证金回单')]"#撤回回单
     recallAffirm = "//span[contains(text(),'确 定')]"
     returnButton = "//span[contains(text(),'返回')]"#点击返回
+    errorMessage = "//p[@class = 'el-message__content']"#报错信息
     uploadBidFile = "//span[contains(text(),'投标阶段')]/../following-sibling::div[contains(text(),'上传投标文件')]"#上传投标文件
     recallTenderFile = "//span[contains(text(),'撤回标书')]"
     tenderFileAffirm = "//button//span[contains(text(),'确 定')]"
@@ -59,6 +61,7 @@ class Home_page_or_workbench(Base):
     recallReceipt_locator = (By.XPATH,recallReceipt)
     recallAffirm_locator = (By.XPATH,recallAffirm)
     returnButton_locator = (By.XPATH,returnButton)
+    errorMessage_locator = (By.XPATH,errorMessage)
     recallTenderFile_locator = (By.XPATH,recallTenderFile)
     tenderFileAffirm_locator = (By.XPATH,tenderFileAffirm)
     uploadBidFile_locator = (By.XPATH,uploadBidFile)
@@ -146,6 +149,10 @@ class Home_page_or_workbench(Base):
     def recallAffirm_click(self):#撤回确认
         self.click(self.recallAffirm_locator)
 
+    def errorMessage_text(self):#获取错误提示
+        message = self.get_text(self.errorMessage_locator)
+        return message
+
     def returnButton_click(self):#点击返回
         self.click(self.returnButton_locator)
 
@@ -163,6 +170,7 @@ class Home_page_or_workbench(Base):
 
     def bid_price_send_keys(self):#输入投标价
         price = random.randint(100000,10000000)
+        time.sleep(0.3)
         self.send_keys(self.bid_price_locator,price)
 
     def duration_send_keys(self):#输入工期
@@ -250,7 +258,7 @@ class Home_page_or_workbench(Base):
         self.click(self.purchaseTenderInvite_locator)
 
     def select_apply(self,projectNumber,projectType,tenderWay):#点击报名
-        if projectType == "engineer":#工程
+        if projectType == "engineering":#工程
             self.engineerBusiness_click()#点击工程项目
             if tenderWay ==0:
                 self.engineerTenderNotice_click()#点击招标公告
@@ -311,7 +319,7 @@ class Home_page_or_workbench(Base):
             print("招标类型不符"+projectType)
 
     def select_bid_workbench(self,projectNumber,projectType):#投标人选择工作台
-        if projectType == "engineer":
+        if projectType == "engineering":
             #工程
             self.engineerBusiness_click()#点击工程业务
             self.engineerApplyProject_click()#点击工程报名项目

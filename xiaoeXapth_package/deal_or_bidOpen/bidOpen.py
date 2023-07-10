@@ -20,6 +20,7 @@ class BidOpen(Base):
     raiseObjectionAffirm = "//span[contains(text(),'/200')]/ancestor::div/following-sibling::div/button/span[contains(text(),'提出异议')]"#弹窗提出异议
     affirmBidResult = "//span[contains(text(),'提出异议')]/../following-sibling::div//span[contains(text(),'确认唱标结果')]"
     resultAffirm = "//p[contains(text(),'确认唱标结果')]/../div/button[2]/span[contains(text(),'确认')]"
+    refresh = "//p[contains(text(),'刷新')]"
 
     clickSignIn_locator = (By.XPATH,clickSignIn)
     message_input_locator = (By.XPATH,message_input)
@@ -36,6 +37,7 @@ class BidOpen(Base):
     raiseObjectionAffirm_locator = (By.XPATH,raiseObjectionAffirm)
     affirmBidResult_locator = (By.XPATH,affirmBidResult)
     resultAffirm_locator = (By.XPATH,resultAffirm)
+    refresh_locator = (By.XPATH,refresh)
 
     def clickSignIn_click(self):#点击签到
         self.click(self.clickSignIn_locator)
@@ -123,3 +125,6 @@ class BidOpen(Base):
 
     def resultAffirm_click(self):#点击唱标结果弹窗确认
         self.click(self.resultAffirm_locator)
+
+    def refresh(self):#查看是否有刷新按钮
+        return self.find_element(self.refresh_locator,0.5)

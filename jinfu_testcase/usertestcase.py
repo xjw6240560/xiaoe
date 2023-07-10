@@ -16,74 +16,74 @@ class TestCasebaohanshenqing(unittest.TestCase):
 
         #选择保函申请
         self.bid.guarantee_apply_click()
-        self.bid.drive.implicitly_wait(5)
+        
         time.sleep(1)
 
         # self.bid.drive.close()
 
         #点击投标保证保函
         self.bid.bid_guarantee_click()
-        self.bid.drive.implicitly_wait(5)
+        
         time.sleep(2)
 
         #选择项目
         self.bid.project_select_click()
-        self.bid.drive.implicitly_wait(5)
+        
         time.sleep(5)
 
         # #点击申请保函
         # self.bid.apply_guarantee_click()
-        # self.bid.drive.implicitly_wait(5)
+        # 
         # time.sleep(1)
 
         # #选择金融机构
         # self.bid.financing_institution_click()
-        # self.bid.drive.implicitly_wait(5)
+        # 
         # time.sleep(1)
         #
         # #点击确定
         # self.bid.affirm_click()
-        # self.bid.drive.implicitly_wait(5)
+        # 
         # time.sleep(1)
         #
         # #跳转句柄
         self.bid.handle_skip()
-        # self.bid.drive.implicitly_wait(5)
+        # 
         # time.sleep(7)
         #
         # #点击同意本条内容
         # self.bid.consent_click()
-        # self.bid.drive.implicitly_wait(5)
+        # 
         # time.sleep(2)
         #
         # #关闭同意本条内容
         # self.bid.consent_click()
-        # self.bid.drive.implicitly_wait(5)
+        # 
         # time.sleep(1)
         #
         # #点击下一步
         # self.bid.next_click()
-        # self.bid.drive.implicitly_wait(10)
+        
         # time.sleep(1)
         #
         # #点击平台签章
         # self.bid.signatrue_click()
-        # self.bid.drive.implicitly_wait(10)
+        
         # time.sleep(1)
         #
         # #点击签章按钮
         # self.bid.deploy_click()
-        # self.bid.drive.implicitly_wait(5)
+        # 
         # time.sleep(2)
         #
         # #点击投保单
         # self.bid.file_click()
-        # self.bid.drive.implicitly_wait(10)
+        
         # time.sleep(1)
         #
         # #点击线上支付
         # self.bid.payment_click()
-        # self.bid.drive.implicitly_wait(10)
+        
         # time.sleep(1)
 
     def tearDown(self):

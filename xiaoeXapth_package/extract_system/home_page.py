@@ -11,6 +11,7 @@ class Home_page(Base):
     projectName = "//p[contains(text(),'招标项目名称')]/following-sibling::div/input"#点击招标项目名称
     search_project = "//button/span[contains(text(),'查找项目')]"#点击查找项目按钮
     extract_expert = "//button//span[contains(text(),'抽取专家')]"#点击抽取专家按钮
+    affirm = "//span[text()='确认']"
     engineering_extract_apply = "//div/p[contains(text(),'工程类抽取申请')]"#点击工程抽取申请
     purchase_extract_apply = "//div/p[contains(text(),'政采类抽取申请')]"#点击政采抽取申请
     number_or_name_input = "//div/input[@placeholder='项目名称或者编号']"#点击项目编号和名称输入框
@@ -23,6 +24,7 @@ class Home_page(Base):
     projectName_locator = (By.XPATH,projectName)
     search_project_locator = (By.XPATH,search_project)
     extract_expert_locator = (By.XPATH,extract_expert)
+    affirm_locator = (By.XPATH,affirm)
     engineering_extract_apply_locator = (By.XPATH,engineering_extract_apply)
     purchase_extract_apply_locator = (By.XPATH,purchase_extract_apply)
     number_or_name_input_locator = (By.XPATH,number_or_name_input)
@@ -30,7 +32,7 @@ class Home_page(Base):
     in_project_locator = (By.XPATH,in_project)
 
     def engineering_or_purchase_click(self,projectType):#工程或者政采项目点击进入
-        if projectType == "engineer":
+        if projectType == "engineering":
             self.click(self.engineering_locator)
         elif projectType == "purchase":
             self.click(self.purchase_locator)
@@ -51,7 +53,7 @@ class Home_page(Base):
         self.click(self.extract_expert_locator)
 
     def apply_select_click(self,projectType):#工程或者政采抽取申请点击
-        if projectType == "engineer":
+        if projectType == "engineering":
             self.click(self.engineering_extract_apply_locator)#点击工程抽取申请
         elif projectType == "purchase":
             self.click(self.purchase_extract_apply_locator)#点击政采抽取申请
@@ -72,4 +74,7 @@ class Home_page(Base):
 
     def in_project_click(self):#点击进入项目
         self.click(self.in_project_locator)
+
+    def affirm_click(self):#点击确认按钮
+        self.click(self.affirm_locator)
 
