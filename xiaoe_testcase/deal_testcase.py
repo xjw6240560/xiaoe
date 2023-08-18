@@ -16,7 +16,7 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20230707201023"#项目编号
+    projectNumber = "20230720150557"#项目编号
     tenderOrganizationType = "1"#自主招标0或者委托招标1
     tenderWay = 0#公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0#公开0、邀请1
@@ -202,7 +202,7 @@ class Deal_testcase(unittest.TestCase):
                 self.home_page_or_workbench.duration_send_keys()#输入工期
                 self.home_page_or_workbench.quality_send_keys()#输入质量标准
                 self.home_page_or_workbench.bid_file_click()#点击投标文件
-            self.home_page_or_workbench.upload_file("pdf")#选择投标文件图片
+            self.home_page_or_workbench.upload_file("xetf")#选择投标文件图片
             time.sleep(0.3)
             self.home_page_or_workbench.saveBidFile_click()#点击保存
             time.sleep(0.5)

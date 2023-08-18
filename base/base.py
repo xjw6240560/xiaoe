@@ -15,7 +15,7 @@ import pymysql
 import re
 from xiaoe_data.test_deal_data import Test_deal_data
 from xiaoe_data.formal_deal_data import Formal_deal_data
-class Base(Test_deal_data):
+class Base(Formal_deal_data):
     logger = Logger()
     drive = webdriver.Edge()
     drive.maximize_window()
@@ -493,11 +493,11 @@ class Base(Test_deal_data):
         if fileType == "pdf":
             send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\招标文件.pdf")
         elif fileType == "img":
-            send_keys(r"C:\Users\111\Pictures\mypictures\测试电子回单.png")
+            send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\保证金.jpg")
         elif fileType == "xezf":
             send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\tender_file.xezf")
         elif fileType == "xetf":
-            send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\bid_file.xetf")
+            send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\深圳CA.xetf")
         else:
             self.logger.debugText(errorText="文件类型错误："+fileType)
         send_keys("{VK_RETURN}")

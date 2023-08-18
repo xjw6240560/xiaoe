@@ -7421,3 +7421,84 @@ TypeError: cannot unpack non-iterable NoneType object
 专家抽取完成,评标室1:2023-08-18 00:00:00
 [2023-08-18 09:48:12] [DEBUG] 项目编号：20230707201023  投标人or专家：
 组长为:秋赤  身份证号为：411322199710179360
+[2023-08-18 16:39:02] [DEBUG] 项目编号：20230818163821  投标人or专家：
+项目添加完成！
+[2023-08-18 17:00:47] [DEBUG] 项目编号：20230818163821  投标人or专家：18567985980
+请上传回单
+[2023-08-18 17:00:57] [DEBUG] 项目编号：20230818163821  投标人or专家：18567985980
+报名成功
+[2023-08-18 17:49:44] [DEBUG] 项目编号：20230818163821  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 173, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 338, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 258, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 343, in execute
+    response = self.command_executor.execute(driver_command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 291, in execute
+    return self._request(command_info[0], url, body=data)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 312, in _request
+    response = self._conn.request(method, url, body=body, headers=headers)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\_request_methods.py", line 118, in request
+    return self.request_encode_body(
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\_request_methods.py", line 217, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\poolmanager.py", line 443, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1374, in getresponse
+    response.begin()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+KeyboardInterrupt
+
+[2023-08-18 17:54:55] [DEBUG] 项目编号：20230720150557  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 173, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 339, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 117, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-18 18:02:00] [DEBUG] 项目编号：20230818180121  投标人or专家：
+项目添加完成！
+[2023-08-18 18:07:36] [DEBUG] 项目编号：20230720150557  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 173, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 338, in select_bid_workbench
+    self.purchaseApplyProject_click()#点击报名项目
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 258, in purchaseApplyProject_click
+    self.click(self.purchaseApplyProject_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 409, in click
+    time.sleep(0.3)
+KeyboardInterrupt
+

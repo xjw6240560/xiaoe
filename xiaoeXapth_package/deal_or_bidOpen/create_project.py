@@ -73,6 +73,7 @@ class CreateProjectMethod(Base):
     EVE = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'电子保函')]"#保证金缴纳方式(电子保函)
     offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'线下缴纳')]"#保证金缴纳方式(线下缴纳)
     EVE_or_offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'电子保函或线下缴纳')]"#选择线上和线下
+    more = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'...')]"
     marginSum = "//label[contains(text(),'保证金额')]/following-sibling::div/div/input"#保证金额
     marginEndTime = "//label[contains(text(),'保证金缴纳截止时间:')]/following-sibling::div/div/input"#保证金缴纳截止日期
     tenderNotice = "//label[contains(text(),'招标公告:')]/following-sibling::div/div/div/div/div//span"#上传招标公告
@@ -116,6 +117,7 @@ class CreateProjectMethod(Base):
     enterpriseInput_locator = (By.XPATH,enterpriseInput)
     find_locator = (By.XPATH,find)
     add_locator = (By.XPATH,add)
+    more_locator = (By.XPATH,more)
     close_locator = (By.XPATH,close)
     isApplyFee_locator = (By.XPATH,isApplyFee)
     tenderMan_locator = (By.XPATH,tenderMan)
@@ -401,6 +403,9 @@ class CreateProjectMethod(Base):
     def EVE_or_offlinePayment_click(self):#选择线上或者线下
         self.click(self.EVE_or_offlinePayment_locator)
 
+    # def more_click(self):#点击更多
+    #     self.click(self.more_locator)
+
     def marginSum_send_keys(self):#保证金金额
         self.send_keys(self.marginSum_locator,"10000")
 
@@ -443,6 +448,7 @@ class CreateProjectMethod(Base):
         self.marginPaymentWay_click()#点击保证金缴纳方式
         # self.offlinePayment_click()#点击线下缴纳
         # self.EVE_click()#点击保函申请
+        # self.more_click()#点击更多
         self.EVE_or_offlinePayment_click()#点击线上和线下
         self.marginSum_send_keys()#输入保证金金额
         # self.isApplyFee_click()#点击是否缴纳报名费

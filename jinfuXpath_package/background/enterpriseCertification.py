@@ -9,4 +9,4 @@ certificateSelect="/html/body/div[1]/div/div[2]/div[2]/div[2]/div/div/form/div[5
 validity="/html/body/div[1]/div/div[2]/div[2]/div[2]/div/div/form/div[6]/div/label[2]/span[1]/span"#有效期
 affirm="/html/body/div[1]/div/div[2]/div[2]/div[2]/div/div/form/div[9]/div/button[2]"#确认
 picture = "/html/body/div/div/div[2]/div[2]/div[2]/div/div/form/div[7]/div/div/div/input"#图片
-picture_position = "C:\\Users\\111\\Pictures\\Saved Pictures\\background.png"#图片url
+picture_position = r"C:\Users\86176\Pictures\pictures\background.png"#图片url

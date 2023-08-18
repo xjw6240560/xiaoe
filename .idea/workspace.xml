@@ -5,112 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47656d0a-778f-45bd-bbdb-56529caaddaa" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/untitled.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Demo.spec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/base/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/base/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/Demo/Analysis-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/Demo/Demo.exe.manifest" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/Demo/Demo.pkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/Demo/EXE-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/Demo/PKG-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/Demo/PYZ-00.pyz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/Demo/PYZ-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/Demo/base_library.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/Demo/warn-Demo.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/Demo/xref-Demo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/test/Analysis-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/test/EXE-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/test/PKG-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/test/PYZ-00.pyz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/test/PYZ-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/test/base_library.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/test/test.exe.manifest" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/test/test.pkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/test/warn-test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/test/xref-test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/createEnterprise.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/createProject.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Demo.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/test.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/background/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/background/accountManagement.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/background/centerManagement.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/background/channelManagement.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/background/contractperformance.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/background/directory_Method.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/background/engineeringConstruction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/background/enterpriseCertification.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/background/enterpriseManagement.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/background/financingInstitution.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/background/toubiaobaozheng.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/user/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfuXpath_package/user/bid_flow_xpth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_test_method/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_test_method/projectManagemrnt/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_test_method/projectManagemrnt/engineeringConstruction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_test_method/userManagement/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_test_method/userManagement/accountManagement.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_test_method/userManagement/enterpriseCertification.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_test_method/userManagement/enterpriseManament.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_test_method/userManagement/financingInstitution.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_test_method/userTestMethod/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_test_method/userTestMethod/bid_flow.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_testcase/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_testcase/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_testcase/background_UserManagement_testcase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jinfu_testcase/usertestcase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/log.ini.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/log.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/logsest.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.spec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tool/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tool/generate_script.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tool/randoml_generate_project_type.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/bidOpen.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/evaluationBid_entrance.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/home_page_or_workbench.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/login_registerORselect_role.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/expert_extract.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/home_page.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoeXapth_package/extract_system/login.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoe_data/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoe_data/formal_deal_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoe_data/test_deal_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoe_test_method/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoe_test_method/deal_login_method.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoe_testcase/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoe_testcase/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoe_testcase/deal_login_testcase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoe_testcase/extract_system_testcase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xiaoe_testcase/web.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yanzhengma.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yidongduangongjulei.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/z_reptile/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/z_reptile/demo1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/z_reptile/demo2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/z_reptile/demo3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/python_pom.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jinfuXpath_package/background/enterpriseCertification.py" beforeDir="false" afterPath="$PROJECT_DIR$/jinfuXpath_package/background/enterpriseCertification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/logsest.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/logsest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,15 +259,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "version1.5.6",
-    "last_opened_file_path": "E:/PycharmProjects/python_pom/xiaoe_testcase",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;version1.5.6&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/PycharmProjects/python_pom/xiaoe_testcase&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\111\PycharmProjects\untitled" />
@@ -377,7 +277,7 @@
       <recent name="C:\Users\111\PycharmProjects\untitled\xiaoe_test_method" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for deal_testcase.Deal_testcase.test_judge_score">
+  <component name="RunManager" selected="Python tests.Python tests for deal_testcase.Deal_testcase.test_05_01_apply_offline">
     <configuration default="true" type="tests" factoryName="Attests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -396,6 +296,34 @@
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <method />
+    </configuration>
+    <configuration name="Python tests for deal_testcase.Deal_testcase.test_05_01_apply_offline" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="untitled" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xiaoe_testcase" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;deal_testcase.Deal_testcase.test_05_01_apply_offline&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for deal_testcase.Deal_testcase.test_05_apply_offline" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="untitled" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xiaoe_testcase" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;deal_testcase.Deal_testcase.test_05_apply_offline&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
     </configuration>
     <configuration name="Unittests for deal_testcase.Deal_testcase.test_03_purchase" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="untitled" />
@@ -440,48 +368,20 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for extract_system_testcase.Extract_system.test_extract_expert" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="untitled" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xiaoe_testcase" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;extract_system_testcase.Extract_system.test_extract_expert&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for extract_system_testcase.Extract_system.test_save_expert" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="untitled" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xiaoe_testcase" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;extract_system_testcase.Extract_system.test_save_expert&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <list>
+      <item itemvalue="Python tests.Python tests for deal_testcase.Deal_testcase.test_05_01_apply_offline" />
+      <item itemvalue="Python tests.Python tests for deal_testcase.Deal_testcase.test_05_apply_offline" />
       <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_elect_group" />
       <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_judge_score" />
-      <item itemvalue="Python tests.Unittests for extract_system_testcase.Extract_system.test_save_expert" />
-      <item itemvalue="Python tests.Unittests for extract_system_testcase.Extract_system.test_extract_expert" />
       <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_03_purchase" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for deal_testcase.Deal_testcase.test_05_01_apply_offline" />
+        <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_03_purchase" />
+        <item itemvalue="Python tests.Python tests for deal_testcase.Deal_testcase.test_05_apply_offline" />
         <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_judge_score" />
         <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_elect_group" />
-        <item itemvalue="Python tests.Unittests for extract_system_testcase.Extract_system.test_save_expert" />
-        <item itemvalue="Python tests.Unittests for extract_system_testcase.Extract_system.test_extract_expert" />
-        <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_03_purchase" />
       </list>
     </recent_temporary>
   </component>
