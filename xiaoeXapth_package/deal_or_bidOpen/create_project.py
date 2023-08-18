@@ -403,8 +403,8 @@ class CreateProjectMethod(Base):
     def EVE_or_offlinePayment_click(self):#选择线上或者线下
         self.click(self.EVE_or_offlinePayment_locator)
 
-    # def more_click(self):#点击更多
-    #     self.click(self.more_locator)
+    def more_click(self):#点击更多
+        self.click(self.more_locator)
 
     def marginSum_send_keys(self):#保证金金额
         self.send_keys(self.marginSum_locator,"10000")
@@ -448,7 +448,7 @@ class CreateProjectMethod(Base):
         self.marginPaymentWay_click()#点击保证金缴纳方式
         # self.offlinePayment_click()#点击线下缴纳
         # self.EVE_click()#点击保函申请
-        # self.more_click()#点击更多
+        self.more_click()#点击更多
         self.EVE_or_offlinePayment_click()#点击线上和线下
         self.marginSum_send_keys()#输入保证金金额
         # self.isApplyFee_click()#点击是否缴纳报名费
