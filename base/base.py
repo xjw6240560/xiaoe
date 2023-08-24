@@ -497,7 +497,7 @@ class Base(Formal_deal_data):
         elif fileType == "xezf":
             send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\tender_file.xezf")
         elif fileType == "xetf":
-            send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\深圳CA.xetf")
+            send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\福建政采加密.xetf")
         else:
             self.logger.debugText(errorText="文件类型错误："+fileType)
         send_keys("{VK_RETURN}")

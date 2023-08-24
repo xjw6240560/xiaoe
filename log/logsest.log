@@ -7502,3 +7502,677 @@ Traceback (most recent call last):
     time.sleep(0.3)
 KeyboardInterrupt
 
+[2023-08-21 09:18:16] [DEBUG] 项目编号：20230821091751  投标人or专家：
+项目添加完成！
+[2023-08-21 09:44:22] [DEBUG] 项目编号：20230821094355  投标人or专家：
+项目添加完成！
+[2023-08-21 09:45:50] [DEBUG] 项目编号：20230821094523  投标人or专家：
+项目添加完成！
+[2023-08-21 09:48:50] [DEBUG] 项目编号：20230821091751  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 286, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 299, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-21 09:49:26] [DEBUG] 项目编号：20230821091751  投标人or专家：15255555555
+请上传回单
+[2023-08-21 09:58:53] [DEBUG] 项目编号：20230821091751  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 173, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 339, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 117, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-21 10:16:53] [DEBUG] 项目编号：20230821091751  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 175, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 344, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 119, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-21 11:13:03] [DEBUG] 项目编号：20230821111237  投标人or专家：
+项目添加完成！
+[2023-08-21 14:11:21] [DEBUG] 项目编号：20230821141055  投标人or专家：
+项目添加完成！
+[2023-08-21 14:16:53] [DEBUG] 项目编号：20230821141617  投标人or专家：
+项目添加完成！
+[2023-08-21 14:32:03] [DEBUG] 项目编号：20230821143138  投标人or专家：
+项目添加完成！
+[2023-08-21 14:35:56] [DEBUG] 项目编号：20230821143514  投标人or专家：
+项目添加完成！
+[2023-08-22 14:06:23] [DEBUG] 项目编号：20230822140543  投标人or专家：
+项目添加完成！
+[2023-08-22 14:16:42] [DEBUG] 项目编号：20230822141615  投标人or专家：
+项目添加完成！
+[2023-08-22 14:18:18] [DEBUG] 项目编号：20230822141750  投标人or专家：
+项目添加完成！
+[2023-08-22 14:57:56] [DEBUG] 项目编号：20230822145726  投标人or专家：
+项目添加完成！
+[2023-08-22 14:58:44] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-08-22 15:23:02] [DEBUG] 项目编号：20230822152233  投标人or专家：
+项目添加完成！
+[2023-08-22 16:33:31] [DEBUG] 项目编号：20230822163302  投标人or专家：
+项目添加完成！
+[2023-08-22 17:00:35] [DEBUG] 项目编号：20230822170005  投标人or专家：
+项目添加完成！
+[2023-08-22 17:01:47] [DEBUG] 项目编号：20230822170005  投标人or专家：15222222222
+报名成功
+[2023-08-22 17:03:20] [DEBUG] 项目编号：20230822170005  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 277, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 17:03:49] [DEBUG] 项目编号：20230822170005  投标人or专家：15233333333
+报名成功
+[2023-08-22 17:04:19] [DEBUG] 项目编号：20230822170005  投标人or专家：15287654321
+报名成功
+[2023-08-22 17:04:47] [DEBUG] 项目编号：20230822170005  投标人or专家：15255555555
+报名成功
+[2023-08-22 17:05:16] [DEBUG] 项目编号：20230822170005  投标人or专家：15244444444
+报名成功
+[2023-08-22 17:05:43] [DEBUG] 项目编号：20230822170005  投标人or专家：15260621329
+报名成功
+[2023-08-22 17:25:36] [DEBUG] 项目编号：20230821141617  投标人or专家：15222222222
+报名成功
+[2023-08-22 17:25:49] [DEBUG] 项目编号：20230821141617  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 277, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 17:26:36] [DEBUG] 项目编号：20230821141617  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 175, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 339, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 119, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 409, in click
+    time.sleep(0.3)
+KeyboardInterrupt
+
+[2023-08-22 17:28:41] [DEBUG] 项目编号：20230821141617  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 175, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 339, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 119, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 17:28:51] [DEBUG] 项目编号：20230821141617  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 175, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 339, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 119, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 17:29:02] [DEBUG] 项目编号：20230821141617  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 175, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 339, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 119, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 17:29:12] [DEBUG] 项目编号：20230821141617  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 175, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 339, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 119, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 18:07:23] [DEBUG] 项目编号：20230821143514  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 18:07:38] [DEBUG] 项目编号：20230821143514  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 18:08:48] [DEBUG] 项目编号：20230822163302  投标人or专家：15222222222
+报名成功
+[2023-08-22 18:24:14] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-08-22 18:29:17] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-08-22 18:31:42] [DEBUG] 项目编号：20230822183112  投标人or专家：
+项目添加完成！
+[2023-08-22 19:11:14] [DEBUG] 项目编号：20230822191044  投标人or专家：
+项目添加完成！
+[2023-08-22 19:12:20] [DEBUG] 项目编号：20230822191150  投标人or专家：
+项目添加完成！
+[2023-08-22 19:13:28] [DEBUG] 项目编号：20230822191253  投标人or专家：
+项目添加完成！
+[2023-08-22 19:15:40] [DEBUG] 项目编号：20230822191505  投标人or专家：
+项目添加完成！
+[2023-08-22 19:43:50] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:44:01] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:45:35] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:45:45] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:46:00] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:51:20] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:51:31] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:53:51] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 177, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 344, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 119, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:54:01] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 177, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 344, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 119, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:54:11] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 177, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 344, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 119, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:54:17] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 177, in test_05_01_apply_offline
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 344, in select_bid_workbench
+    self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 119, in bid_workbench_click
+    self.click(workbench_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:55:56] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:56:08] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:56:18] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 19:56:33] [DEBUG] 项目编号：20230822163302  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 118, in test_05_apply_offline
+    self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 291, in select_apply
+    self.apply_click(projectNumber)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 304, in apply_click
+    self.click(apply_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-08-22 20:15:29] [DEBUG] 项目编号：20230822201501  投标人or专家：
+项目添加完成！
+[2023-08-22 20:43:03] [DEBUG] 项目编号：20230822204234  投标人or专家：
+项目添加完成！
+[2023-08-23 08:57:47] [DEBUG] 项目编号：20230823085719  投标人or专家：
+项目添加完成！
+[2023-08-23 10:19:08] [DEBUG] 项目编号：20230823085719  投标人or专家：
+组长为:专家9  身份证号为：420101198101014628
+[2023-08-23 10:23:39] [DEBUG] 项目编号：20230823085719  投标人or专家：130922194605177373
+确认评标结果完成！！！
+[2023-08-23 10:23:49] [DEBUG] 项目编号：20230823085719  投标人or专家：420101198101013895
+确认评标结果完成！！！
+[2023-08-23 10:24:00] [DEBUG] 项目编号：20230823085719  投标人or专家：420101198101014628
+确认评标结果完成！！！
+[2023-08-23 10:26:37] [DEBUG] 项目编号：20230823102610  投标人or专家：
+项目添加完成！
+[2023-08-23 10:38:52] [DEBUG] 项目编号：20230823102610  投标人or专家：15222222222
+当前项目已开标无法上传投标文件
+[2023-08-23 11:19:03] [DEBUG] 项目编号：20230823111829  投标人or专家：
+项目添加完成！
+[2023-08-23 11:32:48] [DEBUG] 项目编号：20230823111829  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 348, in select_bid_workbench
+    self.engineerApplyProject_click()#点击工程报名项目
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 241, in engineerApplyProject_click
+    self.click(self.engineerApplyProject_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=112.0.1722.68)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00007FF61ABEE022+60274]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB7EC82+818786]
+	(No symbol) [0x00007FF61A7FDE16]
+	(No symbol) [0x00007FF61A8410BA]
+	(No symbol) [0x00007FF61A833076]
+	(No symbol) [0x00007FF61A85F56A]
+	(No symbol) [0x00007FF61A832751]
+	(No symbol) [0x00007FF61A832621]
+	(No symbol) [0x00007FF61A85F8A0]
+	(No symbol) [0x00007FF61A832751]
+	(No symbol) [0x00007FF61A87891C]
+	(No symbol) [0x00007FF61A85F343]
+	(No symbol) [0x00007FF61A831796]
+	(No symbol) [0x00007FF61A830975]
+	(No symbol) [0x00007FF61A831F04]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF61AA87167+1678103]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF61A92EEBD+268397]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AABFE77+36951]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AAB7F85+4453]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF61ADB8163+1318403]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB86D3C+851740]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB82DA4+835460]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB82EFC+835804]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB78AD1+793777]
+	BaseThreadInitThunk [0x00007FFFC9A826AD+29]
+	RtlUserThreadStart [0x00007FFFCB08AA68+40]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 185, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 357, in select_bid_workbench
+    self.search_input_send_keys(projectNumber=projectNumber)#输入项目编号
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 116, in search_input_send_keys
+    self.send_keys(self.search_input_locator,projectNumber)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 437, in send_keys
+    element.clear()
+AttributeError: 'bool' object has no attribute 'clear'
+
+[2023-08-23 11:33:00] [DEBUG] 项目编号：20230823111829  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 348, in select_bid_workbench
+    self.engineerApplyProject_click()#点击工程报名项目
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 241, in engineerApplyProject_click
+    self.click(self.engineerApplyProject_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=112.0.1722.68)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00007FF61ABEE022+60274]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB7EC82+818786]
+	(No symbol) [0x00007FF61A7FDE16]
+	(No symbol) [0x00007FF61A8410BA]
+	(No symbol) [0x00007FF61A833076]
+	(No symbol) [0x00007FF61A85F56A]
+	(No symbol) [0x00007FF61A832751]
+	(No symbol) [0x00007FF61A832621]
+	(No symbol) [0x00007FF61A85F8A0]
+	(No symbol) [0x00007FF61A832751]
+	(No symbol) [0x00007FF61A87891C]
+	(No symbol) [0x00007FF61A85F343]
+	(No symbol) [0x00007FF61A831796]
+	(No symbol) [0x00007FF61A830975]
+	(No symbol) [0x00007FF61A831F04]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF61AA87167+1678103]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF61A92EEBD+268397]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AABFE77+36951]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AAB7F85+4453]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF61ADB8163+1318403]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB86D3C+851740]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB82DA4+835460]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB82EFC+835804]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB78AD1+793777]
+	BaseThreadInitThunk [0x00007FFFC9A826AD+29]
+	RtlUserThreadStart [0x00007FFFCB08AA68+40]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 185, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 357, in select_bid_workbench
+    self.search_input_send_keys(projectNumber=projectNumber)#输入项目编号
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 116, in search_input_send_keys
+    self.send_keys(self.search_input_locator,projectNumber)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 437, in send_keys
+    element.clear()
+AttributeError: 'bool' object has no attribute 'clear'
+
+[2023-08-23 11:33:10] [DEBUG] 项目编号：20230823111829  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 348, in select_bid_workbench
+    self.engineerApplyProject_click()#点击工程报名项目
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 241, in engineerApplyProject_click
+    self.click(self.engineerApplyProject_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=112.0.1722.68)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00007FF61ABEE022+60274]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB7EC82+818786]
+	(No symbol) [0x00007FF61A7FDE16]
+	(No symbol) [0x00007FF61A8410BA]
+	(No symbol) [0x00007FF61A833076]
+	(No symbol) [0x00007FF61A85F56A]
+	(No symbol) [0x00007FF61A832751]
+	(No symbol) [0x00007FF61A832621]
+	(No symbol) [0x00007FF61A85F8A0]
+	(No symbol) [0x00007FF61A832751]
+	(No symbol) [0x00007FF61A87891C]
+	(No symbol) [0x00007FF61A85F343]
+	(No symbol) [0x00007FF61A831796]
+	(No symbol) [0x00007FF61A830975]
+	(No symbol) [0x00007FF61A831F04]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF61AA87167+1678103]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF61A92EEBD+268397]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AABFE77+36951]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AAB7F85+4453]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF61ADB8163+1318403]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB86D3C+851740]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB82DA4+835460]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB82EFC+835804]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB78AD1+793777]
+	BaseThreadInitThunk [0x00007FFFC9A826AD+29]
+	RtlUserThreadStart [0x00007FFFCB08AA68+40]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 185, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 357, in select_bid_workbench
+    self.search_input_send_keys(projectNumber=projectNumber)#输入项目编号
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 116, in search_input_send_keys
+    self.send_keys(self.search_input_locator,projectNumber)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 437, in send_keys
+    element.clear()
+AttributeError: 'bool' object has no attribute 'clear'
+
+[2023-08-23 11:33:18] [DEBUG] 项目编号：20230823111829  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 348, in select_bid_workbench
+    self.engineerApplyProject_click()#点击工程报名项目
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 241, in engineerApplyProject_click
+    self.click(self.engineerApplyProject_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=112.0.1722.68)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00007FF61ABEE022+60274]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB7EC82+818786]
+	(No symbol) [0x00007FF61A7FDE16]
+	(No symbol) [0x00007FF61A8410BA]
+	(No symbol) [0x00007FF61A833076]
+	(No symbol) [0x00007FF61A85F56A]
+	(No symbol) [0x00007FF61A832751]
+	(No symbol) [0x00007FF61A832621]
+	(No symbol) [0x00007FF61A85F8A0]
+	(No symbol) [0x00007FF61A832751]
+	(No symbol) [0x00007FF61A87891C]
+	(No symbol) [0x00007FF61A85F343]
+	(No symbol) [0x00007FF61A831796]
+	(No symbol) [0x00007FF61A830975]
+	(No symbol) [0x00007FF61A831F04]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF61AA87167+1678103]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF61A92EEBD+268397]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AABFE77+36951]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AAB7F85+4453]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF61ADB8163+1318403]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB86D3C+851740]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB82DA4+835460]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB82EFC+835804]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF61AB78AD1+793777]
+	BaseThreadInitThunk [0x00007FFFC9A826AD+29]
+	RtlUserThreadStart [0x00007FFFCB08AA68+40]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 185, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 357, in select_bid_workbench
+    self.search_input_send_keys(projectNumber=projectNumber)#输入项目编号
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 116, in search_input_send_keys
+    self.send_keys(self.search_input_locator,projectNumber)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 437, in send_keys
+    element.clear()
+AttributeError: 'bool' object has no attribute 'clear'
+
+[2023-08-23 12:00:03] [DEBUG] 项目编号：20230816102949  投标人or专家：
+组长为:黄先生1  身份证号为：420101198101019955
+[2023-08-23 15:45:36] [DEBUG] 项目编号：20230823111829  投标人or专家：
+专家抽取完成,评标室1:2023-08-23 00:00:00
+[2023-08-23 17:01:27] [DEBUG] 项目编号：20230823170100  投标人or专家：
+项目添加完成！
+[2023-08-24 13:36:41] [DEBUG] 项目编号：20230824133608  投标人or专家：
+项目添加完成！
+[2023-08-24 13:58:47] [DEBUG] 项目编号：20230824133608  投标人or专家：
+组长为:测试专家72  身份证号为：341722195312083051
+[2023-08-24 14:02:08] [DEBUG] 项目编号：20230824133608  投标人or专家：341722195312083051
+确认评标结果完成！！！
+[2023-08-24 14:02:57] [DEBUG] 项目编号：20230824133608  投标人or专家：341722195312083051
+确认评标结果完成！！！
+[2023-08-24 14:03:06] [DEBUG] 项目编号：20230824133608  投标人or专家：350623199502156039
+确认评标结果完成！！！
+[2023-08-24 14:03:16] [DEBUG] 项目编号：20230824133608  投标人or专家：445381195601260910
+确认评标结果完成！！！

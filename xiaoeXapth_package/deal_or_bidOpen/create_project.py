@@ -446,10 +446,7 @@ class CreateProjectMethod(Base):
         self.projectPlace_click()#点击项目地址
         self.tenderFileCost_send_keys()#输入招标文件费用
         self.marginPaymentWay_click()#点击保证金缴纳方式
-        # self.offlinePayment_click()#点击线下缴纳
-        # self.EVE_click()#点击保函申请
-        self.more_click()#点击更多
-        self.EVE_or_offlinePayment_click()#点击线上和线下
+        self.marginPayment(1)#（0 保函申请， 1 线上和线下， 2 线下）
         self.marginSum_send_keys()#输入保证金金额
         # self.isApplyFee_click()#点击是否缴纳报名费
         self.marginEndTime_send_keys()#输入保证金戒指递交时间
@@ -479,6 +476,31 @@ class CreateProjectMethod(Base):
         except(Exception,BaseException):
             error = traceback.format_exc()
             self.logger.debugText(projectNumber=projectNumber,errorText=error)
+
+    def marginPayment(self,status):#保证金缴纳
+        try:
+            if status == 0:
+                self.EVE_click()  # 点击保函申请
+            elif status == 1:
+                self.EVE_or_offlinePayment_click()#点击线上和线下
+            elif status == 2:
+                self.offlinePayment_click()  # 点击线下缴纳
+            else:
+                print('保证金缴纳状态错误，0保函申请，1线上和线下，2线下')
+        except:
+            if status == 0:
+                self.more_click()  # 点击更多
+                self.EVE_click()  # 点击保函申请
+            elif status == 1:
+                self.more_click()  # 点击更多
+                self.EVE_or_offlinePayment_click()#点击线上和线下
+            elif status == 2:
+                self.more_click()  # 点击更多
+                self.offlinePayment_click()  # 点击线下缴纳
+            else:
+                print('保证金缴纳状态错误，0保函申请，1线上和线下，2线下')
+
+
 
 #政采项目
 

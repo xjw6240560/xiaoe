@@ -24,7 +24,7 @@ class Home_page_or_workbench(Base):
     recallReceipt = "//span[contains(text(),'撤回保证金回单')]"#撤回回单
     recallAffirm = "//span[contains(text(),'确 定')]"
     returnButton = "//span[contains(text(),'返回')]"#点击返回
-    errorMessage = "//p[@class = 'el-message__content']"#报错信息
+    errorMessage = "//div[@class = 'el-message el-message--warning']/p"#报错信息
     uploadBidFile = "//span[contains(text(),'投标阶段')]/../following-sibling::div[contains(text(),'上传投标文件')]"#上传投标文件
     recallTenderFile = "//span[contains(text(),'撤回标书')]"
     tenderFileAffirm = "//button//span[contains(text(),'确 定')]"
@@ -36,6 +36,8 @@ class Home_page_or_workbench(Base):
     saveBidFile = "//span[contains(text(),'提交投标文件')]"#保存投标文件
     commitAudit = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td[7]/div/span[text()='提交审核']"#点击提交审核
     commitAudit_affirm = "//button//span[contains(text(),'确 定')]"#提交审核确定
+    search_input = "//input[@placeholder='请输入项目编号/项目名称']"#搜索
+    search_button = "//button/span[contains(text(),'搜索')]"
     openBidEntrance = "//span[contains(text(),'开标阶段')]/../following-sibling::div[contains(text(),'开标入口')]"#点击开标入口
     secondaryQuotation = "//span[contains(text(),'开标阶段')]/../following-sibling::div[contains(text(),'二次报价')]"#工作台点击二次报价
     secondaryQuotationInput = "//label[contains(text(),'二次报价')]/./following-sibling::div/div/div/input"#输入二次报价
@@ -43,6 +45,7 @@ class Home_page_or_workbench(Base):
     submitButton = "//button//span[contains(text(),'提交二次报价')]"#提交二次报价按钮
     recall_file = "//button//span[contains(text(),'撤回文件')]"#点击撤回文件按钮
     recall_affirm = "//button//span[contains(text(),'确 定')]"#撤回文件确定
+    confirm_upload = "//span[contains(text(),'确认上传')]"
     evaluationBidEntrance = "//span[contains(text(),'开标阶段')]/../following-sibling::div[contains(text(),'评标入口')]"#点击评标入口
     enterpriseName = "//*[@id='header']/div[2]/div[3]/span"#企业名称
     quitLogin = "//li[contains(text(),'修改密码')]/./following-sibling::li[contains(text(),'退出登录')]"#退出登录
@@ -75,6 +78,9 @@ class Home_page_or_workbench(Base):
     bid_price_locator = (By.XPATH,bid_price)
     duration_locator = (By.XPATH,duration)
     quality_locator = (By.XPATH,quality)
+    confirm_upload_locator = (By.XPATH,confirm_upload)
+    search_input_locator = (By.XPATH,search_input)
+    search_button_locator = (By.XPATH,search_button)
     bid_file_locator = (By.XPATH,bid_file)
     commitAudit_affirm_locator = (By.XPATH,commitAudit_affirm)
     openBidEntrance_locator = (By.XPATH,openBidEntrance)
@@ -105,6 +111,12 @@ class Home_page_or_workbench(Base):
         workbenchButton = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[6]/div/span[text()='工作台']"#点击工作台
         workbench_locator = (By.XPATH,workbenchButton)
         self.click(workbench_locator)
+
+    def search_input_send_keys(self,projectNumber):#项目编号和项目名称输入框
+        self.send_keys(self.search_input_locator,projectNumber)
+
+    def search_button_click(self):#点击搜索按钮
+        self.click(self.search_button_locator)
 
     def tender_edit_click(self,projectNumber):#招标人编辑
         edit = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[4]/div/span[text()='编辑']"#点击编辑
@@ -159,6 +171,9 @@ class Home_page_or_workbench(Base):
 
     def uploadBidFile_click(self):#点击上传投标文件
         self.click(self.uploadBidFile_locator)
+
+    def confirm_upload_click(self):#确认上传
+        self.click(self.confirm_upload_locator)
 
     def recallTenderFile_click(self):#点击撤回标书
         self.click(self.recallTenderFile_locator)
@@ -326,19 +341,27 @@ class Home_page_or_workbench(Base):
         else:
             print("招标类型不符"+projectType)
 
-    def select_bid_workbench(self,projectNumber,projectType):#投标人选择工作台
-        if projectType == "engineering":
-            #工程
-            self.engineerBusiness_click()#点击工程业务
-            self.engineerApplyProject_click()#点击工程报名项目
-            self.bid_workbench_click(projectNumber)#点击项目对应的工作台
-        elif projectType == "purchase":
-            #采购
-            self.purchaseBusiness_click()#点击采购业务
-            self.purchaseApplyProject_click()#点击报名项目
-            self.bid_workbench_click(projectNumber)#点击项目对应的工作台
-        else:
-            print("招标类型不符"+projectType)
+    def select_bid_workbench(self,projectNumber,projectType,status):#投标人选择工作台
+        # status 用于区分报名和签到时候需不需要选择项目这一栏
+        try:
+            if projectType == "engineering":
+                #工程
+                if status == 1:
+                    self.engineerBusiness_click()  # 点击工程项目
+                self.engineerApplyProject_click()#点击工程报名项目
+                self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+            elif projectType == "purchase":
+                #采购
+                if status == 1:
+                    self.purchaseBusiness_click()  # 点击采购项目
+                self.purchaseApplyProject_click()#点击政采报名项目
+                self.bid_workbench_click(projectNumber)#点击项目对应的工作台
+            else:
+                print("招标类型不符"+projectType)
+        except:
+            self.search_input_send_keys(projectNumber=projectNumber)#输入项目编号
+            self.search_button_click()#点击搜索
+            self.bid_workbench_click(projectNumber)  # 点击项目对应的工作台
 
     def submitButton_locator_click(self):#点击提交二次报价按钮
         self.click(self.submitButton_locator)
@@ -348,3 +371,32 @@ class Home_page_or_workbench(Base):
 
     def recall_affirm_click(self):#撤回文件确定
         self.click(self.recall_affirm_locator)
+
+    def magin_and_tenderfile(self,projectNumber,bidder):#缴纳保证金和上传投标文件
+        self.marginPay_click()  # 点击保证金缴纳
+        self.offlinePay_click()  # 点击线下缴纳
+        try:
+            self.receiptImg_click()  # 点击上传回单图片
+            self.upload_file("img")  # 选择回单
+            time.sleep(0.5)
+            self.saveReceipt_click()  # 点击保存回单
+            self.returnButton_click()  # 点击返回
+            self.margin_back_click()  # 再次点击返回
+        except:
+            self.returnButton_click()  # 点击返回
+            self.margin_back_click()  # 再次点击返回
+        self.uploadBidFile_click()  # 点击上传投标文件
+        try:
+            self.bid_file_click()  # 点击投标文件
+            self.upload_file("xetf")  # 选择投标文件图片
+            self.bid_price_send_keys()  # 输入投标价
+            self.duration_send_keys()  # 输入工期
+            self.quality_send_keys()  # 输入质量标准
+            time.sleep(0.2)
+            self.saveBidFile_click()  # 点击保存
+            time.sleep(0.5)
+            self.confirm_upload_click()  # 点击确认上传
+            errorText = self.errorMessage_text()
+            self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=errorText)
+        except:
+            print("投标文件已经上传")

@@ -16,8 +16,8 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20230720150557"#项目编号
-    tenderOrganizationType = "1"#自主招标0或者委托招标1
+    projectNumber = "20230824133608"#项目编号
+    tenderOrganizationType = "0"#自主招标0或者委托招标1
     tenderWay = 0#公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0#公开0、邀请1
     role = "0"#角色 0招标人、1招标代理
@@ -105,7 +105,7 @@ class Deal_testcase(unittest.TestCase):
         self.createProjectMethod.linkPlace_send_keys()#输入联系地址
         self.createProjectMethod.tender_or_tenderAgent(role=self.role,projectNumber=projectNumber,projectType = 'purchase',tenderOrganizationType=self.tenderOrganizationType,tenderWay=self.tenderWay)
     """
-    线下报名
+    线下报名和上传电子回单
     """
     def test_05_apply_offline(self):#报名(线下)状态
         for i in range(len(self.username)):
@@ -116,97 +116,16 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.bidder_click()#点击投标人
             try:
                 self.home_page_or_workbench.select_apply(projectNumber= self.projectNumber,projectType=self.projectType_sql,tenderWay=self.tenderWay,applyWay=self.applyWay)#点击工作台
+                time.sleep(0.2)
+                self.home_page_or_workbench.linkMan_send_keys()  # 输入联系人
+                self.home_page_or_workbench.linkManNumber_send_keys()  # 输入联系手机号
+                self.home_page_or_workbench.affirmApply_click()  # 点击确认报名
+                self.home_page_or_workbench.bid_workbench_click(self.projectNumber)  # 点击工作台
             except(Exception,BaseException):
-                error = traceback.format_exc()
-                self.logger.debugText(self.projectNumber,error)
-                self.createProjectMethod.open_deal_url()
-                continue
-            time.sleep(0.2)
-            self.home_page_or_workbench.linkMan_send_keys()#输入联系人
-            self.home_page_or_workbench.linkManNumber_send_keys()#输入联系手机号
-            self.home_page_or_workbench.affirmApply_click()#点击确认报名
+                self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,0)
             # time.sleep(1000)
-            self.home_page_or_workbench.bid_workbench_click(self.projectNumber)#点击工作台
-            self.home_page_or_workbench.marginPay_click()#点击保证金缴纳
-            self.home_page_or_workbench.offlinePay_click()#点击线下缴纳
-            try:
-                self.home_page_or_workbench.receiptImg_click()#点击上传回单图片
-            except:
-                self.home_page_or_workbench.recallReceipt_click()
-                self.home_page_or_workbench.recallAffirm_click()
-                self.home_page_or_workbench.receiptImg_click()#点击上传回单图片
-            self.home_page_or_workbench.upload_file("img")#选择回单
-            time.sleep(0.5)
-            self.home_page_or_workbench.saveReceipt_click()#点击保存回单
-            message = self.home_page_or_workbench.errorMessage_text()#获取提示信息
-            self.logger.debugText(self.projectNumber,message,self.username[i])
-            self.home_page_or_workbench.returnButton_click()#点击返回
-            self.home_page_or_workbench.margin_back_click()#保证金返回
-            self.home_page_or_workbench.uploadBidFile_click()#点击上传投标文件
-            self.home_page_or_workbench.bid_price_send_keys()#输入投标价
-            self.home_page_or_workbench.duration_send_keys()#输入工期
-            self.home_page_or_workbench.quality_send_keys()#输入质量标准
-            try:
-                self.home_page_or_workbench.bid_file_click()#点击招标公告
-            except:
-                self.home_page_or_workbench.recallTenderFile_click()#撤回标书
-                self.home_page_or_workbench.tenderFileAffirm_click()#确认撤回
-                self.home_page_or_workbench.bid_price_send_keys()#输入投标价
-                self.home_page_or_workbench.duration_send_keys()#输入工期
-                self.home_page_or_workbench.quality_send_keys()#输入质量标准
-                self.home_page_or_workbench.bid_file_click()#点击招标公告
-            self.home_page_or_workbench.upload_file("xetf")#选择投标文件图片
-            time.sleep(0.3)
-            self.home_page_or_workbench.saveBidFile_click()#点击保存
-            message = self.home_page_or_workbench.errorMessage_text()#获取提示信息
-            self.logger.debugText(self.projectNumber,message,self.username[i],'报名成功')
-            time.sleep(0.5)
-            self.createProjectMethod.open_deal_url()#进入登录页面
-    """
-    上传电子回单
-    """
-    def test_05_01_apply_offline(self):#上传电子回单
-        for i in range(len(self.username)):
-            self.loginORrole.login(username=self.username[i],password=self.password[0])
-            self.loginORrole.bidder_click()#点击投标人
-            try:
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
-            except(Exception,BaseException):
-                error = traceback.format_exc()
-                self.logger.debugText(self.projectNumber,error)
-                self.createProjectMethod.open_deal_url()
-                continue
-            self.home_page_or_workbench.marginPay_click()#点击保证金缴纳
-            self.home_page_or_workbench.offlinePay_click()#点击线下缴纳
-            try:
-                self.home_page_or_workbench.receiptImg_click()#点击上传回单图片
-            except:
-                self.home_page_or_workbench.recallReceipt_click()
-                self.home_page_or_workbench.recallAffirm_click()
-                self.home_page_or_workbench.receiptImg_click()#点击上传回单图片
-            self.home_page_or_workbench.upload_file("img")#选择回单
-            time.sleep(0.5)
-            self.home_page_or_workbench.saveReceipt_click()#点击保存回单
-            self.home_page_or_workbench.returnButton_click()#点击返回
-            self.home_page_or_workbench.margin_back_click()
-            self.home_page_or_workbench.uploadBidFile_click()#点击上传投标文件
-            self.home_page_or_workbench.bid_price_send_keys()#输入投标价
-            self.home_page_or_workbench.duration_send_keys()#输入工期
-            self.home_page_or_workbench.quality_send_keys()#输入质量标准
-            try:
-                self.home_page_or_workbench.bid_file_click()#点击投标文件
-            except:
-                self.home_page_or_workbench.recallTenderFile_click()#撤回标书
-                self.home_page_or_workbench.tenderFileAffirm_click()#确认撤回
-                self.home_page_or_workbench.bid_price_send_keys()#输入投标价
-                self.home_page_or_workbench.duration_send_keys()#输入工期
-                self.home_page_or_workbench.quality_send_keys()#输入质量标准
-                self.home_page_or_workbench.bid_file_click()#点击投标文件
-            self.home_page_or_workbench.upload_file("xetf")#选择投标文件图片
-            time.sleep(0.3)
-            self.home_page_or_workbench.saveBidFile_click()#点击保存
-            time.sleep(0.5)
-            self.createProjectMethod.open_deal_url()#进入登录页面
+            self.home_page_or_workbench.magin_and_tenderfile(projectNumber=self.projectNumber,bidder=self.username[i])
+            self.createProjectMethod.open_deal_url()  # 进入登录页面
     """
     签到
     """
@@ -215,7 +134,7 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
             try:
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql,1)
             except(Exception,BaseException):
                 error = traceback.format_exc()
                 self.logger.debugText(self.projectNumber,error)
@@ -249,7 +168,7 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
             try:
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)#选择工作台
+                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql,1)#选择工作台
             except(Exception,BaseException):
                 error = traceback.format_exc()
                 self.logger.debugText(self.projectNumber,error,self.username[i])
@@ -281,7 +200,7 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
             try:
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)
+                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql,1)
             except(Exception,BaseException):
                 error = traceback.format_exc()
                 self.logger.debugText(self.projectNumber,error,self.username[i])
@@ -423,7 +342,7 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
             try:
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql)#选择工作台
+                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql,1)#选择工作台
             except(Exception,BaseException):
                 error = traceback.format_exc()
                 self.logger.debugText(self.projectNumber,error)
