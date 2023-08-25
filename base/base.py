@@ -373,7 +373,7 @@ class Base(Formal_deal_data):
         return text
 
     def get_attribute_value(self,locator,attribute):#获取属性值
-        element = self.find_element(locator=locator,timeout=5)
+        element = self.find_element(locator=locator,timeout=2)
         time.sleep(0.2)
         text = element.get_attribute(attribute)
         return text

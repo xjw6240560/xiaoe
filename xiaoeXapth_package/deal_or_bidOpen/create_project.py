@@ -446,7 +446,7 @@ class CreateProjectMethod(Base):
         self.projectPlace_click()#点击项目地址
         self.tenderFileCost_send_keys()#输入招标文件费用
         self.marginPaymentWay_click()#点击保证金缴纳方式
-        self.marginPayment(1)#（0 保函申请， 1 线上和线下， 2 线下）
+        self.marginPayment(self.marginApplyWay)#（0 保函申请， 1 线上和线下， 2 线下）
         self.marginSum_send_keys()#输入保证金金额
         # self.isApplyFee_click()#点击是否缴纳报名费
         self.marginEndTime_send_keys()#输入保证金戒指递交时间

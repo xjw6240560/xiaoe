@@ -8474,3 +8474,13 @@ Traceback (most recent call last):
     pic_url = pic.get_attribute('src')
 AttributeError: 'bool' object has no attribute 'get_attribute'
 
+[2023-08-25 11:17:44] [DEBUG] 项目编号：20230825111708  投标人or专家：
+项目添加完成！
+[2023-08-25 11:18:41] [DEBUG] 项目编号：  投标人or专家：
+该时间段已经有项目开标，请修改开标时间
+[2023-08-25 16:51:55] [DEBUG] 项目编号：20230825165119  投标人or专家：
+项目添加完成！
+[2023-08-25 16:54:53] [DEBUG] 项目编号：20230825165417  投标人or专家：
+项目添加完成！
+[2023-08-25 17:02:46] [DEBUG] 项目编号：20230825170211  投标人or专家：
+项目添加完成！
