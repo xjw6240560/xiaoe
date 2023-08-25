@@ -308,7 +308,7 @@ class Deal_testcase(unittest.TestCase):
     开始评标，注意需要输入评标类型是哪个
     """
     def test_judge_score(self):#评分
-        buttonCount = 4#用来判断是哪个评标类型
+        buttonCount = 2#用来判断是哪个评标类型
         expert_username = self.expert_username#获取账号
         expert_password = self.expert_password#获取密码
         expert_name = self.expert_name#获取评委名称
@@ -328,8 +328,9 @@ class Deal_testcase(unittest.TestCase):
                 self.expert.submit_result_click()#点击提交审核结果
                 self.expert.submitResult_affirm_click()#点击确认
                 time.sleep(0.5)
-                errortext = self.home_page_or_workbench.errorMessage_text()
-                self.logger.debugText(projectNumber=self.projectNumber,errorText=errortext,bidder=self.expert_username[i])
+                errortext = self.base.get_attribute_value(locator=self.expert.alert_locator,attribute='class')
+                if errortext != self.base.successClass:
+                    self.logger.debugText(projectNumber=self.projectNumber,errorText=errortext,bidder=self.expert_username[i])
             except (Exception,BaseException):
                 error = traceback.format_exc()
                 self.logger.debugText(self.projectNumber,error)

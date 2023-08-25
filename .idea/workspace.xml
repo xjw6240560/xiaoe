@@ -7,12 +7,8 @@
     <list default="true" id="47656d0a-778f-45bd-bbdb-56529caaddaa" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/base/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/log/logsest.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/logsest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/login_registerORselect_role.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/login_registerORselect_role.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xiaoe_data/formal_deal_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoe_data/formal_deal_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xiaoe_data/test_deal_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoe_data/test_deal_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -283,7 +279,7 @@
       <recent name="C:\Users\111\PycharmProjects\untitled\xiaoe_test_method" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for deal_testcase.Deal_testcase.test_07_apply_online">
+  <component name="RunManager" selected="Python tests.Unittests for deal_testcase.Deal_testcase.test_judgeAffirm">
     <configuration default="true" type="tests" factoryName="Attests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -303,7 +299,7 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <configuration name="Python tests for deal_testcase.Deal_testcase.test_elect_group" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for deal_testcase.Deal_testcase.test_elect_group" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="untitled" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -317,7 +313,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for deal_testcase.Deal_testcase.test_03_purchase" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for deal_testcase.Deal_testcase.test_judgeAffirm" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="untitled" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -327,11 +323,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;deal_testcase.Deal_testcase.test_03_purchase&quot;" />
+      <option name="_new_target" value="&quot;deal_testcase.Deal_testcase.test_judgeAffirm&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for deal_testcase.Deal_testcase.test_05_apply_offline" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for deal_testcase.Deal_testcase.test_judge_score" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="untitled" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -341,11 +337,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;deal_testcase.Deal_testcase.test_05_apply_offline&quot;" />
+      <option name="_new_target" value="&quot;deal_testcase.Deal_testcase.test_judge_score&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for deal_testcase.Deal_testcase.test_06_signIn_online" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for deal_testcase.Deal_testcase.test_secondary_quotation" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="untitled" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -355,11 +351,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;deal_testcase.Deal_testcase.test_06_signIn_online&quot;" />
+      <option name="_new_target" value="&quot;deal_testcase.Deal_testcase.test_secondary_quotation&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for deal_testcase.Deal_testcase.test_07_apply_online" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for extract_system_testcase.Extract_system.test_save_expert" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="untitled" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -369,24 +365,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;deal_testcase.Deal_testcase.test_07_apply_online&quot;" />
+      <option name="_new_target" value="&quot;extract_system_testcase.Extract_system.test_save_expert&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_06_signIn_online" />
-      <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_07_apply_online" />
-      <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_03_purchase" />
-      <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_05_apply_offline" />
-      <item itemvalue="Python tests.Python tests for deal_testcase.Deal_testcase.test_elect_group" />
+      <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_elect_group" />
+      <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_judgeAffirm" />
+      <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_judge_score" />
+      <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_secondary_quotation" />
+      <item itemvalue="Python tests.Unittests for extract_system_testcase.Extract_system.test_save_expert" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_07_apply_online" />
-        <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_06_signIn_online" />
-        <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_05_apply_offline" />
-        <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_03_purchase" />
-        <item itemvalue="Python tests.Python tests for deal_testcase.Deal_testcase.test_elect_group" />
+        <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_judgeAffirm" />
+        <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_secondary_quotation" />
+        <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_judge_score" />
+        <item itemvalue="Python tests.Unittests for deal_testcase.Deal_testcase.test_elect_group" />
+        <item itemvalue="Python tests.Unittests for extract_system_testcase.Extract_system.test_save_expert" />
       </list>
     </recent_temporary>
   </component>

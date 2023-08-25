@@ -71,7 +71,7 @@ class Expert(Base):
                 self.send_keys(self.img_input_locator, pic)
                 self.click(self.login_button_locator)  # 点击登录按钮
                 errortext = self.alert_getClass()#获取错误提示弹窗类型
-                if errortext != 'el-message el-message--success':
+                if errortext != self.successClass:
                     time.sleep(1)
             except(Exception, BaseException):
                 self.in_project_click(projectNumber=projectNumber)
@@ -82,13 +82,15 @@ class Expert(Base):
                     try:
                         if isAgree[0] == "disAgree":
                             self.click(self.know_locator)
+                            self.update_isAgree("consent", username, projectNumber)
                             break
                         elif isAgree[0] == "consent":
                             break
                         else:
                             print("专家协议类型错误" + isAgree[0])
                     except:
-                        self.update_isAgree("consent", username[i], projectNumber)
+                        self.update_isAgree("consent", username, projectNumber)
+                        break
                 # text = traceback.format_exc()
                 # self.logger.debugText(projectNumber=projectNumber,bidder=username,errorText=text)
                 # if self.is_url(self.expert_login_url) is not True:#判断是否登陆成功

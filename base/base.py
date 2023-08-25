@@ -23,6 +23,7 @@ class Base(Formal_deal_data):
     drive = webdriver.Edge(options=op)
     drive.maximize_window()
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    successClass = 'el-message el-message--success'
     csv_place = r"C:\Users\86176\Desktop\pythonScriptGenerate\data.csv"#数据地址
     script_place = r"C:\Users\86176\Desktop\pythonScriptGenerate\pythonScript.txt"#存放xpath地址
     def open_userUrl_cookie(self):
