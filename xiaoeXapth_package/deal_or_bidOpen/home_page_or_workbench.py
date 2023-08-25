@@ -361,7 +361,10 @@ class Home_page_or_workbench(Base):
         except:
             self.search_input_send_keys(projectNumber=projectNumber)#输入项目编号
             self.search_button_click()#点击搜索
-            self.bid_workbench_click(projectNumber)  # 点击项目对应的工作台
+            try:
+                self.bid_workbench_click(projectNumber)  # 点击项目对应的工作台
+            except:
+                pass
 
     def submitButton_locator_click(self):#点击提交二次报价按钮
         self.click(self.submitButton_locator)

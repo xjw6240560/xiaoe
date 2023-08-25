@@ -13,7 +13,7 @@ class Expert(Base):
     img = "//input[@placeholder='请输入图形码']/ancestor::div[@class='w-full aui-padded-r-10']/following-sibling::div/img"#图片验证码
     img_input = "//input[@placeholder='请输入图形码']"#图形验证码输入框
     login_button = "//button/span[contains(text(),'登录')]"#登录按钮
-    log = "//div[@role='alert']/p"#报错信息
+    alert = "//div[@role='alert']"#报错信息
     know = "//button//span[contains(text(),'我已知悉')]"#协议
     electGroup = "//button//span[contains(text(),'推选组长')]"#推选组长
     group = "//div//span[contains(text(),'当选组长')]/../preceding-sibling::div/../preceding-sibling::p[@class='aui-font-weight-700 aui-000000 aui-padded-t-4']"
@@ -38,7 +38,7 @@ class Expert(Base):
     img_locator = (By.XPATH,img)
     img_input_locator = (By.XPATH,img_input)
     login_button_locator = (By.XPATH,login_button)
-    log_locator = (By.XPATH,log)
+    alert_locator = (By.XPATH,alert)
     know_locator = (By.XPATH,know)
     electGroup_locator = (By.XPATH,electGroup)
     group_locator = (By.XPATH,group)
@@ -64,35 +64,35 @@ class Expert(Base):
         self.send_keys(self.username_input_locator,username)
         self.send_keys(self.password_input_locator,password)
         isAgree = self.select_isAgree(username,projectNumber)
-        try:
-            for j in range(150):
+        for j in range(150):
+            try:
                 self.savePictrue(self.img_locator)
-                time.sleep(0.1)
                 pic = self.getPicPassword()
-                self.send_keys(self.img_input_locator,pic)
-                self.click(self.login_button_locator)#点击登录按钮
-                time.sleep(0.3)
-                if self.is_url(self.expert_login_url):
-                    pass
-                else:
+                self.send_keys(self.img_input_locator, pic)
+                self.click(self.login_button_locator)  # 点击登录按钮
+                errortext = self.alert_getClass()#获取错误提示弹窗类型
+                if errortext != 'el-message el-message--success':
+                    time.sleep(1)
+            except(Exception, BaseException):
+                self.in_project_click(projectNumber=projectNumber)
+                if self.is_url(self.expert_projectList_url):  # 判断有没有进入专家平台
+                    time.sleep(3)
                     self.in_project_click(projectNumber=projectNumber)
-                    time.sleep(0.5)
-                    if self.is_url(self.expert_projectList_url):#判断有没有进入专家平台
-                        time.sleep(5)
-                        try:
-                            self.in_project_click(projectNumber=projectNumber)
-                        except:
-                            pass
-                    if isAgree[0] == "disAgree" :
-                        self.click(self.know_locator)
-                        break
-                    elif isAgree[0] == "consent":
-                        break
-                    else:
-                        print("专家协议类型错误"+isAgree[0])
-        except (Exception,BaseException):
-            error = traceback.format_exc()
-            print(error)
+                else:
+                    try:
+                        if isAgree[0] == "disAgree":
+                            self.click(self.know_locator)
+                            break
+                        elif isAgree[0] == "consent":
+                            break
+                        else:
+                            print("专家协议类型错误" + isAgree[0])
+                    except:
+                        self.update_isAgree("consent", username[i], projectNumber)
+                # text = traceback.format_exc()
+                # self.logger.debugText(projectNumber=projectNumber,bidder=username,errorText=text)
+                # if self.is_url(self.expert_login_url) is not True:#判断是否登陆成功
+
 
     def electGroup_click(self):#点击推选组长
         self.click(self.electGroup_locator)#点击推选组长
@@ -111,7 +111,6 @@ class Expert(Base):
                     a =random.randint(0,len(username)-1)#随机生成推选评委
                     self.elect_click(name=name[a])#点击推选
                     time.sleep(0.2)
-                    self.update_isAgree("consent",username[i],projectNumber)
                 except (Exception, BaseException):
                     exstr = traceback.format_exc()
                     print(exstr)
@@ -126,6 +125,10 @@ class Expert(Base):
     def get_group(self):#获取组长评委
         review = self.get_text(self.group_locator)
         return review
+
+    def alert_getClass(self):#获取弹窗类型
+        errortext = self.get_attribute_value(locator=self.alert_locator,attribute='class')
+        return errortext
 
     def review_click(self,buttonCount):#专家选择评标类型
         time.sleep(0.2)

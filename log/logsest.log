@@ -8180,3 +8180,297 @@ AttributeError: 'bool' object has no attribute 'clear'
 项目添加完成！
 [2023-08-24 15:29:37] [DEBUG] 项目编号：20230824152229  投标人or专家：15216189856
 未缴纳保证金无法上传标书
+[2023-08-24 16:07:13] [DEBUG] 项目编号：20230824152229  投标人or专家：
+组长为:专家14  身份证号为：420101198101019613
+[2023-08-24 16:36:40] [DEBUG] 项目编号：20230824152229  投标人or专家：341824195708077430
+确认评标结果完成！！！
+[2023-08-24 16:36:49] [DEBUG] 项目编号：20230824152229  投标人or专家：420101198101019461
+确认评标结果完成！！！
+[2023-08-24 16:37:02] [DEBUG] 项目编号：20230824152229  投标人or专家：420101198101019613
+确认评标结果完成！！！
+[2023-08-24 16:45:16] [DEBUG] 项目编号：20230824164441  投标人or专家：
+项目添加完成！
+[2023-08-24 16:50:59] [DEBUG] 项目编号：20230824165018  投标人or专家：
+项目添加完成！
+[2023-08-24 17:17:18] [DEBUG] 项目编号：20230824165018  投标人or专家：18567985980
+未找到签到按钮！
+[2023-08-24 17:26:35] [DEBUG] 项目编号：20230824165018  投标人or专家：
+组长为:专家3  身份证号为：420101198101014724
+[2023-08-24 17:29:24] [DEBUG] 项目编号：20230824165018  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 328, in test_judge_score
+    self.expert.submit_result_click()#点击提交审核结果
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 243, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=112.0.1722.68)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00007FF6E0CCE022+60274]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C5EC82+818786]
+	(No symbol) [0x00007FF6E08DDE16]
+	(No symbol) [0x00007FF6E09210BA]
+	(No symbol) [0x00007FF6E0913076]
+	(No symbol) [0x00007FF6E093F56A]
+	(No symbol) [0x00007FF6E0912751]
+	(No symbol) [0x00007FF6E0912621]
+	(No symbol) [0x00007FF6E093F8A0]
+	(No symbol) [0x00007FF6E0912751]
+	(No symbol) [0x00007FF6E095891C]
+	(No symbol) [0x00007FF6E093F343]
+	(No symbol) [0x00007FF6E0911796]
+	(No symbol) [0x00007FF6E0910975]
+	(No symbol) [0x00007FF6E0911F04]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF6E0B67167+1678103]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF6E0A0EEBD+268397]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0B9FE77+36951]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0B97F85+4453]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF6E0E98163+1318403]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C66D3C+851740]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C62DA4+835460]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C62EFC+835804]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C58AD1+793777]
+	BaseThreadInitThunk [0x00007FFFC9A826AD+29]
+	RtlUserThreadStart [0x00007FFFCB08AA68+40]
+
+
+[2023-08-24 17:29:35] [DEBUG] 项目编号：20230824165018  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 328, in test_judge_score
+    self.expert.submit_result_click()#点击提交审核结果
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 243, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=112.0.1722.68)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00007FF6E0CCE022+60274]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C5EC82+818786]
+	(No symbol) [0x00007FF6E08DDE16]
+	(No symbol) [0x00007FF6E09210BA]
+	(No symbol) [0x00007FF6E0913076]
+	(No symbol) [0x00007FF6E093F56A]
+	(No symbol) [0x00007FF6E0912751]
+	(No symbol) [0x00007FF6E0912621]
+	(No symbol) [0x00007FF6E093F8A0]
+	(No symbol) [0x00007FF6E0912751]
+	(No symbol) [0x00007FF6E095891C]
+	(No symbol) [0x00007FF6E093F343]
+	(No symbol) [0x00007FF6E0911796]
+	(No symbol) [0x00007FF6E0910975]
+	(No symbol) [0x00007FF6E0911F04]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF6E0B67167+1678103]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF6E0A0EEBD+268397]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0B9FE77+36951]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0B97F85+4453]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF6E0E98163+1318403]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C66D3C+851740]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C62DA4+835460]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C62EFC+835804]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C58AD1+793777]
+	BaseThreadInitThunk [0x00007FFFC9A826AD+29]
+	RtlUserThreadStart [0x00007FFFCB08AA68+40]
+
+
+[2023-08-24 17:40:29] [DEBUG] 项目编号：20230824165018  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 328, in test_judge_score
+    self.expert.submit_result_click()#点击提交审核结果
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 244, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=112.0.1722.68)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00007FF6E0CCE022+60274]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C5EC82+818786]
+	(No symbol) [0x00007FF6E08DDE16]
+	(No symbol) [0x00007FF6E09210BA]
+	(No symbol) [0x00007FF6E0913076]
+	(No symbol) [0x00007FF6E093F56A]
+	(No symbol) [0x00007FF6E0912751]
+	(No symbol) [0x00007FF6E0912621]
+	(No symbol) [0x00007FF6E093F8A0]
+	(No symbol) [0x00007FF6E0912751]
+	(No symbol) [0x00007FF6E095891C]
+	(No symbol) [0x00007FF6E093F343]
+	(No symbol) [0x00007FF6E0911796]
+	(No symbol) [0x00007FF6E0910975]
+	(No symbol) [0x00007FF6E0911F04]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF6E0B67167+1678103]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF6E0A0EEBD+268397]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0B9FE77+36951]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0B97F85+4453]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF6E0E98163+1318403]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C66D3C+851740]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C62DA4+835460]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C62EFC+835804]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C58AD1+793777]
+	BaseThreadInitThunk [0x00007FFFC9A826AD+29]
+	RtlUserThreadStart [0x00007FFFCB08AA68+40]
+
+
+[2023-08-24 17:41:05] [DEBUG] 项目编号：20230824165018  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoe_testcase\deal_testcase.py", line 328, in test_judge_score
+    self.expert.submit_result_click()#点击提交审核结果
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 244, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 410, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=112.0.1722.68)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00007FF6E0CCE022+60274]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C5EC82+818786]
+	(No symbol) [0x00007FF6E08DDE16]
+	(No symbol) [0x00007FF6E09210BA]
+	(No symbol) [0x00007FF6E0913076]
+	(No symbol) [0x00007FF6E093F56A]
+	(No symbol) [0x00007FF6E0912751]
+	(No symbol) [0x00007FF6E0912621]
+	(No symbol) [0x00007FF6E093F8A0]
+	(No symbol) [0x00007FF6E0912751]
+	(No symbol) [0x00007FF6E095891C]
+	(No symbol) [0x00007FF6E093F343]
+	(No symbol) [0x00007FF6E0911796]
+	(No symbol) [0x00007FF6E0910975]
+	(No symbol) [0x00007FF6E0911F04]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF6E0B67167+1678103]
+	Microsoft::Applications::Events::EventProperties::SetLevel [0x00007FF6E0A0EEBD+268397]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0B9FE77+36951]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0B97F85+4453]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF6E0E98163+1318403]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C66D3C+851740]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C62DA4+835460]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C62EFC+835804]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6E0C58AD1+793777]
+	BaseThreadInitThunk [0x00007FFFC9A826AD+29]
+	RtlUserThreadStart [0x00007FFFCB08AA68+40]
+
+
+[2023-08-24 18:09:09] [DEBUG] 项目编号：20230824165018  投标人or专家：360428194801316274
+确认评标结果完成！！！
+[2023-08-24 18:09:34] [DEBUG] 项目编号：20230824165018  投标人or专家：420101198101014724
+确认评标结果完成！！！
+[2023-08-24 18:10:08] [DEBUG] 项目编号：20230824165018  投标人or专家：420101198101015559
+确认评标结果完成！！！
+[2023-08-24 18:11:11] [DEBUG] 项目编号：20230824165018  投标人or专家：360428194801316274
+确认评标结果完成！！！
+[2023-08-24 18:11:31] [DEBUG] 项目编号：20230824165018  投标人or专家：420101198101014724
+确认评标结果完成！！！
+[2023-08-24 18:11:55] [DEBUG] 项目编号：20230824165018  投标人or专家：420101198101015559
+确认评标结果完成！！！
+[2023-08-25 09:29:44] [DEBUG] 项目编号：20230824165018  投标人or专家：
+组长为:专家3  身份证号为：420101198101014724
+[2023-08-25 10:17:55] [DEBUG] 项目编号：20230824165018  投标人or专家：
+组长为:专家3  身份证号为：420101198101014724
+[2023-08-25 10:18:47] [DEBUG] 项目编号：20230824165018  投标人or专家：420101198101014724
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 73, in login
+    errortext = self.alert_getClass()#获取错误提示弹窗类型
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 129, in alert_getClass
+    errortext = self.get_attribute_value(locator=self.alert_locator,attribute='class')
+  File "E:\PycharmProjects\python_pom\base\base.py", line 374, in get_attribute_value
+    time.sleep(0.2)
+KeyboardInterrupt
+
+[2023-08-25 10:18:47] [DEBUG] 项目编号：20230824165018  投标人or专家：420101198101014724
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 69, in login
+    self.savePictrue(self.img_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 358, in savePictrue
+    pic_url = pic.get_attribute('src')
+AttributeError: 'bool' object has no attribute 'get_attribute'
+
+[2023-08-25 10:38:09] [DEBUG] 项目编号：20230824165018  投标人or专家：360428194801316274
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 69, in login
+    self.savePictrue(self.img_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 361, in savePictrue
+    pic_url = pic.get_attribute('src')
+AttributeError: 'bool' object has no attribute 'get_attribute'
+
+[2023-08-25 10:38:12] [DEBUG] 项目编号：20230824165018  投标人or专家：360428194801316274
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 69, in login
+    self.savePictrue(self.img_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 361, in savePictrue
+    pic_url = pic.get_attribute('src')
+AttributeError: 'bool' object has no attribute 'get_attribute'
+
+[2023-08-25 10:38:15] [DEBUG] 项目编号：20230824165018  投标人or专家：360428194801316274
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 69, in login
+    self.savePictrue(self.img_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 361, in savePictrue
+    pic_url = pic.get_attribute('src')
+AttributeError: 'bool' object has no attribute 'get_attribute'
+
+[2023-08-25 10:38:18] [DEBUG] 项目编号：20230824165018  投标人or专家：360428194801316274
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 69, in login
+    self.savePictrue(self.img_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 361, in savePictrue
+    pic_url = pic.get_attribute('src')
+AttributeError: 'bool' object has no attribute 'get_attribute'
+
+[2023-08-25 10:38:21] [DEBUG] 项目编号：20230824165018  投标人or专家：360428194801316274
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 69, in login
+    self.savePictrue(self.img_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 361, in savePictrue
+    pic_url = pic.get_attribute('src')
+AttributeError: 'bool' object has no attribute 'get_attribute'
+
+[2023-08-25 10:38:21] [DEBUG] 项目编号：20230824165018  投标人or专家：360428194801316274
+Traceback (most recent call last):
+  File "E:\PycharmProjects\python_pom\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 69, in login
+    self.savePictrue(self.img_locator)
+  File "E:\PycharmProjects\python_pom\base\base.py", line 361, in savePictrue
+    pic_url = pic.get_attribute('src')
+AttributeError: 'bool' object has no attribute 'get_attribute'
+

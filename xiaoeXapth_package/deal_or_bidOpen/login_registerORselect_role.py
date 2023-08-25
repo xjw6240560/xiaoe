@@ -11,6 +11,7 @@ class LoginORrole(Base):
     login_button = "//button[@class='el-button w-full el-button--primary']//span[text()='登录']"
     pictrue_input = "//input[@placeholder='请输入验证码']"
     pictrue = "//div[@class='verificationCode aui-padded-l-10']//img"
+    alert = "//div[@role='alert']"#弹窗信息
     log_text = "//div[@role='alert']//p[contains(text(),'图形验证码错误')]"
     #注册
     register_user = "//button//span[text()='用户注册']"#点击用户注册
@@ -38,6 +39,7 @@ class LoginORrole(Base):
     number_input_locator = (By.XPATH,number_input)
     password_locator = (By.XPATH, password_input)
     picture_locator = (By.XPATH, pictrue)
+    alert_locator = (By.XPATH,alert)
     pictrue_input_locator = (By.XPATH, pictrue_input)
     login_btn_locator = (By.XPATH, login_button)
     log_text_locator = (By.XPATH, log_text)
@@ -81,10 +83,9 @@ class LoginORrole(Base):
                 self.send_keys(self.pictrue_input_locator,yzm)
                 self.click(self.login_btn_locator)
                 time.sleep(0.5)
-                if self.is_url(self.deal_login_url):
-                    pass
-                else:
-                    break
+                text = self.get_attribute_value(attribute='class',locator=self.alert_locator)
+                if text is not None:
+                    time.sleep(1.2)
         except(Exception,BaseException):
             error = traceback.format_exc()
             print(error)

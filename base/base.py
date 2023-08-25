@@ -8,6 +8,7 @@ import ddddocr
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.edge.options import Options
 from pywinauto.keyboard import send_keys
 import random
 import traceback
@@ -17,7 +18,9 @@ from xiaoe_data.test_deal_data import Test_deal_data
 from xiaoe_data.formal_deal_data import Formal_deal_data
 class Base(Formal_deal_data):
     logger = Logger()
-    drive = webdriver.Edge()
+    op = Options()
+    op.page_load_strategy = 'eager'
+    drive = webdriver.Edge(options=op)
     drive.maximize_window()
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     csv_place = r"C:\Users\86176\Desktop\pythonScriptGenerate\data.csv"#数据地址
@@ -367,6 +370,12 @@ class Base(Formal_deal_data):
         pic = self.find_element(locator,3)
         time.sleep(0.2)
         text = pic.get_attribute('disabled')
+        return text
+
+    def get_attribute_value(self,locator,attribute):#获取属性值
+        element = self.find_element(locator=locator,timeout=5)
+        time.sleep(0.2)
+        text = element.get_attribute(attribute)
         return text
 
     def frame(self,locator):#表单定位
