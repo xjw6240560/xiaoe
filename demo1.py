@@ -10,15 +10,15 @@ def selectList(list):
     else:
         print("False")
 
-
-class Pkq(Base):
-    def selectList2(self,list2):
-        for i in list2:
-            if list2.count(i) >= 2:
-                print("False")
-                break
-        else:
-            print("True")
+#
+# class Pkq(Base):
+#     def selectList2(self,list2):
+#         for i in list2:
+#             if list2.count(i) >= 2:
+#                 print("False")
+#                 break
+#         else:
+#             print("True")
 
 
     def selectList3(self,list3):
