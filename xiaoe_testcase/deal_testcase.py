@@ -18,7 +18,7 @@ class Deal_testcase(unittest.TestCase):
     password = Base.password
     projectNumber = "20230828150033"#项目编号
     tenderOrganizationType = "0"#自主招标0或者委托招标1
-    tenderWay = 3#公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
+    tenderWay = 0#公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0#公开0、邀请1
     role = "0"#角色 0招标人、1招标代理
     def setUp(self):

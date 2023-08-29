@@ -97,12 +97,12 @@ class Base(Test_deal_data):
         # :param url: 首页地址
         # :return:
         # """
-        login_url = "http://user.jiaoyi.com/#/login"
-        url = "http://user.jiaoyi.com/#/"
-        cust = {'name':'baohan-jiaoyi-cust-supervise','value':'eyJhbGciOiJIUzI1NiIsImNhbGciOiJERUYifQ.eNp0jjsOwjAQRO-yNSACTrLOIago3axjA0bBjvKRQIgj0CM6LkDNgUBcgzUNEoJu9GZnZ_bQ9hoKeJ6vj-PlfjvBAKg3X6RvbTNyfhGY7xVYT7qyCoqu6e1AgTOscxZVWDo_o0301OeDAvb8b9xYqv4kYut8V0dreuAVrm25X1NYkR-uHYWdY2q3NRRJhuNEiFRKPqMughxR4BusO8e5bKKFnU4wsUhC5lIbRIk6S0tDi3GZweEFAAD__w.8lMUEtx-tBT_Jgr-tPVViAPvdCBYM33LZJB4-C-sRE0'}
+        login_url = "http://user.han.com/#/login"
+        url = "http://user.han.com/#/"
+        cust = {'name':'baohan-han-cust-supervise','value':'eyJhbGciOiJIUzI1NiIsImNhbGciOiJERUYifQ.eNp0jjsOwjAQRO-yNSACTrLOIago3axjA0bBjvKRQIgj0CM6LkDNgUBcgzUNEoJu9GZnZ_bQ9hoKeJ6vj-PlfjvBAKg3X6RvbTNyfhGY7xVYT7qyCoqu6e1AgTOscxZVWDo_o0301OeDAvb8b9xYqv4kYut8V0dreuAVrm25X1NYkR-uHYWdY2q3NRRJhuNEiFRKPqMughxR4BusO8e5bKKFnU4wsUhC5lIbRIk6S0tDi3GZweEFAAD__w.8lMUEtx-tBT_Jgr-tPVViAPvdCBYM33LZJB4-C-sRE0'}
         JSESSIONID = {'name':'JSESSIONID','value':'7BFCB67F65C8D857A1DDBCEDD2BBBDF3'}
-        expert = {'name':'baohan-jiaoyi-cust-expert','value':'eyJhbGciOiJIUzI1NiIsImNhbGciOiJERUYifQ.eNpsjjsOwjAMhq-CPAPKq0naQzAxZnHbAEElrfqQQFU3jsAdGDkVEsfARUJiYLO-z_79j9ANOWQgJJM8MYlVsAQcSkKvx_V5vy04gaHz7TrEXU14dOAj5pV3kPXt4JcOQkmz4IbGqt6HuMHTbN1PqgOS8cu_0R_aeqw2f838dntpZqMmqhG6jgrkWB8wro4B60sg6s8NZFxbxhOt0pTWsJ-BsVazDzj2ge6URrGTSSmsLJRkhS2MNsL7PJWptSWD6Q0AAP__.vYrQOs83H7uo0OLFrZTI4nL8NtUg8rcOGMRkDkow7HY'}
-        customer = {'name':'baohan-jiaoyi-cust-customer','value':'eyJhbGciOiJIUzI1NiIsImNhbGciOiJERUYifQ.eNpsjz0OwjAMRu_iuaA2bdKUQ3RizOKQFIJKWvVHoqoYkTgAAxunQ1wDBwnEwGa9Z_n7PEM_alhBwpnMBc9SlkAEOBpij8vtcb48r3ciY2-7pfNVQ3xWYD3q2ipYDd1oIwXO0Jxwmupm63yJhyDV71kFZP1HfG-_cWexLv-rELye2qDYiYq4vqcKGpsd-sXeYTM5ovbYUr6QsRSM55LWcAggL7gQb7AfXHhTa6NthcIUOosLhlWqN6kxUqDJeYJwegEAAP__.K2jJuM3mJBgzBm7Wgcz-bNH0bjK1d7KmXCnzqNKzG3U'}
+        expert = {'name':'baohan-han-cust-expert','value':'eyJhbGciOiJIUzI1NiIsImNhbGciOiJERUYifQ.eNpsjjsOwjAMhq-CPAPKq0naQzAxZnHbAEElrfqQQFU3jsAdGDkVEsfARUJiYLO-z_79j9ANOWQgJJM8MYlVsAQcSkKvx_V5vy04gaHz7TrEXU14dOAj5pV3kPXt4JcOQkmz4IbGqt6HuMHTbN1PqgOS8cu_0R_aeqw2f838dntpZqMmqhG6jgrkWB8wro4B60sg6s8NZFxbxhOt0pTWsJ-BsVazDzj2ge6URrGTSSmsLJRkhS2MNsL7PJWptSWD6Q0AAP__.vYrQOs83H7uo0OLFrZTI4nL8NtUg8rcOGMRkDkow7HY'}
+        customer = {'name':'baohan-han-cust-customer','value':'eyJhbGciOiJIUzI1NiIsImNhbGciOiJERUYifQ.eNpsjz0OwjAMRu_iuaA2bdKUQ3RizOKQFIJKWvVHoqoYkTgAAxunQ1wDBwnEwGa9Z_n7PEM_alhBwpnMBc9SlkAEOBpij8vtcb48r3ciY2-7pfNVQ3xWYD3q2ipYDd1oIwXO0Jxwmupm63yJhyDV71kFZP1HfG-_cWexLv-rELye2qDYiYq4vqcKGpsd-sXeYTM5ovbYUr6QsRSM55LWcAggL7gQb7AfXHhTa6NthcIUOosLhlWqN6kxUqDJeYJwegEAAP__.K2jJuM3mJBgzBm7Wgcz-bNH0bjK1d7KmXCnzqNKzG3U'}
 
         self.drive.get(login_url)  # 打开登陆地址
         self.drive.add_cookie(cust)  # 传入登录需要的cookie
@@ -139,7 +139,7 @@ class Base(Test_deal_data):
         打开监管台登录页面
         :return:
         """
-        login_url = "http://manage.jiaoyi.com/#/"
+        login_url = "http://manage.han.com/#/"
         self.drive.get(login_url)
         self.drive.maximize_window()
         time.sleep(1)
