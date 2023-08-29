@@ -184,16 +184,16 @@ class CreateProjectMethod(Base):
                 elif tenderWay == 1:
                     self.send_keys(self.projectName_locator,"工程自主邀请招标项目"+self.get_nowTime_formatting())
                 else:
-                    print("招标方式不正确："+tenderWay)
+                    print("招标方式不正确："+str(tenderWay))
             elif tenderOrganizationType == "1":
                 if tenderWay == 0:
                     self.send_keys(self.projectName_locator,"工程委托公开招标项目"+self.get_nowTime_formatting())
                 elif tenderWay == 1:
                     self.send_keys(self.projectName_locator,"工程委托邀请招标项目"+self.get_nowTime_formatting())
                 else:
-                    print("招标方式不正确："+tenderWay)
+                    print("招标方式不正确："+str(tenderWay))
             else:
-                print("招标组织方式不正确："+tenderOrganizationType)
+                print("招标组织方式不正确："+str(tenderOrganizationType))
         elif projectType == "purchase":
             if tenderOrganizationType == "0":
                 if tenderWay == 0:

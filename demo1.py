@@ -1,5 +1,4 @@
 from base.base import Base
-from xiaoe_testcase.deal_testcase import CreateProject
 import datetime
 import random
 def selectList(list):

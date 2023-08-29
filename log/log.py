@@ -6,7 +6,7 @@ import os
 import logging
 
 # 定义了blog_ui项目的绝对路径
-base_url = "E:\PycharmProjects\python_pom"
+base_url = r"E:\PycharmProjects\xiaoe"
 
 class Logger:
     def __init__(self, path=base_url+'\\log\\logsest.log', clevel=logging.DEBUG, Flevel=logging.DEBUG):

@@ -16,7 +16,7 @@ import pymysql
 import re
 from xiaoe_data.test_deal_data import Test_deal_data
 from xiaoe_data.formal_deal_data import Formal_deal_data
-class Base(Formal_deal_data):
+class Base(Test_deal_data):
     logger = Logger()
     op = Options()
     op.page_load_strategy = 'eager'
