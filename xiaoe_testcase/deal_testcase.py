@@ -16,7 +16,7 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20230828150033"#项目编号
+    projectNumber = "20230901145900"#项目编号
     tenderOrganizationType = "0"#自主招标0或者委托招标1
     tenderWay = 0#公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0#公开0、邀请1
@@ -109,7 +109,7 @@ class Deal_testcase(unittest.TestCase):
     """
     def test_05_apply_offline(self):#报名(线下)状态优化
         for i in range(len(self.username)):
-            if i == 6 :
+            if i == 4 :
                 break
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
@@ -121,10 +121,11 @@ class Deal_testcase(unittest.TestCase):
                 self.home_page_or_workbench.affirmApply_click()  # 点击确认报名
                 self.home_page_or_workbench.bid_workbench_click(self.projectNumber)  # 点击工作台
             except(Exception,BaseException):
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,0)
+                self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,0)#投标人选择工作台
             # time.sleep(1000)
-            self.home_page_or_workbench.magin_and_tenderfile(projectNumber=self.projectNumber,bidder=self.username[i])
-            self.base.update_applyNumber(i + 1, projectNumber=self.projectNumber)
+            test = self.home_page_or_workbench.magin_and_tenderfile(projectNumber=self.projectNumber,bidder=self.username[i])#缴纳保证金和上传投标文件
+            if test is None:#判断是否上传成功
+                self.base.update_applyNumber(i + 1, projectNumber=self.projectNumber)  # 更新报名人数
             self.createProjectMethod.open_deal_url()  # 进入登录页面
     """
     签到
@@ -190,6 +191,8 @@ class Deal_testcase(unittest.TestCase):
                     self.createProjectMethod.open_deal_url()
                     continue
                 self.bidOpen.affirmDecode_click()#确认解密
+                errtext = self.home_page_or_workbench.errorMessage_text()#获取提示信息
+                self.logger.debugText(self.projectNumber,errtext,self.username[i])
                 time.sleep(0.2)
                 self.createProjectMethod.open_deal_url()
     """
@@ -308,7 +311,7 @@ class Deal_testcase(unittest.TestCase):
     开始评标，注意需要输入评标类型是哪个
     """
     def test_judge_score(self):#评分
-        buttonCount = 2#用来判断是哪个评标类型
+        buttonCount = 1#用来判断是哪个评标类型
         expert_username = self.expert_username#获取账号
         expert_password = self.expert_password#获取密码
         expert_name = self.expert_name#获取评委名称
