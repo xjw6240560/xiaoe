@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47656d0a-778f-45bd-bbdb-56529caaddaa" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/logsest.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/logsest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/create_project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/expert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/home_page_or_workbench.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoeXapth_package/deal_or_bidOpen/home_page_or_workbench.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoe_testcase/deal_testcase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xiaoe_testcase/extract_system_testcase.py" beforeDir="false" afterPath="$PROJECT_DIR$/xiaoe_testcase/extract_system_testcase.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
