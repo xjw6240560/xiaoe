@@ -32,7 +32,7 @@
 *.via
 *.tmp
 *.err
-*.log
+#*.log
 *.iml
 # OS generated files #
 .DS_Store
