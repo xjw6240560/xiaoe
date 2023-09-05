@@ -24,7 +24,9 @@ class Home_page_or_workbench(Base):
     recallReceipt = "//span[contains(text(),'撤回保证金回单')]"#撤回回单
     recallAffirm = "//span[contains(text(),'确 定')]"
     returnButton = "//span[contains(text(),'返回')]"#点击返回
-    errorMessage = "//div[@class = 'el-message el-message--warning']/p"#报错信息
+    error_p = "//div[@class='el-message el-message--error']/p"#获取错误p的地址
+    warn_p = "//div[@class='el-message el-message--warn']/p"#获取警告p的地址
+    warning_p = "//div[@class='el-message el-message--warning']/p"#获取警告p的地址
     uploadBidFile = "//span[contains(text(),'投标阶段')]/../following-sibling::div[contains(text(),'上传投标文件')]"#上传投标文件
     recallTenderFile = "//span[contains(text(),'撤回标书')]"
     tenderFileAffirm = "//button//span[contains(text(),'确 定')]"
@@ -65,7 +67,9 @@ class Home_page_or_workbench(Base):
     recallReceipt_locator = (By.XPATH,recallReceipt)
     recallAffirm_locator = (By.XPATH,recallAffirm)
     returnButton_locator = (By.XPATH,returnButton)
-    errorMessage_locator = (By.XPATH,errorMessage)
+    error_p_locator = (By.XPATH,error_p)
+    warn_p_locator = (By.XPATH,warn_p)
+    warning_p_locator = (By.XPATH,warning_p)
     recallTenderFile_locator = (By.XPATH,recallTenderFile)
     tenderFileAffirm_locator = (By.XPATH,tenderFileAffirm)
     uploadBidFile_locator = (By.XPATH,uploadBidFile)
@@ -162,8 +166,16 @@ class Home_page_or_workbench(Base):
     def recallAffirm_click(self):#撤回确认
         self.click(self.recallAffirm_locator)
 
-    def errorMessage_text(self):#获取错误提示
-        message = self.get_text(self.errorMessage_locator)
+    def errorMessage_text(self,type='warn'):#获取错误提示错误类型
+        global message
+        if type == 'warn':
+            message = self.get_text(self.warn_p_locator)
+        elif type == 'error':
+            message = self.get_text(self.error_p_locator)
+        elif type == 'warning':
+            message = self.get_text(self.warning_p_locator)
+        else:
+            print("错误类型不正确："+type)
         return message
 
     def returnButton_click(self):#点击返回
@@ -398,14 +410,14 @@ class Home_page_or_workbench(Base):
             self.quality_send_keys()  # 输入质量标准
             time.sleep(0.2)
             self.saveBidFile_click()  #提交投标文件
-            errorText = self.errorMessage_text()#获取错误信息
+            errorText = self.errorMessage_text(type='error')#获取错误信息
             self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=errorText)#打印错误信息
             time.sleep(0.5)
             self.confirm_upload_click()  # 点击确认上传
-            errorText = self.errorMessage_text()
+            errorText = self.errorMessage_text('error')
             self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=errorText)
             return errorText
         except:
-            if bid_text.find('元素未找到') > 0:
+            if bid_text is False:
                 self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText='投标文件上传成功！')
                 return None

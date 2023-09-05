@@ -425,9 +425,7 @@ class Base(Test_deal_data):
             element = WebDriverWait(self.drive, timeout).until(EC.presence_of_element_located(locator))
             return element
         except:
-            print(str({locator})+'元素未找到')
-            # return False
-            return str({locator})+'元素未找到'
+            return False
 
     def click(self, locator):
         # """
@@ -485,7 +483,7 @@ class Base(Test_deal_data):
         :param locator:
         :return:
         """
-        element = self.find_element(locator,2)
+        element = self.find_element(locator,1)
         action_chains = ActionChains(self.drive)
         try:
             action_chains.move_to_element(element).perform()
@@ -528,7 +526,7 @@ class Base(Test_deal_data):
         elif fileType == "xezf":
             send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\tender_file.xezf")
         elif fileType == "xetf":
-            send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\深圳CA.xetf")
+            send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\福建政采加密.xetf")
         else:
             self.logger.debugText(errorText="文件类型错误："+fileType)
         send_keys("{VK_RETURN}")
