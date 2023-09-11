@@ -1,4 +1,4 @@
-from xiaoe_data import test_deal_data
+from xiaoe_data import test_xiaoe_data
 import time
 import datetime
 import unittest

@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from base.base import Base
-from xiaoe_data import test_deal_data
+from xiaoe_data import test_xiaoe_data
 import time
 from xiaoeXapth_package.deal_or_bidOpen.login_registerORselect_role import LoginORrole
 from selenium.webdriver.common.action_chains import ActionChains
