@@ -2,11 +2,8 @@ from base.base import Base
 import random
 import time
 from log.log import Logger
+import traceback
 from selenium.webdriver.common.by import By
-def workbench(projectNumber):#点击工作台
-    workbenchButton = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[5]/div/span[text()='工作台']"#点击工作台
-    workbench_locator = (By.XPATH,workbenchButton)
-    return workbench_locator
 class Home_page_or_workbench(Base):
     #公用
     linkMan = "//label[contains(text(),'联系人')]/following-sibling::div/div/input"#输入联系人
@@ -209,7 +206,7 @@ class Home_page_or_workbench(Base):
         self.send_keys(self.quality_locator,"温馨提示：填写的投标信息请确认与所上传的投标文件一致，投标文件递交时间截至之后无法进行撤回和修改")
 
     def bid_file_click(self):#点击投标文件
-        return self.click(self.bid_file_locator)
+        self.click(self.bid_file_locator)
 
     def saveBidFile_click(self):#保存投标文件
         self.click(self.saveBidFile_locator)
@@ -403,21 +400,20 @@ class Home_page_or_workbench(Base):
             self.margin_back_click()  # 再次点击返回
         self.uploadBidFile_click()  # 点击上传投标文件
         try:
-            bid_text = self.bid_file_click()  # 点击投标文件
+            self.bid_file_click()  # 点击投标文件
             self.upload_file("xetf")  # 选择投标文件图片
             self.bid_price_send_keys()  # 输入投标价
             self.duration_send_keys()  # 输入工期
             self.quality_send_keys()  # 输入质量标准
             time.sleep(0.2)
             self.saveBidFile_click()  #提交投标文件
-            errorText = self.errorMessage_text(type='error')#获取错误信息
-            self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=errorText)#打印错误信息
+            commit_error = self.errorMessage_text(type='error')#获取错误信息
+            self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=commit_error)#打印错误信息
             time.sleep(0.5)
             self.confirm_upload_click()  # 点击确认上传
-            errorText = self.errorMessage_text('error')
-            self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=errorText)
-            return errorText
-        except:
-            if bid_text is False:
-                self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText='投标文件上传成功！')
-                return None
+            confirm_error = self.errorMessage_text('error')
+            self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=confirm_error)
+            return confirm_error
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=error)

@@ -425,6 +425,7 @@ class Base(Test_deal_data):
             element = WebDriverWait(self.drive, timeout).until(EC.presence_of_element_located(locator))
             return element
         except:
+            print(str(locator)+"元素未找到!!!")
             return False
 
     def click(self, locator):
@@ -436,7 +437,6 @@ class Base(Test_deal_data):
         element = self.find_element(locator, 5)
         time.sleep(0.3)
         element.click()
-        return element
 
     def is_interactive(self,locator):#判断元素是否可交互
         # """
