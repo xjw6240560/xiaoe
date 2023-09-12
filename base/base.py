@@ -16,6 +16,8 @@ import pymysql
 import re
 from xiaoe_data.test_xiaoe_data import Test_xiaoe_data
 from xiaoe_data.formal_xiaoe_data import Formal_xiaoe_data
+from xiaoe_data.test_han_data import Test_han_data
+from xiaoe_data.formal_han_data import Formal_han_data
 class Base(Test_xiaoe_data):
     logger = Logger()
     op = Options()
