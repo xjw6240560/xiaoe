@@ -31,9 +31,9 @@ class Extract_system(unittest.TestCase):
     """
     def test_extract_expert(self):#抽取专家
         nowtimeday = self.base.get_date_day()#获取当前日期
-        beforetime = self.base.read_data_csv(begin=1,place=r"C:\Users\86176\Desktop\pythonScriptGenerate\freeDate.csv")
-        if int(nowtimeday) > int(beforetime[0][0]) :
-            self.base.write_data_csv(date=nowtimeday)
+        beforetime = self.base.query_now_date()#获取数据库时间
+        if int(nowtimeday) > int(beforetime[0]) :
+            self.base.update_now_date(nowtimeday)#更新最新的日期
         self.login.login()
         self.base.handle_skip(0)
         self.home_page.engineering_or_purchase_click(self.projectType_sql)
@@ -59,16 +59,17 @@ class Extract_system(unittest.TestCase):
         self.expert_extract.expert_classify_click()#点击专家分类
         self.expert_extract.expert_send_keys('3')#输入专家数量
         self.expert_extract.add_affirm_click()#点击确认
-        nowtime = self.base.read_data_csv(begin=1,place=r"C:\Users\86176\Desktop\pythonScriptGenerate\freeDate.csv")
-        for i in range(int(nowtime[0][1]),18):
+        nowtime = self.base.query_now_date()
+        for i in range(int(nowtime[1]),18):
             self.expert_extract.evaluation_time_send_keys(i)#输入时间
             result = self.expert_extract.is_room_occupy(i)#判断评标室是否被占用
             if result is not None:
                 if result == "break":
-                    self.base.write_data_csv(date=nowtimeday,hours=i)
+                    self.base.update_now_date(nowdate=nowtimeday,hour= i )
                     break
                 else:
                     continue
+        self.expert_extract.save_judge_username_password(self.deal_testcase.projectNumber)
     """
     保存专家账号
     """

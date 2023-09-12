@@ -14,9 +14,9 @@ import random
 import traceback
 import pymysql
 import re
-from xiaoe_data.test_xiaoe_data import Test_deal_data
-from xiaoe_data.formal_xiaoe_data import Formal_deal_data
-class Base(Test_deal_data):
+from xiaoe_data.test_xiaoe_data import Test_xiaoe_data
+from xiaoe_data.formal_xiaoe_data import Formal_xiaoe_data
+class Base(Test_xiaoe_data):
     logger = Logger()
     op = Options()
     op.page_load_strategy = 'eager'
@@ -184,6 +184,14 @@ class Base(Test_deal_data):
             self.logger.info(error)
         self.close_conn(conn=conn,cursor=cursor)
 
+    def query_now_date(self):#获取专家抽取时间
+        sql = 'select nowdate,hour from get_now_date'
+        try:
+            result = self.query_sql(sql)
+            return result[0]
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            self.logger.debugText(error)
     def insert_expertData(self,projectNumber,username,password,judgeName):#插入专家账号密码
         conn,cursor = self.connect_mysql()
         sql = 'insert into expert (projectNumber,username,password,judgeName) values(%s,%s,%s,%s)'
@@ -213,13 +221,21 @@ class Base(Test_deal_data):
         conn.close()
         cursor.close()#
 
-    def update_isAgree(self,isAgree,username,projectNumber):
+    def update_isAgree(self,isAgree,username,projectNumber):#更新专家协议是否确认
         sql = 'update expert set isAgree = %s where username = %s and projectNumber = %s'
         try:
             self.insert_and_update_sql(sql,isAgree,username,projectNumber)
         except(Exception,BaseException):
             error = traceback.format_exc()
             self.logger.debugText(projectNumber,error)
+
+    def update_now_date(self,nowdate,hour= 0):
+        sql = 'update get_now_date set nowdate = %s,hour = %s  where id = 0'
+        try:
+            self.insert_and_update_sql(sql,nowdate,hour)
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            self.logger.debugText(error)
 
     def update_enterprise_count(self,enterpriseCount,projectNumber):#更新企业数量
         sql = 'update project set enterpriseCount = %s where projectNumber = %s'
@@ -238,9 +254,12 @@ class Base(Test_deal_data):
             self.logger.debugText(projectNumber,error)
 
     def update_applyNumber(self,applyNumber,projectNumber):#更新报名人数
+        result = self.query_projectData(projectNumber=projectNumber)
+        number = result[5]#报名人数
         sql = 'update project set applyNumber = %s where projectNumber = %s'
         try:
-            self.insert_and_update_sql(sql,applyNumber,projectNumber)
+            if number < applyNumber:
+                self.insert_and_update_sql(sql,applyNumber,projectNumber)
         except(Exception,BaseException):
             error = traceback.format_exc()
             self.logger.debugText(projectNumber,error)
@@ -261,16 +280,16 @@ class Base(Test_deal_data):
                 if index+1 >= begin and index+1 <= end:
                     data.append(row)
             return data
-    def write_data_csv(self,date,hours = '0'):#向csv文本写入数据
-        with open(r"C:\Users\86176\Desktop\pythonScriptGenerate\freeDate.csv") as f:
-            data=[row for row in csv.reader(f)]
-            with open(r"C:\Users\86176\Desktop\pythonScriptGenerate\freeDate.csv","a+") as h:
-                w = csv.writer(h)
-                data[0][1] = hours
-                data[0][0] = date
-                self.clear_text(r"C:\Users\86176\Desktop\pythonScriptGenerate\freeDate.csv")
-                for row in data:
-                    w.writerow(row)
+    # def write_data_csv(self,date,hours = '0'):#向csv文本写入数据
+    #     with open(r"C:\Users\86176\Desktop\pythonScriptGenerate\freeDate.csv") as f:
+    #         data=[row for row in csv.reader(f)]
+    #         with open(r"C:\Users\86176\Desktop\pythonScriptGenerate\freeDate.csv","a+") as h:
+    #             w = csv.writer(h)
+    #             data[0][1] = hours
+    #             data[0][0] = date
+    #             self.clear_text(r"C:\Users\86176\Desktop\pythonScriptGenerate\freeDate.csv")
+    #             for row in data:
+    #                 w.writerow(row)
 
 
     def nonnegative(self,number):#判断是否为非负数
@@ -358,7 +377,7 @@ class Base(Test_deal_data):
         # :param locator:
         # :return:
         # """
-        pic = self.find_element(locator,3)
+        pic = self.find_element(locator,2)
         pic_url = pic.get_attribute('src')
         request.urlretrieve(pic_url,'D:\\pic\\1.png')
 
@@ -406,7 +425,7 @@ class Base(Test_deal_data):
             element = WebDriverWait(self.drive, timeout).until(EC.presence_of_element_located(locator))
             return element
         except:
-            print(str({locator})+'元素未找到')
+            print(str(locator)+"元素未找到!!!")
             return False
 
     def click(self, locator):
@@ -434,7 +453,7 @@ class Base(Test_deal_data):
         # :param locator:
         # :return:
         # """
-        element = self.find_element(locator, 0.1)
+        element = self.find_element(locator, 1)
         element.click()
 
     def send_keys(self, locator, text):
@@ -464,7 +483,7 @@ class Base(Test_deal_data):
         :param locator:
         :return:
         """
-        element = self.find_element(locator,2)
+        element = self.find_element(locator,1)
         action_chains = ActionChains(self.drive)
         try:
             action_chains.move_to_element(element).perform()

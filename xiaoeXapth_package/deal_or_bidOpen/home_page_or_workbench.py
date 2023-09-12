@@ -2,11 +2,8 @@ from base.base import Base
 import random
 import time
 from log.log import Logger
+import traceback
 from selenium.webdriver.common.by import By
-def workbench(projectNumber):#点击工作台
-    workbenchButton = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[5]/div/span[text()='工作台']"#点击工作台
-    workbench_locator = (By.XPATH,workbenchButton)
-    return workbench_locator
 class Home_page_or_workbench(Base):
     #公用
     linkMan = "//label[contains(text(),'联系人')]/following-sibling::div/div/input"#输入联系人
@@ -24,7 +21,9 @@ class Home_page_or_workbench(Base):
     recallReceipt = "//span[contains(text(),'撤回保证金回单')]"#撤回回单
     recallAffirm = "//span[contains(text(),'确 定')]"
     returnButton = "//span[contains(text(),'返回')]"#点击返回
-    errorMessage = "//div[@class = 'el-message el-message--warning']/p"#报错信息
+    error_p = "//div[@class='el-message el-message--error']/p"#获取错误p的地址
+    warn_p = "//div[@class='el-message el-message--warn']/p"#获取警告p的地址
+    warning_p = "//div[@class='el-message el-message--warning']/p"#获取警告p的地址
     uploadBidFile = "//span[contains(text(),'投标阶段')]/../following-sibling::div[contains(text(),'上传投标文件')]"#上传投标文件
     recallTenderFile = "//span[contains(text(),'撤回标书')]"
     tenderFileAffirm = "//button//span[contains(text(),'确 定')]"
@@ -65,7 +64,9 @@ class Home_page_or_workbench(Base):
     recallReceipt_locator = (By.XPATH,recallReceipt)
     recallAffirm_locator = (By.XPATH,recallAffirm)
     returnButton_locator = (By.XPATH,returnButton)
-    errorMessage_locator = (By.XPATH,errorMessage)
+    error_p_locator = (By.XPATH,error_p)
+    warn_p_locator = (By.XPATH,warn_p)
+    warning_p_locator = (By.XPATH,warning_p)
     recallTenderFile_locator = (By.XPATH,recallTenderFile)
     tenderFileAffirm_locator = (By.XPATH,tenderFileAffirm)
     uploadBidFile_locator = (By.XPATH,uploadBidFile)
@@ -126,7 +127,7 @@ class Home_page_or_workbench(Base):
     def bid_workbench_click(self,projectNumber):#投标人点击工作台
         workbenchButton = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[3]/div/span[text()='工作台']"#点击工作台
         workbench_locator = (By.XPATH,workbenchButton)
-        self.click(workbench_locator)
+        self.short_click(workbench_locator)
 
     def audit_click(self):#点击审核
         try:
@@ -151,7 +152,7 @@ class Home_page_or_workbench(Base):
         self.click(self.back_margin_locator)
 
     def receiptImg_click(self):#点击上传回单图片
-        self.click(self.receiptImg_locator)
+        self.short_click(self.receiptImg_locator)
 
     def saveReceipt_click(self):#点击保存回单
         self.click(self.saveReceipt_locator)
@@ -162,8 +163,16 @@ class Home_page_or_workbench(Base):
     def recallAffirm_click(self):#撤回确认
         self.click(self.recallAffirm_locator)
 
-    def errorMessage_text(self):#获取错误提示
-        message = self.get_text(self.errorMessage_locator)
+    def errorMessage_text(self,type='warn'):#获取错误提示错误类型
+        global message
+        if type == 'warn':
+            message = self.get_text(self.warn_p_locator)
+        elif type == 'error':
+            message = self.get_text(self.error_p_locator)
+        elif type == 'warning':
+            message = self.get_text(self.warning_p_locator)
+        else:
+            print("错误类型不正确："+type)
         return message
 
     def returnButton_click(self):#点击返回
@@ -185,8 +194,8 @@ class Home_page_or_workbench(Base):
         self.click(self.bidFileImg_locator)
 
     def bid_price_send_keys(self):#输入投标价
-        price = random.randint(100000,4000000)
-        # price = 0
+        # price = random.randint(100000,4000000)
+        price = 0
         time.sleep(0.3)
         self.send_keys(self.bid_price_locator,price)
 
@@ -196,7 +205,7 @@ class Home_page_or_workbench(Base):
     def quality_send_keys(self):#输入质量标准
         self.send_keys(self.quality_locator,"温馨提示：填写的投标信息请确认与所上传的投标文件一致，投标文件递交时间截至之后无法进行撤回和修改")
 
-    def bid_file_click(self):#招标公告
+    def bid_file_click(self):#点击投标文件
         self.click(self.bid_file_locator)
 
     def saveBidFile_click(self):#保存投标文件
@@ -284,21 +293,21 @@ class Home_page_or_workbench(Base):
                 self.engineerTenderInvite_click()#点击投标邀请
             else:
                 print("招标方式输入错入！工程项目没有："+str(tenderWay))
-            self.apply_click(projectNumber)
+            self.apply_click(projectNumber)#点击报名按钮
         elif projectType == "purchase" :#政采
             self.purchaseBusiness_click()#点击采购项目
-            if tenderWay in  (0,2,3):
+            if tenderWay in(0,2,3):
                 if applyWay == 0:
                     self.purchaseTenderNotice_click()#点击招标公告（政采）
                 elif applyWay ==1:
                     self.purchaseTenderInvite_click()#点击政采招标邀请
                 else:
                     self.logger.debugText(projectNumber=projectNumber,errorText='招标方式:'+str(tenderWay)+'或者报名方式'+str(applyWay)+'不符:')
-            elif tenderWay in (1,4):
+            elif tenderWay in(1,4):
                 self.purchaseTenderInvite_click()#点击政采招标邀请
             else:
                 self.logger.debugText(projectNumber=projectNumber,errorText='招标方式输入错误：'+str(tenderWay)+'，0表示公开招标，1表示邀请招标')
-            self.apply_click(projectNumber)
+            self.apply_click(projectNumber)#点击报名按钮
         else:
             print("项目类型错误"+projectType)
 
@@ -309,9 +318,9 @@ class Home_page_or_workbench(Base):
         self.click(self.purchaseTenderProject_locator)
 
     def apply_click(self,projectNumber):
-        applyButton = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[4]/div/span[text()='报名']"#点击报名
+        applyButton = "//div[contains(text(),'"+str(projectNumber)+"')]/../following-sibling::td[6]/div/span[text()='报名']"#点击报名
         apply_locator = (By.XPATH,applyButton)#选择报名项目编号
-        self.click(apply_locator)
+        self.short_click(apply_locator)
 
     def select_tender_workbench(self,projectNumber,projectType):#招标人选择工作台
         if projectType == "engineer":
@@ -378,6 +387,7 @@ class Home_page_or_workbench(Base):
     def magin_and_tenderfile(self,projectNumber,bidder):#缴纳保证金和上传投标文件
         self.marginPay_click()  # 点击保证金缴纳
         self.offlinePay_click()  # 点击线下缴纳
+        bid_text = "" #投标文件定位返回结果
         try:
             self.receiptImg_click()  # 点击上传回单图片
             self.upload_file("img")  # 选择回单
@@ -396,10 +406,14 @@ class Home_page_or_workbench(Base):
             self.duration_send_keys()  # 输入工期
             self.quality_send_keys()  # 输入质量标准
             time.sleep(0.2)
-            self.saveBidFile_click()  # 点击保存
+            self.saveBidFile_click()  #提交投标文件
+            commit_error = self.errorMessage_text(type='error')#获取错误信息
+            self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=commit_error)#打印错误信息
             time.sleep(0.5)
             self.confirm_upload_click()  # 点击确认上传
-            errorText = self.errorMessage_text()
-            self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=errorText)
-        except:
-            print("投标文件已经上传")
+            confirm_error = self.errorMessage_text('error')
+            self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=confirm_error)
+            return confirm_error
+        except(Exception,BaseException):
+            error = traceback.format_exc()
+            self.logger.debugText(projectNumber=projectNumber,bidder=bidder,errorText=error)

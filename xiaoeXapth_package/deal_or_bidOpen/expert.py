@@ -70,27 +70,24 @@ class Expert(Base):
                 pic = self.getPicPassword()
                 self.send_keys(self.img_input_locator, pic)
                 self.click(self.login_button_locator)  # 点击登录按钮
-                errortext = self.alert_getClass()#获取错误提示弹窗类型
-                if errortext != self.successClass:
-                    time.sleep(1)
+                # errortext = self.alert_getClass()#获取错误提示弹窗类型
+                # if errortext != self.successClass:
+                time.sleep(0.5)
             except(Exception, BaseException):
                 self.in_project_click(projectNumber=projectNumber)
+                time.sleep(0.5)
                 if self.is_url(self.expert_projectList_url):  # 判断有没有进入专家平台
                     time.sleep(3)
                     self.in_project_click(projectNumber=projectNumber)
                 else:
-                    try:
-                        if isAgree[0] == "disAgree":
-                            self.click(self.know_locator)
-                            self.update_isAgree("consent", username, projectNumber)
-                            break
-                        elif isAgree[0] == "consent":
-                            break
-                        else:
-                            print("专家协议类型错误" + isAgree[0])
-                    except:
+                    if isAgree[0] == "disAgree":
+                        self.click(self.know_locator)
                         self.update_isAgree("consent", username, projectNumber)
                         break
+                    elif isAgree[0] == "consent":
+                        break
+                    else:
+                        print("专家协议类型错误" + isAgree[0])
                 # text = traceback.format_exc()
                 # self.logger.debugText(projectNumber=projectNumber,bidder=username,errorText=text)
                 # if self.is_url(self.expert_login_url) is not True:#判断是否登陆成功
@@ -102,7 +99,7 @@ class Expert(Base):
     def elect_click(self,name):#点击推选
         choose = "//p[contains(text(),'"+name+"')]/following-sibling::div/button/span[contains(text(),'推选')]"#推选
         choose_locator = (By.XPATH,choose)
-        self.click(choose_locator)#点击推选
+        self.short_click(choose_locator)#点击推选
 
     def select_group(self,username,password,name,projectNumber):#选择组长
         if len(username) > 0:
@@ -110,12 +107,12 @@ class Expert(Base):
                 self.login(username=username[i],password=password[i],projectNumber=projectNumber)
                 self.electGroup_click()#点击推选组长
                 try:
+                    time.sleep(0.3)
                     a =random.randint(0,len(username)-1)#随机生成推选评委
                     self.elect_click(name=name[a])#点击推选
-                    time.sleep(0.2)
                 except (Exception, BaseException):
                     exstr = traceback.format_exc()
-                    print(exstr)
+                    self.logger.debugText(projectNumber=projectNumber,errorText=exstr,bidder=username[i])
         else:
             print('没有保存评委:'+str(len(username)))
 

@@ -16,11 +16,11 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20230828150033"#项目编号
+    projectNumber = "20230908170848"#项目编号
     tenderOrganizationType = "0"#自主招标0或者委托招标1
-    tenderWay = 0#公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
+    tenderWay = 2#公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0#公开0、邀请1
-    role = "0"#角色 0招标人、1招标代理
+    role = "1"#角色 0招标人、1招标代理
     def setUp(self):
         self.base = Base()
         self.createProjectMethod = CreateProjectMethod()
@@ -109,7 +109,7 @@ class Deal_testcase(unittest.TestCase):
     """
     def test_05_apply_offline(self):#报名(线下)状态优化
         for i in range(len(self.username)):
-            if i == 6 :
+            if i == 4 :
                 break
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
@@ -120,11 +120,12 @@ class Deal_testcase(unittest.TestCase):
                 self.home_page_or_workbench.linkManNumber_send_keys()  # 输入联系手机号
                 self.home_page_or_workbench.affirmApply_click()  # 点击确认报名
                 self.home_page_or_workbench.bid_workbench_click(self.projectNumber)  # 点击工作台
-            except(Exception,BaseException):
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,0)
+            except:
+                self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,0)#投标人选择工作台
             # time.sleep(1000)
-            self.home_page_or_workbench.magin_and_tenderfile(projectNumber=self.projectNumber,bidder=self.username[i])
-            self.base.update_applyNumber(i + 1, projectNumber=self.projectNumber)
+            test = self.home_page_or_workbench.magin_and_tenderfile(projectNumber=self.projectNumber,bidder=self.username[i])#缴纳保证金和上传投标文件
+            if test is None:#判断是否上传成功
+                self.base.update_applyNumber(i + 1, projectNumber=self.projectNumber)  # 更新报名人数
             self.createProjectMethod.open_deal_url()  # 进入登录页面
     """
     签到
@@ -134,7 +135,7 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.login(username=self.username[i],password=self.password[0])
             self.loginORrole.bidder_click()#点击投标人
             try:
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql,1)
+                self.home_page_or_workbench.select_bid_workbench(self.projectNumber,self.projectType_sql,1)#选择投标人工作台
             except(Exception,BaseException):
                 error = traceback.format_exc()
                 self.logger.debugText(self.projectNumber,error)
@@ -143,7 +144,7 @@ class Deal_testcase(unittest.TestCase):
             self.home_page_or_workbench.openBidEntrance_click()#点击开标入口
             self.createProjectMethod.handle_skip(-1)
             if self.base.is_url(self.base.workbeach_url) :
-                message = self.home_page_or_workbench.errorMessage_text()#获取提示信息
+                message = self.home_page_or_workbench.errorMessage_text(type='warning')#获取提示信息
                 self.logger.debugText(self.projectNumber,message,self.username[i])
                 self.createProjectMethod.open_deal_url()
                 continue
@@ -177,7 +178,7 @@ class Deal_testcase(unittest.TestCase):
             self.home_page_or_workbench.openBidEntrance_click()#点击开标入口
             self.createProjectMethod.handle_skip(-1)
             if self.base.is_url(self.base.workbeach_url) :
-                message = self.home_page_or_workbench.errorMessage_text()#获取提示信息
+                message = self.home_page_or_workbench.errorMessage_text(type='warning')#获取提示信息
                 self.logger.debugText(self.projectNumber,message,self.username[i])
                 self.createProjectMethod.open_deal_url()
                 continue
@@ -190,6 +191,8 @@ class Deal_testcase(unittest.TestCase):
                     self.createProjectMethod.open_deal_url()
                     continue
                 self.bidOpen.affirmDecode_click()#确认解密
+                errtext = self.home_page_or_workbench.errorMessage_text(type='warning')#获取提示信息
+                self.logger.debugText(self.projectNumber,errtext,self.username[i])
                 time.sleep(0.2)
                 self.createProjectMethod.open_deal_url()
     """
@@ -209,7 +212,7 @@ class Deal_testcase(unittest.TestCase):
             self.home_page_or_workbench.openBidEntrance_click()#点击开标入口
             time.sleep(0.5)
             self.createProjectMethod.handle_skip(-1)
-            if self.base.is_url(self.base.workbeach_url) :
+            if self.base.is_url(self.base.workbeach_url):
                 message = self.home_page_or_workbench.errorMessage_text()#获取提示信息
                 self.logger.debugText(self.projectNumber,message,self.username[i])
                 self.createProjectMethod.open_deal_url()
@@ -299,7 +302,7 @@ class Deal_testcase(unittest.TestCase):
                 else:
                     expert_username = self.base.select_expert_username(projectNumber=self.projectNumber,judgeName=result)
                     self.logger.debugText(projectNumber=self.projectNumber,errorText='组长为:'+result+"  身份证号为："+str(expert_username[0]))
-                break
+                    break
             except (Exception, BaseException):
                 exstr = traceback.format_exc()
                 self.logger.debugText(projectNumber=self.projectNumber,errorText=exstr)
@@ -308,7 +311,7 @@ class Deal_testcase(unittest.TestCase):
     开始评标，注意需要输入评标类型是哪个
     """
     def test_judge_score(self):#评分
-        buttonCount = 2#用来判断是哪个评标类型
+        buttonCount = 1#用来判断是哪个评标类型
         expert_username = self.expert_username#获取账号
         expert_password = self.expert_password#获取密码
         expert_name = self.expert_name#获取评委名称
