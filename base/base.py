@@ -14,9 +14,9 @@ import random
 import traceback
 import pymysql
 import re
-from xiaoe_data.test_xiaoe_data import Test_deal_data
-from xiaoe_data.formal_xiaoe_data import Formal_deal_data
-class Base(Test_deal_data):
+from xiaoe_data.test_xiaoe_data import Test_xiaoe_data
+from xiaoe_data.formal_xiaoe_data import Formal_xiaoe_data
+class Base(Test_xiaoe_data):
     logger = Logger()
     op = Options()
     op.page_load_strategy = 'eager'
