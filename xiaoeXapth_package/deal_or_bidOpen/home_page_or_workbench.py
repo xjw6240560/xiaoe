@@ -16,7 +16,7 @@ class Home_page_or_workbench(Base):
     back_margin = "//button//span[contains(text(),'返回')]"#点击返回
     agreement = "//span[contains(text(),'我已阅读并同意')]/preceding-sibling::label/span/span"#同意协议
     applyEVE_div = "//div[contains(text(),'您将通过')]/../preceding-sibling::div/div//span[text()='申请保函 ']"#点击申请保函
-    receiptImg = "//div[contains(text(),'上传图片')]/./following-sibling::div/div/div/div/div/img"#点击图片上传回单
+    receiptImg = "//div[contains(text(),'上传图片')]/./following-sibling::div/div/div/div/input"#点击图片上传回单
     saveReceipt = "//span[contains(text(),'上传保证金回单')]"#保存回单
     recallReceipt = "//span[contains(text(),'撤回保证金回单')]"#撤回回单
     recallAffirm = "//span[contains(text(),'确 定')]"
@@ -31,7 +31,7 @@ class Home_page_or_workbench(Base):
     bid_price = "//label[contains(text(),'投标价')]/./following-sibling::div/div/input"#输入投标价
     duration = "//label[contains(text(),'工期')]/./following-sibling::div/div/input"#输入工期
     quality = "//label[contains(text(),'质量标准')]/./following-sibling::div/div/input"#输入质量标准
-    bid_file = "//label[contains(text(),'投标文件')]/./following-sibling::div/div/div/div/div"#招标公告
+    bid_file = "//label[contains(text(),'投标文件')]/./following-sibling::div/div/div/div/input"#投标文件
     saveBidFile = "//span[contains(text(),'提交投标文件')]"#保存投标文件
     commitAudit = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td[7]/div/span[text()='提交审核']"#点击提交审核
     commitAudit_affirm = "//button//span[contains(text(),'确 定')]"#提交审核确定
@@ -40,7 +40,7 @@ class Home_page_or_workbench(Base):
     openBidEntrance = "//span[contains(text(),'开标阶段')]/../following-sibling::div[contains(text(),'开标入口')]"#点击开标入口
     secondaryQuotation = "//span[contains(text(),'开标阶段')]/../following-sibling::div[contains(text(),'二次报价')]"#工作台点击二次报价
     secondaryQuotationInput = "//label[contains(text(),'二次报价')]/./following-sibling::div/div/div/input"#输入二次报价
-    secondaryQuotationFile = "//label[contains(text(),'上传响应性文件')]/./following-sibling::div/div/div/div/div"#上传响应性文件
+    secondaryQuotationFile = "//label[contains(text(),'上传响应性文件')]/./following-sibling::div/div/div/div/input"#上传响应性文件
     submitButton = "//button//span[contains(text(),'提交二次报价')]"#提交二次报价按钮
     recall_file = "//button//span[contains(text(),'撤回文件')]"#点击撤回文件按钮
     recall_affirm = "//button//span[contains(text(),'确 定')]"#撤回文件确定
@@ -151,8 +151,8 @@ class Home_page_or_workbench(Base):
     def margin_back_click(self):#线上和线下选择时的返回
         self.click(self.back_margin_locator)
 
-    def receiptImg_click(self):#点击上传回单图片
-        self.short_click(self.receiptImg_locator)
+    def receiptImg_send_keys(self):#点击上传回单图片
+        self.short_send_keys(self.receiptImg_locator,r"C:\Users\86176\Desktop\不同大小的文件和图片\保证金.jpg")
 
     def saveReceipt_click(self):#点击保存回单
         self.click(self.saveReceipt_locator)
@@ -205,8 +205,9 @@ class Home_page_or_workbench(Base):
     def quality_send_keys(self):#输入质量标准
         self.send_keys(self.quality_locator,"温馨提示：填写的投标信息请确认与所上传的投标文件一致，投标文件递交时间截至之后无法进行撤回和修改")
 
-    def bid_file_click(self):#点击投标文件
-        self.click(self.bid_file_locator)
+    def bid_file_send_keys(self):#点击投标文件
+        self.js_xpath_modifyAttribute(self.bid_file_locator)
+        self.send_keys(self.bid_file_locator,r"C:\Users\86176\Desktop\不同大小的文件和图片\深圳CA.xetf")
 
     def saveBidFile_click(self):#保存投标文件
         self.click(self.saveBidFile_locator)
@@ -221,8 +222,9 @@ class Home_page_or_workbench(Base):
     def secondaryQuotation_click(self):#点击二次报价按钮
         self.click(self.secondaryQuotation_locator)
 
-    def secondaryQuotationFile_input_click(self):#点击上传响应性文件
-        self.click(self.secondaryQuotationFile_locator)
+    def secondaryQuotationFile_input_send_keys(self):#点击上传响应性文件
+        self.js_xpath_modifyAttribute(self.secondaryQuotationFile_locator)
+        self.send_keys(self.secondaryQuotationFile_locator, r"C:\Users\86176\Desktop\不同大小的文件和图片\招标文件.pdf")
 
     def engpriseName_move(self):#悬浮在企业名称位置
         self.move_mouse(self.enterpriseName_locator)
@@ -389,19 +391,21 @@ class Home_page_or_workbench(Base):
         self.offlinePay_click()  # 点击线下缴纳
         bid_text = "" #投标文件定位返回结果
         try:
-            self.receiptImg_click()  # 点击上传回单图片
-            self.upload_file("img")  # 选择回单
+            self.js_xpath_modifyAttribute(self.receiptImg_locator)#改变class属性
+            self.receiptImg_send_keys()
             time.sleep(0.5)
             self.saveReceipt_click()  # 点击保存回单
             self.returnButton_click()  # 点击返回
             self.margin_back_click()  # 再次点击返回
-        except:
+        except (Exception,BaseException):
+            a = traceback.format_exc()
+            print(a)
             self.returnButton_click()  # 点击返回
             self.margin_back_click()  # 再次点击返回
         self.uploadBidFile_click()  # 点击上传投标文件
         try:
-            self.bid_file_click()  # 点击投标文件
-            self.upload_file("xetf")  # 选择投标文件图片
+            self.js_xpath_modifyAttribute(self.bid_file_locator)
+            self.bid_file_send_keys()  # 上传投标文件
             self.bid_price_send_keys()  # 输入投标价
             self.duration_send_keys()  # 输入工期
             self.quality_send_keys()  # 输入质量标准

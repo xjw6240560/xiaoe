@@ -79,10 +79,9 @@ class Test(Base):
             self.createProjectMethod.EVE_or_offlinePayment_click()#点击线上和线下
             self.createProjectMethod.marginSum_send_keys()#输入保证金金额
             self.createProjectMethod.marginEndTime_send_keys()#输入保证金戒指递交时间
-            self.createProjectMethod.tenderNotice_click()#点击招标公告按钮
-            self.createProjectMethod.upload_file("pdf")#上传招标公告
-            self.createProjectMethod.tenderFile_click()#点击招标文件按钮
-            self.createProjectMethod.upload_file("pdf")#上传招标文件
+            self.createProjectMethod.tenderNotice_send_keys()  # 上传招标公告
+            time.sleep(0.5)
+            self.createProjectMethod.tenderFile_send_keys()  # 上传招标文件
             time.sleep(1)
             self.createProjectMethod.saveButton_click()#点击保存按钮
             time.sleep(0.5)
