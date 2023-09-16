@@ -107,12 +107,12 @@ class Expert(Base):
                 self.login(username=username[i],password=password[i],projectNumber=projectNumber)
                 self.electGroup_click()#点击推选组长
                 try:
+                    time.sleep(0.3)
                     a =random.randint(0,len(username)-1)#随机生成推选评委
                     self.elect_click(name=name[a])#点击推选
-                    time.sleep(0.2)
                 except (Exception, BaseException):
                     exstr = traceback.format_exc()
-                    print(exstr)
+                    self.logger.debugText(projectNumber=projectNumber,errorText=exstr,bidder=username[i])
         else:
             print('没有保存评委:'+str(len(username)))
 

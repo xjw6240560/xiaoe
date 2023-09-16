@@ -8,7 +8,7 @@ from base.base import Base
 class Generate_script(Base):
     base = Base()
     def generate_script_method(self):#生成脚本方法
-        data = self.read_data_csv(begin=62,end=63,place=self.csv_place)#读取数据
+        data = self.read_data_csv(begin=65,end=81,place=self.csv_place)#读取数据
         self.base.clear_text(self.script_place)#清除xpath文本
         """
         生成xpath

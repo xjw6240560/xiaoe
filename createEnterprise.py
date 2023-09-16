@@ -19,7 +19,8 @@ class Demo(unittest.TestCase):
         self.createProjectMethod.open_deal_url()
 
     def test_create_enterprise(self):#注册企业
-        for i in range(2,3):
+        for i in range(5,10):
+            enterpriseName = "测试企业" + str(i)
             self.loginORrole.register_user_click()#点击用户注册
             self.loginORrole.register_tenderAgency_click()#选择招标代理
             self.loginORrole.register_tenderee_click()#点击招标人
@@ -27,7 +28,7 @@ class Demo(unittest.TestCase):
             code = self.loginORrole.random_code()
             mobile = "158"+self.loginORrole.get_mobile_time()
             self.loginORrole.register_credit_code_send_keys(str(code)+mobile)#输入社会统一信用代码
-            self.loginORrole.register_enterpriseName_send_keys("测试企业"+str(i))#输入企业名称
+            self.loginORrole.register_enterpriseName_send_keys(enterpriseName)#输入企业名称
             self.loginORrole.register_linkMan_sends_keys()#输入联系人
             self.loginORrole.register_mobile_send_keys(mobile)#输入联系人手机号
             self.loginORrole.register_imgCode_send_keys()#输入图片验证码
@@ -43,6 +44,11 @@ class Demo(unittest.TestCase):
             self.loginORrole.register_noteCode_send_keys(noteCode)
             self.loginORrole.login_button_click()#点击登录
             time.sleep(2)
+            self.loginORrole.improve_information(enterpriseName=enterpriseName)
+            time.sleep(2)
+            self.createProjectMethod.open_deal_url()
+
+
 
     def tearDown(self):
         self.createProjectMethod.close()
