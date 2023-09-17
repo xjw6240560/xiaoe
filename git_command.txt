@@ -1,0 +1,2 @@
+与远程仓库建立ssh连接
+ssh -T git@gitee.com
