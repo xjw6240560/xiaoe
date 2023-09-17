@@ -43,7 +43,7 @@ class Bidflow(Base):#
         #保存验证码图片
         self.savePictrue(self.pictrue_locator)
         #识别验证码
-        yzm = self.getPicPassword()
+        yzm = self.get_PicPassword()
         #输入验证码
         self.send_keys(self.pic_input_locator,yzm)
         #点击登入

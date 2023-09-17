@@ -121,7 +121,7 @@ class LoginORrole(Base):
         try:
             for i in range(200):
                 self.savePictrue(self.picture_locator)
-                yzm = self.getPicPassword()
+                yzm = self.get_PicPassword()
                 self.send_keys(self.pictrue_input_locator, yzm)
                 self.click(self.login_btn_locator)
                 time.sleep(0.5)

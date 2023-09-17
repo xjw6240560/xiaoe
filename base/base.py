@@ -413,7 +413,7 @@ class Base(Test_xiaoe_data):
 
     def return_picture(self, locator):  # 返回验证码
         self.savePictrue(locator)
-        code = self.getPicPassword()
+        code = self.get_PicPassword()
         return code
 
     def is_disabled(self, locator):  # 判断按钮是否禁用
@@ -432,7 +432,7 @@ class Base(Test_xiaoe_data):
         frame = self.find_element(locator, 3)
         self.drive.switch_to.frame(frame)
 
-    def getPicPassword(self):  # 识别图片验证码
+    def get_PicPassword(self):  # 识别图片验证码
         # """
         # 识别验证码
         # :return:
