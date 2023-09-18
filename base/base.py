@@ -22,7 +22,7 @@ from xiaoe_data.test_han_data import Test_han_data
 from xiaoe_data.formal_han_data import Formal_han_data
 
 
-class Base(Test_xiaoe_data):
+class Base(Test_han_data):
     logger = Logger()
     # 直接创建Service实例
     ser = Service()
@@ -154,6 +154,16 @@ class Base(Test_xiaoe_data):
         :return:
         """
         login_url = self.extract_login_url
+        self.drive.get(login_url)
+        self.drive.maximize_window()
+        time.sleep(1)
+
+    def open_back_url(self):  # 总后台
+        """
+        打开总后台登录页面
+        :return:
+        """
+        login_url = self.back_url
         self.drive.get(login_url)
         self.drive.maximize_window()
         time.sleep(1)
@@ -391,8 +401,8 @@ class Base(Test_xiaoe_data):
         nowUrl = self.drive.current_url
         return nowUrl
 
-    def is_url(self, str):  # 判断url是否包含str
-        result = EC.url_contains(str)
+    def is_url(self, str1):  # 判断url是否包含str1
+        result = EC.url_contains(str1)
         return result(self.drive)
 
     def open_expert_url(self):  # 专家
