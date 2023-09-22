@@ -1,2 +1,38 @@
-与远程仓库建立ssh连接
-ssh -T git@gitee.com
+ssh -T git@gitee.com 与远程仓库建立ssh连接
+
+git status 查看当前状态
+
+git log 查看历史版本
+
+git add * 将所有文件添加值缓存区
+
+git commit -m '版本描述' 将代码提交到代码库
+
+git reset --hard  返回指定版本（可以填写指定id）
+
+git reflog   查看所有版本
+
+git push origin master  将本地修改提交到远程仓库
+
+git clone git@github.com:xjw6240560/xiaoe.git   从远程仓库克隆到本地
+
+git remote add origin git@github.com:xjw6240560/xiaoe.git 关联远程仓库地址
+
+git remote -v 查看远程仓库地址
+
+git fetch origin master 拉去远程最新代码
+
+git checkout . （-- text.txt）撤销工作区的所有(指定文件)修改
+
+git branch  分支名   创建分支
+
+git checkout 分支名  切换分支
+
+git push origin --delete 分支名字
+
+git remote add huaiAn URL 添加远程仓库地址
+
+git remote set-url huaiAn URL 切换远程仓库地址
+
+git remote rm huaiAn 删除远程地址
+

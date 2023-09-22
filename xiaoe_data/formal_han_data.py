@@ -10,6 +10,7 @@ class Formal_han_data:
     expert_projectList_url = "http://expert.xiaoeztb.com/#/projectList"  # 专家端选择项目列表地址
     extract_login_url = "https://drawexpert.xiaoeztb.com/#/"  # 专家抽取系统登陆地址
     workbeach_url = "https://user.xiaoeztb.com/#/engineering/t/applyProject/progress"
+    back_url = ''
     extract_username = "15212345678"
     extract_password = "ndx111"
     environment = "正式"

@@ -12,6 +12,7 @@ class Test_xiaoe_data:
     expert_projectList_url = "http://expert.jiaoyi.com/#/projectList"  # 专家端选择项目列表地址
     extract_login_url = "http://drawexpert.jiaoyi.com/#/"  # 抽取系统登录地址
     workbeach_url = "http://user.jiaoyi.com/#/engineering/t/applyProject/progress"  # 工作台地址
+    back_url = 'http://oper.jiaoyi.com/#/login'  # 总后台
     extract_username = "15212345678"
     extract_password = "ndx111"
     environment = "测试"

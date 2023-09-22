@@ -22,7 +22,7 @@ from xiaoe_data.test_han_data import Test_han_data
 from xiaoe_data.formal_han_data import Formal_han_data
 
 
-class Base(Test_han_data):
+class Base(Test_xiaoe_data):
     logger = Logger()
     # 直接创建Service实例
     ser = Service()
