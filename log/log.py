@@ -3,14 +3,14 @@
 
 # -*-coding:utf-8 -*-
 import os
+from base.base import Base
 import logging
 
 # 定义了blog_ui项目的绝对路径
-base_url = r"E:\PycharmProjects\xiaoe"
-
+base_url = Base.now_path()
 
 class Logger:
-    def __init__(self, path=base_url + '\\log\\logsest.log', clevel=logging.DEBUG, Flevel=logging.DEBUG):
+    def __init__(self, path=base_url + 'log\\logsest.log', clevel=logging.DEBUG, Flevel=logging.DEBUG):
         # 判断log文件夹是否存在，不存在的话创建文件夹以及日志文件
         project_dir = os.listdir(base_url)
         dir_name = 'log'  # log文件夹
