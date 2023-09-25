@@ -9558,3 +9558,350 @@ Traceback (most recent call last):
     element.clear()
 AttributeError: 'bool' object has no attribute 'clear'
 
+[2023-09-22 14:31:19] [DEBUG] 项目编号：20230922143052  投标人or专家：
+项目添加完成！
+[2023-09-22 14:35:42] [DEBUG] 项目编号：20230922143052  投标人or专家：15222222222
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 425, in magin_and_tenderfile
+    self.confirm_upload_click()  # 点击确认上传
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 192, in confirm_upload_click
+    self.click(self.confirm_upload_locator)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 479, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-09-22 15:17:01] [DEBUG] 项目编号：20230922143052  投标人or专家：
+组长为:贝卉  身份证号为：140824199202100226
+[2023-09-22 15:18:17] [DEBUG] 项目编号：20230922143052  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 382, in test_judge_score
+    errortext = self.base.get_attribute_value(locator=self.expert.alert_locator, attribute='class')
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 438, in get_attribute_value
+    text = element.get_attribute(attribute)
+AttributeError: 'bool' object has no attribute 'get_attribute'
+
+[2023-09-22 15:18:34] [DEBUG] 项目编号：20230922143052  投标人or专家：42010119810101955X
+el-message el-message--success el-message-fade-enter-active el-message-fade-enter-to
+[2023-09-22 15:18:54] [DEBUG] 项目编号：20230922143052  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 382, in test_judge_score
+    errortext = self.base.get_attribute_value(locator=self.expert.alert_locator, attribute='class')
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 438, in get_attribute_value
+    text = element.get_attribute(attribute)
+AttributeError: 'bool' object has no attribute 'get_attribute'
+
+[2023-09-22 15:19:38] [DEBUG] 项目编号：20230922143052  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 379, in test_judge_score
+    self.expert.submit_result_click()  # 点击提交审核结果
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 249, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 479, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 93, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 394, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 344, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=116.0.1938.81)
+Stacktrace:
+	GetHandleVerifier [0x00007FF723B83D92+61490]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF723B15FE2+740626]
+	(No symbol) [0x00007FF7238EB6E0]
+	(No symbol) [0x00007FF723934650]
+	(No symbol) [0x00007FF7239275AC]
+	(No symbol) [0x00007FF72395390A]
+	(No symbol) [0x00007FF723927021]
+	(No symbol) [0x00007FF723926ECD]
+	(No symbol) [0x00007FF723953C40]
+	(No symbol) [0x00007FF723927021]
+	(No symbol) [0x00007FF72396CE21]
+	(No symbol) [0x00007FF7239536E3]
+	(No symbol) [0x00007FF723925EAA]
+	(No symbol) [0x00007FF72392518B]
+	(No symbol) [0x00007FF723926634]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF723D48D49+1207369]
+	(No symbol) [0x00007FF7239A5304]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF723A690E1+32273]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF723A619D9+1801]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF723D47924+1202212]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF723B1E978+19784]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF723B1AE34+4612]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF723B1AF66+4918]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF723B0F431+713057]
+	BaseThreadInitThunk [0x00007FF93B25257D+29]
+	RtlUserThreadStart [0x00007FF93BDEAA68+40]
+
+
+[2023-09-22 15:19:51] [DEBUG] 项目编号：20230922143052  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 379, in test_judge_score
+    self.expert.submit_result_click()  # 点击提交审核结果
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 249, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 479, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 93, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 394, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 344, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=116.0.1938.81)
+Stacktrace:
+	GetHandleVerifier [0x00007FF723B83D92+61490]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF723B15FE2+740626]
+	(No symbol) [0x00007FF7238EB6E0]
+	(No symbol) [0x00007FF723934650]
+	(No symbol) [0x00007FF7239275AC]
+	(No symbol) [0x00007FF72395390A]
+	(No symbol) [0x00007FF723927021]
+	(No symbol) [0x00007FF723926ECD]
+	(No symbol) [0x00007FF723953C40]
+	(No symbol) [0x00007FF723927021]
+	(No symbol) [0x00007FF72396CE21]
+	(No symbol) [0x00007FF7239536E3]
+	(No symbol) [0x00007FF723925EAA]
+	(No symbol) [0x00007FF72392518B]
+	(No symbol) [0x00007FF723926634]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF723D48D49+1207369]
+	(No symbol) [0x00007FF7239A5304]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF723A690E1+32273]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF723A619D9+1801]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF723D47924+1202212]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF723B1E978+19784]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF723B1AE34+4612]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF723B1AF66+4918]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF723B0F431+713057]
+	BaseThreadInitThunk [0x00007FF93B25257D+29]
+	RtlUserThreadStart [0x00007FF93BDEAA68+40]
+
+
+[2023-09-22 15:20:11] [DEBUG] 项目编号：20230922143052  投标人or专家：653129199606025732
+el-message el-message--success el-message-fade-enter-active el-message-fade-enter-to
+[2023-09-22 15:50:02] [DEBUG] 项目编号：20230922143052  投标人or专家：140824199202100226
+el-message el-message--success el-message-fade-enter-active el-message-fade-enter-to
+[2023-09-22 15:50:20] [DEBUG] 项目编号：20230922143052  投标人or专家：42010119810101955X
+el-message el-message--error
+[2023-09-22 15:50:43] [DEBUG] 项目编号：20230922143052  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 382, in test_judge_score
+    errortext = self.base.get_attribute_value(locator=self.expert.alert_locator, attribute='class')
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 438, in get_attribute_value
+    text = element.get_attribute(attribute)
+AttributeError: 'bool' object has no attribute 'get_attribute'
+
+[2023-09-22 15:55:28] [DEBUG] 项目编号：20230922143052  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 379, in test_judge_score
+    self.expert.submit_result_click()  # 点击提交审核结果
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\expert.py", line 249, in submit_result_click
+    self.click(self.submit_result_locator)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 479, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 93, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 394, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 344, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=117.0.2045.36)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6C52D3D92+61490]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6C5265FE2+740626]
+	(No symbol) [0x00007FF6C503B6E0]
+	(No symbol) [0x00007FF6C5084650]
+	(No symbol) [0x00007FF6C50775AC]
+	(No symbol) [0x00007FF6C50A390A]
+	(No symbol) [0x00007FF6C5077021]
+	(No symbol) [0x00007FF6C5076ECD]
+	(No symbol) [0x00007FF6C50A3C40]
+	(No symbol) [0x00007FF6C5077021]
+	(No symbol) [0x00007FF6C50BCE21]
+	(No symbol) [0x00007FF6C50A36E3]
+	(No symbol) [0x00007FF6C5075EAA]
+	(No symbol) [0x00007FF6C507518B]
+	(No symbol) [0x00007FF6C5076634]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF6C5498D49+1207369]
+	(No symbol) [0x00007FF6C50F5304]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6C51B90E1+32273]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6C51B19D9+1801]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF6C5497924+1202212]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6C526E978+19784]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6C526AE34+4612]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6C526AF66+4918]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6C525F431+713057]
+	BaseThreadInitThunk [0x00007FFCFCEE257D+29]
+	RtlUserThreadStart [0x00007FFCFE5CAA68+40]
+
+
+[2023-09-22 15:55:50] [DEBUG] 项目编号：20230922143052  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 382, in test_judge_score
+    errortext = self.base.get_attribute_value(locator=self.expert.alert_locator, attribute='class')
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 438, in get_attribute_value
+    text = element.get_attribute(attribute)
+AttributeError: 'bool' object has no attribute 'get_attribute'
+
+[2023-09-22 15:56:12] [DEBUG] 项目编号：20230922143052  投标人or专家：653129199606025732
+el-message el-message--success el-message-fade-enter-active el-message-fade-enter-to
+[2023-09-22 15:57:15] [DEBUG] 项目编号：20230922143052  投标人or专家：140824199202100226
+确认评标结果完成！！！
+[2023-09-22 15:57:31] [DEBUG] 项目编号：20230922143052  投标人or专家：42010119810101955X
+确认评标结果完成！！！
+[2023-09-22 15:57:46] [DEBUG] 项目编号：20230922143052  投标人or专家：653129199606025732
+确认评标结果完成！！！
+[2023-09-22 16:00:35] [DEBUG] 项目编号：20230922160012  投标人or专家：
+项目添加完成！
+[2023-09-22 16:11:45] [DEBUG] 项目编号：20230922160012  投标人or专家：15222222222
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 425, in magin_and_tenderfile
+    self.confirm_upload_click()  # 点击确认上传
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 192, in confirm_upload_click
+    self.click(self.confirm_upload_locator)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 479, in click
+    element.click()
+AttributeError: 'bool' object has no attribute 'click'
+
+[2023-09-22 16:22:19] [DEBUG] 项目编号：20230922162155  投标人or专家：
+项目添加完成！
+[2023-09-22 16:31:50] [DEBUG] 项目编号：20230922163126  投标人or专家：
+项目添加完成！
+[2023-09-22 17:38:21] [DEBUG] 项目编号：20230922163126  投标人or专家：15222222222
+未获取到CA信息，请确认是否插入CA并安装驱动
+[2023-09-25 09:02:21] [DEBUG] 项目编号：20230925090157  投标人or专家：
+项目添加完成！
+[2023-09-25 09:03:37] [DEBUG] 项目编号：20230925090313  投标人or专家：
+项目添加完成！
+[2023-09-25 09:05:42] [DEBUG] 项目编号：20230925090518  投标人or专家：
+项目添加完成！
+[2023-09-25 09:10:53] [DEBUG] 项目编号：20230925091029  投标人or专家：
+项目添加完成！
+[2023-09-25 09:11:36] [DEBUG] 项目编号：20230925091112  投标人or专家：
+项目添加完成！
+[2023-09-25 09:13:14] [DEBUG] 项目编号：20230925091250  投标人or专家：
+项目添加完成！
+[2023-09-25 09:58:45] [DEBUG] 项目编号：20230925095820  投标人or专家：
+项目添加完成！
+[2023-09-25 10:20:03] [DEBUG] 项目编号：20230925101939  投标人or专家：
+项目添加完成！
+[2023-09-25 10:27:33] [DEBUG] 项目编号：20230925095820  投标人or专家：
+组长为:出老千  身份证号为：431103198504150953
+[2023-09-25 10:37:36] [DEBUG] 项目编号：20230925103712  投标人or专家：
+项目添加完成！
+[2023-09-25 10:38:12] [DEBUG] 项目编号：20230925103748  投标人or专家：
+项目添加完成！
+[2023-09-25 10:46:36] [DEBUG] 项目编号：20230925095820  投标人or专家：
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 382, in test_judge_score
+    errortext = self.base.get_attribute_value(locator=self.expert.alert_locator, attribute='class')
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 438, in get_attribute_value
+    text = element.get_attribute(attribute)
+AttributeError: 'bool' object has no attribute 'get_attribute'
+
+[2023-09-25 10:46:53] [DEBUG] 项目编号：20230925095820  投标人or专家：420101198101015006
+el-message el-message--success el-message-fade-enter-active el-message-fade-enter-to
+[2023-09-25 10:47:12] [DEBUG] 项目编号：20230925095820  投标人or专家：431103198504150953
+el-message el-message--success el-message-fade-enter-active el-message-fade-enter-to
+[2023-09-25 10:49:03] [DEBUG] 项目编号：20230925095820  投标人or专家：330329198408154217
+el-message el-message--success el-message-fade-enter-active el-message-fade-enter-to
+[2023-09-25 10:49:21] [DEBUG] 项目编号：20230925095820  投标人or专家：420101198101015006
+el-message el-message--success el-message-fade-enter-active el-message-fade-enter-to
+[2023-09-25 10:49:39] [DEBUG] 项目编号：20230925095820  投标人or专家：431103198504150953
+el-message el-message--success el-message-fade-enter-active el-message-fade-enter-to
+[2023-09-25 10:51:15] [DEBUG] 项目编号：20230925095820  投标人or专家：330329198408154217
+确认评标结果完成！！！
+[2023-09-25 10:51:32] [DEBUG] 项目编号：20230925095820  投标人or专家：420101198101015006
+确认评标结果完成！！！
+[2023-09-25 10:51:48] [DEBUG] 项目编号：20230925095820  投标人or专家：431103198504150953
+确认评标结果完成！！！
+[2023-09-25 10:58:11] [DEBUG] 项目编号：20230925105748  投标人or专家：
+项目添加完成！
+[2023-09-25 11:07:50] [DEBUG] 项目编号：20230925105748  投标人or专家：15233333333
+未找到签到按钮！
+[2023-09-25 11:10:49] [DEBUG] 项目编号：20230925111024  投标人or专家：
+项目添加完成！
+[2023-09-25 11:13:33] [DEBUG] 项目编号：20230925105748  投标人or专家：15222222222
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 415, in magin_and_tenderfile
+    self.js_xpath_modifyAttribute(self.bid_file_locator)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 564, in js_xpath_modifyAttribute
+    self.drive.execute_script("arguments[0].setAttribute(arguments[1],arguments[2])", element, valueName, value)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 404, in execute_script
+    return self.execute(command, {"script": script, "args": converted_args})["value"]
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 344, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found
+  (Session info: MicrosoftEdge=117.0.2045.36); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6744B3D92+61490]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF674445FE2+740626]
+	(No symbol) [0x00007FF67421B8AE]
+	(No symbol) [0x00007FF674220340]
+	(No symbol) [0x00007FF674222B69]
+	(No symbol) [0x00007FF67429DF2F]
+	(No symbol) [0x00007FF67428390A]
+	(No symbol) [0x00007FF674257021]
+	(No symbol) [0x00007FF67429CE21]
+	(No symbol) [0x00007FF6742836E3]
+	(No symbol) [0x00007FF674255EAA]
+	(No symbol) [0x00007FF67425518B]
+	(No symbol) [0x00007FF674256634]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF674678D49+1207369]
+	(No symbol) [0x00007FF6742D5304]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6743990E1+32273]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6743919D9+1801]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF674677924+1202212]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF67444E978+19784]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF67444AE34+4612]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF67444AF66+4918]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF67443F431+713057]
+	BaseThreadInitThunk [0x00007FFCFCEE257D+29]
+	RtlUserThreadStart [0x00007FFCFE5CAA68+40]
+
+
+[2023-09-25 11:26:49] [DEBUG] 项目编号：20230925111024  投标人or专家：15233333333
+投标文件为空，无法参与开标
+[2023-09-25 11:53:52] [DEBUG] 项目编号：20230925115329  投标人or专家：
+项目添加完成！
+[2023-09-25 13:47:13] [DEBUG] 项目编号：20230925134650  投标人or专家：
+项目添加完成！
+[2023-09-25 14:06:08] [DEBUG] 项目编号：20230925140544  投标人or专家：
+项目添加完成！
+[2023-09-25 14:11:15] [DEBUG] 项目编号：20230925134650  投标人or专家：15222222222
+未找到解密按钮！
+[2023-09-25 14:11:27] [DEBUG] 项目编号：20230925134650  投标人or专家：15233333333
+未找到解密按钮！
+[2023-09-25 14:11:41] [DEBUG] 项目编号：20230925134650  投标人or专家：15287654321
+未找到解密按钮！
+[2023-09-25 14:11:52] [DEBUG] 项目编号：20230925134650  投标人or专家：15255555555
+未找到解密按钮！
+[2023-09-25 14:12:08] [DEBUG] 项目编号：20230925134650  投标人or专家：15244444444
+未找到解密按钮！
+[2023-09-25 14:14:49] [DEBUG] 项目编号：20230925141425  投标人or专家：
+项目添加完成！
+[2023-09-25 14:49:18] [DEBUG] 项目编号：20230925134650  投标人or专家：
+组长为:夏语恬  身份证号为：211100199309306478
+[2023-09-25 14:52:01] [DEBUG] 项目编号：20230925134650  投标人or专家：220403196909179516
+el-message el-message--success el-message-fade-enter-active el-message-fade-enter-to
+[2023-09-25 14:55:11] [DEBUG] 项目编号：20230925134650  投标人or专家：211100199309306478
+确认评标结果完成！！！
+[2023-09-25 14:55:23] [DEBUG] 项目编号：20230925134650  投标人or专家：220403196909179516
+确认评标结果完成！！！
+[2023-09-25 14:55:35] [DEBUG] 项目编号：20230925134650  投标人or专家：32130219960619597X
+确认评标结果完成！！！
