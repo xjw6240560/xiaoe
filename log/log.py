@@ -3,14 +3,13 @@
 
 # -*-coding:utf-8 -*-
 import os
-from base.base import Base
 import logging
 
 # 定义了blog_ui项目的绝对路径
-base_url = Base.now_path()
+base_url = os.path.abspath(os.path.dirname(__file__)).split('base')[0]
 
 class Logger:
-    def __init__(self, path=base_url + 'log\\logsest.log', clevel=logging.DEBUG, Flevel=logging.DEBUG):
+    def __init__(self, path=base_url + 'logsest.log', clevel=logging.DEBUG, Flevel=logging.DEBUG):
         # 判断log文件夹是否存在，不存在的话创建文件夹以及日志文件
         project_dir = os.listdir(base_url)
         dir_name = 'log'  # log文件夹
@@ -39,12 +38,11 @@ class Logger:
 
     def debugText(self, projectNumber='', errorText='', bidder='', otherText=''):
         if errorText is not None:
-            if errorText.find('成功') < 0:
-                if errorText.find("element not interactable") > 0:
-                    self.logger.debug(
-                        "项目编号：" + projectNumber + "  投标人or专家：" + bidder + "\n" + '元素不可交互' + "\n" + errorText)
-                else:
-                    self.logger.debug("项目编号：" + projectNumber + "  投标人or专家：" + bidder + "\n" + errorText)
+            if errorText.find("element not interactable") > 0:
+                self.logger.debug(
+                    "项目编号：" + projectNumber + "  投标人or专家：" + bidder + "\n" + '元素不可交互' + "\n" + errorText)
+            else:
+                self.logger.debug("项目编号：" + projectNumber + "  投标人or专家：" + bidder + "\n" + errorText)
         else:
             if otherText != '':
                 self.logger.debug("项目编号：" + projectNumber + "  投标人or专家：" + bidder + "\n" + otherText)

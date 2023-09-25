@@ -455,10 +455,11 @@ class CreateProjectMethod(Base):
         # self.isApplyFee_click()#点击是否缴纳报名费
         self.marginEndTime_send_keys()  # 输入保证金戒指递交时间
         self.tenderNotice_send_keys()  # 上传招标公告
-        time.sleep(1)
         self.tenderFile_send_keys()  # 上传招标文件
         self.saveButton_click()  # 点击保存按钮
-        errorText = self.home_page_or_workbench.errorMessage_text()
+        time.sleep(0.2)
+        errorText = self.get_text(self.alert_locator)
+        self.logger.debugText(errorText=errorText)
         if (errorText is not None) and (errorText.find("成功") < 0):
             self.logger.debugText(errorText=errorText)
         else:

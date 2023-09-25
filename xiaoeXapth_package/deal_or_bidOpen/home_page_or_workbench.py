@@ -403,6 +403,8 @@ class Home_page_or_workbench(Base):
             self.receiptImg_send_keys()
             time.sleep(0.5)
             self.saveReceipt_click()  # 点击保存回单
+            text01 = self.get_text(self.alert_locator)
+            self.logger.debugText(bidder=bidder, projectNumber=projectNumber, errorText='保证金缴纳:'+text01)
             self.returnButton_click()  # 点击返回
             self.margin_back_click()  # 再次点击返回
         except (Exception, BaseException):
@@ -419,13 +421,13 @@ class Home_page_or_workbench(Base):
             self.quality_send_keys()  # 输入质量标准
             time.sleep(0.2)
             self.saveBidFile_click()  # 提交投标文件
-            commit_error = self.errorMessage_text(type='error')  # 获取错误信息
-            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText=commit_error)  # 打印错误信息
+            text02 = self.get_text(self.alert_locator)
+            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='提交投标文件：'+text02)  # 打印错误信息
             time.sleep(0.5)
             self.confirm_upload_click()  # 点击确认上传
-            confirm_error = self.errorMessage_text('error')
-            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText=confirm_error)
-            return confirm_error
+            text03 = self.get_text(self.alert_locator)
+            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='提交投标文件：'+text03)  # 打印错误信息
+            return text03
         except(Exception, BaseException):
             error = traceback.format_exc()
             self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText=error)

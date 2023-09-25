@@ -23,7 +23,7 @@ from xiaoe_data.test_han_data import Test_han_data
 from xiaoe_data.formal_han_data import Formal_han_data
 
 
-class Base(Formal_xiaoe_data):
+class Base(Test_xiaoe_data):
     logger = Logger()
     # 直接创建Service实例
     ser = Service()
@@ -37,6 +37,8 @@ class Base(Formal_xiaoe_data):
     drive = webdriver.Edge(options=op, service=ser)
     drive.maximize_window()
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    alert = "//div[@role='alert']"  # 弹窗信息
+    alert_locator = (By.XPATH, alert)
     successClass = 'el-message el-message--success'
     csv_place = r"C:\Users\86176\Desktop\pythonScriptGenerate\data.csv"  # 数据地址
     script_place = r"C:\Users\86176\Desktop\pythonScriptGenerate\pythonScript.txt"  # 存放xpath地址
@@ -658,3 +660,4 @@ class Base(Formal_xiaoe_data):
 
 if __name__ == '__main__':
     base = Base()
+    base.now_path()
