@@ -1,3 +1,4 @@
+import os.path
 import time
 import csv
 import datetime
@@ -22,11 +23,11 @@ from xiaoe_data.test_han_data import Test_han_data
 from xiaoe_data.formal_han_data import Formal_han_data
 
 
-class Base(Test_xiaoe_data):
+class Base(Formal_xiaoe_data):
     logger = Logger()
     # 直接创建Service实例
     ser = Service()
-    ser.path = r'C:\Program Files (x86)\Microsoft\Edge\Application/msedgedriver.exe'
+    ser.path = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedgedriver.exe'
     op = Options()
     # 使用无头模式
     # op.add_argument('--headless')
@@ -417,9 +418,10 @@ class Base(Test_xiaoe_data):
         # :param locator:
         # :return:
         # """
+        nowPath = self.now_path()
         pic = self.find_element(locator, 2)
         pic_url = pic.get_attribute('src')
-        request.urlretrieve(pic_url, 'D:\\pic\\1.png')
+        request.urlretrieve(pic_url, nowPath + r'xiaoe_testcase\1.png')
 
     def return_picture(self, locator):  # 返回验证码
         self.savePictrue(locator)
@@ -442,12 +444,18 @@ class Base(Test_xiaoe_data):
         frame = self.find_element(locator, 3)
         self.drive.switch_to.frame(frame)
 
+    @staticmethod
+    def now_path():  # 获取当前路径
+        path = os.path.abspath(os.path.dirname(__file__)).split('base')[0]
+        return path
+
     def get_PicPassword(self):  # 识别图片验证码
         # """
         # 识别验证码
         # :return:
         # """
-        path = "D:\\pic\\1.png"
+        nowPath = self.now_path()
+        path = nowPath + r"xiaoe_testcase\1.png"
         ocr = ddddocr.DdddOcr()
         with open(path, 'rb') as f:
             img_bytes = f.read()
@@ -588,7 +596,8 @@ class Base(Test_xiaoe_data):
         time.sleep(0.2)
         action_chains.move_to_element(element).perform()
 
-    def get_nowTime_formatting(self):  # 获取当前时间没有符号的
+    @staticmethod
+    def get_nowTime_formatting():  # 获取当前时间没有符号的
         nowTime_noSumbol = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         return nowTime_noSumbol
 

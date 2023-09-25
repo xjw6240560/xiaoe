@@ -9558,6 +9558,7 @@ Traceback (most recent call last):
     element.clear()
 AttributeError: 'bool' object has no attribute 'clear'
 
+<<<<<<< HEAD
 [2023-09-22 14:31:19] [DEBUG] 项目编号：20230922143052  投标人or专家：
 项目添加完成！
 [2023-09-22 14:35:42] [DEBUG] 项目编号：20230922143052  投标人or专家：15222222222
@@ -9905,3 +9906,147 @@ el-message el-message--success el-message-fade-enter-active el-message-fade-ente
 确认评标结果完成！！！
 [2023-09-25 14:55:35] [DEBUG] 项目编号：20230925134650  投标人or专家：32130219960619597X
 确认评标结果完成！！！
+=======
+[2023-09-24 00:20:59] [INFO] Traceback (most recent call last):
+  File "C:\Users\86152\PycharmProjects\xiaoe\base\base.py", line 184, in connect_mysql
+    conn = pymysql.connect(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 664, in connect
+    self._request_authentication()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 968, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 1062, in _process_auth
+    pkt = self._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 772, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1049, "Unknown database 'ceshi'")
+
+[2023-09-24 00:20:59] [DEBUG] 项目编号：20230922105756  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\86152\PycharmProjects\xiaoe\base\base.py", line 348, in query_projectData
+    result = self.query_sql(sql, projectNumber)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\PycharmProjects\xiaoe\base\base.py", line 214, in query_sql
+    conn, cursor = self.connect_mysql()  # 连接数据库
+    ^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+
+[2023-09-24 00:20:59] [DEBUG] 项目编号：20230922105756  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\86152\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 38, in setUp
+    self.projectType_sql = self.result1[0]
+                           ~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+
+[2023-09-24 00:20:59] [INFO] Traceback (most recent call last):
+  File "C:\Users\86152\PycharmProjects\xiaoe\base\base.py", line 184, in connect_mysql
+    conn = pymysql.connect(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 664, in connect
+    self._request_authentication()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 968, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 1062, in _process_auth
+    pkt = self._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 772, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1049, "Unknown database 'ceshi'")
+
+[2023-09-24 00:20:59] [DEBUG] 项目编号：20230922105756  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\86152\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 52, in setUp
+    self.result2 = self.base.select_expert(self.projectNumber)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\PycharmProjects\xiaoe\base\base.py", line 358, in select_expert
+    conn, cursor = self.connect_mysql()  # 连接数据库
+    ^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+
+[2023-09-24 15:42:05] [INFO] Traceback (most recent call last):
+  File "C:\Users\86152\PycharmProjects\xiaoe\base\base.py", line 185, in connect_mysql
+    conn = pymysql.connect(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 664, in connect
+    self._request_authentication()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 968, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 1062, in _process_auth
+    pkt = self._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 772, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1049, "Unknown database 'ceshi'")
+
+[2023-09-24 15:42:05] [DEBUG] 项目编号：20230922105756  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\86152\PycharmProjects\xiaoe\base\base.py", line 349, in query_projectData
+    result = self.query_sql(sql, projectNumber)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\PycharmProjects\xiaoe\base\base.py", line 215, in query_sql
+    conn, cursor = self.connect_mysql()  # 连接数据库
+    ^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+
+[2023-09-24 15:42:05] [DEBUG] 项目编号：20230922105756  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\86152\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 38, in setUp
+    self.projectType_sql = self.result1[0]
+                           ~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+
+[2023-09-24 15:42:05] [INFO] Traceback (most recent call last):
+  File "C:\Users\86152\PycharmProjects\xiaoe\base\base.py", line 185, in connect_mysql
+    conn = pymysql.connect(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 664, in connect
+    self._request_authentication()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 968, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 1062, in _process_auth
+    pkt = self._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py", line 772, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\86152\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1049, "Unknown database 'ceshi'")
+
+[2023-09-24 15:42:05] [DEBUG] 项目编号：20230922105756  投标人or专家：
+Traceback (most recent call last):
+  File "C:\Users\86152\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 52, in setUp
+    self.result2 = self.base.select_expert(self.projectNumber)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\86152\PycharmProjects\xiaoe\base\base.py", line 359, in select_expert
+    conn, cursor = self.connect_mysql()  # 连接数据库
+    ^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+
+>>>>>>> b1c3a857cd586d5bfa75716eedfb6a725a08edf9
