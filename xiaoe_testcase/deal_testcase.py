@@ -169,7 +169,7 @@ class Deal_testcase(unittest.TestCase):
             self.home_page_or_workbench.openBidEntrance_click()  # 点击开标入口
             self.createProjectMethod.handle_skip(-1)
             if self.base.is_url(self.base.workbeach_url):
-                message = self.home_page_or_workbench.errorMessage_text(type='warning')  # 获取提示信息
+                message = self.base.get_text(self.base.alert_locator)  # 获取提示信息
                 self.logger.debugText(self.projectNumber, message, self.username[i])
                 self.createProjectMethod.open_deal_url()
                 continue
@@ -185,7 +185,9 @@ class Deal_testcase(unittest.TestCase):
                 self.bidOpen.linkNumber_send_keys()  # 输入联系人电话
                 # time.sleep(1)
                 self.bidOpen.affirm_click()  # 签到点击确认
-                time.sleep(0.2)
+                message02 = self.base.get_text(self.base.alert_locator)
+                self.logger.debugText(projectNumber=self.projectNumber, errorText='签到' + message02,
+                                      bidder=self.username[i])
                 self.createProjectMethod.open_deal_url()  # 跳转登录页面
 
     """

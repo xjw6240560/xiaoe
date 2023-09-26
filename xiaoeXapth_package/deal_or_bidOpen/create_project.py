@@ -459,7 +459,6 @@ class CreateProjectMethod(Base):
         self.saveButton_click()  # 点击保存按钮
         time.sleep(1)
         errorText = self.get_text(self.alert_locator)
-        self.logger.debugText(errorText=errorText)
         if (errorText is not None) and (errorText.find("成功") < 0):
             self.logger.debugText(errorText=errorText)
         else:
@@ -599,7 +598,7 @@ class CreateProjectMethod(Base):
                 self.input_enterprise_send_keys()  # 输入招标代理名称
                 self.search_click()  # 点击搜索企业
                 self.selectTenderGency_click()  # 选择招标代理
-                time.sleep(0.5)
+                time.sleep(0.3)
                 self.saveButton_click()  # 点击保存
                 time.sleep(0.5)
                 self.open_deal_url()
