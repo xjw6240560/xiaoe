@@ -241,11 +241,11 @@ class Home_page_or_workbench(Base):
         self.click(self.quitLogin_locator)
 
     # 工程
-    engineerBusiness = "//div[@class='el-submenu__title']//span[text()='工程业务']"  # 工程业务
-    tenderProject = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标项目')]"  # 招标项目(工程)
+    engineerBusiness = "//*[@id='aside']/div[2]/ul/li[9]/div/span"  # 工程业务
+    tenderProject = "//*[@id='aside']/div[2]/ul/li[9]/ul/div/li/div"  # 招标项目(工程)
     engineerTenderNotice = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标公告')]"  # 招标公告（工程）
     engineerTenderInvite = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'投标邀请')]"  # 投标邀请
-    engineerApplyProject = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'报名项目')]"  # 报名项目
+    engineerApplyProject = "//*[@id='aside']/div[2]/ul/li[9]/ul/div[3]/li/div"  # 报名项目
 
     engineerTenderNotice_locator = (By.XPATH, engineerTenderNotice)
     engineerBusiness_locator = (By.XPATH, engineerBusiness)

@@ -4,3 +4,191 @@
 上传成功
 [2023-09-25 17:55:54] [DEBUG] 项目编号：20230925175532  投标人or专家：
 项目添加完成！
+[2023-09-25 18:05:29] [DEBUG] 项目编号：  投标人or专家：15212345678
+登陆成功！
+[2023-09-25 18:08:53] [DEBUG] 项目编号：  投标人or专家：15212345678
+登陆成功！
+[2023-09-25 18:10:10] [DEBUG] 项目编号：  投标人or专家：15212345678
+登陆成功！
+[2023-09-25 18:18:32] [DEBUG] 项目编号：  投标人or专家：15212345678
+登陆成功！
+[2023-09-25 18:18:56] [DEBUG] 项目编号：20230925181834  投标人or专家：
+项目添加完成！
+[2023-09-25 18:26:29] [DEBUG] 项目编号：  投标人or专家：15212345678
+登陆成功！
+[2023-09-25 18:27:43] [DEBUG] 项目编号：  投标人or专家：15212345678
+登陆成功！
+[2023-09-25 18:33:33] [DEBUG] 项目编号：  投标人or专家：15212345678
+登陆成功！
+[2023-09-25 18:33:58] [DEBUG] 项目编号：  投标人or专家：
+上传成功
+[2023-09-25 18:33:58] [DEBUG] 项目编号：20230925183335  投标人or专家：
+项目添加完成！
+[2023-09-25 18:35:35] [DEBUG] 项目编号：  投标人or专家：15212345678
+登陆成功！
+[2023-09-25 18:36:00] [DEBUG] 项目编号：  投标人or专家：
+上传成功
+[2023-09-25 18:36:00] [DEBUG] 项目编号：20230925183537  投标人or专家：
+项目添加完成！
+[2023-09-25 18:36:55] [DEBUG] 项目编号：  投标人or专家：15212345678
+登陆成功！
+[2023-09-25 18:37:21] [DEBUG] 项目编号：  投标人or专家：
+上传成功
+[2023-09-25 18:37:21] [DEBUG] 项目编号：20230925183657  投标人or专家：
+项目添加完成！
+[2023-09-25 18:39:00] [DEBUG] 项目编号：  投标人or专家：15212345678
+登陆成功！
+[2023-09-25 18:39:25] [DEBUG] 项目编号：  投标人or专家：
+你选择的时间没有适合你的场次
+[2023-09-25 18:39:25] [DEBUG] 项目编号：  投标人or专家：
+你选择的时间没有适合你的场次
+[2023-09-26 09:22:54] [DEBUG] 项目编号：  投标人or专家：14781166109
+登陆成功！
+[2023-09-26 09:23:01] [DEBUG] 项目编号：20230925163442  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 370, in select_bid_workbench
+    self.engineerApplyProject_click()  # 点击工程报名项目
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 260, in engineerApplyProject_click
+    self.click(self.engineerApplyProject_locator)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 489, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 93, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 394, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 344, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=117.0.2045.36)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7C2843D92+61490]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF7C27D5FE2+740626]
+	(No symbol) [0x00007FF7C25AB6E0]
+	(No symbol) [0x00007FF7C25F4650]
+	(No symbol) [0x00007FF7C25E75AC]
+	(No symbol) [0x00007FF7C261390A]
+	(No symbol) [0x00007FF7C25E7021]
+	(No symbol) [0x00007FF7C25E6ECD]
+	(No symbol) [0x00007FF7C2613C40]
+	(No symbol) [0x00007FF7C25E7021]
+	(No symbol) [0x00007FF7C262CE21]
+	(No symbol) [0x00007FF7C26136E3]
+	(No symbol) [0x00007FF7C25E5EAA]
+	(No symbol) [0x00007FF7C25E518B]
+	(No symbol) [0x00007FF7C25E6634]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF7C2A08D49+1207369]
+	(No symbol) [0x00007FF7C2665304]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF7C27290E1+32273]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF7C27219D9+1801]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF7C2A07924+1202212]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF7C27DE978+19784]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF7C27DAE34+4612]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF7C27DAF66+4918]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF7C27CF431+713057]
+	BaseThreadInitThunk [0x00007FFFC125257D+29]
+	RtlUserThreadStart [0x00007FFFC214AA68+40]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 162, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 381, in select_bid_workbench
+    self.search_input_send_keys(projectNumber=projectNumber)  # 输入项目编号
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 120, in search_input_send_keys
+    self.send_keys(self.search_input_locator, projectNumber)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 515, in send_keys
+    element = self.find_element(locator, 5)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 474, in find_element
+    element = WebDriverWait(self.drive, timeout).until(EC.presence_of_all_elements_located(locator))
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\support\wait.py", line 95, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+[2023-09-26 09:23:04] [DEBUG] 项目编号：  投标人or专家：19765680876
+登陆成功！
+[2023-09-26 09:23:11] [DEBUG] 项目编号：20230925163442  投标人or专家：
+元素不可交互
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 370, in select_bid_workbench
+    self.engineerApplyProject_click()  # 点击工程报名项目
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 260, in engineerApplyProject_click
+    self.click(self.engineerApplyProject_locator)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 489, in click
+    element.click()
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 93, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 394, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 344, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=117.0.2045.36)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7C2843D92+61490]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF7C27D5FE2+740626]
+	(No symbol) [0x00007FF7C25AB6E0]
+	(No symbol) [0x00007FF7C25F4650]
+	(No symbol) [0x00007FF7C25E75AC]
+	(No symbol) [0x00007FF7C261390A]
+	(No symbol) [0x00007FF7C25E7021]
+	(No symbol) [0x00007FF7C25E6ECD]
+	(No symbol) [0x00007FF7C2613C40]
+	(No symbol) [0x00007FF7C25E7021]
+	(No symbol) [0x00007FF7C262CE21]
+	(No symbol) [0x00007FF7C26136E3]
+	(No symbol) [0x00007FF7C25E5EAA]
+	(No symbol) [0x00007FF7C25E518B]
+	(No symbol) [0x00007FF7C25E6634]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF7C2A08D49+1207369]
+	(No symbol) [0x00007FF7C2665304]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF7C27290E1+32273]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF7C27219D9+1801]
+	Microsoft::Applications::Events::ILogManager::DispatchEventBroadcast [0x00007FF7C2A07924+1202212]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF7C27DE978+19784]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF7C27DAE34+4612]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF7C27DAF66+4918]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF7C27CF431+713057]
+	BaseThreadInitThunk [0x00007FFFC125257D+29]
+	RtlUserThreadStart [0x00007FFFC214AA68+40]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PycharmProjects\xiaoe\xiaoe_testcase\deal_testcase.py", line 162, in test_06_signIn_online
+    self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 381, in select_bid_workbench
+    self.search_input_send_keys(projectNumber=projectNumber)  # 输入项目编号
+  File "E:\PycharmProjects\xiaoe\xiaoeXapth_package\deal_or_bidOpen\home_page_or_workbench.py", line 120, in search_input_send_keys
+    self.send_keys(self.search_input_locator, projectNumber)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 515, in send_keys
+    element = self.find_element(locator, 5)
+  File "E:\PycharmProjects\xiaoe\base\base.py", line 474, in find_element
+    element = WebDriverWait(self.drive, timeout).until(EC.presence_of_all_elements_located(locator))
+  File "C:\Users\86176\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\support\wait.py", line 95, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+[2023-09-26 09:23:13] [DEBUG] 项目编号：  投标人or专家：15182752781
+登陆成功！
+[2023-09-26 09:26:12] [DEBUG] 项目编号：  投标人or专家：14781166109
+登陆成功！
+[2023-09-26 09:26:19] [DEBUG] 项目编号：  投标人or专家：19765680876
+登陆成功！
+[2023-09-26 09:26:29] [DEBUG] 项目编号：  投标人or专家：15182752781
+登陆成功！
+[2023-09-26 09:26:38] [DEBUG] 项目编号：  投标人or专家：15134157594
+登陆成功！
+[2023-09-26 09:26:47] [DEBUG] 项目编号：  投标人or专家：13035286017
+登陆成功！
+[2023-09-26 09:29:38] [DEBUG] 项目编号：  投标人or专家：14781166109
+登陆成功！

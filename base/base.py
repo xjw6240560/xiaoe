@@ -471,10 +471,10 @@ class Base(Test_xiaoe_data):
         # :param timeout: 等待时间
         # :return: 返回元素本身
         # """
-        try:
-            element = WebDriverWait(self.drive, timeout).until(EC.presence_of_element_located(locator))
-            return element
-        except:
+        element = WebDriverWait(self.drive, timeout).until(EC.presence_of_all_elements_located(locator))
+        if len(element) > 0:
+            return element[len(element)-1]
+        else:
             print(str(locator) + "元素未找到!!!")
             return False
 

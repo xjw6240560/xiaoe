@@ -73,7 +73,7 @@ class CreateProjectMethod(Base):
     tenderFileCost = "//label[contains(text(),'招标文件费')]/following-sibling::div/div/input"  # 招标文件费用
     marginPaymentWay = "//label[contains(text(),'保证金缴纳方式:')]/following-sibling::div/div/div/input"  # 保证金缴纳方式
     EVE = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'电子保函')]"  # 保证金缴纳方式(电子保函)
-    offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'线下缴纳')]"  # 保证金缴纳方式(线下缴纳)
+    offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[text()='线下缴纳']"  # 保证金缴纳方式(线下缴纳)
     EVE_or_offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'电子保函或线下缴纳')]"  # 选择线上和线下
     more = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'...')]"
     marginSum = "//label[contains(text(),'保证金额')]/following-sibling::div/div/input"  # 保证金额
@@ -457,7 +457,7 @@ class CreateProjectMethod(Base):
         self.tenderNotice_send_keys()  # 上传招标公告
         self.tenderFile_send_keys()  # 上传招标文件
         self.saveButton_click()  # 点击保存按钮
-        time.sleep(0.2)
+        time.sleep(1)
         errorText = self.get_text(self.alert_locator)
         self.logger.debugText(errorText=errorText)
         if (errorText is not None) and (errorText.find("成功") < 0):
