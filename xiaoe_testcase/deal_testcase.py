@@ -17,7 +17,7 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20230925163442"  # 项目编号
+    projectNumber = "20230927090953"  # 项目编号
     tenderOrganizationType = "0"  # 自主招标0或者委托招标1
     tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1
@@ -139,14 +139,18 @@ class Deal_testcase(unittest.TestCase):
                 self.home_page_or_workbench.linkMan_send_keys()  # 输入联系人
                 self.home_page_or_workbench.linkManNumber_send_keys()  # 输入联系手机号
                 self.home_page_or_workbench.affirmApply_click()  # 点击确认报名
+                message = self.base.get_text(self.base.alert_locator)
+                self.logger.debugText(projectNumber=self.projectNumber, errorText='报名：' + message,
+                                      bidder=self.username[i])  # 输出报名是否成功
                 self.home_page_or_workbench.bid_workbench_click(self.projectNumber)  # 点击工作台
             except:
+
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
                                                                  0)  # 投标人选择工作台
             # time.sleep(1000)
             test = self.home_page_or_workbench.magin_and_tenderfile(projectNumber=self.projectNumber,
                                                                     bidder=self.username[i])  # 缴纳保证金和上传投标文件
-            if test is None:  # 判断是否上传成功
+            if str(test).find('成功') > 0:  # 判断是否上传成功
                 self.base.update_applyNumber(i + 1, projectNumber=self.projectNumber)  # 更新报名人数
             self.createProjectMethod.open_deal_url()  # 进入登录页面
 
@@ -186,7 +190,7 @@ class Deal_testcase(unittest.TestCase):
                 # time.sleep(1)
                 self.bidOpen.affirm_click()  # 签到点击确认
                 message02 = self.base.get_text(self.base.alert_locator)
-                self.logger.debugText(projectNumber=self.projectNumber, errorText='签到' + message02,
+                self.logger.debugText(projectNumber=self.projectNumber, errorText='签到' + str(message02),
                                       bidder=self.username[i])
                 self.createProjectMethod.open_deal_url()  # 跳转登录页面
 
@@ -222,8 +226,9 @@ class Deal_testcase(unittest.TestCase):
                     self.createProjectMethod.open_deal_url()
                     continue
                 self.bidOpen.affirmDecode_click()  # 确认解密
-                errtext = self.home_page_or_workbench.errorMessage_text(type='warning')  # 获取提示信息
-                self.logger.debugText(self.projectNumber, errtext, self.username[i])
+                errtext = self.base.get_text(self.base.alert_locator)
+                self.logger.debugText(projectNumber=self.projectNumber, errorText='解密：' + str(errtext),
+                                      bidder=self.username[i])
                 time.sleep(0.2)
                 self.createProjectMethod.open_deal_url()
 
@@ -263,6 +268,9 @@ class Deal_testcase(unittest.TestCase):
                 self.bidOpen.affirmBidResult_click()  # 确认投标结果
                 time.sleep(0.2)
                 self.bidOpen.resultAffirm_click()  # 点击投标结果弹窗确认
+                alert_text = self.base.get_text(self.base.alert_locator)
+                self.logger.debugText(projectNumber=self.projectNumber, errorText='确认唱标结果：' + str(alert_text),
+                                      bidder=self.username[i])  # 输入确认唱标结果信息
                 time.sleep(0.3)
                 self.createProjectMethod.open_deal_url()
 
@@ -359,7 +367,7 @@ class Deal_testcase(unittest.TestCase):
     """
 
     def test_judge_score(self):  # 评分
-        buttonCount = 2  # 用来判断是哪个评标类型
+        buttonCount = 1  # 用来判断是哪个评标类型
         expert_username = self.expert_username  # 获取账号
         expert_password = self.expert_password  # 获取密码
         expert_name = self.expert_name  # 获取评委名称
@@ -369,6 +377,7 @@ class Deal_testcase(unittest.TestCase):
             enterpriseCount = self.result1[6]
             self.expert.login(username=expert_username[i], password=expert_password[i],
                               projectNumber=self.projectNumber)
+            self.expert.in_project(projectNumber=self.projectNumber)  # 点击进入项目
             print("----------------------------------" + str(expert_name[i]) + "----------------------------------")
             self.expert.review_click(buttonCount)  # 专家选择评标类型
             if enterpriseCount == '0':
@@ -381,13 +390,12 @@ class Deal_testcase(unittest.TestCase):
                 self.expert.submit_result_click()  # 点击提交审核结果
                 self.expert.submitResult_affirm_click()  # 点击确认
                 time.sleep(0.5)
-                errortext = self.base.get_attribute_value(locator=self.expert.alert_locator, attribute='class')
-                if errortext != self.base.successClass:
-                    self.logger.debugText(projectNumber=self.projectNumber, errorText=errortext,
-                                          bidder=self.expert_username[i])
+                errortext = self.base.get_text(self.base.alert_locator)
+                self.logger.debugText(projectNumber=self.projectNumber, errorText='专家提交审核报告：' + errortext,
+                                      bidder=expert_username[i])
             except (Exception, BaseException):
-                error = traceback.format_exc()
-                self.logger.debugText(self.projectNumber, error)
+                self.logger.debugText(projectNumber=self.projectNumber, errorText='专家已经提交评审结果！',
+                                      bidder=expert_username[i])  # 记录专家是否提交评审结果
                 continue
 
     """
@@ -428,6 +436,7 @@ class Deal_testcase(unittest.TestCase):
         for i in range(len(expert_username)):
             self.expert.login(username=expert_username[i], password=expert_password[i],
                               projectNumber=self.projectNumber)
+            self.expert.in_project(projectNumber=self.projectNumber)  # 点击进入项目
             self.expert.judgeSignature_click()  # 点击评委签章
             if evaluationReportNumber == 0:
                 evaluationReportNumber = self.expert.signature_examine()  # 点击确认

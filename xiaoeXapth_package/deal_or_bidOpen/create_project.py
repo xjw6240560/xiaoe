@@ -10,7 +10,7 @@ class CreateProjectMethod(Base):
     home_page_or_workbench = Home_page_or_workbench()
     loginORrole = LoginORrole()
     base = Base()
-    addtime = 12
+    addtime = 20
     addTenderProjectButton = "//div[contains(text(),'招标项目')]/following-sibling::button//span[contains(text(),'新增招标项目')]"  # 新增招标项目
     projectNumber = "//label[contains(text(),'招标项目编号:')]/following-sibling::div/div/input"  # 项目编号
     projectName = "//label[contains(text(),'招标项目名称:')]/following-sibling::div/div/input"  # 项目名称

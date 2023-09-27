@@ -9,7 +9,7 @@ import logging
 base_url = os.path.abspath(os.path.dirname(__file__)).split('base')[0]
 
 class Logger:
-    def __init__(self, path=base_url + 'logsest.log', clevel=logging.DEBUG, Flevel=logging.DEBUG):
+    def __init__(self, path=base_url + '\logsest.log', clevel=logging.DEBUG, Flevel=logging.DEBUG):
         # 判断log文件夹是否存在，不存在的话创建文件夹以及日志文件
         project_dir = os.listdir(base_url)
         dir_name = 'log'  # log文件夹

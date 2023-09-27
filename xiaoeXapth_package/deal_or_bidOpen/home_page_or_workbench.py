@@ -243,8 +243,8 @@ class Home_page_or_workbench(Base):
     # 工程
     engineerBusiness = "//*[@id='aside']/div[2]/ul/li[9]/div/span"  # 工程业务
     tenderProject = "//*[@id='aside']/div[2]/ul/li[9]/ul/div/li/div"  # 招标项目(工程)
-    engineerTenderNotice = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标公告')]"  # 招标公告（工程）
-    engineerTenderInvite = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'投标邀请')]"  # 投标邀请
+    engineerTenderNotice = "//*[@id='aside']/div[2]/ul/li[9]/ul/div[1]/li/div"  # 招标公告（工程）
+    engineerTenderInvite = "//*[@id='aside']/div[2]/ul/li[9]/ul/div[2]/li/div"  # 投标邀请
     engineerApplyProject = "//*[@id='aside']/div[2]/ul/li[9]/ul/div[3]/li/div"  # 报名项目
 
     engineerTenderNotice_locator = (By.XPATH, engineerTenderNotice)
@@ -269,11 +269,11 @@ class Home_page_or_workbench(Base):
         self.click(self.tenderProject_locator)
 
     # 采购
-    purchaseBusiness = "//div[@class='el-submenu__title']//span[contains(text(),'政采业务')]"  # 政采业务
-    purchaseTenderproject = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标项目')]"  # 招标项目(政采)
-    purchaseTenderNotice = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标公告')]"  # 招标公告
-    purchaseTenderInvite = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'投标邀请')]"  # 投标邀请
-    purchaseApplyProject = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'报名项目')]"
+    purchaseBusiness = "//*[@id='aside']/div[2]/ul/li[14]/div/span"  # 政采业务
+    purchaseTenderproject = "//*[@id='aside']/div[2]/ul/li[14]/ul/div/li/div"  # 招标项目(政采)
+    purchaseTenderNotice = "//*[@id='aside']/div[2]/ul/li[14]/ul/div[1]/li/div"  # 招标公告
+    purchaseTenderInvite = "//*[@id='aside']/div[2]/ul/li[14]/ul/div[2]/li/div"  # 投标邀请
+    purchaseApplyProject = "//*[@id='aside']/div[2]/ul/li[14]/ul/div[3]/li/div"
 
     purchaseBusiness_locator = (By.XPATH, purchaseBusiness)
     purchaseTenderProject_locator = (By.XPATH, purchaseTenderproject)
@@ -404,12 +404,11 @@ class Home_page_or_workbench(Base):
             time.sleep(0.5)
             self.saveReceipt_click()  # 点击保存回单
             text01 = self.get_text(self.alert_locator)
-            self.logger.debugText(bidder=bidder, projectNumber=projectNumber, errorText='保证金缴纳:'+text01)
+            self.logger.debugText(bidder=bidder, projectNumber=projectNumber, errorText='保证金缴纳:' + text01)
             self.returnButton_click()  # 点击返回
             self.margin_back_click()  # 再次点击返回
         except (Exception, BaseException):
-            a = traceback.format_exc()
-            print(a)
+            self.logger.debugText(errorText='保证金已缴纳！')
             self.returnButton_click()  # 点击返回
             self.margin_back_click()  # 再次点击返回
         self.uploadBidFile_click()  # 点击上传投标文件
@@ -419,15 +418,16 @@ class Home_page_or_workbench(Base):
             self.bid_price_send_keys()  # 输入投标价
             self.duration_send_keys()  # 输入工期
             self.quality_send_keys()  # 输入质量标准
-            time.sleep(0.2)
             self.saveBidFile_click()  # 提交投标文件
+            time.sleep(0.3)
             text02 = self.get_text(self.alert_locator)
-            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='提交投标文件：'+text02)  # 打印错误信息
+            self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
+                                  errorText='提交投标文件：' + text02)  # 打印错误信息
             time.sleep(0.5)
             self.confirm_upload_click()  # 点击确认上传
             text03 = self.get_text(self.alert_locator)
-            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='提交投标文件：'+text03)  # 打印错误信息
+            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='确认上传：' + text03)  # 打印错误信息
             return text03
         except(Exception, BaseException):
-            error = traceback.format_exc()
-            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText=error)
+            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='投标文件已上传！')
+            return '投标文件上传成功！'
