@@ -17,6 +17,7 @@ import traceback
 import pymysql
 import re
 from selenium.webdriver.edge.service import Service
+from xiaoe_data.test_sanming_data import Test_sanming_data
 from xiaoe_data.test_xiaoe_data import Test_xiaoe_data
 from xiaoe_data.formal_xiaoe_data import Formal_xiaoe_data
 from xiaoe_data.test_han_data import Test_han_data
