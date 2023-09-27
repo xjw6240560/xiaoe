@@ -427,7 +427,6 @@ class Home_page_or_workbench(Base):
             self.confirm_upload_click()  # 点击确认上传
             text03 = self.get_text(self.alert_locator)
             self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='提交投标文件：'+text03)  # 打印错误信息
-            return text03
         except(Exception, BaseException):
             error = traceback.format_exc()
             self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText=error)
