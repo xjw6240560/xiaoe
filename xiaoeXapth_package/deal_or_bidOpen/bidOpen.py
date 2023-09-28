@@ -124,6 +124,7 @@ class BidOpen(Base):
         self.click(self.raiseObjectionAffirm_locator)
 
     def affirmBidResult_click(self):  # 点击确认唱标结果
+        time.sleep(0.3)
         self.click(self.affirmBidResult_locator)
 
     def resultAffirm_click(self):  # 点击唱标结果弹窗确认

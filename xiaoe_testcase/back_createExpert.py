@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time : 2023-09-18 15:28
 # @Author : 皮卡丘
-
+import time
 import unittest
 from xiaoeXapth_package.back.expert_store import Expert_store
 from base.base import Base
@@ -20,6 +20,7 @@ class Back_createExpert(unittest.TestCase):
                 self.list1.append(idcard)
 
     def test_create_expert(self):  # 添加专家
+        # time.sleep(1000)
         self.expert_store.login_back()  # 登录总后台
         self.base.handle_skip(-1)  # 跳转句柄
         self.expert_store.expert_manage_click()  # 点击专家库管理

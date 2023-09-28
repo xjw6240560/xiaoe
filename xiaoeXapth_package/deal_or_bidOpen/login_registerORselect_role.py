@@ -130,7 +130,6 @@ class LoginORrole(Base):
         except(Exception, BaseException):
             self.logger.debugText(errorText='登陆成功！', bidder=username)
             error = traceback.format_exc()
-            print(error)
             pass
 
     def jiaoyi_login(self, role):  # 招标人或者招标代理选择

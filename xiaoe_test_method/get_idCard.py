@@ -27,6 +27,8 @@ class Get_idCard(Base):
         self.click(self.btn_locator)
         result = self.get_text(self.text_locator)
         l = re.findall('身份证号码:(.*?),出生日期', result)
+        with open('idCard.txt', 'w+') as f:  # 删除文件内容
+            f.truncate(0)
         for i in l:
             with open('idCard.txt', 'a+') as f:
                 f.write(i + '\n')

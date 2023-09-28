@@ -18,13 +18,14 @@ import pymysql
 import re
 from selenium.webdriver.edge.service import Service
 from xiaoe_data.test_sanming_data import Test_sanming_data
+from xiaoe_data.formal_sanming_data import Formal_sanming_data
 from xiaoe_data.test_xiaoe_data import Test_xiaoe_data
 from xiaoe_data.formal_xiaoe_data import Formal_xiaoe_data
 from xiaoe_data.test_han_data import Test_han_data
 from xiaoe_data.formal_han_data import Formal_han_data
 
 
-class Base(Formal_xiaoe_data):
+class Base(Formal_sanming_data):
     logger = Logger()
     # 直接创建Service实例
     ser = Service()
@@ -287,10 +288,23 @@ class Base(Formal_xiaoe_data):
             error = traceback.format_exc()
             self.logger.debugText(projectNumber, error)
 
+    def update_evaluationReportNumber(self, evaluationReportNumber, projectNumber):  # 更新评标报告
+        result = self.query_projectData(projectNumber=projectNumber)
+        sql = 'update project set evaluationReportNumber = %s where projectNumber = %s'
+        try:
+            if result[10] < evaluationReportNumber:
+                self.insert_and_update_sql(sql, evaluationReportNumber, projectNumber)
+        except(Exception, BaseException):
+            error = traceback.format_exc()
+            self.logger.debugText(projectNumber, error)
+
     def update_ratingPoint_count(self, ratingPointCount, ratingType, projectNumber):  # 更新评分点数量
+        result = self.query_projectData(projectNumber=projectNumber)
+        number = result[7]  # 报名人数
         sql = 'update project set ratingPointCount = %s,ratingType = %s where projectNumber = %s'
         try:
-            self.insert_and_update_sql(sql, ratingPointCount, ratingType, projectNumber)
+            if int(number) < int(ratingPointCount):
+                self.insert_and_update_sql(sql, ratingPointCount, ratingType, projectNumber)
         except(Exception, BaseException):
             error = traceback.format_exc()
             self.logger.debugText(projectNumber, error)
@@ -346,7 +360,7 @@ class Base(Formal_xiaoe_data):
             f.write("\n")
 
     def query_projectData(self, projectNumber):  # 查询项目数据
-        sql = 'select projectType,tenderOrganizationType,evaluationBidWay,judgeNumber,tenderWay,applyNumber,enterpriseCount,ratingPointCount,ratingType from project where projectNumber = %s'
+        sql = 'select projectType,tenderOrganizationType,evaluationBidWay,judgeNumber,tenderWay,applyNumber,enterpriseCount,ratingPointCount,ratingType,evaluationReportNumber from project where projectNumber = %s'
         try:
             result = self.query_sql(sql, projectNumber)
             return result[0]
@@ -505,6 +519,7 @@ class Base(Formal_xiaoe_data):
     def js_click(self, locator):  # 利用js点击
         button = self.find_element(locator, 5)
         self.drive.execute_script("arguments[0].click();", button)
+        return button
 
     def is_interactive(self, locator):  # 判断元素是否可交互
         # """
@@ -521,7 +536,7 @@ class Base(Formal_xiaoe_data):
         # :param locator:
         # :return:
         # """
-        element = self.find_element(locator, 1)
+        element = self.find_element(locator, 2)
         element.click()
 
     def send_keys(self, locator, text):

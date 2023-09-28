@@ -45,7 +45,7 @@ class Expert(Base):
     electGroup_locator = (By.XPATH, electGroup)
     group_locator = (By.XPATH, group)
     score01_locator = (By.XPATH, score01_input)
-    result_pass01_locator = (By.XPATH,result_pass01)
+    result_pass01_locator = (By.XPATH, result_pass01)
     review1_locator = (By.XPATH, review1)
     review2_locator = (By.XPATH, review2)
     review3_locator = (By.XPATH, review3)
@@ -98,7 +98,7 @@ class Expert(Base):
                                   bidder=username)  # 记录是否点击用户协议
 
     def in_project(self, projectNumber):  # 点击进入项目
-        # self.handle_skip(-1)
+        self.handle_skip(-1)
         self.in_project_click(projectNumber=projectNumber)
         time.sleep(0.5)
         message = self.get_text(self.alert_locator)
@@ -114,7 +114,8 @@ class Expert(Base):
     def elect_click(self, name):  # 点击推选
         choose = "//p[contains(text(),'" + name + "')]/following-sibling::div/button/span[contains(text(),'推选')]"  # 推选
         choose_locator = (By.XPATH, choose)
-        self.short_click(choose_locator)  # 点击推选
+        result = self.js_click(choose_locator)  # 点击推选
+        return result
 
     def select_group(self, username, password, name, projectNumber):  # 选择组长
         if len(username) > 0:
@@ -129,7 +130,13 @@ class Expert(Base):
                     a = random.randint(0, len(username) - 1)  # 随机生成推选评委
                     self.elect_click(name=name[a])  # 点击推选
                 except (Exception, BaseException):
-                    self.logger.debugText(projectNumber=projectNumber, errorText='评委已经推选！', bidder=username[i])
+                    error = traceback.format_exc()
+                    if str(error).find('javascript') > 0:
+                        self.logger.debugText(projectNumber=projectNumber, errorText='未找到推选按钮或者评委已经推选！',
+                                              bidder=username[i])
+                    else:
+                        self.logger.debugText(projectNumber=projectNumber, errorText=error,
+                                              bidder=username[i])
         else:
             print('没有保存评委:' + str(len(username)))
 
@@ -137,6 +144,7 @@ class Expert(Base):
         in_project = "//div[contains(text(),'" + str(
             projectNumber) + "')]/../following-sibling::td[4]/div/button/span[contains(text(),'进入项目')]"
         in_project_locator = (By.XPATH, in_project)
+        time.sleep(0.5)
         self.js_click(in_project_locator)
 
     def get_group(self):  # 获取组长评委
@@ -283,7 +291,7 @@ class Expert(Base):
             num) + "']/ancestor::td/following-sibling::td[3]/div/button/span[contains(text(),'查看')]"
         return signature_examine2
 
-    def signature_examine(self, evaluationReportNumber=20):  # 点击评委查看和确认
+    def signature_examine(self, projectNumber, evaluationReportNumber=20):  # 点击评委查看和确认
         global i
         for i in range(1, evaluationReportNumber):
             signature_examine1 = self.examine1(i)
@@ -307,4 +315,7 @@ class Expert(Base):
             self.roll_Id("pdfFile-dialog")  # 根据id滑动窗体到底部
             time.sleep(0.5)
             self.click(self.judgeAffirm_locator)  # 评委确认
-        return i
+            message = self.get_text(self.alert_locator)
+            if str(message).find('成功') > 0:
+                self.logger.debugText(errorText=message)
+                self.update_evaluationReportNumber(projectNumber=projectNumber, evaluationReportNumber=i)
