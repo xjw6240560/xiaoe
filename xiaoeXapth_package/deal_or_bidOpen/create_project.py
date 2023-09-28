@@ -456,6 +456,7 @@ class CreateProjectMethod(Base):
         self.marginEndTime_send_keys()  # 输入保证金戒指递交时间
         self.tenderNotice_send_keys()  # 上传招标公告
         self.tenderFile_send_keys()  # 上传招标文件
+        time.sleep(0.5)
         self.saveButton_click()  # 点击保存按钮
         time.sleep(1)
         errorText = self.get_text(self.alert_locator)

@@ -98,7 +98,7 @@ class Expert(Base):
                                   bidder=username)  # 记录是否点击用户协议
 
     def in_project(self, projectNumber):  # 点击进入项目
-        self.handle_skip(-1)
+        # self.handle_skip(-1)
         self.in_project_click(projectNumber=projectNumber)
         time.sleep(0.5)
         message = self.get_text(self.alert_locator)
@@ -173,7 +173,7 @@ class Expert(Base):
             print("评标类型输入有误" + str(buttonCount))
 
     def enterprise_input_click(self):  # 点击选择企业输入框
-        self.click(self.enterprise_input_locator)
+        self.js_click(self.enterprise_input_locator)
         time.sleep(0.5)
 
     def choose_enterprise(self, num):  # 选择企业

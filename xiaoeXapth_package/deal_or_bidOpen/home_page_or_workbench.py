@@ -241,11 +241,16 @@ class Home_page_or_workbench(Base):
         self.click(self.quitLogin_locator)
 
     # 工程
-    engineerBusiness = "//*[@id='aside']/div[2]/ul/li[9]/div/span"  # 工程业务
-    tenderProject = "//*[@id='aside']/div[2]/ul/li[9]/ul/div/li/div"  # 招标项目(工程)
-    engineerTenderNotice = "//*[@id='aside']/div[2]/ul/li[9]/ul/div[1]/li/div"  # 招标公告（工程）
-    engineerTenderInvite = "//*[@id='aside']/div[2]/ul/li[9]/ul/div[2]/li/div"  # 投标邀请
-    engineerApplyProject = "//*[@id='aside']/div[2]/ul/li[9]/ul/div[3]/li/div"  # 报名项目
+    # engineerBusiness = "//*[@id='aside']/div[2]/ul/li[9]/div/span"  # 工程业务
+    # tenderProject = "//*[@id='aside']/div[2]/ul/li[9]/ul/div/li/div"  # 招标项目(工程)
+    # engineerTenderNotice = "//*[@id='aside']/div[2]/ul/li[9]/ul/div[1]/li/div"  # 招标公告（工程）
+    # engineerTenderInvite = "//*[@id='aside']/div[2]/ul/li[9]/ul/div[2]/li/div"  # 投标邀请
+    # engineerApplyProject = "//*[@id='aside']/div[2]/ul/li[9]/ul/div[3]/li/div"  # 报名项目
+    engineerBusiness = "//div[@class='el-submenu__title']//span[text()='工程业务']"  # 工程业务
+    tenderProject = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标项目')]"  # 招标项目(工程)
+    engineerTenderNotice = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标公告')]"  # 招标公告（工程）
+    engineerTenderInvite = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'投标邀请')]"  # 投标邀请
+    engineerApplyProject = "//span[contains(text(),'工程业务')]/../following-sibling::ul/descendant::div[contains(text(),'报名项目')]"  # 报名项目
 
     engineerTenderNotice_locator = (By.XPATH, engineerTenderNotice)
     engineerBusiness_locator = (By.XPATH, engineerBusiness)
@@ -269,11 +274,16 @@ class Home_page_or_workbench(Base):
         self.click(self.tenderProject_locator)
 
     # 采购
-    purchaseBusiness = "//*[@id='aside']/div[2]/ul/li[14]/div/span"  # 政采业务
-    purchaseTenderproject = "//*[@id='aside']/div[2]/ul/li[14]/ul/div/li/div"  # 招标项目(政采)
-    purchaseTenderNotice = "//*[@id='aside']/div[2]/ul/li[14]/ul/div[1]/li/div"  # 招标公告
-    purchaseTenderInvite = "//*[@id='aside']/div[2]/ul/li[14]/ul/div[2]/li/div"  # 投标邀请
-    purchaseApplyProject = "//*[@id='aside']/div[2]/ul/li[14]/ul/div[3]/li/div"
+    # purchaseBusiness = "//*[@id='aside']/div[2]/ul/li[14]/div/span"  # 政采业务
+    # purchaseTenderproject = "//*[@id='aside']/div[2]/ul/li[14]/ul/div/li/div"  # 招标项目(政采)
+    # purchaseTenderNotice = "//*[@id='aside']/div[2]/ul/li[14]/ul/div[1]/li/div"  # 招标公告
+    # purchaseTenderInvite = "//*[@id='aside']/div[2]/ul/li[14]/ul/div[2]/li/div"  # 投标邀请
+    # purchaseApplyProject = "//*[@id='aside']/div[2]/ul/li[14]/ul/div[3]/li/div"
+    purchaseBusiness = "//div[@class='el-submenu__title']//span[contains(text(),'政采业务')]"  # 政采业务
+    purchaseTenderproject = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标项目')]"  # 招标项目(政采)
+    purchaseTenderNotice = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标公告')]"  # 招标公告
+    purchaseTenderInvite = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'投标邀请')]"  # 投标邀请
+    purchaseApplyProject = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'报名项目')]"  # 报名项目
 
     purchaseBusiness_locator = (By.XPATH, purchaseBusiness)
     purchaseTenderProject_locator = (By.XPATH, purchaseTenderproject)

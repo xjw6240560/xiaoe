@@ -124,9 +124,6 @@ class LoginORrole(Base):
                 self.send_keys(self.pictrue_input_locator, yzm)
                 self.click(self.login_btn_locator)
                 time.sleep(0.5)
-                # text = self.get_attribute_value(attribute='class',locator=self.alert_locator)
-                # if text is not None:
-                #     time.sleep(1)
                 if self.is_url(self.deal_login_url) is not True:
                     self.logger.debugText(errorText='登陆成功！', bidder=username)
                     break

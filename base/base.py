@@ -24,7 +24,7 @@ from xiaoe_data.test_han_data import Test_han_data
 from xiaoe_data.formal_han_data import Formal_han_data
 
 
-class Base(Test_xiaoe_data):
+class Base(Formal_xiaoe_data):
     logger = Logger()
     # 直接创建Service实例
     ser = Service()
@@ -464,7 +464,7 @@ class Base(Test_xiaoe_data):
         res = ocr.classification(img_bytes)
         return res
 
-    def find_element(self, locator, timeout):
+    def find_element_alert(self, locator, timeout):
         # """
         # 定位单个元素，如果定位成功返回元素本身，定位失败返回false
         # :param locator: 定位器，如（"id","id属性值"）
@@ -474,6 +474,20 @@ class Base(Test_xiaoe_data):
         try:
             element = WebDriverWait(self.drive, timeout).until(EC.presence_of_all_elements_located(locator))
             return element[len(element) - 1]
+        except:
+            print(str(locator) + "元素未找到!!!")
+            return False
+
+    def find_element(self, locator, timeout):
+        # """
+        # 定位单个元素，如果定位成功返回元素本身，定位失败返回false
+        # :param locator: 定位器，如（"id","id属性值"）
+        # :param timeout: 等待时间
+        # :return: 返回元素本身
+        # """
+        try:
+            element = WebDriverWait(self.drive, timeout).until(EC.presence_of_element_located(locator))
+            return element
         except:
             print(str(locator) + "元素未找到!!!")
             return False
@@ -489,7 +503,7 @@ class Base(Test_xiaoe_data):
         element.click()
 
     def js_click(self, locator):  # 利用js点击
-        button = self.find_element(locator, 1)
+        button = self.find_element(locator, 5)
         self.drive.execute_script("arguments[0].click();", button)
 
     def is_interactive(self, locator):  # 判断元素是否可交互
@@ -537,7 +551,7 @@ class Base(Test_xiaoe_data):
         :param locator:
         :return:
         """
-        element = self.find_element(locator, 1)
+        element = self.find_element_alert(locator, 1)
         action_chains = ActionChains(self.drive)
         try:
             action_chains.move_to_element(element).perform()
