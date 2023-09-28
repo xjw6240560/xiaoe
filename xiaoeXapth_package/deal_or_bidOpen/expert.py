@@ -15,9 +15,10 @@ class Expert(Base):
     img = "//input[@placeholder='请输入图形码']/ancestor::div[@class='w-full aui-padded-r-10']/following-sibling::div/img"  # 图片验证码
     img_input = "//input[@placeholder='请输入图形码']"  # 图形验证码输入框
     login_button = "//button/span[contains(text(),'登录')]"  # 登录按钮
-    alert = "//div[@role='alert']"  # 报错信息
     know = "//button//span[contains(text(),'我已知悉')]"  # 协议
     electGroup = "//button//span[contains(text(),'推选组长')]"  # 推选组长
+    score01_input = "//div[text()='1']/ancestor::td/following-sibling::td[4]/div/div/div/input"  # 第一个评分点xpath用于判断是否已经评标完成
+    result_pass01 = "//div[text()='1']/ancestor::td/following-sibling::td[3]/div/div/div/label/span[text()='通过']"
     group = "//div//span[contains(text(),'当选组长')]/../preceding-sibling::div/../preceding-sibling::p[@class='aui-font-weight-700 aui-000000 aui-padded-t-4']"
     review1 = "//p[contains(text(),'开始评标')]/following-sibling::div/p[1]/button"  # 初步评审
     review2 = "//p[contains(text(),'开始评标')]/following-sibling::div/p[2]/button"  # 技术评审
@@ -40,10 +41,11 @@ class Expert(Base):
     img_locator = (By.XPATH, img)
     img_input_locator = (By.XPATH, img_input)
     login_button_locator = (By.XPATH, login_button)
-    alert_locator = (By.XPATH, alert)
     know_locator = (By.XPATH, know)
     electGroup_locator = (By.XPATH, electGroup)
     group_locator = (By.XPATH, group)
+    score01_locator = (By.XPATH, score01_input)
+    result_pass01_locator = (By.XPATH,result_pass01)
     review1_locator = (By.XPATH, review1)
     review2_locator = (By.XPATH, review2)
     review3_locator = (By.XPATH, review3)
@@ -64,37 +66,50 @@ class Expert(Base):
         self.open_expert_url()
         self.send_keys(self.username_input_locator, username)
         self.send_keys(self.password_input_locator, password)
-        isAgree = self.select_isAgree(username, projectNumber)
         for j in range(150):
             try:
                 self.savePictrue(self.img_locator)
                 pic = self.get_PicPassword()
                 self.send_keys(self.img_input_locator, pic)
                 self.click(self.login_button_locator)  # 点击登录按钮
-                # errortext = self.alert_getClass()#获取错误提示弹窗类型
-                # if errortext != self.successClass:
+                time.sleep(0.2)
+                message = self.get_text(self.alert_locator)
+                if str(message).find('成功') < 0:
+                    self.logger.debugText(projectNumber=projectNumber, errorText=str(message),
+                                          bidder=username)  # 记录专家是否登录成功
+            except:
                 time.sleep(0.5)
-            except(Exception, BaseException):
-                self.in_project_click(projectNumber=projectNumber)
-                time.sleep(0.5)
-                if self.is_url(self.expert_projectList_url):  # 判断有没有进入专家平台
-                    time.sleep(3)
-                    self.in_project_click(projectNumber=projectNumber)
-                else:
-                    if isAgree[0] == "disAgree":
-                        self.click(self.know_locator)
-                        self.update_isAgree("consent", username, projectNumber)
-                        break
-                    elif isAgree[0] == "consent":
-                        break
-                    else:
-                        print("专家协议类型错误" + isAgree[0])
-                # text = traceback.format_exc()
-                # self.logger.debugText(projectNumber=projectNumber,bidder=username,errorText=text)
-                # if self.is_url(self.expert_login_url) is not True:#判断是否登陆成功
+                if self.get_nowUrl() == self.expert_projectList_url:
+                    self.logger.debugText(projectNumber=projectNumber, errorText='专家登录成功！',
+                                          bidder=username)  # 记录专家是否登录成功
+                    break
+
+    def protocol_agree(self, username, projectNumber):  # 同意协议
+        isAgree = self.select_isAgree(username, projectNumber)
+        time.sleep(0.5)
+        if isAgree[0] == "disAgree":
+            self.click(self.know_locator)
+            self.update_isAgree("consent", username, projectNumber)
+        elif isAgree[0] == "consent":
+            self.logger.debugText(projectNumber=projectNumber, errorText='用户协议已同意！',
+                                  bidder=username)  # 记录是否点击用户协议
+        else:
+            self.logger.debugText(projectNumber=projectNumber, errorText='专家协议类型错误！',
+                                  bidder=username)  # 记录是否点击用户协议
+
+    def in_project(self, projectNumber):  # 点击进入项目
+        # self.handle_skip(-1)
+        self.in_project_click(projectNumber=projectNumber)
+        time.sleep(0.5)
+        message = self.get_text(self.alert_locator)
+        if message is not None:
+            self.logger.debugText(projectNumber=projectNumber, errorText=str(message))
+        if self.is_url(self.expert_projectList_url):  # 判断有没有进入专家平台
+            time.sleep(3)
+            self.in_project_click(projectNumber=projectNumber)
 
     def electGroup_click(self):  # 点击推选组长
-        self.click(self.electGroup_locator)  # 点击推选组长
+        self.js_click(self.electGroup_locator)  # 点击推选组长
 
     def elect_click(self, name):  # 点击推选
         choose = "//p[contains(text(),'" + name + "')]/following-sibling::div/button/span[contains(text(),'推选')]"  # 推选
@@ -104,15 +119,17 @@ class Expert(Base):
     def select_group(self, username, password, name, projectNumber):  # 选择组长
         if len(username) > 0:
             for i in range(len(username)):
-                self.login(username=username[i], password=password[i], projectNumber=projectNumber)
+                self.login(username=username[i], password=password[i], projectNumber=projectNumber)  # 登录专家端
+                self.in_project(projectNumber=projectNumber)  # 点击进入项目
+                self.protocol_agree(username=username[i], projectNumber=projectNumber)  # 同意用户协议
+                time.sleep(1)
                 self.electGroup_click()  # 点击推选组长
                 try:
                     time.sleep(0.3)
                     a = random.randint(0, len(username) - 1)  # 随机生成推选评委
                     self.elect_click(name=name[a])  # 点击推选
                 except (Exception, BaseException):
-                    exstr = traceback.format_exc()
-                    self.logger.debugText(projectNumber=projectNumber, errorText=exstr, bidder=username[i])
+                    self.logger.debugText(projectNumber=projectNumber, errorText='评委已经推选！', bidder=username[i])
         else:
             print('没有保存评委:' + str(len(username)))
 
@@ -120,7 +137,7 @@ class Expert(Base):
         in_project = "//div[contains(text(),'" + str(
             projectNumber) + "')]/../following-sibling::td[4]/div/button/span[contains(text(),'进入项目')]"
         in_project_locator = (By.XPATH, in_project)
-        self.click(in_project_locator)
+        self.js_click(in_project_locator)
 
     def get_group(self):  # 获取组长评委
         review = self.get_text(self.group_locator)
@@ -156,7 +173,7 @@ class Expert(Base):
             print("评标类型输入有误" + str(buttonCount))
 
     def enterprise_input_click(self):  # 点击选择企业输入框
-        self.click(self.enterprise_input_locator)
+        self.js_click(self.enterprise_input_locator)
         time.sleep(0.5)
 
     def choose_enterprise(self, num):  # 选择企业
@@ -170,17 +187,14 @@ class Expert(Base):
 
     def score_send_keys(self, projectNumber, ratingPointCount=100):  # 输入分值
         count = 0  # 用来统计评分点个数
+        global score_locator
         for i in range(1, int(ratingPointCount) + 1):
             score_input = "//div[text()='" + str(i) + "']/ancestor::td/following-sibling::td[4]/div/div/div/input"
             score_locator = (By.XPATH, score_input)
             score = random.randint(20, 40)
             try:  # 用来判断有多少个评分点
                 time.sleep(0.5)
-                if self.is_interactive(score_locator) is True:  # 判断元素是否可交互
-                    self.short_send_keys(score_locator, score)
-                else:
-                    print('分值式元素不可交互!')
-                    break
+                self.short_send_keys(score_locator, score)
                 count = count + 1
             except:
                 if i == 1:
@@ -201,13 +215,10 @@ class Expert(Base):
             result = random.randint(1, 2)
             time.sleep(0.1)
             try:  # 用来判断有多少个评分点
-                if self.is_interactive(result_pass_locator) is True:
-                    if result == 1:
-                        self.click(result_Nopass_locator)
-                    else:
-                        self.click(result_pass_locator)
+                if result == 1:
+                    self.click(result_Nopass_locator)
                 else:
-                    print('通过是方式元素不可交互!')
+                    self.click(result_pass_locator)
                 count = count + 1
             except:
                 if i == 1:
@@ -236,9 +247,17 @@ class Expert(Base):
             """
             if ratingPointCount == '0':
                 try:
-                    self.score_send_keys(projectNumber)
+                    if self.is_interactive(self.score01_locator) is True:  # 判断元素是否可交互
+                        self.score_send_keys(projectNumber)
+                    else:
+                        self.logger.debugText(projectNumber=projectNumber, errorText='分值式元素不可交互!')
+                        break
                 except:
-                    self.result_NoPass_or_pass_click(projectNumber)
+                    if self.is_interactive(self.result_pass01_locator) is True:
+                        self.result_NoPass_or_pass_click(projectNumber)
+                    else:
+                        self.logger.debugText(projectNumber=projectNumber, errorText='分值式元素不可交互!')
+                        break
             else:
                 if ratingType == '0':
                     self.score_send_keys(projectNumber=projectNumber, ratingPointCount=ratingPointCount)
@@ -252,7 +271,7 @@ class Expert(Base):
         self.click(self.submitResult_affirm_locator)
 
     def judgeSignature_click(self):  # 点击评委签章
-        self.click(self.judgeSignature_locator)
+        self.js_click(self.judgeSignature_locator)
 
     def examine1(self, num):  # 返回查看的xpath
         signature_examine1 = "//div[text()='" + str(
@@ -273,7 +292,7 @@ class Expert(Base):
             signature_examine_locator2 = (By.XPATH, signature_examine2)
             if i == 1:
                 time.sleep(0.5)
-                self.short_click(signature_examine_locator1)
+                self.js_click(signature_examine_locator1)
                 time.sleep(0.2)
             else:
                 time.sleep(0.5)

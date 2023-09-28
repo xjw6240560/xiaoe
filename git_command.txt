@@ -30,6 +30,8 @@ git checkout 分支名  切换分支
 
 git push 远程仓库名 --delete 分支名字   删除远程分支
 
+git meger 分支名    合并分支，一般在master分支合并
+
 git branch -d 分支名  删除本地分支
 
 git remote add huaiAn URL 添加远程仓库地址

@@ -124,9 +124,6 @@ class LoginORrole(Base):
                 self.send_keys(self.pictrue_input_locator, yzm)
                 self.click(self.login_btn_locator)
                 time.sleep(0.5)
-                # text = self.get_attribute_value(attribute='class',locator=self.alert_locator)
-                # if text is not None:
-                #     time.sleep(1)
                 if self.is_url(self.deal_login_url) is not True:
                     self.logger.debugText(errorText='登陆成功！', bidder=username)
                     break
@@ -218,6 +215,7 @@ class LoginORrole(Base):
                        r'C:\Users\86176\Desktop\不同大小的文件和图片\mypictures\身份证头像面.jpg')
 
     def identity_card02_send_keys(self):  # 点击法人身份证国徽面
+        self.js_xpath_modifyAttribute(self.identity_card02_locator)  # 修改js属性
         self.send_keys(self.identity_card02_locator,
                        r'C:\Users\86176\Desktop\不同大小的文件和图片\mypictures\身份证国徽面.jpg')
 
@@ -231,6 +229,7 @@ class LoginORrole(Base):
         self.send_keys(self.legalPersonMobile_locator, '15212345678')
 
     def bankOpenPermit_send_keys(self):  # 点击开户许可证
+        self.js_xpath_modifyAttribute(self.bankOpenPermit_locator)  # 修改js属性
         self.send_keys(self.bankOpenPermit_locator,
                        r'C:\Users\86176\Desktop\不同大小的文件和图片\mypictures\测试经营许可证.jpg')
 
@@ -266,6 +265,7 @@ class LoginORrole(Base):
         self.registered_capital_send_keys()  # 输入注册资本
         self.address_send_keys()  # 输入详细地址
         self.identity_card01_send_keys()  # 点击法人身份证人像面
+        time.sleep(0.5)
         self.identity_card02_send_keys()  # 点击法人身份证国徽面
         self.legalPersonName_send_keys()  # 输入法人姓名
         self.legalPersonIdCardNo_send_keys()  # 输入法人身份证号

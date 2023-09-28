@@ -17,6 +17,7 @@ import traceback
 import pymysql
 import re
 from selenium.webdriver.edge.service import Service
+from xiaoe_data.test_sanming_data import Test_sanming_data
 from xiaoe_data.test_xiaoe_data import Test_xiaoe_data
 from xiaoe_data.formal_xiaoe_data import Formal_xiaoe_data
 from xiaoe_data.test_han_data import Test_han_data
@@ -30,16 +31,15 @@ class Base(Formal_xiaoe_data):
     ser.path = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedgedriver.exe'
     op = Options()
     # 使用无头模式
-    # op.add_argument('--headless')
-    # # 禁用GPU，防止无头模式出现莫名的BUG
-    # op.add_argument('--disable-gpu')
+    op.add_argument('--headless')
+    # 禁用GPU，防止无头模式出现莫名的BUG
+    op.add_argument('--disable-gpu')
     op.page_load_strategy = 'eager'
     drive = webdriver.Edge(options=op, service=ser)
     drive.maximize_window()
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     alert = "//div[@role='alert']"  # 弹窗信息
     alert_locator = (By.XPATH, alert)
-    successClass = 'el-message el-message--success'
     csv_place = r"C:\Users\86176\Desktop\pythonScriptGenerate\data.csv"  # 数据地址
     script_place = r"C:\Users\86176\Desktop\pythonScriptGenerate\pythonScript.txt"  # 存放xpath地址
 
@@ -464,6 +464,20 @@ class Base(Formal_xiaoe_data):
         res = ocr.classification(img_bytes)
         return res
 
+    def find_element_alert(self, locator, timeout):
+        # """
+        # 定位单个元素，如果定位成功返回元素本身，定位失败返回false
+        # :param locator: 定位器，如（"id","id属性值"）
+        # :param timeout: 等待时间
+        # :return: 返回元素本身
+        # """
+        try:
+            element = WebDriverWait(self.drive, timeout).until(EC.presence_of_all_elements_located(locator))
+            return element[len(element) - 1]
+        except:
+            print(str(locator) + "元素未找到!!!")
+            return False
+
     def find_element(self, locator, timeout):
         # """
         # 定位单个元素，如果定位成功返回元素本身，定位失败返回false
@@ -487,6 +501,10 @@ class Base(Formal_xiaoe_data):
         element = self.find_element(locator, 5)
         time.sleep(0.3)
         element.click()
+
+    def js_click(self, locator):  # 利用js点击
+        button = self.find_element(locator, 5)
+        self.drive.execute_script("arguments[0].click();", button)
 
     def is_interactive(self, locator):  # 判断元素是否可交互
         # """
@@ -533,7 +551,7 @@ class Base(Formal_xiaoe_data):
         :param locator:
         :return:
         """
-        element = self.find_element(locator, 1)
+        element = self.find_element_alert(locator, 1)
         action_chains = ActionChains(self.drive)
         try:
             action_chains.move_to_element(element).perform()
@@ -637,7 +655,8 @@ class Base(Formal_xiaoe_data):
             char1 = char1 + b
         return char1
 
-    def random_score(self):  # 产生1到50随机数
+    @staticmethod
+    def random_score():  # 产生1到50随机数
         number = random.randint(1, 51)
         return number
 

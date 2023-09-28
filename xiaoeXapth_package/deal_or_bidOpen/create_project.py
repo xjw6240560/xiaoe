@@ -10,7 +10,7 @@ class CreateProjectMethod(Base):
     home_page_or_workbench = Home_page_or_workbench()
     loginORrole = LoginORrole()
     base = Base()
-    addtime = 12
+    addtime = 20
     addTenderProjectButton = "//div[contains(text(),'招标项目')]/following-sibling::button//span[contains(text(),'新增招标项目')]"  # 新增招标项目
     projectNumber = "//label[contains(text(),'招标项目编号:')]/following-sibling::div/div/input"  # 项目编号
     projectName = "//label[contains(text(),'招标项目名称:')]/following-sibling::div/div/input"  # 项目名称
@@ -73,7 +73,7 @@ class CreateProjectMethod(Base):
     tenderFileCost = "//label[contains(text(),'招标文件费')]/following-sibling::div/div/input"  # 招标文件费用
     marginPaymentWay = "//label[contains(text(),'保证金缴纳方式:')]/following-sibling::div/div/div/input"  # 保证金缴纳方式
     EVE = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'电子保函')]"  # 保证金缴纳方式(电子保函)
-    offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'线下缴纳')]"  # 保证金缴纳方式(线下缴纳)
+    offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[text()='线下缴纳']"  # 保证金缴纳方式(线下缴纳)
     EVE_or_offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'电子保函或线下缴纳')]"  # 选择线上和线下
     more = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'...')]"
     marginSum = "//label[contains(text(),'保证金额')]/following-sibling::div/div/input"  # 保证金额
@@ -458,9 +458,8 @@ class CreateProjectMethod(Base):
         self.tenderFile_send_keys()  # 上传招标文件
         time.sleep(0.5)
         self.saveButton_click()  # 点击保存按钮
-        time.sleep(0.2)
+        time.sleep(1)
         errorText = self.get_text(self.alert_locator)
-        self.logger.debugText(errorText=errorText)
         if (errorText is not None) and (errorText.find("成功") < 0):
             self.logger.debugText(errorText=errorText)
         else:
@@ -600,7 +599,7 @@ class CreateProjectMethod(Base):
                 self.input_enterprise_send_keys()  # 输入招标代理名称
                 self.search_click()  # 点击搜索企业
                 self.selectTenderGency_click()  # 选择招标代理
-                time.sleep(0.5)
+                time.sleep(0.3)
                 self.saveButton_click()  # 点击保存
                 time.sleep(0.5)
                 self.open_deal_url()
