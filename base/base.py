@@ -292,7 +292,7 @@ class Base(Formal_sanming_data):
         result = self.query_projectData(projectNumber=projectNumber)
         sql = 'update project set evaluationReportNumber = %s where projectNumber = %s'
         try:
-            if result[10] < evaluationReportNumber:
+            if result[9] < evaluationReportNumber:
                 self.insert_and_update_sql(sql, evaluationReportNumber, projectNumber)
         except(Exception, BaseException):
             error = traceback.format_exc()
@@ -518,6 +518,12 @@ class Base(Formal_sanming_data):
 
     def js_click(self, locator):  # 利用js点击
         button = self.find_element(locator, 5)
+        time.sleep(0.5)
+        self.drive.execute_script("arguments[0].click();", button)
+        return button
+
+    def js_short_click(self, locator):  # js快速点击
+        button = self.find_element(locator, 1)
         self.drive.execute_script("arguments[0].click();", button)
         return button
 

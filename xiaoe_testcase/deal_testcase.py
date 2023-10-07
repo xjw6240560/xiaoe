@@ -17,7 +17,7 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20230928195744"  # 项目编号
+    projectNumber = "20231007134603"  # 项目编号
     tenderOrganizationType = "0"  # 自主招标0或者委托招标1
     tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1
@@ -432,19 +432,18 @@ class Deal_testcase(unittest.TestCase):
     def test_judgeAffirm(self):
         expert_username = self.expert_username  # 获取账号
         expert_password = self.expert_password  # 获取密码
-        evaluationReportNumber = self.result1[10]  # 评标报告数量
+        evaluationReportNumber = self.result1[9]  # 评标报告数量
         for i in range(len(expert_username)):
             self.expert.login(username=expert_username[i], password=expert_password[i],
                               projectNumber=self.projectNumber)
             self.expert.in_project(projectNumber=self.projectNumber)  # 点击进入项目
             self.expert.judgeSignature_click()  # 点击评委签章
             if evaluationReportNumber == 0:
-                evaluationReportNumber = self.expert.signature_examine(projectNumber=self.projectNumber)  # 点击确认
+                evaluationReportNumber = self.expert.signature_examine(projectNumber=self.projectNumber, username=expert_username[i])  # 点击确认
+                self.base.update_evaluationReportNumber(projectNumber=self.projectNumber, evaluationReportNumber=evaluationReportNumber)
             else:
                 self.expert.signature_examine(evaluationReportNumber=evaluationReportNumber,
-                                              projectNumber=self.projectNumber)
-            self.logger.debugText(projectNumber=self.projectNumber, errorText='确认评标结果完成！！！',
-                                  bidder=expert_username[i])
+                                              projectNumber=self.projectNumber, username=expert_username[i])
 
     def tearDown(self):
         self.base.close()

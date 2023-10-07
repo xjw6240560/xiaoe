@@ -191,7 +191,7 @@ class LoginORrole(Base):
         self.click(self.tenderee_locator)
 
     def bidder_click(self):  # 点击投标人角色
-        self.click(self.bidder_locator)
+        self.js_click(self.bidder_locator)
 
     def tenderAgency_click(self):  # 点击招标代理
         self.click(self.tenderAgency_locator)

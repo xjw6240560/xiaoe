@@ -291,7 +291,7 @@ class Expert(Base):
             num) + "']/ancestor::td/following-sibling::td[3]/div/button/span[contains(text(),'查看')]"
         return signature_examine2
 
-    def signature_examine(self, projectNumber, evaluationReportNumber=20):  # 点击评委查看和确认
+    def signature_examine(self, projectNumber, username, evaluationReportNumber=20):  # 点击评委查看和确认
         global i
         for i in range(1, evaluationReportNumber):
             signature_examine1 = self.examine1(i)
@@ -300,22 +300,25 @@ class Expert(Base):
             signature_examine_locator2 = (By.XPATH, signature_examine2)
             if i == 1:
                 time.sleep(0.5)
-                self.js_click(signature_examine_locator1)
-                time.sleep(0.2)
+                self.js_short_click(signature_examine_locator1)
             else:
                 time.sleep(0.5)
                 try:
-                    self.short_click(signature_examine_locator2)  # 点击查看
-                except:
+                    self.js_short_click(signature_examine_locator2)  # 点击查看
+                except :
                     try:
-                        self.short_click(signature_examine_locator1)  # 点击查看
-                    except:
-                        break
+                        self.js_short_click(signature_examine_locator1)  # 点击查看
+                    except :
+                        self.logger.debugText(projectNumber=projectNumber, errorText='第一个专家确认评标结果完成！！！',
+                                              bidder=username)
+                        return i
             time.sleep(0.1)
             self.roll_Id("pdfFile-dialog")  # 根据id滑动窗体到底部
             time.sleep(0.5)
             self.click(self.judgeAffirm_locator)  # 评委确认
             message = self.get_text(self.alert_locator)
             if str(message).find('成功') > 0:
-                self.logger.debugText(errorText=message)
-                self.update_evaluationReportNumber(projectNumber=projectNumber, evaluationReportNumber=i)
+                self.logger.debugText(errorText='第' + str(i) + '条报告:' + message)
+        else:
+            self.logger.debugText(projectNumber=projectNumber, errorText='专家确认评标结果完成！！！',
+                                  bidder=username)
