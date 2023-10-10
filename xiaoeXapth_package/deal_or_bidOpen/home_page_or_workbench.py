@@ -159,6 +159,7 @@ class Home_page_or_workbench(Base):
         self.click(self.back_margin_locator)
 
     def receiptImg_send_keys(self):  # 点击上传回单图片
+        self.js_xpath_modifyAttribute(self.receiptImg_locator)  # 改变class属性
         self.short_send_keys(self.receiptImg_locator, r"C:\Users\86176\Desktop\不同大小的文件和图片\保证金.jpg")
 
     def saveReceipt_click(self):  # 点击保存回单
@@ -215,6 +216,7 @@ class Home_page_or_workbench(Base):
 
     def bid_file_send_keys(self):  # 点击投标文件
         self.js_xpath_modifyAttribute(self.bid_file_locator)
+        time.sleep(0.5)
         self.send_keys(self.bid_file_locator, r"C:\Users\86176\Desktop\不同大小的文件和图片\深圳CA.xetf")
 
     def saveBidFile_click(self):  # 保存投标文件
@@ -305,40 +307,50 @@ class Home_page_or_workbench(Base):
             self.engineerBusiness_click()  # 点击工程项目
             if tenderWay == 0:
                 self.engineerTenderNotice_click()  # 点击招标公告
+                self.notice_apply_click(projectNumber)  # 点击报名按钮
             elif tenderWay == 1:
                 self.engineerTenderInvite_click()  # 点击投标邀请
+                self.bid_apply_click(projectNumber)  # 点击报名
             else:
                 print("招标方式输入错入！工程项目没有：" + str(tenderWay))
-            self.apply_click(projectNumber)  # 点击报名按钮
         elif projectType == "purchase":  # 政采
             self.purchaseBusiness_click()  # 点击采购项目
             if tenderWay in (0, 2, 3):
                 if applyWay == 0:
                     self.purchaseTenderNotice_click()  # 点击招标公告（政采）
+                    self.notice_apply_click(projectNumber)  # 点击报名按钮
                 elif applyWay == 1:
                     self.purchaseTenderInvite_click()  # 点击政采招标邀请
+                    self.bid_apply_click(projectNumber)  # 点击报名
                 else:
                     self.logger.debugText(projectNumber=projectNumber,
                                           errorText='招标方式:' + str(tenderWay) + '或者报名方式' + str(
                                               applyWay) + '不符:')
             elif tenderWay in (1, 4):
                 self.purchaseTenderInvite_click()  # 点击政采招标邀请
+                self.bid_apply_click(projectNumber)  # 点击报名
             else:
                 self.logger.debugText(projectNumber=projectNumber,
                                       errorText='招标方式输入错误：' + str(tenderWay) + '，0表示公开招标，1表示邀请招标')
-            self.apply_click(projectNumber)  # 点击报名按钮
         else:
             print("项目类型错误" + projectType)
 
     def purchaseBusiness_click(self):  # 点击采购业务
+        time.sleep(0.5)
         self.click(self.purchaseBusiness_locator)
 
     def purchaseTenderProject_click(self):  # 点击招标项目
         self.click(self.purchaseTenderProject_locator)
 
-    def apply_click(self, projectNumber):
+    def notice_apply_click(self, projectNumber):  # 招标公告报名
         applyButton = "//div[contains(text(),'" + str(
             projectNumber) + "')]/../following-sibling::td[6]/div/span[text()='报名']"  # 点击报名
+        apply_locator = (By.XPATH, applyButton)  # 选择报名项目编号
+        self.short_click(apply_locator)
+
+    def bid_apply_click(self, projectNumber):  # 投标邀请报名
+        applyButton = "//div[contains(text(),'" + str(
+            projectNumber) + "')]/../following-sibling::td[4]/div/span[text()='报名']"  # 点击报名
         apply_locator = (By.XPATH, applyButton)  # 选择报名项目编号
         self.short_click(apply_locator)
 
@@ -409,12 +421,11 @@ class Home_page_or_workbench(Base):
         self.offlinePay_click()  # 点击线下缴纳
         bid_text = ""  # 投标文件定位返回结果
         try:
-            self.js_xpath_modifyAttribute(self.receiptImg_locator)  # 改变class属性
-            self.receiptImg_send_keys()
+            self.receiptImg_send_keys()  # 点击上传回单图片
             time.sleep(0.5)
             self.saveReceipt_click()  # 点击保存回单
             text01 = self.get_text(self.alert_locator)
-            self.logger.debugText(bidder=bidder, projectNumber=projectNumber, errorText='保证金缴纳:' + text01)
+            self.logger.debugText(bidder=bidder, projectNumber=projectNumber, errorText='保证金缴纳:' + str(text01))
             self.returnButton_click()  # 点击返回
             self.margin_back_click()  # 再次点击返回
         except (Exception, BaseException):
@@ -423,7 +434,6 @@ class Home_page_or_workbench(Base):
             self.margin_back_click()  # 再次点击返回
         self.uploadBidFile_click()  # 点击上传投标文件
         try:
-            self.js_xpath_modifyAttribute(self.bid_file_locator)
             self.bid_file_send_keys()  # 上传投标文件
             self.bid_price_send_keys()  # 输入投标价
             self.duration_send_keys()  # 输入工期
@@ -432,12 +442,16 @@ class Home_page_or_workbench(Base):
             time.sleep(0.3)
             text02 = self.get_text(self.alert_locator)
             self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
-                                  errorText='提交投标文件：' + text02)  # 打印错误信息
+                                  errorText='提交投标文件：' + str(text02))  # 打印错误信息
             time.sleep(0.5)
             self.confirm_upload_click()  # 点击确认上传
             text03 = self.get_text(self.alert_locator)
             self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='确认上传：' + text03)  # 打印错误信息
             return text03
-        except(Exception, BaseException):
-            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='投标文件已上传！')
-            return '投标文件上传成功！'
+        except Exception:
+            if self.is_interactive(self.bid_file_locator) is False:
+                self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='投标文件已上传！')
+                return '投标文件上传成功！'
+            else:
+                errortext = traceback.format_exc()
+                self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText=str(errortext))

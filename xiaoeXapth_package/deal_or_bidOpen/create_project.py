@@ -351,7 +351,7 @@ class CreateProjectMethod(Base):
 
     def input_enterprise_send_keys(self):  # 输入招标代理企业信息
         if Base.environment == "正式":
-            self.send_keys(self.input_enterprise_locator, '厦门城市开发建设有限公司')
+            self.send_keys(self.input_enterprise_locator, self.base.tenderMan)
         elif Base.environment == "测试":
             self.send_keys(self.input_enterprise_locator, '甘肃省胸补声蕊秘咨询股份有限公司')
 
@@ -427,6 +427,7 @@ class CreateProjectMethod(Base):
         self.send_keys(self.tenderFile_locator, r'C:\Users\86176\Desktop\不同大小的文件和图片\tender_file.xezf')
 
     def saveButton_click(self):  # 点击保存
+        time.sleep(0.5)
         self.click(self.saveButton_locator)
 
     def perfectProjectMessage(self, role, projectNumber, projectType, tenderOrganizationType, tenderWay):  # 完善项目信息
@@ -456,7 +457,6 @@ class CreateProjectMethod(Base):
         self.marginEndTime_send_keys()  # 输入保证金戒指递交时间
         self.tenderNotice_send_keys()  # 上传招标公告
         self.tenderFile_send_keys()  # 上传招标文件
-        time.sleep(0.5)
         self.saveButton_click()  # 点击保存按钮
         time.sleep(1)
         errorText = self.get_text(self.alert_locator)

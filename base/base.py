@@ -478,7 +478,7 @@ class Base(Formal_sanming_data):
         res = ocr.classification(img_bytes)
         return res
 
-    def find_element_alert(self, locator, timeout):
+    def find_element(self, locator, timeout, position=0):
         # """
         # 定位单个元素，如果定位成功返回元素本身，定位失败返回false
         # :param locator: 定位器，如（"id","id属性值"）
@@ -486,25 +486,26 @@ class Base(Formal_sanming_data):
         # :return: 返回元素本身
         # """
         try:
+            time.sleep(0.5)
             element = WebDriverWait(self.drive, timeout).until(EC.presence_of_all_elements_located(locator))
-            return element[len(element) - 1]
+            return element[position]
         except:
             print(str(locator) + "元素未找到!!!")
             return False
-
-    def find_element(self, locator, timeout):
-        # """
-        # 定位单个元素，如果定位成功返回元素本身，定位失败返回false
-        # :param locator: 定位器，如（"id","id属性值"）
-        # :param timeout: 等待时间
-        # :return: 返回元素本身
-        # """
-        try:
-            element = WebDriverWait(self.drive, timeout).until(EC.presence_of_element_located(locator))
-            return element
-        except:
-            print(str(locator) + "元素未找到!!!")
-            return False
+    # 
+    # def find_element(self, locator, timeout):
+    #     # """
+    #     # 定位单个元素，如果定位成功返回元素本身，定位失败返回false
+    #     # :param locator: 定位器，如（"id","id属性值"）
+    #     # :param timeout: 等待时间
+    #     # :return: 返回元素本身
+    #     # """
+    #     try:
+    #         element = WebDriverWait(self.drive, timeout).until(EC.presence_of_element_located(locator))
+    #         return element
+    #     except:
+    #         print(str(locator) + "元素未找到!!!")
+    #         return False
 
     def click(self, locator):
         # """
@@ -513,7 +514,7 @@ class Base(Formal_sanming_data):
         # :return:
         # """
         element = self.find_element(locator, 5)
-        time.sleep(0.3)
+        time.sleep(0.5)
         element.click()
 
     def js_click(self, locator):  # 利用js点击
@@ -534,7 +535,10 @@ class Base(Formal_sanming_data):
         # :return:
         # """
         element = self.find_element(locator, 2)
-        return element.is_enabled()
+        if element is False:
+            return False
+        else:
+            return element.is_enabled()
 
     def short_click(self, locator):
         # """
@@ -572,7 +576,7 @@ class Base(Formal_sanming_data):
         :param locator:
         :return:
         """
-        element = self.find_element_alert(locator, 1)
+        element = self.find_element(locator=locator, timeout=1, position=-1)
         action_chains = ActionChains(self.drive)
         try:
             action_chains.move_to_element(element).perform()

@@ -34,7 +34,7 @@ class Random_generate_project_type:
                     if tenderWay in ('竞争性磋商', '竞争性谈判', '单一来源'):
                         bidEvaluationMethod = self.bidEvaluationMethod_random()
                         while bidEvaluationMethod in (
-                        '竞争性磋商', '竞争性谈判', '单一来源') and bidEvaluationMethod != tenderWay:
+                                '竞争性磋商', '竞争性谈判', '单一来源') and bidEvaluationMethod != tenderWay:
                             bidEvaluationMethod = self.bidEvaluationMethod_random()
                         print(
                             projectType + '  ' + role + '  ' + tenderOrganizationType + '  ' + tenderWay + '  ' + bidEvaluationMethod)
@@ -49,7 +49,7 @@ class Random_generate_project_type:
                     if tenderWay in ('竞争性磋商', '竞争性谈判', '单一来源'):
                         bidEvaluationMethod = self.bidEvaluationMethod_random()
                         while bidEvaluationMethod in (
-                        '竞争性磋商', '竞争性谈判', '单一来源') and bidEvaluationMethod != tenderWay:
+                                '竞争性磋商', '竞争性谈判', '单一来源') and bidEvaluationMethod != tenderWay:
                             bidEvaluationMethod = self.bidEvaluationMethod_random()
                         print(
                             projectType + '  ' + role + '  ' + tenderOrganizationType + '  ' + tenderWay + '  ' + bidEvaluationMethod)
@@ -83,4 +83,4 @@ class Random_generate_project_type:
 
 if __name__ == '__main__':
     random_generate_project_type = Random_generate_project_type()
-    random_generate_project_type.random_generate_project_type(20)
+    random_generate_project_type.random_generate_project_type(5)

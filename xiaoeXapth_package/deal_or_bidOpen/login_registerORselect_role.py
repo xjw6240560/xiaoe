@@ -127,6 +127,9 @@ class LoginORrole(Base):
                 if self.is_url(self.deal_login_url) is not True:
                     self.logger.debugText(errorText='登陆成功！', bidder=username)
                     break
+                else:
+                    error = self.get_text(self.alert_locator)
+                    self.logger.debugText(errorText=error,bidder=username)
         except(Exception, BaseException):
             if self.is_url(self.deal_login_url) is not True:
                 self.logger.debugText(errorText='登陆成功！', bidder=username)
