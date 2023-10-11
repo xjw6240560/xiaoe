@@ -129,7 +129,7 @@ class LoginORrole(Base):
                     break
                 else:
                     error = self.get_text(self.alert_locator)
-                    self.logger.debugText(errorText=error,bidder=username)
+                    self.logger.debugText(errorText=error, bidder=username)
         except(Exception, BaseException):
             if self.is_url(self.deal_login_url) is not True:
                 self.logger.debugText(errorText='登陆成功！', bidder=username)
@@ -197,10 +197,11 @@ class LoginORrole(Base):
         self.click(self.tenderee_locator)
 
     def bidder_click(self):  # 点击投标人角色
-        self.js_click(self.bidder_locator)
+        self.click(self.bidder_locator)
 
     def tenderAgency_click(self):  # 点击招标代理
-        self.click(self.tenderAgency_locator)
+        time.sleep(0.5)
+        self.js_click(self.tenderAgency_locator)
 
     # 完善企业信息
     def business_license_send_keys(self):  # 点击营业执照上传

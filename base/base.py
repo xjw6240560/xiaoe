@@ -31,13 +31,10 @@ class Base(Formal_sanming_data):
     ser = Service()
     ser.path = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedgedriver.exe'
     op = Options()
-    # 使用无头模式
-    op.add_argument('--headless')
-    # 禁用GPU，防止无头模式出现莫名的BUG
-    op.add_argument('--disable-gpu')
     op.page_load_strategy = 'eager'
     drive = webdriver.Edge(options=op, service=ser)
     drive.maximize_window()
+    drive.set_window_position(0, -2000)
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     alert = "//div[@role='alert']"  # 弹窗信息
     alert_locator = (By.XPATH, alert)
@@ -108,7 +105,8 @@ class Base(Formal_sanming_data):
         """
         login_url = "http://uservue2.jinfu.baohan.com/#/login"
         self.drive.get(login_url)  # 打开登陆地址
-        self.drive.maximize_window()
+
+    #        self.drive.maximize_window()
 
     def deal_cookie_login(self):
         # """
@@ -149,7 +147,7 @@ class Base(Formal_sanming_data):
         """
         login_url = self.deal_login_url
         self.drive.get(login_url)
-        self.drive.maximize_window()
+        #        self.drive.maximize_window()
         time.sleep(1)
 
     def open_extract_system_url(self):  # 专家抽取系统
@@ -159,7 +157,7 @@ class Base(Formal_sanming_data):
         """
         login_url = self.extract_login_url
         self.drive.get(login_url)
-        self.drive.maximize_window()
+        #        self.drive.maximize_window()
         time.sleep(1)
 
     def open_back_url(self):  # 总后台
@@ -169,7 +167,7 @@ class Base(Formal_sanming_data):
         """
         login_url = self.back_url
         self.drive.get(login_url)
-        self.drive.maximize_window()
+        #        self.drive.maximize_window()
         time.sleep(1)
 
     def open_manage_url(self):
@@ -179,7 +177,7 @@ class Base(Formal_sanming_data):
         """
         login_url = "http://manage.han.com/#/"
         self.drive.get(login_url)
-        self.drive.maximize_window()
+        #        self.drive.maximize_window()
         time.sleep(1)
 
     def connect_mysql(self):
@@ -298,17 +296,6 @@ class Base(Formal_sanming_data):
             error = traceback.format_exc()
             self.logger.debugText(projectNumber, error)
 
-    def update_ratingPoint_count(self, ratingPointCount, ratingType, projectNumber):  # 更新评分点数量
-        result = self.query_projectData(projectNumber=projectNumber)
-        number = result[7]  # 报名人数
-        sql = 'update project set ratingPointCount = %s,ratingType = %s where projectNumber = %s'
-        try:
-            if int(number) < int(ratingPointCount):
-                self.insert_and_update_sql(sql, ratingPointCount, ratingType, projectNumber)
-        except(Exception, BaseException):
-            error = traceback.format_exc()
-            self.logger.debugText(projectNumber, error)
-
     def update_applyNumber(self, applyNumber, projectNumber):  # 更新报名人数
         result = self.query_projectData(projectNumber=projectNumber)
         number = result[5]  # 报名人数
@@ -360,7 +347,7 @@ class Base(Formal_sanming_data):
             f.write("\n")
 
     def query_projectData(self, projectNumber):  # 查询项目数据
-        sql = 'select projectType,tenderOrganizationType,evaluationBidWay,judgeNumber,tenderWay,applyNumber,enterpriseCount,ratingPointCount,ratingType,evaluationReportNumber from project where projectNumber = %s'
+        sql = 'select projectType,tenderOrganizationType,evaluationBidWay,judgeNumber,tenderWay,applyNumber,enterpriseCount,evaluationReportNumber from project where projectNumber = %s'
         try:
             result = self.query_sql(sql, projectNumber)
             return result[0]
@@ -425,7 +412,7 @@ class Base(Formal_sanming_data):
     def open_expert_url(self):  # 专家
         login_url = self.expert_login_url
         self.drive.get(login_url)
-        self.drive.maximize_window()
+        #        self.drive.maximize_window()
         time.sleep(1)
 
     def savePictrue(self, locator):  # 保存图片
@@ -486,13 +473,16 @@ class Base(Formal_sanming_data):
         # :return: 返回元素本身
         # """
         try:
-            time.sleep(0.5)
             element = WebDriverWait(self.drive, timeout).until(EC.presence_of_all_elements_located(locator))
-            return element[position]
+            if element[0].is_enabled():
+                return element[position]
+            else:
+                return False
         except:
             print(str(locator) + "元素未找到!!!")
             return False
-    # 
+
+    #
     # def find_element(self, locator, timeout):
     #     # """
     #     # 定位单个元素，如果定位成功返回元素本身，定位失败返回false
@@ -514,19 +504,27 @@ class Base(Formal_sanming_data):
         # :return:
         # """
         element = self.find_element(locator, 5)
-        time.sleep(0.5)
-        element.click()
+        if element is not False:
+            time.sleep(0.5)
+            element.click()
+        else:
+            return element
 
     def js_click(self, locator):  # 利用js点击
         button = self.find_element(locator, 5)
-        time.sleep(0.5)
-        self.drive.execute_script("arguments[0].click();", button)
-        return button
+        if button is not False:
+            time.sleep(0.5)
+            self.drive.execute_script("arguments[0].click();", button)
+        else:
+            return button
 
     def js_short_click(self, locator):  # js快速点击
         button = self.find_element(locator, 1)
-        self.drive.execute_script("arguments[0].click();", button)
-        return button
+        if button is not False:
+            time.sleep(0.3)
+            self.drive.execute_script("arguments[0].click();", button)
+        else:
+            return button
 
     def is_interactive(self, locator):  # 判断元素是否可交互
         # """
@@ -547,7 +545,10 @@ class Base(Formal_sanming_data):
         # :return:
         # """
         element = self.find_element(locator, 2)
-        element.click()
+        if element is not False:
+            element.click()
+        else:
+            return element
 
     def send_keys(self, locator, text):
         """
@@ -556,9 +557,12 @@ class Base(Formal_sanming_data):
         :return:
         """
         element = self.find_element(locator, 5)
-        element.clear()
-        time.sleep(0.15)
-        element.send_keys(text)
+        if element is not False:
+            element.clear()
+            time.sleep(0.15)
+            element.send_keys(text)
+        else:
+            return element
 
     def short_send_keys(self, locator, text):  # 短的
         """
@@ -567,16 +571,36 @@ class Base(Formal_sanming_data):
         :return:
         """
         element = self.find_element(locator, 0.1)
-        element.clear()
-        element.send_keys(text)
+        if element is not False:
+            element.clear()
+            element.send_keys(text)
+        else:
+            return element
 
-    def get_text(self, locator):  # 将鼠标移动到指定元素并获取文本
+    def js_send_keys(self, locator, text):  # 利用js发送
+        button = self.find_element(locator, 5)
+        if button is not False:
+            time.sleep(0.5)
+            self.drive.execute_script("arguments[0].value=" + str(text) + "", button)
+        else:
+            return button
+
+    def js_short_send_keys(self, locator, text):  # 利用js发送
+        button = self.find_element(locator, 1)
+        if button is not False:
+            time.sleep(0.5)
+            self.drive.execute_script("arguments[0].value=" + str(text) + "", button)
+        else:
+            return button
+
+    def get_text(self, locator, position=-1):  # 将鼠标移动到指定元素并获取文本
         """
         获取弹窗文本
+        :param position:
         :param locator:
         :return:
         """
-        element = self.find_element(locator=locator, timeout=1, position=-1)
+        element = self.find_element(locator=locator, timeout=1, position=position)
         action_chains = ActionChains(self.drive)
         try:
             action_chains.move_to_element(element).perform()

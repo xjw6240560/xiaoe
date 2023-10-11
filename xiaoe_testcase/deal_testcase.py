@@ -17,11 +17,11 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20231010092038"  # 项目编号
+    projectNumber = "20231011112101"  # 项目编号
     tenderOrganizationType = "1"  # 自主招标0或者委托招标1
-    tenderWay = 2  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
+    tenderWay = 3  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1
-    role = "1"  # 角色 0招标人、1招标代理
+    role = "0"  # 角色 0招标人、1招标代理
 
     def setUp(self):
         self.base = Base()
@@ -42,7 +42,6 @@ class Deal_testcase(unittest.TestCase):
             self.tenderWay_sql = self.result1[4]
             self.applyNumber = self.result1[5]
             self.enterpriseCount = self.result1[6]
-            self.ratingPointCount = self.result1[7]
         except (Exception, BaseException):
             error = traceback.format_exc()
             self.logger.debugText(self.projectNumber, error)
@@ -132,9 +131,12 @@ class Deal_testcase(unittest.TestCase):
             self.loginORrole.login(username=self.username[i], password=self.password[0])
             self.loginORrole.bidder_click()  # 点击投标人
             try:
-                self.home_page_or_workbench.select_apply(projectNumber=self.projectNumber,
-                                                         projectType=self.projectType_sql, tenderWay=self.tenderWay,
-                                                         applyWay=self.applyWay)  # 点击工作台
+                result = self.home_page_or_workbench.select_apply(projectNumber=self.projectNumber,  # 报名返回结果result
+                                                                  projectType=self.projectType_sql,
+                                                                  tenderWay=self.tenderWay,
+                                                                  applyWay=self.applyWay)  # 点击工作台
+                if result is False:
+                    raise '未找到报名按钮！'
                 time.sleep(0.2)
                 self.home_page_or_workbench.linkMan_send_keys()  # 输入联系人
                 self.home_page_or_workbench.linkManNumber_send_keys()  # 输入联系手机号
@@ -178,21 +180,21 @@ class Deal_testcase(unittest.TestCase):
                 self.createProjectMethod.open_deal_url()
                 continue
             else:
-                try:
-                    self.bidOpen.clickSignIn_click()  # 点击签到
-                except:
+                signIn_result = self.bidOpen.clickSignIn_click()  # 点击签到
+                if signIn_result is False:
                     self.logger.debugText(projectNumber=self.projectNumber, errorText='未找到签到按钮！',
                                           bidder=self.username[i])
                     self.createProjectMethod.open_deal_url()
                     continue
-                self.bidOpen.bidRepresentative_send_keys()  # 输入投标代表
-                self.bidOpen.linkNumber_send_keys()  # 输入联系人电话
-                # time.sleep(1)
-                self.bidOpen.affirm_click()  # 签到点击确认
-                message02 = self.base.get_text(self.base.alert_locator)
-                self.logger.debugText(projectNumber=self.projectNumber, errorText='签到' + str(message02),
-                                      bidder=self.username[i])
-                self.createProjectMethod.open_deal_url()  # 跳转登录页面
+                else:
+                    self.bidOpen.bidRepresentative_send_keys()  # 输入投标代表
+                    self.bidOpen.linkNumber_send_keys()  # 输入联系人电话
+                    # time.sleep(1)
+                    self.bidOpen.affirm_click()  # 签到点击确认
+                    message02 = self.base.get_text(self.base.alert_locator)
+                    self.logger.debugText(projectNumber=self.projectNumber, errorText='签到' + str(message02),
+                                          bidder=self.username[i])
+                    self.createProjectMethod.open_deal_url()  # 跳转登录页面
 
     """
     解密投标文件
@@ -212,25 +214,25 @@ class Deal_testcase(unittest.TestCase):
             self.home_page_or_workbench.openBidEntrance_click()  # 点击开标入口
             self.createProjectMethod.handle_skip(-1)
             if self.base.is_url(self.base.workbeach_url):
-                message = self.home_page_or_workbench.errorMessage_text(type='warning')  # 获取提示信息
-                self.logger.debugText(self.projectNumber, message, self.username[i])
+                message = self.base.get_text(self.base.alert_locator)  # 获取提示信息
+                self.logger.debugText(projectNumber=self.projectNumber, errorText='进入开标平台' + str(message),
+                                      bidder=self.username[i])
                 self.createProjectMethod.open_deal_url()
                 continue
             else:
-                try:
-                    time.sleep(0.5)
-                    self.bidOpen.decodeBidFile_click()  # 点击解密
-                except (Exception, BaseException):
+                decode_result = self.bidOpen.decodeBidFile_click()  # 点击解密
+                if decode_result is False:
                     self.logger.debugText(projectNumber=self.projectNumber, errorText="未找到解密按钮！",
                                           bidder=self.username[i])
                     self.createProjectMethod.open_deal_url()
                     continue
-                self.bidOpen.affirmDecode_click()  # 确认解密
-                errtext = self.base.get_text(self.base.alert_locator)
-                self.logger.debugText(projectNumber=self.projectNumber, errorText='解密：' + str(errtext),
-                                      bidder=self.username[i])
-                time.sleep(0.2)
-                self.createProjectMethod.open_deal_url()
+                else:
+                    self.bidOpen.affirmDecode_click()  # 确认解密
+                    errtext = self.base.get_text(self.base.alert_locator)
+                    self.logger.debugText(projectNumber=self.projectNumber, errorText='解密：' + str(errtext),
+                                          bidder=self.username[i])
+                    time.sleep(0.2)
+                    self.createProjectMethod.open_deal_url()
 
     """
     提出异议和确认唱标结果
@@ -367,11 +369,10 @@ class Deal_testcase(unittest.TestCase):
     """
 
     def test_judge_score(self):  # 评分
-        buttonCount = 1  # 用来判断是哪个评标类型
+        buttonCount = 3  # 用来判断是哪个评标类型
         expert_username = self.expert_username  # 获取账号
         expert_password = self.expert_password  # 获取密码
         expert_name = self.expert_name  # 获取评委名称
-        self.base.update_ratingPoint_count(ratingPointCount='0', ratingType='0', projectNumber=self.projectNumber)
         for i in range(len(expert_username)):
             self.result1 = self.base.query_projectData(self.projectNumber)  # 查询项目数据
             enterpriseCount = self.result1[6]
@@ -386,14 +387,14 @@ class Deal_testcase(unittest.TestCase):
                 self.expert.enterprise_review(projectNumber=self.projectNumber,
                                               enterprise_count=str(enterpriseCount))  # 企业评审
             time.sleep(0.2)
-            try:
-                self.expert.submit_result_click()  # 点击提交审核结果
+            submit_result = self.expert.submit_result_click()  # 点击提交审核结果
+            if submit_result is not False:
                 self.expert.submitResult_affirm_click()  # 点击确认
                 time.sleep(0.5)
                 errortext = self.base.get_text(self.base.alert_locator)
-                self.logger.debugText(projectNumber=self.projectNumber, errorText='专家提交审核报告：' + errortext,
+                self.logger.debugText(projectNumber=self.projectNumber, errorText='专家提交审核报告：' + str(errortext),
                                       bidder=expert_username[i])
-            except (Exception, BaseException):
+            else:
                 self.logger.debugText(projectNumber=self.projectNumber, errorText='专家已经提交评审结果！',
                                       bidder=expert_username[i])  # 记录专家是否提交评审结果
                 continue
@@ -432,15 +433,17 @@ class Deal_testcase(unittest.TestCase):
     def test_judgeAffirm(self):
         expert_username = self.expert_username  # 获取账号
         expert_password = self.expert_password  # 获取密码
-        evaluationReportNumber = self.result1[9]  # 评标报告数量
+        evaluationReportNumber = self.result1[7]  # 评标报告数量
         for i in range(len(expert_username)):
             self.expert.login(username=expert_username[i], password=expert_password[i],
                               projectNumber=self.projectNumber)
             self.expert.in_project(projectNumber=self.projectNumber)  # 点击进入项目
             self.expert.judgeSignature_click()  # 点击评委签章
             if evaluationReportNumber == 0:
-                evaluationReportNumber = self.expert.signature_examine(projectNumber=self.projectNumber, username=expert_username[i])  # 点击确认
-                self.base.update_evaluationReportNumber(projectNumber=self.projectNumber, evaluationReportNumber=evaluationReportNumber)
+                evaluationReportNumber = self.expert.signature_examine(projectNumber=self.projectNumber,
+                                                                       username=expert_username[i])  # 点击确认
+                self.base.update_evaluationReportNumber(projectNumber=self.projectNumber,
+                                                        evaluationReportNumber=evaluationReportNumber)
             else:
                 self.expert.signature_examine(evaluationReportNumber=evaluationReportNumber,
                                               projectNumber=self.projectNumber, username=expert_username[i])

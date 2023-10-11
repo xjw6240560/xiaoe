@@ -145,7 +145,7 @@ class Expert(Base):
             projectNumber) + "')]/../following-sibling::td[4]/div/button/span[contains(text(),'进入项目')]"
         in_project_locator = (By.XPATH, in_project)
         time.sleep(0.5)
-        self.js_click(in_project_locator)
+        self.short_click(in_project_locator)
 
     def get_group(self):  # 获取组长评委
         review = self.get_text(self.group_locator)
@@ -158,25 +158,13 @@ class Expert(Base):
     def review_click(self, buttonCount):  # 专家选择评标类型
         time.sleep(0.2)
         if buttonCount == 1:
-            try:
-                self.click(self.review1_locator)
-            except:
-                print('评标类型1不存在')
+            self.click(self.review1_locator)
         elif buttonCount == 2:
-            try:
-                self.click(self.review2_locator)
-            except:
-                print('评标类型2不存在')
+            self.click(self.review2_locator)
         elif buttonCount == 3:
-            try:
-                self.click(self.review3_locator)
-            except:
-                print('评标类型3不存在')
+            self.click(self.review3_locator)
         elif buttonCount == 4:
-            try:
-                self.click(self.review4_locator)
-            except:
-                print('评标类型4不存在')
+            self.click(self.review4_locator)
         else:
             print("评标类型输入有误" + str(buttonCount))
 
@@ -191,89 +179,69 @@ class Expert(Base):
         choose_enterprise = "//div//ul//li[" + str(num) + "]/span"  # 选择企业
         choose_enterprise_locator = (By.XPATH, choose_enterprise)
         time.sleep(0.1)
-        self.short_click(choose_enterprise_locator)
+        return self.js_short_click(choose_enterprise_locator)
 
-    def score_send_keys(self, projectNumber, ratingPointCount=100):  # 输入分值
-        count = 0  # 用来统计评分点个数
-        global score_locator
-        for i in range(1, int(ratingPointCount) + 1):
+    def score_send_keys(self, projectNumber):  # 输入分值
+        # noinspection PyGlobalUndefined
+        global score_locator, score
+        for i in range(1, 100):
             score_input = "//div[text()='" + str(i) + "']/ancestor::td/following-sibling::td[4]/div/div/div/input"
+            score_num = "//table/tbody/tr[" + str(i) + "]/td[3]/div[@class='cell']"
             score_locator = (By.XPATH, score_input)
-            score = random.randint(20, 40)
-            try:  # 用来判断有多少个评分点
-                time.sleep(0.5)
-                self.short_send_keys(score_locator, score)
-                count = count + 1
-            except:
+            score_num_locator = (By.XPATH, score_num)
+            max_score = self.get_text(locator=score_num_locator, position=0)  # 获取最大的分值
+            if str(max_score).isdigit():  # 判断是不是数字
+                score = random.randint(0, int(max_score))
+                score_result = self.short_send_keys(score_locator, score)
+                if score_result is False:
+                    break
+            else:
                 if i == 1:
-                    raise Exception("不是分值类型")
+                    return '不是分值类型！'
                 else:
-                    self.update_ratingPoint_count(ratingPointCount=count, ratingType='0', projectNumber=projectNumber)
+                    self.logger.debugText(errorText='分值类型评标完成')
                     break
 
-    def result_NoPass_or_pass_click(self, projectNumber, ratingPointCount=100):  # 选择不通过
-        count = 0
-        for i in range(1, int(ratingPointCount) + 1):
+    def result_NoPass_or_pass_click(self, projectNumber):  # 选择不通过
+        # noinspection PyGlobalUndefined
+        global rtn_result
+        for i in range(1, 100):
             result_pass = "//div[text()='" + str(
                 i) + "']/ancestor::td/following-sibling::td[3]/div/div/div/label/span[text()='通过']"
             result_Nopass = "//div[text()='" + str(
                 i) + "']/ancestor::td/following-sibling::td[3]/div/div/div/label/span[text()='不通过']"
             result_pass_locator = (By.XPATH, result_pass)
             result_Nopass_locator = (By.XPATH, result_Nopass)
-            result = random.randint(1, 2)
-            time.sleep(0.1)
-            try:  # 用来判断有多少个评分点
-                if result == 1:
-                    self.click(result_Nopass_locator)
-                else:
-                    self.click(result_pass_locator)
-                count = count + 1
-            except:
-                if i == 1:
-                    raise Exception("不是通过式！")
-                else:
-                    self.update_ratingPoint_count(ratingPointCount=count, ratingType='1', projectNumber=projectNumber)
-                    break
+            rm_pass_num = random.randint(1, 2)
+            if rm_pass_num == 1:
+                rtn_result = self.js_short_click(result_Nopass_locator)
+            elif rm_pass_num == 2:
+                rtn_result = self.js_short_click(result_pass_locator)
+            else:
+                print(rm_pass_num)
+            if rtn_result is False:
+                break
 
     def enterprise_review(self, projectNumber, enterprise_count=1000):  # 企业评审
         count = 0  # 用来累计企业个数
         for j in range(1, int(enterprise_count) + 1):
-            result = self.query_projectData(projectNumber)
-            ratingPointCount = result[7]
-            ratingType = result[8]
             self.enterprise_input_click()
             time.sleep(0.1)
-            try:  # 用来判断有多少家企业
-                self.choose_enterprise(j)
-                count = count + 1
-            except:
+            enterprise_text = self.choose_enterprise(j)
+            count = count + 1
+            if enterprise_text is not False:
+                score_text = self.score_send_keys(projectNumber)
+                if score_text == '不是分值类型！':
+                    self.result_NoPass_or_pass_click(projectNumber)
+            else:
                 self.update_enterprise_count(enterpriseCount=str(count), projectNumber=projectNumber)
                 break
 
-            """
-            ratingPointCount 如果等于0的话说明没有评标（默认为0）
-            """
-            if ratingPointCount == '0':
-                try:
-                    if self.is_interactive(self.score01_locator) is True:  # 判断元素是否可交互
-                        self.score_send_keys(projectNumber)
-                    else:
-                        self.logger.debugText(projectNumber=projectNumber, errorText='分值式元素不可交互!')
-                        break
-                except:
-                    if self.is_interactive(self.result_pass01_locator) is True:
-                        self.result_NoPass_or_pass_click(projectNumber)
-                    else:
-                        self.logger.debugText(projectNumber=projectNumber, errorText='分值式元素不可交互!')
-                        break
-            else:
-                if ratingType == '0':
-                    self.score_send_keys(projectNumber=projectNumber, ratingPointCount=ratingPointCount)
-                elif ratingType == '1':
-                    self.result_NoPass_or_pass_click(projectNumber=projectNumber, ratingPointCount=ratingPointCount)
-
     def submit_result_click(self):  # 点击提交审核结果
-        self.click(self.submit_result_locator)
+        try:
+            return self.click(self.submit_result_locator)
+        except:
+            self.logger.debugText(errorText='交审核结果按钮未找到！')
 
     def submitResult_affirm_click(self):  # 点击确认
         self.click(self.submitResult_affirm_locator)
@@ -305,10 +273,10 @@ class Expert(Base):
                 time.sleep(0.5)
                 try:
                     self.js_short_click(signature_examine_locator2)  # 点击查看
-                except :
+                except:
                     try:
                         self.js_short_click(signature_examine_locator1)  # 点击查看
-                    except :
+                    except:
                         self.logger.debugText(projectNumber=projectNumber, errorText='第一个专家确认评标结果完成！！！',
                                               bidder=username)
                         return i

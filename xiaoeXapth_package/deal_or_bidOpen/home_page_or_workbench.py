@@ -190,7 +190,7 @@ class Home_page_or_workbench(Base):
         self.click(self.uploadBidFile_locator)
 
     def confirm_upload_click(self):  # 确认上传
-        self.click(self.confirm_upload_locator)
+        return self.click(self.confirm_upload_locator)
 
     def recallTenderFile_click(self):  # 点击撤回标书
         self.click(self.recallTenderFile_locator)
@@ -307,10 +307,10 @@ class Home_page_or_workbench(Base):
             self.engineerBusiness_click()  # 点击工程项目
             if tenderWay == 0:
                 self.engineerTenderNotice_click()  # 点击招标公告
-                self.notice_apply_click(projectNumber)  # 点击报名按钮
+                return self.notice_apply_click(projectNumber)  # 点击报名按钮
             elif tenderWay == 1:
                 self.engineerTenderInvite_click()  # 点击投标邀请
-                self.bid_apply_click(projectNumber)  # 点击报名
+                return self.bid_apply_click(projectNumber)  # 点击报名
             else:
                 print("招标方式输入错入！工程项目没有：" + str(tenderWay))
         elif projectType == "purchase":  # 政采
@@ -318,17 +318,17 @@ class Home_page_or_workbench(Base):
             if tenderWay in (0, 2, 3):
                 if applyWay == 0:
                     self.purchaseTenderNotice_click()  # 点击招标公告（政采）
-                    self.notice_apply_click(projectNumber)  # 点击报名按钮
+                    return self.notice_apply_click(projectNumber)  # 点击报名按钮
                 elif applyWay == 1:
                     self.purchaseTenderInvite_click()  # 点击政采招标邀请
-                    self.bid_apply_click(projectNumber)  # 点击报名
+                    return self.bid_apply_click(projectNumber)  # 点击报名
                 else:
                     self.logger.debugText(projectNumber=projectNumber,
                                           errorText='招标方式:' + str(tenderWay) + '或者报名方式' + str(
                                               applyWay) + '不符:')
             elif tenderWay in (1, 4):
                 self.purchaseTenderInvite_click()  # 点击政采招标邀请
-                self.bid_apply_click(projectNumber)  # 点击报名
+                return self.bid_apply_click(projectNumber)  # 点击报名
             else:
                 self.logger.debugText(projectNumber=projectNumber,
                                       errorText='招标方式输入错误：' + str(tenderWay) + '，0表示公开招标，1表示邀请招标')
@@ -346,13 +346,13 @@ class Home_page_or_workbench(Base):
         applyButton = "//div[contains(text(),'" + str(
             projectNumber) + "')]/../following-sibling::td[6]/div/span[text()='报名']"  # 点击报名
         apply_locator = (By.XPATH, applyButton)  # 选择报名项目编号
-        self.short_click(apply_locator)
+        return self.short_click(apply_locator)
 
     def bid_apply_click(self, projectNumber):  # 投标邀请报名
         applyButton = "//div[contains(text(),'" + str(
             projectNumber) + "')]/../following-sibling::td[4]/div/span[text()='报名']"  # 点击报名
         apply_locator = (By.XPATH, applyButton)  # 选择报名项目编号
-        self.short_click(apply_locator)
+        return self.short_click(apply_locator)
 
     def select_tender_workbench(self, projectNumber, projectType):  # 招标人选择工作台
         if projectType == "engineer":
@@ -446,8 +446,10 @@ class Home_page_or_workbench(Base):
             time.sleep(0.5)
             self.confirm_upload_click()  # 点击确认上传
             text03 = self.get_text(self.alert_locator)
-            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='确认上传：' + text03)  # 打印错误信息
-            return text03
+            self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
+                                  errorText='确认上传：' + str(text03))  # 打印错误信息
+            if self.confirm_upload_click() is False:  # 判断投标文件有没有上传成功
+                return '投标文件上传成功！'
         except Exception:
             if self.is_interactive(self.bid_file_locator) is False:
                 self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='投标文件已上传！')

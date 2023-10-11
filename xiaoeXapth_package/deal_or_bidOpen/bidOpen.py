@@ -43,7 +43,7 @@ class BidOpen(Base):
     refresh_locator = (By.XPATH, refresh)
 
     def clickSignIn_click(self):  # 点击签到
-        self.click(self.clickSignIn_locator)
+        return self.click(self.clickSignIn_locator)
 
     def message_input_send_keys(self):  # 发送消息
         for i in range(20):
@@ -75,7 +75,8 @@ class BidOpen(Base):
         self.click(self.affirm_locator)
 
     def decodeBidFile_click(self):  # 点击解密
-        self.click(self.decodeBidFile_locator)
+        time.sleep(0.5)
+        return self.click(self.decodeBidFile_locator)
 
     def affirmDecode_click(self):  # 点击确认解密
         self.click(self.affirmDecode_locator)
