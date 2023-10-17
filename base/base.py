@@ -25,7 +25,7 @@ from xiaoe_data.test_han_data import Test_han_data
 from xiaoe_data.formal_han_data import Formal_han_data
 
 
-class Base(Formal_sanming_data):
+class Base(Test_xiaoe_data):
     logger = Logger()
     # 直接创建Service实例
     ser = Service()
@@ -290,7 +290,7 @@ class Base(Formal_sanming_data):
         result = self.query_projectData(projectNumber=projectNumber)
         sql = 'update project set evaluationReportNumber = %s where projectNumber = %s'
         try:
-            if result[9] < evaluationReportNumber:
+            if result[7] < evaluationReportNumber:
                 self.insert_and_update_sql(sql, evaluationReportNumber, projectNumber)
         except(Exception, BaseException):
             error = traceback.format_exc()

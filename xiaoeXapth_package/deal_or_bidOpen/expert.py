@@ -86,9 +86,9 @@ class Expert(Base):
 
     def protocol_agree(self, username, projectNumber):  # 同意协议
         isAgree = self.select_isAgree(username, projectNumber)
-        time.sleep(0.5)
+        time.sleep(0.2)
         if isAgree[0] == "disAgree":
-            self.click(self.know_locator)
+            self.js_click(self.know_locator)
             self.update_isAgree("consent", username, projectNumber)
         elif isAgree[0] == "consent":
             self.logger.debugText(projectNumber=projectNumber, errorText='用户协议已同意！',
@@ -238,10 +238,7 @@ class Expert(Base):
                 break
 
     def submit_result_click(self):  # 点击提交审核结果
-        try:
-            return self.click(self.submit_result_locator)
-        except:
-            self.logger.debugText(errorText='交审核结果按钮未找到！')
+        return self.js_click(self.submit_result_locator)
 
     def submitResult_affirm_click(self):  # 点击确认
         self.click(self.submitResult_affirm_locator)
@@ -271,19 +268,18 @@ class Expert(Base):
                 self.js_short_click(signature_examine_locator1)
             else:
                 time.sleep(0.5)
-                try:
+                if self.is_interactive(signature_examine_locator2):
                     self.js_short_click(signature_examine_locator2)  # 点击查看
-                except:
-                    try:
-                        self.js_short_click(signature_examine_locator1)  # 点击查看
-                    except:
-                        self.logger.debugText(projectNumber=projectNumber, errorText='第一个专家确认评标结果完成！！！',
-                                              bidder=username)
-                        return i
+                elif self.is_interactive(signature_examine_locator1):
+                    self.js_short_click(signature_examine_locator1)  # 点击查看
+                else:
+                    self.logger.debugText(projectNumber=projectNumber, bidder=username,
+                                          errorText='第一个专家评标报告确认完成！')
+                    return i
             time.sleep(0.1)
             self.roll_Id("pdfFile-dialog")  # 根据id滑动窗体到底部
             time.sleep(0.5)
-            self.click(self.judgeAffirm_locator)  # 评委确认
+            self.js_click(self.judgeAffirm_locator)  # 评委确认
             message = self.get_text(self.alert_locator)
             if str(message).find('成功') > 0:
                 self.logger.debugText(errorText='第' + str(i) + '条报告:' + message)

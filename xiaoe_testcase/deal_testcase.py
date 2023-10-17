@@ -17,9 +17,9 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20231011112101"  # 项目编号
-    tenderOrganizationType = "1"  # 自主招标0或者委托招标1
-    tenderWay = 3  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
+    projectNumber = "20231016221123"  # 项目编号
+    tenderOrganizationType = "0"  # 自主招标0或者委托招标1
+    tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1
     role = "0"  # 角色 0招标人、1招标代理
 
@@ -126,27 +126,27 @@ class Deal_testcase(unittest.TestCase):
 
     def test_05_apply_offline(self):  # 报名(线下)状态优化
         for i in range(len(self.username)):
-            # if i == 4:
-            #     break
+            if i == 4:
+                break
             self.loginORrole.login(username=self.username[i], password=self.password[0])
             self.loginORrole.bidder_click()  # 点击投标人
             try:
                 result = self.home_page_or_workbench.select_apply(projectNumber=self.projectNumber,  # 报名返回结果result
                                                                   projectType=self.projectType_sql,
                                                                   tenderWay=self.tenderWay,
-                                                                  applyWay=self.applyWay)  # 点击工作台
-                if result is False:
+                                                                  applyWay=self.applyWay)  # 点击报名
+                if result is not False:
+                    time.sleep(0.2)
+                    self.home_page_or_workbench.linkMan_send_keys()  # 输入联系人
+                    self.home_page_or_workbench.linkManNumber_send_keys()  # 输入联系手机号
+                    self.home_page_or_workbench.affirmApply_click()  # 点击确认报名
+                    message = self.base.get_text(self.base.alert_locator)
+                    self.logger.debugText(projectNumber=self.projectNumber, errorText='报名：' + message,
+                                          bidder=self.username[i])  # 输出报名是否成功
+                    self.home_page_or_workbench.bid_workbench_click(self.projectNumber)  # 点击工作台
+                else:
                     raise '未找到报名按钮！'
-                time.sleep(0.2)
-                self.home_page_or_workbench.linkMan_send_keys()  # 输入联系人
-                self.home_page_or_workbench.linkManNumber_send_keys()  # 输入联系手机号
-                self.home_page_or_workbench.affirmApply_click()  # 点击确认报名
-                message = self.base.get_text(self.base.alert_locator)
-                self.logger.debugText(projectNumber=self.projectNumber, errorText='报名：' + message,
-                                      bidder=self.username[i])  # 输出报名是否成功
-                self.home_page_or_workbench.bid_workbench_click(self.projectNumber)  # 点击工作台
             except:
-
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
                                                                  0)  # 投标人选择工作台
             # time.sleep(1000)
@@ -369,7 +369,7 @@ class Deal_testcase(unittest.TestCase):
     """
 
     def test_judge_score(self):  # 评分
-        buttonCount = 3  # 用来判断是哪个评标类型
+        buttonCount = 2  # 用来判断是哪个评标类型
         expert_username = self.expert_username  # 获取账号
         expert_password = self.expert_password  # 获取密码
         expert_name = self.expert_name  # 获取评委名称

@@ -482,27 +482,36 @@ class CreateProjectMethod(Base):
             self.logger.debugText(projectNumber=projectNumber, errorText=error)
 
     def marginPayment(self, status):  # 保证金缴纳
-        try:
-            if status == 0:
-                self.EVE_click()  # 点击保函申请
-            elif status == 1:
-                self.EVE_or_offlinePayment_click()  # 点击线上和线下
-            elif status == 2:
-                self.offlinePayment_click()  # 点击线下缴纳
-            else:
-                print('保证金缴纳状态错误，0保函申请，1线上和线下，2线下')
-        except:
-            if status == 0:
-                self.more_click()  # 点击更多
-                self.EVE_click()  # 点击保函申请
-            elif status == 1:
-                self.more_click()  # 点击更多
-                self.EVE_or_offlinePayment_click()  # 点击线上和线下
-            elif status == 2:
-                self.more_click()  # 点击更多
-                self.offlinePayment_click()  # 点击线下缴纳
-            else:
-                print('保证金缴纳状态错误，0保函申请，1线上和线下，2线下')
+        # try:
+        #     if status == 0:
+        #         self.EVE_click()  # 点击保函申请
+        #     elif status == 1:
+        #         self.EVE_or_offlinePayment_click()  # 点击线上和线下
+        #     elif status == 2:
+        #         self.offlinePayment_click()  # 点击线下缴纳
+        #     else:
+        #         print('保证金缴纳状态错误，0保函申请，1线上和线下，2线下')
+        # except:
+        #     if status == 0:
+        #         self.more_click()  # 点击更多
+        #         self.EVE_click()  # 点击保函申请
+        #     elif status == 1:
+        #         self.more_click()  # 点击更多
+        #         self.EVE_or_offlinePayment_click()  # 点击线上和线下
+        #     elif status == 2:
+        #         self.more_click()  # 点击更多
+        #         self.offlinePayment_click()  # 点击线下缴纳
+        #     else:
+        #         print('保证金缴纳状态错误，0保函申请，1线上和线下，2线下')
+        self.more_click()  # 点击更多
+        if status == 0:
+            self.EVE_click()  # 点击保函申请
+        elif status == 1:
+            self.EVE_or_offlinePayment_click()  # 点击线上和线下
+        elif status == 2:
+            self.offlinePayment_click()  # 点击线下缴纳
+        else:
+            print('保证金缴纳状态错误，0保函申请，1线上和线下，2线下')
 
     # 政采项目
 
