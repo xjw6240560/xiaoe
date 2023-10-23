@@ -34,7 +34,7 @@ class Base(Test_xiaoe_data):
     op.page_load_strategy = 'eager'
     drive = webdriver.Edge(options=op, service=ser)
     drive.maximize_window()
-    drive.set_window_position(0, -2000)
+    drive.set_window_position(-2000, -2000)
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     alert = "//div[@role='alert']"  # 弹窗信息
     alert_locator = (By.XPATH, alert)
@@ -600,6 +600,7 @@ class Base(Test_xiaoe_data):
         :param locator:
         :return:
         """
+        time.sleep(1)
         element = self.find_element(locator=locator, timeout=1, position=position)
         action_chains = ActionChains(self.drive)
         try:
@@ -609,7 +610,7 @@ class Base(Test_xiaoe_data):
         except:
             return None
 
-    def roll_bottom(self):  # 滚动到最底部
+    def roll_bottom(self):  # 滑动到最底部
         js = "var q =document.documentElement.scrollTop=10000"
         self.drive.execute_script(js)
 

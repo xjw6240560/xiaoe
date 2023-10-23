@@ -15,7 +15,7 @@ class Expert(Base):
     img = "//input[@placeholder='请输入图形码']/ancestor::div[@class='w-full aui-padded-r-10']/following-sibling::div/img"  # 图片验证码
     img_input = "//input[@placeholder='请输入图形码']"  # 图形验证码输入框
     login_button = "//button/span[contains(text(),'登录')]"  # 登录按钮
-    know = "//button//span[contains(text(),'我已知悉')]"  # 协议
+    know = "//p[contains(text(),'温馨提示')]/following-sibling::div/button//span[contains(text(),'我已知悉')]"  # 协议
     electGroup = "//button//span[contains(text(),'推选组长')]"  # 推选组长
     score01_input = "//div[text()='1']/ancestor::td/following-sibling::td[4]/div/div/div/input"  # 第一个评分点xpath用于判断是否已经评标完成
     result_pass01 = "//div[text()='1']/ancestor::td/following-sibling::td[3]/div/div/div/label/span[text()='通过']"
@@ -86,9 +86,9 @@ class Expert(Base):
 
     def protocol_agree(self, username, projectNumber):  # 同意协议
         isAgree = self.select_isAgree(username, projectNumber)
-        time.sleep(0.2)
+        time.sleep(0.5)
         if isAgree[0] == "disAgree":
-            self.js_click(self.know_locator)
+            self.click(self.know_locator)
             self.update_isAgree("consent", username, projectNumber)
         elif isAgree[0] == "consent":
             self.logger.debugText(projectNumber=projectNumber, errorText='用户协议已同意！',
@@ -109,12 +109,12 @@ class Expert(Base):
             self.in_project_click(projectNumber=projectNumber)
 
     def electGroup_click(self):  # 点击推选组长
-        self.js_click(self.electGroup_locator)  # 点击推选组长
+        self.click(self.electGroup_locator)  # 点击推选组长
 
     def elect_click(self, name):  # 点击推选
         choose = "//p[contains(text(),'" + name + "')]/following-sibling::div/button/span[contains(text(),'推选')]"  # 推选
         choose_locator = (By.XPATH, choose)
-        result = self.js_click(choose_locator)  # 点击推选
+        result = self.click(choose_locator)  # 点击推选
         return result
 
     def select_group(self, username, password, name, projectNumber):  # 选择组长

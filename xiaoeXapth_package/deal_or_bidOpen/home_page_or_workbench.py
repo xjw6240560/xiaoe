@@ -439,11 +439,9 @@ class Home_page_or_workbench(Base):
             self.duration_send_keys()  # 输入工期
             self.quality_send_keys()  # 输入质量标准
             self.saveBidFile_click()  # 提交投标文件
-            time.sleep(0.3)
             text02 = self.get_text(self.alert_locator)
             self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
                                   errorText='提交投标文件：' + str(text02))  # 打印错误信息
-            time.sleep(0.5)
             self.confirm_upload_click()  # 点击确认上传
             text03 = self.get_text(self.alert_locator)
             self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
