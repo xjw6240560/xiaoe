@@ -427,7 +427,8 @@ class CreateProjectMethod(Base):
         self.send_keys(self.tenderFile_locator, r'C:\Users\86176\Desktop\不同大小的文件和图片\tender_file.xezf')
 
     def saveButton_click(self):  # 点击保存
-        self.roll_bottom()#滑动到底部
+        self.roll_bottom()  # 滑动到底部
+        time.sleep(0.5)
         self.click(self.saveButton_locator)
 
     def perfectProjectMessage(self, role, projectNumber, projectType, tenderOrganizationType, tenderWay):  # 完善项目信息
