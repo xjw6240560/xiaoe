@@ -34,7 +34,7 @@ class Base(Test_xiaoe_data):
     op.page_load_strategy = 'eager'
     drive = webdriver.Edge(options=op, service=ser)
     drive.maximize_window()
-    drive.set_window_position(-2000, -2000)
+    # drive.set_window_position(-2000, -2000)
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     alert = "//div[@role='alert']"  # 弹窗信息
     alert_locator = (By.XPATH, alert)
@@ -514,6 +514,17 @@ class Base(Test_xiaoe_data):
         else:
             return element
 
+    def error_detemine(self, result, isFalseText, isNoneText, elseText, projectNumber='', bidder=''):
+        if result is False:
+            self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
+                                  errorText=isFalseText)
+        elif result is None:
+            self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
+                                  errorText=isNoneText)
+        else:
+            self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
+                                  errorText=elseText)
+
     def js_click(self, locator):  # 利用js点击
         button = self.find_element(locator, 5)
         if button is not False:
@@ -638,12 +649,23 @@ class Base(Test_xiaoe_data):
 
     def js_xpath_removeAttribute(self, locator):  # js移除属性
         element = self.find_element(locator, 5)
-        self.drive.execute_script('arguments[0].removeAttribute(\"readonly\")', element)
+        if element is not False:
+            time.sleep(1)
+            self.drive.execute_script('arguments[0].removeAttribute(\"readonly\")', element)
+        elif element is False:
+            return element
+        else:
+            self.logger.debugText(errorText=element)
 
     def js_xpath_modifyAttribute(self, locator, valueName='class', value='image-upload'):  # js修改属性
         element = self.find_element(locator, 5)
-        time.sleep(1)
-        self.drive.execute_script("arguments[0].setAttribute(arguments[1],arguments[2])", element, valueName, value)
+        if element is not False:
+            print(element)
+            self.drive.execute_script("arguments[0].setAttribute(arguments[1],arguments[2])", element, valueName, value)
+        elif element is False:
+            return element
+        else:
+            self.logger.debugText(errorText=element)
 
     def upload_file(self, fileType):  # 上传文件
         time.sleep(2)

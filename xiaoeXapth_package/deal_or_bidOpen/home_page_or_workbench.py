@@ -437,12 +437,19 @@ class Home_page_or_workbench(Base):
             text02 = self.get_text(self.alert_locator)
             self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
                                   errorText='提交投标文件：' + str(text02))  # 打印错误信息
-            self.confirm_upload_click()  # 点击确认上传
-            text03 = self.get_text(self.alert_locator)
-            self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
-                                  errorText='确认上传：' + str(text03))  # 打印错误信息
-            if self.confirm_upload_click() is False:  # 判断投标文件有没有上传成功
-                return '投标文件上传成功！'
+            confirm_upload_result = self.confirm_upload_click()  # 点击确认上传
+            if confirm_upload_result is False:
+                return 'break'
+            elif confirm_upload_result is None:
+                text03 = self.get_text(self.alert_locator)
+                self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
+                                      errorText='确认上传：' + str(text03))  # 打印错误信息
+                confirm_upload_result = self.confirm_upload_click()
+                if confirm_upload_result is False:  # 判断投标文件有没有上传成功
+                    return '投标文件上传成功！'
+            else:
+                self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
+                                      errorText=confirm_upload_result)
         elif bidFile_result is False:  # 未找到投标文件按钮
             recallTenderFile_result = self.find_element(self.recallTenderFile_locator, 2)
             if recallTenderFile_result is not False:
