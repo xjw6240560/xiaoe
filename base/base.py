@@ -423,8 +423,12 @@ class Base(Test_xiaoe_data):
         # """
         nowPath = self.now_path()
         pic = self.find_element(locator, 2)
-        pic_url = pic.get_attribute('src')
-        request.urlretrieve(pic_url, nowPath + r'xiaoe_testcase\1.png')
+        if pic is not False:
+            time.sleep(0.2)
+            pic_url = pic.get_attribute('src')
+            request.urlretrieve(pic_url, nowPath + r'xiaoe_testcase\1.png')
+        else:
+            return pic
 
     def return_picture(self, locator):  # 返回验证码
         self.savePictrue(locator)
