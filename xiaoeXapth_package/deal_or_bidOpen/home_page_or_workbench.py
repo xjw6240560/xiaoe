@@ -202,8 +202,8 @@ class Home_page_or_workbench(Base):
         self.click(self.bidFileImg_locator)
 
     def bid_price_send_keys(self):  # 输入投标价
-        # price = random.randint(100000,4000000)
-        price = 0
+        price = random.randint(100000, 4000000)
+        # price = 0
         time.sleep(0.3)
         self.send_keys(self.bid_price_locator, price)
 
