@@ -27,7 +27,7 @@ class Home_page_or_workbench(Base):
     warn_p = "//div[@class='el-message el-message--warn']/p"  # 获取警告p的地址
     warning_p = "//div[@class='el-message el-message--warning']/p"  # 获取警告p的地址
     uploadBidFile = "//span[contains(text(),'投标阶段')]/../following-sibling::div[contains(text(),'上传投标文件')]"  # 上传投标文件
-    recallTenderFile = "//span[contains(text(),'撤回标书')]"
+    recallTenderFile = "//button/following-sibling::button/span[contains(text(),'撤回标书')]"
     tenderFileAffirm = "//button//span[contains(text(),'确 定')]"
     bidFileImg = "//span[contains(text(),'上传标书')]/./following-sibling::div/div/div/img"  # 点击图片上传投标文件
     bid_price = "//label[contains(text(),'投标价')]/./following-sibling::div/div/input"  # 输入投标价
@@ -35,7 +35,7 @@ class Home_page_or_workbench(Base):
     quality = "//label[contains(text(),'质量标准')]/./following-sibling::div/div/input"  # 输入质量标准
     bid_file = "//label[contains(text(),'投标文件')]/./following-sibling::div/div/div/div/input"  # 投标文件
     saveBidFile = "//span[contains(text(),'提交投标文件')]"  # 保存投标文件
-    commitAudit = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td[7]/div/span[text()='提交审核']"  # 点击提交审核
+    commitAudit = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td[5]/div/span[text()='提交审核']"  # 点击提交审核
     commitAudit_affirm = "//button//span[contains(text(),'确 定')]"  # 提交审核确定
     search_input = "//input[@placeholder='请输入项目编号/项目名称']"  # 搜索
     search_button = "//button/span[contains(text(),'搜索')]"
@@ -132,19 +132,19 @@ class Home_page_or_workbench(Base):
         workbenchButton = "//div[contains(text(),'" + str(
             projectNumber) + "')]/../following-sibling::td[3]/div/span[text()='工作台']"  # 点击工作台
         workbench_locator = (By.XPATH, workbenchButton)
-        self.short_click(workbench_locator)
+        return self.short_click(workbench_locator)
 
     def audit_click(self):  # 点击审核
-        try:
-            auditButton = "//div[contains(text(),'" + str(
-                self.get_nowTime_formatting()) + "')]/../following-sibling::td[5]/div/span[text()='提交审核']"  # 点击提交审核
-            audit_locator = (By.XPATH, auditButton)
-            self.click(audit_locator)
-        except:
-            auditButton = "//div[contains(text(),'" + str(
-                self.get_nowTime_formatting()) + "')]/../following-sibling::td[6]/div/span[text()='提交审核']"  # 点击审核
-            audit_locator = (By.XPATH, auditButton)
-            self.click(audit_locator)
+        result = self.audit_choose(5)
+        if result is False:
+            self.audit_choose(6)
+
+    def audit_choose(self, x):
+        auditButton = "//div[contains(text(),'" + str(
+            self.get_nowTime_formatting()) + "')]/../following-sibling::td[" + x + "]/div/span[text()='提交审核']"  # 点击提交审核
+        audit_locator = (By.XPATH, auditButton)
+        result = self.click(audit_locator)
+        return result
 
     def auditAffirm_click(self):  # 点击审核确认
         self.click(self.auditAffirm_locator)
@@ -160,7 +160,7 @@ class Home_page_or_workbench(Base):
 
     def receiptImg_send_keys(self):  # 点击上传回单图片
         self.js_xpath_modifyAttribute(self.receiptImg_locator)  # 改变class属性
-        self.short_send_keys(self.receiptImg_locator, r"C:\Users\86176\Desktop\不同大小的文件和图片\保证金.jpg")
+        return self.short_send_keys(self.receiptImg_locator, r"C:\Users\86176\Desktop\不同大小的文件和图片\保证金.jpg")
 
     def saveReceipt_click(self):  # 点击保存回单
         self.click(self.saveReceipt_locator)
@@ -217,7 +217,7 @@ class Home_page_or_workbench(Base):
     def bid_file_send_keys(self):  # 点击投标文件
         self.js_xpath_modifyAttribute(self.bid_file_locator)
         time.sleep(0.5)
-        self.send_keys(self.bid_file_locator, r"C:\Users\86176\Desktop\不同大小的文件和图片\深圳CA.xetf")
+        return self.send_keys(self.bid_file_locator, r"C:\Users\86176\Desktop\不同大小的文件和图片\福建政采加密.xetf")
 
     def saveBidFile_click(self):  # 保存投标文件
         self.click(self.saveBidFile_locator)
@@ -384,28 +384,26 @@ class Home_page_or_workbench(Base):
 
     def select_bid_workbench(self, projectNumber, projectType, status):  # 投标人选择工作台
         # status 用于区分报名和签到时候需不需要选择项目这一栏
-        try:
-            if projectType == "engineering":
-                # 工程
-                if status == 1:
-                    self.engineerBusiness_click()  # 点击工程项目
-                self.engineerApplyProject_click()  # 点击工程报名项目
-                self.bid_workbench_click(projectNumber)  # 点击项目对应的工作台
-            elif projectType == "purchase":
-                # 采购
-                if status == 1:
-                    self.purchaseBusiness_click()  # 点击采购项目
-                self.purchaseApplyProject_click()  # 点击政采报名项目
-                self.bid_workbench_click(projectNumber)  # 点击项目对应的工作台
-            else:
-                print("招标类型不符" + projectType)
-        except:
+        if projectType == "engineering":
+            # 工程
+            if status == 1:
+                self.engineerBusiness_click()  # 点击工程项目
+            self.engineerApplyProject_click()  # 点击工程报名项目
+        elif projectType == "purchase":
+            # 采购
+            if status == 1:
+                self.purchaseBusiness_click()  # 点击采购项目
+            self.purchaseApplyProject_click()  # 点击政采报名项目
+        else:
+            print("招标类型不符" + projectType)
+
+        result = self.bid_workbench_click(projectNumber)  # 点击项目对应的工作台
+        if result is False:  # 项目不在第一页
             self.search_input_send_keys(projectNumber=projectNumber)  # 输入项目编号
             self.search_button_click()  # 点击搜索
-            try:
-                self.bid_workbench_click(projectNumber)  # 点击项目对应的工作台
-            except:
-                pass
+            result = self.bid_workbench_click(projectNumber)  # 点击项目对应的工作台
+            if result is False:
+                self.logger.debugText(projectNumber=projectNumber, errorText='未找到项目！')
 
     def submitButton_locator_click(self):  # 点击提交二次报价按钮
         self.click(self.submitButton_locator)
@@ -416,25 +414,25 @@ class Home_page_or_workbench(Base):
     def recall_affirm_click(self):  # 撤回文件确定
         self.click(self.recall_affirm_locator)
 
-    def magin_and_tenderfile(self, projectNumber, bidder):  # 缴纳保证金和上传投标文件
+    def magin_and_tenderfile(self, projectNumber, bidder, applynumber):  # 缴纳保证金和上传投标文件
         self.marginPay_click()  # 点击保证金缴纳
         self.offlinePay_click()  # 点击线下缴纳
-        bid_text = ""  # 投标文件定位返回结果
-        try:
-            self.receiptImg_send_keys()  # 点击上传回单图片
+        receiptImg_result = self.receiptImg_send_keys()  # 点击上传回单图片
+        if receiptImg_result is None:  # 回单上传成功！
             time.sleep(0.5)
             self.saveReceipt_click()  # 点击保存回单
             text01 = self.get_text(self.alert_locator)
             self.logger.debugText(bidder=bidder, projectNumber=projectNumber, errorText='保证金缴纳:' + str(text01))
-            self.returnButton_click()  # 点击返回
-            self.margin_back_click()  # 再次点击返回
-        except (Exception, BaseException):
-            self.logger.debugText(errorText='保证金已缴纳！')
-            self.returnButton_click()  # 点击返回
-            self.margin_back_click()  # 再次点击返回
+        elif receiptImg_result is False:  # 未找到上传回单按钮
+            if self.find_element(locator=self.recallTenderFile_locator, timeout=2) is not False:
+                self.logger.debugText(errorText='保证金已缴纳！')
+            # else:
+
+        self.returnButton_click()  # 点击返回
+        self.margin_back_click()  # 再次点击返回
         self.uploadBidFile_click()  # 点击上传投标文件
-        try:
-            self.bid_file_send_keys()  # 上传投标文件
+        bidFile_result = self.bid_file_send_keys()  # 上传投标文件
+        if bidFile_result is None:
             self.bid_price_send_keys()  # 输入投标价
             self.duration_send_keys()  # 输入工期
             self.quality_send_keys()  # 输入质量标准
@@ -443,15 +441,44 @@ class Home_page_or_workbench(Base):
             self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
                                   errorText='提交投标文件：' + str(text02))  # 打印错误信息
             self.confirm_upload_click()  # 点击确认上传
-            text03 = self.get_text(self.alert_locator)
-            self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
-                                  errorText='确认上传：' + str(text03))  # 打印错误信息
-            if self.confirm_upload_click() is False:  # 判断投标文件有没有上传成功
-                return '投标文件上传成功！'
-        except Exception:
-            if self.is_interactive(self.bid_file_locator) is False:
-                self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='投标文件已上传！')
-                return '投标文件上传成功！'
+            text03 = self.get_text(self.alert_locator)  # 获取确认上传错误信息
+            recallTenderFile_result = self.find_element(self.recallTenderFile_locator, 2)  # 撤回投标文件按钮，用于判断是否上传成功投标文件
+            if recallTenderFile_result is not False:  # 判断是否上传成功
+                self.update_applyNumber(applynumber + 1, projectNumber=projectNumber)  # 更新报名人数
             else:
-                errortext = traceback.format_exc()
-                self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText=str(errortext))
+                self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
+                                      errorText='确认上传：' + str(text03))  # 打印错误信息
+
+            # self.error_detemine(result=recallTenderFile_result, isFalseText='确认上传：' + str(text03),
+            #                     isNoneText='', elseText=recallTenderFile_result, projectNumber=projectNumber,
+            #                     bidder=bidder)
+            # self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
+            #                       errorText='确认上传：' + str(text03))  # 打印错误信息
+            # if confirm_upload_result is False:
+            #     return 'break'
+            # elif confirm_upload_result is None:
+            #     text03 = self.get_text(self.alert_locator)
+            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
+            #                           errorText='确认上传：' + str(text03))  # 打印错误信息
+            #     confirm_upload_result = self.confirm_upload_click()
+            #     if confirm_upload_result is False:  # 判断投标文件有没有上传成功
+            #         return '投标文件上传成功！'
+            # else:
+            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
+            #                           errorText=confirm_upload_result)
+        elif bidFile_result is False:  # 未找到投标文件按钮
+            recallTenderFile_result = self.find_element(self.recallTenderFile_locator, 2)  # 撤回投标文件按钮，用于判断是否上传成功投标文件
+            self.error_detemine(result=recallTenderFile_result, isFalseText='该企业未报名！',
+                                isNoneText='投标文件已上传！', projectNumber=projectNumber, bidder=bidder)
+            # if recallTenderFile_result is not False:
+            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='投标文件已上传！')
+            # elif recallTenderFile_result is False:
+            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='该企业未报名！')
+        else:
+            self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText=bidFile_result)
+            # if self.is_interactive(self.bid_file_locator) is False:
+            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='投标文件已上传！')
+            #     return '投标文件上传成功！'
+            # else:
+            #     errortext = traceback.format_exc()
+            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText=str(errortext))

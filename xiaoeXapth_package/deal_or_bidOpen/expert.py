@@ -15,6 +15,7 @@ class Expert(Base):
     img = "//input[@placeholder='请输入图形码']/ancestor::div[@class='w-full aui-padded-r-10']/following-sibling::div/img"  # 图片验证码
     img_input = "//input[@placeholder='请输入图形码']"  # 图形验证码输入框
     login_button = "//button/span[contains(text(),'登录')]"  # 登录按钮
+    number = "//thead/tr/th/div[contains(text(),'序号')]"  # 登录之后的列表序号，用于断言是否登陆成功
     know = "//p[contains(text(),'温馨提示')]/following-sibling::div/button//span[contains(text(),'我已知悉')]"  # 协议
     electGroup = "//button//span[contains(text(),'推选组长')]"  # 推选组长
     score01_input = "//div[text()='1']/ancestor::td/following-sibling::td[4]/div/div/div/input"  # 第一个评分点xpath用于判断是否已经评标完成
@@ -41,6 +42,7 @@ class Expert(Base):
     img_locator = (By.XPATH, img)
     img_input_locator = (By.XPATH, img_input)
     login_button_locator = (By.XPATH, login_button)
+    number_locator = (By.XPATH, number)
     know_locator = (By.XPATH, know)
     electGroup_locator = (By.XPATH, electGroup)
     group_locator = (By.XPATH, group)
@@ -67,34 +69,35 @@ class Expert(Base):
         self.send_keys(self.username_input_locator, username)
         self.send_keys(self.password_input_locator, password)
         for j in range(150):
-            try:
-                self.savePictrue(self.img_locator)
+            save_pic_result = self.savePictrue(self.img_locator)
+            if save_pic_result is None:
                 pic = self.get_PicPassword()
                 self.send_keys(self.img_input_locator, pic)
                 self.click(self.login_button_locator)  # 点击登录按钮
                 time.sleep(0.2)
                 message = self.get_text(self.alert_locator)
-                if str(message).find('成功') < 0:
-                    self.logger.debugText(projectNumber=projectNumber, errorText=str(message),
-                                          bidder=username)  # 记录专家是否登录成功
-            except:
-                time.sleep(0.5)
-                if self.get_nowUrl() == self.expert_projectList_url:
-                    self.logger.debugText(projectNumber=projectNumber, errorText='专家登录成功！',
-                                          bidder=username)  # 记录专家是否登录成功
+                # if str(message).find('成功') < 0:
+                #     self.logger.debugText(projectNumber=projectNumber, errorText=str(message),
+                #                           bidder=username)  # 记录专家是否登录成功
+                number_result = self.find_element(self.number_locator, 2)  # 登录之后的列表序号，用于判断是否登陆成功
+                if number_result is not False:
+                    self.logger.debugText(projectNumber=projectNumber, bidder=username, errorText='专家登录成功！')
                     break
+                else:
+                    self.logger.debugText(projectNumber=projectNumber, bidder=username, errorText=message)
+                    # break
+            elif save_pic_result is False:
+                self.logger.debugText(projectNumber=projectNumber, bidder=username, errorText='未找到图片二维码！！！')
 
     def protocol_agree(self, username, projectNumber):  # 同意协议
         isAgree = self.select_isAgree(username, projectNumber)
-        time.sleep(0.5)
         if isAgree[0] == "disAgree":
             self.click(self.know_locator)
-            self.update_isAgree("consent", username, projectNumber)
         elif isAgree[0] == "consent":
             self.logger.debugText(projectNumber=projectNumber, errorText='用户协议已同意！',
                                   bidder=username)  # 记录是否点击用户协议
         else:
-            self.logger.debugText(projectNumber=projectNumber, errorText='专家协议类型错误！',
+            self.logger.debugText(projectNumber=projectNumber, errorText='专家协议类型错误！' + str(isAgree),
                                   bidder=username)  # 记录是否点击用户协议
 
     def in_project(self, projectNumber):  # 点击进入项目
@@ -109,7 +112,7 @@ class Expert(Base):
             self.in_project_click(projectNumber=projectNumber)
 
     def electGroup_click(self):  # 点击推选组长
-        self.click(self.electGroup_locator)  # 点击推选组长
+        return self.click(self.electGroup_locator)  # 点击推选组长
 
     def elect_click(self, name):  # 点击推选
         choose = "//p[contains(text(),'" + name + "')]/following-sibling::div/button/span[contains(text(),'推选')]"  # 推选
@@ -123,20 +126,21 @@ class Expert(Base):
                 self.login(username=username[i], password=password[i], projectNumber=projectNumber)  # 登录专家端
                 self.in_project(projectNumber=projectNumber)  # 点击进入项目
                 self.protocol_agree(username=username[i], projectNumber=projectNumber)  # 同意用户协议
-                time.sleep(1)
-                self.electGroup_click()  # 点击推选组长
-                try:
-                    time.sleep(0.3)
-                    a = random.randint(0, len(username) - 1)  # 随机生成推选评委
-                    self.elect_click(name=name[a])  # 点击推选
-                except (Exception, BaseException):
-                    error = traceback.format_exc()
-                    if str(error).find('javascript') > 0:
-                        self.logger.debugText(projectNumber=projectNumber, errorText='未找到推选按钮或者评委已经推选！',
-                                              bidder=username[i])
-                    else:
-                        self.logger.debugText(projectNumber=projectNumber, errorText=error,
-                                              bidder=username[i])
+                electGroup_result = self.electGroup_click()  # 点击推选组长
+                if electGroup_result is None:
+                    self.update_isAgree("consent", username[i], projectNumber)  # 更新用户协议数据库
+                time.sleep(0.3)
+                a = random.randint(0, len(username) - 1)  # 随机生成推选评委
+                result = self.elect_click(name=name[a])  # 点击推选
+                if result is False:
+                    self.logger.debugText(projectNumber=projectNumber, errorText='未找到推选按钮或者评委已经推选！',
+                                          bidder=username[i])
+                elif result is None:
+                    self.logger.debugText(projectNumber=projectNumber, errorText='评委推选成功！',
+                                          bidder=username[i])
+                else:
+                    self.logger.debugText(projectNumber=projectNumber, errorText=result,
+                                          bidder=username[i])
         else:
             print('没有保存评委:' + str(len(username)))
 

@@ -117,26 +117,36 @@ class LoginORrole(Base):
     def login(self, username, password):
         self.send_keys(self.username_locator, username)
         self.send_keys(self.password_locator, password)
-        try:
-            for i in range(200):
-                self.savePictrue(self.picture_locator)
+        for i in range(200):
+            savePic_result = self.savePictrue(self.picture_locator)
+            if savePic_result is None:
                 yzm = self.get_PicPassword()
                 self.send_keys(self.pictrue_input_locator, yzm)
                 self.click(self.login_btn_locator)
                 time.sleep(0.5)
-                if self.is_url(self.deal_login_url) is not True:
-                    self.logger.debugText(errorText='登陆成功！', bidder=username)
+                message = self.get_text(self.alert_locator)
+                # if self.is_url(self.deal_login_url) is not True:
+                #     self.logger.debugText(errorText='登陆成功！', bidder=username)
+                #     break
+                # else:
+                #     error = self.get_text(self.alert_locator)
+                #     self.logger.debugText(errorText=error, bidder=username)
+                bidder_result = self.find_element(self.bidder_locator, 2)  # 投标人图片，用于判断是否登陆成功
+                if bidder_result is not False:
+                    self.logger.debugText(bidder=username, errorText='登录成功！')
                     break
                 else:
-                    error = self.get_text(self.alert_locator)
-                    self.logger.debugText(errorText=error, bidder=username)
-        except(Exception, BaseException):
-            if self.is_url(self.deal_login_url) is not True:
-                self.logger.debugText(errorText='登陆成功！', bidder=username)
-            else:
-                error = traceback.format_exc()
-                print(error)
-            pass
+                    self.logger.debugText(bidder=username, errorText=message)
+                    # break
+            elif savePic_result is False:
+                self.logger.debugText(bidder=username, errorText='未找到图片二维码！！！')
+        # except(Exception, BaseException):
+        #     if self.is_url(self.deal_login_url) is not True:
+        #         self.logger.debugText(errorText='登陆成功！', bidder=username)
+        #     else:
+        #         error = traceback.format_exc()
+        #         print(error)
+        #     pass
 
     def jiaoyi_login(self, role):  # 招标人或者招标代理选择
         if role == "0":

@@ -17,11 +17,11 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20231024194718"  # 项目编号
+    projectNumber = "20231026092315"  # 项目编号
     tenderOrganizationType = "0"  # 自主招标0或者委托招标1
-    tenderWay = 2  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
+    tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1
-    role = "0"  # 角色 0招标人、1招标代理
+    role = "1"  # 角色 0招标人、1招标代理
 
     def setUp(self):
         self.base = Base()
@@ -150,10 +150,8 @@ class Deal_testcase(unittest.TestCase):
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
                                                                  0)  # 投标人选择工作台
             # time.sleep(1000)
-            test = self.home_page_or_workbench.magin_and_tenderfile(projectNumber=self.projectNumber,
-                                                                    bidder=self.username[i])  # 缴纳保证金和上传投标文件
-            if str(test).find('成功') > 0:  # 判断是否上传成功
-                self.base.update_applyNumber(i + 1, projectNumber=self.projectNumber)  # 更新报名人数
+            self.home_page_or_workbench.magin_and_tenderfile(projectNumber=self.projectNumber,
+                                                             bidder=self.username[i], applynumber=i)  # 缴纳保证金和上传投标文件
             self.createProjectMethod.open_deal_url()  # 进入登录页面
 
     """
