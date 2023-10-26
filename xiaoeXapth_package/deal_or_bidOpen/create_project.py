@@ -351,7 +351,7 @@ class CreateProjectMethod(Base):
 
     def input_enterprise_send_keys(self):  # 输入招标代理企业信息
         if Base.environment == "正式":
-            self.send_keys(self.input_enterprise_locator, self.base.tenderMan)
+            self.send_keys(self.input_enterprise_locator, '厦门城市开发建设有限公司')
         elif Base.environment == "测试":
             self.send_keys(self.input_enterprise_locator, '甘肃省胸补声蕊秘咨询股份有限公司')
 
@@ -457,21 +457,33 @@ class CreateProjectMethod(Base):
         # self.isApplyFee_click()#点击是否缴纳报名费
         self.marginEndTime_send_keys()  # 输入保证金戒指递交时间
         self.tenderNotice_send_keys()  # 上传招标公告
+        time.sleep(0.5)
         self.tenderFile_send_keys()  # 上传招标文件
         self.saveButton_click()  # 点击保存按钮
         time.sleep(1)
         errorText = self.get_text(self.alert_locator)
-        if (errorText is not None) and (errorText.find("成功") < 0):
-            self.logger.debugText(errorText=errorText)
-        else:
+        commitAudit_result = self.find_element(self.home_page_or_workbench.commitAudit_locator, 3)  # 提交审核按钮，判断项目是否创建成功
+        if commitAudit_result is not False:
             if role == '1':
                 self.insert_projectData(projectNumber=projectNumber, projectType=projectType,
                                         tenderOrganizationType='1', tenderWay=tenderWay)  # 数据库创建项目
-                self.logger.debugText(projectNumber=projectNumber, errorText='项目添加完成！')
             elif role == '0':
                 self.insert_projectData(projectNumber=projectNumber, projectType=projectType,
                                         tenderOrganizationType=tenderOrganizationType, tenderWay=tenderWay)  # 数据库创建项目
-                self.logger.debugText(projectNumber, '项目添加完成！')
+            self.logger.debugText(projectNumber, '项目添加完成！')
+        else:
+            self.logger.debugText(errorText=errorText)
+        # if (errorText is not None) and (errorText.find("成功") < 0):
+        #     self.logger.debugText(errorText=errorText)
+        # else:
+        #     if role == '1':
+        #         self.insert_projectData(projectNumber=projectNumber, projectType=projectType,
+        #                                 tenderOrganizationType='1', tenderWay=tenderWay)  # 数据库创建项目
+        #         self.logger.debugText(projectNumber=projectNumber, errorText='项目添加完成！')
+        #     elif role == '0':
+        #         self.insert_projectData(projectNumber=projectNumber, projectType=projectType,
+        #                                 tenderOrganizationType=tenderOrganizationType, tenderWay=tenderWay)  # 数据库创建项目
+        #         self.logger.debugText(projectNumber, '项目添加完成！')
 
     def insert_projectData(self, projectNumber, projectType, tenderOrganizationType, tenderWay):  # 插入项目数据
         self.connect_mysql()

@@ -76,32 +76,28 @@ class Expert(Base):
                 self.click(self.login_button_locator)  # 点击登录按钮
                 time.sleep(0.2)
                 message = self.get_text(self.alert_locator)
-                if str(message).find('成功') < 0:
-                    self.logger.debugText(projectNumber=projectNumber, errorText=str(message),
-                                          bidder=username)  # 记录专家是否登录成功
-                    break
-            elif save_pic_result is False:
+                # if str(message).find('成功') < 0:
+                #     self.logger.debugText(projectNumber=projectNumber, errorText=str(message),
+                #                           bidder=username)  # 记录专家是否登录成功
                 number_result = self.find_element(self.number_locator, 2)  # 登录之后的列表序号，用于判断是否登陆成功
                 if number_result is not False:
                     self.logger.debugText(projectNumber=projectNumber, bidder=username, errorText='专家登录成功！')
                     break
-                elif number_result is False:
-                    self.logger.debugText(projectNumber=projectNumber, bidder=username,
-                                          errorText='登陆失败，没有找到图片二维码！')
                 else:
-                    self.logger.debugText(projectNumber=projectNumber, bidder=username, errorText=number_result)
+                    self.logger.debugText(projectNumber=projectNumber, bidder=username, errorText=message)
+                    # break
+            elif save_pic_result is False:
+                self.logger.debugText(projectNumber=projectNumber, bidder=username, errorText='未找到图片二维码！！！')
 
     def protocol_agree(self, username, projectNumber):  # 同意协议
         isAgree = self.select_isAgree(username, projectNumber)
-        time.sleep(0.5)
         if isAgree[0] == "disAgree":
             self.click(self.know_locator)
-            self.update_isAgree("consent", username, projectNumber)
         elif isAgree[0] == "consent":
             self.logger.debugText(projectNumber=projectNumber, errorText='用户协议已同意！',
                                   bidder=username)  # 记录是否点击用户协议
         else:
-            self.logger.debugText(projectNumber=projectNumber, errorText='专家协议类型错误！',
+            self.logger.debugText(projectNumber=projectNumber, errorText='专家协议类型错误！' + str(isAgree),
                                   bidder=username)  # 记录是否点击用户协议
 
     def in_project(self, projectNumber):  # 点击进入项目
@@ -116,7 +112,7 @@ class Expert(Base):
             self.in_project_click(projectNumber=projectNumber)
 
     def electGroup_click(self):  # 点击推选组长
-        self.click(self.electGroup_locator)  # 点击推选组长
+        return self.click(self.electGroup_locator)  # 点击推选组长
 
     def elect_click(self, name):  # 点击推选
         choose = "//p[contains(text(),'" + name + "')]/following-sibling::div/button/span[contains(text(),'推选')]"  # 推选
@@ -130,8 +126,9 @@ class Expert(Base):
                 self.login(username=username[i], password=password[i], projectNumber=projectNumber)  # 登录专家端
                 self.in_project(projectNumber=projectNumber)  # 点击进入项目
                 self.protocol_agree(username=username[i], projectNumber=projectNumber)  # 同意用户协议
-                time.sleep(1)
-                self.electGroup_click()  # 点击推选组长
+                electGroup_result = self.electGroup_click()  # 点击推选组长
+                if electGroup_result is None:
+                    self.update_isAgree("consent", username[i], projectNumber)  # 更新用户协议数据库
                 time.sleep(0.3)
                 a = random.randint(0, len(username) - 1)  # 随机生成推选评委
                 result = self.elect_click(name=name[a])  # 点击推选
