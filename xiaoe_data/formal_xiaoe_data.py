@@ -18,7 +18,7 @@ class Formal_xiaoe_data(Test_xiaoe_data):
     back_url = t.back_url.replace('jiaoyi', 'xiaoeztb').replace('http', 'https')  # 总后台地址
     extract_username = "15212345678"
     extract_password = "ndx111"
-    environment = "正式"
     marginApplyWay = 0
     tenderMan = '厦门翔安建设发展有限公司'  # 招标代理创建项目时，填写的招标人
     tenderManUnicode = '91350213751625538W'  # 招标代理创建项目时，填写的社会统一信用代码
+    tenderGencyName = '厦门城市开发建设有限公司'

@@ -17,15 +17,10 @@ import traceback
 import pymysql
 import re
 from selenium.webdriver.edge.service import Service
-from xiaoe_data.test_sanming_data import Test_sanming_data
-from xiaoe_data.formal_sanming_data import Formal_sanming_data
-from xiaoe_data.test_xiaoe_data import Test_xiaoe_data
-from xiaoe_data.formal_xiaoe_data import Formal_xiaoe_data
-from xiaoe_data.test_han_data import Test_han_data
-from xiaoe_data.formal_han_data import Formal_han_data
+from xiaoe_data import *
 
 
-class Base(Formal_xiaoe_data):
+class Base(Test_sanming_data):
     logger = Logger()
     # 直接创建Service实例
     ser = Service()
@@ -34,7 +29,7 @@ class Base(Formal_xiaoe_data):
     op.page_load_strategy = 'eager'
     drive = webdriver.Edge(options=op, service=ser)
     drive.maximize_window()
-    drive.set_window_position(-2000, -2000)
+    # drive.set_window_position(-2000, -2000)
     time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     alert = "//div[@role='alert']"  # 弹窗信息
     alert_locator = (By.XPATH, alert)
@@ -307,7 +302,8 @@ class Base(Formal_xiaoe_data):
             error = traceback.format_exc()
             self.logger.debugText(projectNumber, error)
 
-    def clear_text(self, url):  # 清空文本
+    @staticmethod
+    def clear_text(url):  # 清空文本
         open(url, 'w').close()
 
     def read_data_csv(self, begin, place, end=None):  # 读取数据csv非负数
@@ -485,21 +481,6 @@ class Base(Formal_xiaoe_data):
         except:
             print(str(locator) + "元素未找到!!!")
             return False
-
-    #
-    # def find_element(self, locator, timeout):
-    #     # """
-    #     # 定位单个元素，如果定位成功返回元素本身，定位失败返回false
-    #     # :param locator: 定位器，如（"id","id属性值"）
-    #     # :param timeout: 等待时间
-    #     # :return: 返回元素本身
-    #     # """
-    #     try:
-    #         element = WebDriverWait(self.drive, timeout).until(EC.presence_of_element_located(locator))
-    #         return element
-    #     except:
-    #         print(str(locator) + "元素未找到!!!")
-    #         return False
 
     def click(self, locator):
         # """

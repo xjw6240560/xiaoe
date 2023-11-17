@@ -25,7 +25,7 @@ class Expert_store(Base):
     expert_pwd = "//input[@placeholder='请输入6-16位登录密码']"  # 输入专家密码
     expert_work = "//input[@placeholder='请输入工作单位']"  # 输入工作单位
     in_expert = "//input[@placeholder='请选择专家库']"  # 点击专家库
-    test_store = "//span[contains(text(),'测试1')]"  # 点击测试1仓库
+    test_store = "//span[contains(text(),'测试专家库（请勿选择）')]"  # 点击测试1仓库
 
     mobile_locator = (By.XPATH, mobile)
     passsword_locator = (By.XPATH, passsword)
@@ -44,7 +44,7 @@ class Expert_store(Base):
     test_store_locator = (By.XPATH, test_store)
 
     def mobile_send_keys(self):  # 输入手机号码
-        self.send_keys(self.mobile_locator, '15212345678')
+        self.send_keys(self.mobile_locator, '15216189856')
 
     def passsword_send_keys(self):  # 输入密码
         self.send_keys(self.passsword_locator, 'ndx111')

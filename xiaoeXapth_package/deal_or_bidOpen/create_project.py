@@ -66,7 +66,7 @@ class CreateProjectMethod(Base):
     tenderFileEndTime = "//label[contains(text(),'招标文件领取截止时间:')]/following-sibling::div/div/input"  # 招标文件领取截止时间
     applybeginTime = "//label[contains(text(),'报名开始时间:')]/following-sibling::div/div/input"  # 报名开始时间
     applyEndTime = "//label[contains(text(),'报名截止时间:')]/following-sibling::div/div/input"  # 报名截止时间
-    quizEndTime = "//label[contains(text(),'提问截止时间:')]/following-sibling::div/div/input"  # 提问截止时间
+    quizEndTime = "//label[contains(text(),'质疑截止时间:')]/following-sibling::div/div/input"  # 提问截止时间
     answerEndTime = "//label[contains(text(),'答疑截止时间:')]/following-sibling::div/div/input"  # 答疑截止时间
     bidFileEndTime = "//label[contains(text(),'投标文件递交截止时间:')]/following-sibling::div/div/input"  # 投标文件递交截止时间
     bidOpenTime = "//label[contains(text(),'开标时间:')]/following-sibling::div/div/input"  # 开标时间
@@ -350,10 +350,7 @@ class CreateProjectMethod(Base):
         self.click(self.tenderGency_locator)
 
     def input_enterprise_send_keys(self):  # 输入招标代理企业信息
-        if Base.environment == "正式":
-            self.send_keys(self.input_enterprise_locator, '厦门城市开发建设有限公司')
-        elif Base.environment == "测试":
-            self.send_keys(self.input_enterprise_locator, '甘肃省胸补声蕊秘咨询股份有限公司')
+        self.send_keys(self.input_enterprise_locator, self.tenderGencyName)
 
     def search_click(self):  # 点击搜索
         self.click(self.search_locator)
@@ -424,6 +421,7 @@ class CreateProjectMethod(Base):
 
     def tenderFile_send_keys(self):  # 上传招标文件
         self.js_xpath_modifyAttribute(self.tenderFile_locator)  # 改变属性值
+        time.sleep(0.5)
         self.send_keys(self.tenderFile_locator, r'C:\Users\86176\Desktop\不同大小的文件和图片\tender_file.xezf')
 
     def saveButton_click(self):  # 点击保存
@@ -473,17 +471,6 @@ class CreateProjectMethod(Base):
             self.logger.debugText(projectNumber, '项目添加完成！')
         else:
             self.logger.debugText(errorText=errorText)
-        # if (errorText is not None) and (errorText.find("成功") < 0):
-        #     self.logger.debugText(errorText=errorText)
-        # else:
-        #     if role == '1':
-        #         self.insert_projectData(projectNumber=projectNumber, projectType=projectType,
-        #                                 tenderOrganizationType='1', tenderWay=tenderWay)  # 数据库创建项目
-        #         self.logger.debugText(projectNumber=projectNumber, errorText='项目添加完成！')
-        #     elif role == '0':
-        #         self.insert_projectData(projectNumber=projectNumber, projectType=projectType,
-        #                                 tenderOrganizationType=tenderOrganizationType, tenderWay=tenderWay)  # 数据库创建项目
-        #         self.logger.debugText(projectNumber, '项目添加完成！')
 
     def insert_projectData(self, projectNumber, projectType, tenderOrganizationType, tenderWay):  # 插入项目数据
         self.connect_mysql()
@@ -495,27 +482,6 @@ class CreateProjectMethod(Base):
             self.logger.debugText(projectNumber=projectNumber, errorText=error)
 
     def marginPayment(self, status):  # 保证金缴纳
-        # try:
-        #     if status == 0:
-        #         self.EVE_click()  # 点击保函申请
-        #     elif status == 1:
-        #         self.EVE_or_offlinePayment_click()  # 点击线上和线下
-        #     elif status == 2:
-        #         self.offlinePayment_click()  # 点击线下缴纳
-        #     else:
-        #         print('保证金缴纳状态错误，0保函申请，1线上和线下，2线下')
-        # except:
-        #     if status == 0:
-        #         self.more_click()  # 点击更多
-        #         self.EVE_click()  # 点击保函申请
-        #     elif status == 1:
-        #         self.more_click()  # 点击更多
-        #         self.EVE_or_offlinePayment_click()  # 点击线上和线下
-        #     elif status == 2:
-        #         self.more_click()  # 点击更多
-        #         self.offlinePayment_click()  # 点击线下缴纳
-        #     else:
-        #         print('保证金缴纳状态错误，0保函申请，1线上和线下，2线下')
         self.more_click()  # 点击更多
         if status == 0:
             self.EVE_click()  # 点击保函申请

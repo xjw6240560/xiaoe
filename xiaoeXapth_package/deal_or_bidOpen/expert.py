@@ -76,9 +76,6 @@ class Expert(Base):
                 self.click(self.login_button_locator)  # 点击登录按钮
                 time.sleep(0.2)
                 message = self.get_text(self.alert_locator)
-                # if str(message).find('成功') < 0:
-                #     self.logger.debugText(projectNumber=projectNumber, errorText=str(message),
-                #                           bidder=username)  # 记录专家是否登录成功
                 number_result = self.find_element(self.number_locator, 2)  # 登录之后的列表序号，用于判断是否登陆成功
                 if number_result is not False:
                     self.logger.debugText(projectNumber=projectNumber, bidder=username, errorText='专家登录成功！')
@@ -117,6 +114,7 @@ class Expert(Base):
     def elect_click(self, name):  # 点击推选
         choose = "//p[contains(text(),'" + name + "')]/following-sibling::div/button/span[contains(text(),'推选')]"  # 推选
         choose_locator = (By.XPATH, choose)
+        time.sleep(1)
         result = self.click(choose_locator)  # 点击推选
         return result
 

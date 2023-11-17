@@ -1,9 +1,10 @@
-#创建时间  2023-07-14 17:15
-#作者  小酒窝
+# 创建时间  2023-07-14 17:15
+# 作者  小酒窝
 
 import requests
 import time
 from fake_useragent import UserAgent
+
 
 class DoubanSpider(object):
     def __init__(self):

@@ -125,12 +125,6 @@ class LoginORrole(Base):
                 self.click(self.login_btn_locator)
                 time.sleep(0.5)
                 message = self.get_text(self.alert_locator)
-                # if self.is_url(self.deal_login_url) is not True:
-                #     self.logger.debugText(errorText='登陆成功！', bidder=username)
-                #     break
-                # else:
-                #     error = self.get_text(self.alert_locator)
-                #     self.logger.debugText(errorText=error, bidder=username)
                 bidder_result = self.find_element(self.bidder_locator, 2)  # 投标人图片，用于判断是否登陆成功
                 if bidder_result is not False:
                     self.logger.debugText(bidder=username, errorText='登录成功！')
@@ -140,20 +134,14 @@ class LoginORrole(Base):
                     # break
             elif savePic_result is False:
                 self.logger.debugText(bidder=username, errorText='未找到图片二维码！！！')
-        # except(Exception, BaseException):
-        #     if self.is_url(self.deal_login_url) is not True:
-        #         self.logger.debugText(errorText='登陆成功！', bidder=username)
-        #     else:
-        #         error = traceback.format_exc()
-        #         print(error)
-        #     pass
+                break
 
     def jiaoyi_login(self, role):  # 招标人或者招标代理选择
         if role == "0":
             self.login(username=Base.username1[0], password="ndx111")
             self.tenderee_click()  # 点击招标人
         elif role == "1":
-            self.login(username=Base.username1[2], password=Base.password[1])
+            self.login(username=Base.username1[2], password=Base.password[0])
             self.tenderAgency_click()  # 点击招标代理
         else:
             print("角色错误" + role)

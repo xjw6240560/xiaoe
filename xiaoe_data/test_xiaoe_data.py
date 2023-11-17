@@ -8,8 +8,7 @@ class Test_xiaoe_data:
     # enterpriseName = ['青海中瑞防护网制造有限公司', '江西正东建设工程有限公司', '天津市石化管件有限公司',
     #                   '湖南惠联路桥有限公司', '13035286017']
     username1 = ["15212345678", "15287654321", "13412841346"]
-    password = ["ndx111", "111111"]
-    # password = ["111111", "111111"]
+    password = ["ndx111", "ndx111"]
     deal_login_url = "http://user.jiaoyi.com/#/login"
     expert_login_url = "http://expert.jiaoyi.com/#/login"  # 专家端登陆地址
     expert_projectList_url = "http://expert.jiaoyi.com/#/projectList"  # 专家端选择项目列表地址
@@ -18,7 +17,7 @@ class Test_xiaoe_data:
     back_url = 'http://oper.jiaoyi.com/#/login'  # 总后台
     extract_username = "15212345678"
     extract_password = "ndx111"
-    environment = "测试"
     marginApplyWay = 2
     tenderMan = '江西鸿业生态环境建设集团有限公司'  # 招标代理创建项目时，填写的招标人
     tenderManUnicode = '91350200MA2YNRF9XT3'  # 招标代理创建项目时，填写的社会统一信用代码
+    tenderGencyName = '甘肃省胸补声蕊秘咨询股份有限公司'

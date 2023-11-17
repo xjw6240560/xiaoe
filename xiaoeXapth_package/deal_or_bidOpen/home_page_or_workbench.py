@@ -42,7 +42,7 @@ class Home_page_or_workbench(Base):
     openBidEntrance = "//span[contains(text(),'开标阶段')]/../following-sibling::div[contains(text(),'开标入口')]"  # 点击开标入口
     secondaryQuotation = "//span[contains(text(),'开标阶段')]/../following-sibling::div[contains(text(),'二次报价')]"  # 工作台点击二次报价
     secondaryQuotationInput = "//label[contains(text(),'二次报价')]/./following-sibling::div/div/div/input"  # 输入二次报价
-    secondaryQuotationFile = "//label[contains(text(),'上传响应性文件')]/./following-sibling::div/div/div/div/input"  # 上传响应性文件
+    secondaryQuotationFile = "//label[contains(text(),'上传二次报价文件')]/./following-sibling::div/div/div/div/div/input"  # 上传响应性文件
     submitButton = "//button//span[contains(text(),'提交二次报价')]"  # 提交二次报价按钮
     recall_file = "//button//span[contains(text(),'撤回文件')]"  # 点击撤回文件按钮
     recall_affirm = "//button//span[contains(text(),'确 定')]"  # 撤回文件确定
@@ -217,7 +217,7 @@ class Home_page_or_workbench(Base):
     def bid_file_send_keys(self):  # 点击投标文件
         self.js_xpath_modifyAttribute(self.bid_file_locator)
         time.sleep(0.5)
-        return self.send_keys(self.bid_file_locator, r"C:\Users\86176\Desktop\不同大小的文件和图片\福建政采加密.xetf")
+        return self.send_keys(self.bid_file_locator, r"C:\Users\86176\Desktop\不同大小的文件和图片\深圳CA.xetf")
 
     def saveBidFile_click(self):  # 保存投标文件
         self.click(self.saveBidFile_locator)
@@ -426,8 +426,6 @@ class Home_page_or_workbench(Base):
         elif receiptImg_result is False:  # 未找到上传回单按钮
             if self.find_element(locator=self.recallTenderFile_locator, timeout=2) is not False:
                 self.logger.debugText(errorText='保证金已缴纳！')
-            # else:
-
         self.returnButton_click()  # 点击返回
         self.margin_back_click()  # 再次点击返回
         self.uploadBidFile_click()  # 点击上传投标文件
@@ -448,37 +446,9 @@ class Home_page_or_workbench(Base):
             else:
                 self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
                                       errorText='确认上传：' + str(text03))  # 打印错误信息
-
-            # self.error_detemine(result=recallTenderFile_result, isFalseText='确认上传：' + str(text03),
-            #                     isNoneText='', elseText=recallTenderFile_result, projectNumber=projectNumber,
-            #                     bidder=bidder)
-            # self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
-            #                       errorText='确认上传：' + str(text03))  # 打印错误信息
-            # if confirm_upload_result is False:
-            #     return 'break'
-            # elif confirm_upload_result is None:
-            #     text03 = self.get_text(self.alert_locator)
-            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
-            #                           errorText='确认上传：' + str(text03))  # 打印错误信息
-            #     confirm_upload_result = self.confirm_upload_click()
-            #     if confirm_upload_result is False:  # 判断投标文件有没有上传成功
-            #         return '投标文件上传成功！'
-            # else:
-            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder,
-            #                           errorText=confirm_upload_result)
         elif bidFile_result is False:  # 未找到投标文件按钮
             recallTenderFile_result = self.find_element(self.recallTenderFile_locator, 2)  # 撤回投标文件按钮，用于判断是否上传成功投标文件
             self.error_detemine(result=recallTenderFile_result, isFalseText='该企业未报名！',
                                 isNoneText='投标文件已上传！', projectNumber=projectNumber, bidder=bidder)
-            # if recallTenderFile_result is not False:
-            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='投标文件已上传！')
-            # elif recallTenderFile_result is False:
-            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='该企业未报名！')
         else:
             self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText=bidFile_result)
-            # if self.is_interactive(self.bid_file_locator) is False:
-            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText='投标文件已上传！')
-            #     return '投标文件上传成功！'
-            # else:
-            #     errortext = traceback.format_exc()
-            #     self.logger.debugText(projectNumber=projectNumber, bidder=bidder, errorText=str(errortext))
