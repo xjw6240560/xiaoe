@@ -9,6 +9,7 @@ class LoginORrole(Base):
     # 登录
     code_login = "//div//span[contains(text(),'验证码登录')]"
     username_input = "//input[@placeholder='请输入账户']"
+    platform = "//input[@placeholder='请选择平台']"
     number_input = "//input[@placeholder='请输入手机号']"  # 手机号抽取系统
     password_input = "//input[@placeholder='请输入登录密码']"
     login_button = "//button[@class='el-button w-full el-button--primary']//span[text()='登录']"
@@ -56,6 +57,7 @@ class LoginORrole(Base):
     submit = "//span[contains(text(),'提交')]"  # 点击提交
 
     # 登录
+    platform_locator = (By.XPATH, platform)
     code_login_locator = (By.XPATH, code_login)
     username_locator = (By.XPATH, username_input)
     number_input_locator = (By.XPATH, number_input)
@@ -105,6 +107,29 @@ class LoginORrole(Base):
     code_locator = (By.XPATH, code)
     submit_locator = (By.XPATH, submit)
 
+    def platform_click(self):
+        """点击平台选择"""
+        self.click(self.platform_locator)
+
+    @staticmethod
+    def areaConvert(areaNo):
+        """平台转换"""
+        if areaNo == 0:
+            return '小额e招'
+        elif areaNo == 1:
+            return '淮安'
+        elif areaNo == 2:
+            return '三明'
+        else:
+            print('平台编号不符：' + str(areaNo))
+
+    def area_click(self, platform):
+        """选择平台"""
+        platformName = self.areaConvert(platform)
+        area = "//ul//li//span[contains(text(),'" + platformName + "')]"
+        area_locator = (By.XPATH, area)
+        self.click(area_locator)
+
     def send_number_input(self):  # 输入账号
         self.send_keys(self.number_input_locator, "15212345678")
 
@@ -114,7 +139,9 @@ class LoginORrole(Base):
     def login_button_click(self):  # 点击登录按钮
         self.click(self.login_btn_locator)
 
-    def login(self, username, password):
+    def login(self, username, password, areaNo):
+        self.platform_click()  # 点击平台选择下拉框
+        self.area_click(platform=areaNo)  # 选择平台
         self.send_keys(self.username_locator, username)
         self.send_keys(self.password_locator, password)
         for i in range(200):
@@ -136,12 +163,12 @@ class LoginORrole(Base):
                 self.logger.debugText(bidder=username, errorText='未找到图片二维码！！！')
                 break
 
-    def jiaoyi_login(self, role):  # 招标人或者招标代理选择
+    def jiaoyi_login(self, role, areaNo):  # 招标人或者招标代理选择
         if role == "0":
-            self.login(username=Base.username1[0], password="ndx111")
+            self.login(username=Base.username1[0], password="ndx111", areaNo=areaNo)
             self.tenderee_click()  # 点击招标人
         elif role == "1":
-            self.login(username=Base.username1[2], password=Base.password[0])
+            self.login(username=Base.username1[2], password=Base.password[0], areaNo=areaNo)
             self.tenderAgency_click()  # 点击招标代理
         else:
             print("角色错误" + role)

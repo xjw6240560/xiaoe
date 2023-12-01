@@ -23,7 +23,7 @@ class Get_idCard(Base):
     drive.maximize_window()
 
     def get_idCard(self):
-        self.send_keys(self.number_locator, '50')
+        self.send_keys(self.number_locator, '100')
         self.click(self.btn_locator)
         result = self.get_text(self.text_locator)
         l = re.findall('身份证号码:(.*?),出生日期', result)

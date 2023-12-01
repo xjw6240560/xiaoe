@@ -5,7 +5,7 @@ import random
 
 
 class BidOpen(Base):
-    clickSignIn = "//div/span[contains(text(),'点击签到')]"  # 点击签到
+    clickSignIn = "//div/span[contains(text(),'点击签到')]/.."  # 点击签到
     message_input = "//button[contains(text(),'发送')]/../preceding-sibling::input"  # 消息输入框
     send_button = "//button[contains(text(),'发送')]"
     bidRepresentative = "//label[contains(text(),'投标代表')]/following-sibling::div/div/input"  # 投标代表
@@ -17,7 +17,7 @@ class BidOpen(Base):
                               "),'录入唱标信息')]"  # 录入唱标信息
     #     input_bidMessage_button ="//*[@id='wrap']/div[2]/div/div[1]/div[2]/div[2]/div/div[2]/span"
     bidMessage_saveButton = "//span[contains(text(),'保存')]"  # 点击保存唱标信息
-    raiseObjection = "//span[contains(text(),'查看异议')]/../following-sibling::div/div//span[contains(text(),'提出异议')]"  # 提出异议
+    raiseObjection = "//span[contains(text(),'查看异议')]/../following-sibling::div//span[contains(text(),'提出异议')]"  # 提出异议
     inputContent = "//textarea[@placeholder='请输入内容，不少于5个字']"  # 输入提议内容
     raiseObjectionAffirm = "//span[contains(text(),'/200')]/ancestor::div/following-sibling::div/button/span[" \
                            "contains(text(),'提出异议')]"  # 弹窗提出异议

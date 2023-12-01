@@ -192,7 +192,8 @@ class Base(Test_sanming_data):
             error = traceback.format_exc()
             self.logger.info(error)
 
-    def close_conn(self, conn, cursor):
+    @staticmethod
+    def close_conn(conn, cursor):
         conn.close()
         cursor.close()
 
@@ -316,7 +317,7 @@ class Base(Test_sanming_data):
         with open(place, encoding='gbk') as f:
             result = csv.reader(f)
             for index, row in enumerate(result):
-                if index + 1 >= begin and index + 1 <= end:
+                if begin <= index + 1 <= end:
                     data.append(row)
             return data
 
@@ -437,6 +438,14 @@ class Base(Test_sanming_data):
         text = pic.get_attribute('disabled')
         return text
 
+    @staticmethod
+    def is_hide(element):  # 判断元素是否被隐藏
+        text = element.get_attribute('style')
+        if 'display: none;' in str(text):
+            return True
+        else:
+            return False
+
     def get_attribute_value(self, locator, attribute):  # 获取属性值
         element = self.find_element(locator=locator, timeout=2)
         time.sleep(0.2)
@@ -474,7 +483,8 @@ class Base(Test_sanming_data):
         # """
         try:
             element = WebDriverWait(self.drive, timeout).until(EC.presence_of_all_elements_located(locator))
-            if element[0].is_enabled():
+            isHide = self.is_hide(element=element[0])  # 判断元素是否被隐藏
+            if element[0].is_enabled() & isHide is False:
                 return element[position]
             else:
                 return False
@@ -677,25 +687,30 @@ class Base(Test_sanming_data):
         nowTime_noSumbol = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         return nowTime_noSumbol
 
-    def get_nowData(self, hours):  # 获取当前时间加n个小时
+    @staticmethod
+    def get_nowData(hours):  # 获取当前时间加n个小时
         timenow = datetime.datetime.now().replace(hour=0, minute=0, second=0)
         addTime = timenow + datetime.timedelta(hours=hours)
         return addTime.strftime("%Y-%m-%d %H:%M:%S")
 
-    def get_date_day(self):  # 获取当前时间精确到天
+    @staticmethod
+    def get_date_day():  # 获取当前时间精确到天
         now_date_day = datetime.datetime.now().strftime("%Y%m%d")
         return now_date_day
 
-    def get_nowtime(self, min):  # 获取当前时间加n分钟
+    @staticmethod
+    def get_nowtime(min):  # 获取当前时间加n分钟
         timenow = datetime.datetime.now()
         addTime = timenow + datetime.timedelta(minutes=min)
         return addTime.strftime("%Y-%m-%d %H:%M:%S")
 
-    def get_noteCode_time(self):  # 获取通用短信验证码
+    @staticmethod
+    def get_noteCode_time():  # 获取通用短信验证码
         noteCode = datetime.datetime.now().strftime("%y%m%d")
         return noteCode
 
-    def get_mobile_time(self):  # 获取电话号码后8位数
+    @staticmethod
+    def get_mobile_time():  # 获取电话号码后8位数
         mobile = datetime.datetime.now().strftime("%d%H%M%S")
         return mobile
 
@@ -704,7 +719,8 @@ class Base(Test_sanming_data):
         n = self.drive.window_handles
         self.drive.switch_to.window(n[num])
 
-    def random_code(self):  # 产生3个随机的大写字母
+    @staticmethod
+    def random_code():  # 产生3个随机的大写字母
         char1 = ''
         for i in range(3):
             b = chr(random.randint(65, 90))

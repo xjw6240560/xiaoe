@@ -13,10 +13,11 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20231117162205"  # 项目编号
-    tenderOrganizationType = "0"  # 自主招标0或者委托招标1
+    projectNumber = "20231201113513"  # 项目编号
+    tenderOrganizationType = "1"  # 自主招标0或者委托招标1
     tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1
+    areaNo = 2  # 平台编号，0小额e招，1淮安，2三明
     role = "0"  # 角色 0招标人、1招标代理
 
     def setUp(self):
@@ -57,7 +58,7 @@ class Deal_testcase(unittest.TestCase):
     """
 
     def test_01_engineering(self):  # 工程项目
-        self.loginORrole.jiaoyi_login(role=self.role)  # 登入交易平台
+        self.loginORrole.jiaoyi_login(role=self.role, areaNo=self.areaNo)  # 登入交易平台
         self.createProjectMethod.handle_skip(-1)  # 跳转句柄
         self.home_page_or_workbench.engineerBusiness_click()  # 点击工程业务
         self.home_page_or_workbench.tenderProject_click()  # 点击招标项目
@@ -84,14 +85,14 @@ class Deal_testcase(unittest.TestCase):
         self.createProjectMethod.tender_or_tenderAgent(role=self.role, projectNumber=projectNumber,
                                                        projectType='engineering',
                                                        tenderOrganizationType=self.tenderOrganizationType,
-                                                       tenderWay=self.tenderWay)
+                                                       tenderWay=self.tenderWay, areaNo=self.areaNo)
 
     """
     创建项目（政采项目）
     """
 
     def test_03_purchase(self):  # 采购项目
-        self.loginORrole.jiaoyi_login(role=self.role)  # 登入交易平台
+        self.loginORrole.jiaoyi_login(role=self.role, areaNo=self.areaNo)  # 登入交易平台
         self.createProjectMethod.handle_skip(-1)  # 跳转句柄
         self.home_page_or_workbench.purchaseBusiness_click()  # 点击采购业务
         self.home_page_or_workbench.purchaseTenderProject_click()  # 点击招标项目
@@ -114,7 +115,7 @@ class Deal_testcase(unittest.TestCase):
         self.createProjectMethod.tender_or_tenderAgent(role=self.role, projectNumber=projectNumber,
                                                        projectType='purchase',
                                                        tenderOrganizationType=self.tenderOrganizationType,
-                                                       tenderWay=self.tenderWay)
+                                                       tenderWay=self.tenderWay, areaNo=self.areaNo)
 
     """
     线下报名和上传电子回单
@@ -122,9 +123,9 @@ class Deal_testcase(unittest.TestCase):
 
     def test_05_apply_offline(self):  # 报名(线下)状态优化
         for i in range(len(self.username)):
-            if i == 3:
-                break
-            self.loginORrole.login(username=self.username[i], password=self.password[0])
+            # if i == 3:
+            #     break
+            self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
             self.loginORrole.bidder_click()  # 点击投标人
             try:
                 result = self.home_page_or_workbench.select_apply(projectNumber=self.projectNumber,  # 报名返回结果result
@@ -156,7 +157,7 @@ class Deal_testcase(unittest.TestCase):
 
     def test_06_signIn_online(self):  # 签到
         for i in range(self.applyNumber):
-            self.loginORrole.login(username=self.username[i], password=self.password[0])
+            self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
             self.loginORrole.bidder_click()  # 点击投标人
             try:
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
@@ -167,6 +168,7 @@ class Deal_testcase(unittest.TestCase):
                 self.createProjectMethod.open_deal_url()
                 continue
             self.home_page_or_workbench.openBidEntrance_click()  # 点击开标入口
+            time.sleep(1)
             self.createProjectMethod.handle_skip(-1)
             if self.base.is_url(self.base.workbeach_url):
                 message = self.base.get_text(self.base.alert_locator)  # 获取提示信息
@@ -196,7 +198,7 @@ class Deal_testcase(unittest.TestCase):
 
     def test_07_apply_online(self):  # 解密投标文件
         for i in range(self.applyNumber):
-            self.loginORrole.login(username=self.username[i], password=self.password[0])
+            self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
             self.loginORrole.bidder_click()  # 点击投标人
             try:
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql, 1)  # 选择工作台
@@ -234,7 +236,7 @@ class Deal_testcase(unittest.TestCase):
 
     def test_08_objection_or_affirmBidResult(self):  # 提出异议和确认唱标结果
         for i in range(self.applyNumber):
-            self.loginORrole.login(username=self.username[i], password=self.password[0])
+            self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
             self.loginORrole.bidder_click()  # 点击投标人
             try:
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql, 1)
@@ -278,7 +280,7 @@ class Deal_testcase(unittest.TestCase):
     def test_add_evaluationBidWay(self):
         evaluationBidWay = 0  # 0表示综合,1表示均值,2表示最低,3表示最高
         judgeNumber = 3  # 评委数量
-        self.loginORrole.jiaoyi_login(self.role)  # 选择招标人或者招标代理
+        self.loginORrole.jiaoyi_login(self.role, areaNo=self.areaNo)  # 选择招标人或者招标代理
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber, self.projectType_sql)  # 工程或者采购工作台选择
         try:
             self.home_page_or_workbench.evaluationBidEntrance_click()  # 点击评标入口
@@ -308,10 +310,10 @@ class Deal_testcase(unittest.TestCase):
         evaluationBidWay = 6  # 0表示综合,1表示均值,2表示最低,3表示最高,4代表竞争性磋商,5代表竞争性谈判，6代表单一采购来源
         judgeNumber = 5  # 评委数量
         if self.tenderOrganizationType_sql == '0':
-            self.loginORrole.login(username=self.username1[0], password=self.password[0])
+            self.loginORrole.login(username=self.username1[0], password=self.password[0], areaNo=self.areaNo)
             self.loginORrole.tenderee_click()  # 点击招标人
         elif self.tenderOrganizationType_sql == '1':
-            self.loginORrole.login(username=self.username1[2], password=self.password[1])
+            self.loginORrole.login(username=self.username1[2], password=self.password[1], areaNo=self.areaNo)
             self.loginORrole.tenderAgency_click()  # 点击招标代理
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber, self.projectType_sql)  # 工程或者采购工作台选择
         try:
@@ -399,7 +401,7 @@ class Deal_testcase(unittest.TestCase):
 
     def test_secondary_quotation(self):  # 二次报价
         for i in range(self.applyNumber):
-            self.loginORrole.login(username=self.username[i], password=self.password[0])
+            self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
             self.loginORrole.bidder_click()  # 点击投标人
             try:
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql, 1)  # 选择工作台

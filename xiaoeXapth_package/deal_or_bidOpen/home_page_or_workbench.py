@@ -397,13 +397,14 @@ class Home_page_or_workbench(Base):
         else:
             print("招标类型不符" + projectType)
 
-        result = self.bid_workbench_click(projectNumber)  # 点击项目对应的工作台
-        if result is False:  # 项目不在第一页
+        workbenchResult = self.bid_workbench_click(projectNumber)  # 点击项目对应的工作台
+        if workbenchResult is False:  # 项目不在第一页
             self.search_input_send_keys(projectNumber=projectNumber)  # 输入项目编号
             self.search_button_click()  # 点击搜索
             result = self.bid_workbench_click(projectNumber)  # 点击项目对应的工作台
             if result is False:
                 self.logger.debugText(projectNumber=projectNumber, errorText='未找到项目！')
+                return result
 
     def submitButton_locator_click(self):  # 点击提交二次报价按钮
         self.click(self.submitButton_locator)

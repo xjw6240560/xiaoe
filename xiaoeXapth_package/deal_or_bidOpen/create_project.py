@@ -571,7 +571,7 @@ class CreateProjectMethod(Base):
             print("招标方式不正确：" + str(tenderWay))
 
     def tender_or_tenderAgent(self, role, projectNumber, projectType, tenderOrganizationType,
-                              tenderWay):  # 根据角色创建不同的项目 0 招标人 1招标代理
+                              tenderWay, areaNo):  # 根据角色创建不同的项目 0 招标人 1招标代理
         if role == '0':
             self.tenderOrganizationType_click()  # 点击招标组织方式
             # 自主招标
@@ -591,7 +591,7 @@ class CreateProjectMethod(Base):
                 self.saveButton_click()  # 点击保存
                 time.sleep(0.5)
                 self.open_deal_url()
-                self.loginORrole.login(self.username1[2], self.password[1])  # 登入交易平台
+                self.loginORrole.login(self.username1[2], self.password[1], areaNo=areaNo)  # 登入交易平台
                 self.loginORrole.tenderAgency_click()  # 点击招标人
                 self.handle_skip(-1)  # 跳转句柄
                 if projectType == 'engineering':

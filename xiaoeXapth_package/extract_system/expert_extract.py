@@ -95,7 +95,7 @@ class Expert_extract(Base):
             expert_username = "//button//span[text() = '专家抽取名单']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '" + str(
                 i) + "']/ancestor::td/following-sibling::td[2]"  # 获取专家账号
             expert_status = "//button//span[text() = '专家抽取名单']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '" + str(
-                i) + "']/ancestor::td/following-sibling::td[6]"  # 获取专家状态
+                i) + "']/ancestor::td/following-sibling::td[7]"  # 获取专家状态
             password = "ndx111"
 
             expert_name_locator = (By.XPATH, expert_name)
