@@ -433,9 +433,9 @@ class Base(Test_sanming_data):
         return code
 
     def is_disabled(self, locator):  # 判断按钮是否禁用
-        pic = self.find_element(locator, 3)
+        element = self.find_element(locator, 3)
         time.sleep(0.2)
-        text = pic.get_attribute('disabled')
+        text = element.get_attribute('disabled')
         return text
 
     @staticmethod
@@ -577,9 +577,13 @@ class Base(Test_sanming_data):
         :return:
         """
         element = self.find_element(locator, 0.1)
+        result = self.is_disabled(locator=locator)
         if element is not False:
-            element.clear()
-            element.send_keys(text)
+            if result == 'true':
+                return False
+            else:
+                element.clear()
+                element.send_keys(text)
         else:
             return element
 

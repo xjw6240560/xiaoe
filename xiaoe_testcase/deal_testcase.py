@@ -13,11 +13,11 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20231201113513"  # 项目编号
-    tenderOrganizationType = "1"  # 自主招标0或者委托招标1
+    projectNumber = "20231207143622"  # 项目编号
+    tenderOrganizationType = "0"  # 自主招标0或者委托招标1
     tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1
-    areaNo = 2  # 平台编号，0小额e招，1淮安，2三明
+    areaNo = 0  # 平台编号，0小额e招，1淮安，2三明
     role = "0"  # 角色 0招标人、1招标代理
 
     def setUp(self):
@@ -159,13 +159,9 @@ class Deal_testcase(unittest.TestCase):
         for i in range(self.applyNumber):
             self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
             self.loginORrole.bidder_click()  # 点击投标人
-            try:
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
-                                                                 1)  # 选择投标人工作台
-            except(Exception, BaseException):
-                error = traceback.format_exc()
-                self.logger.debugText(self.projectNumber, error)
-                self.createProjectMethod.open_deal_url()
+            isWorkbench = self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
+                                                                           1)  # 选择投标人工作台
+            if isWorkbench is False:  # 未找到工作台
                 continue
             self.home_page_or_workbench.openBidEntrance_click()  # 点击开标入口
             time.sleep(1)
@@ -188,7 +184,7 @@ class Deal_testcase(unittest.TestCase):
                     # time.sleep(1)
                     self.bidOpen.affirm_click()  # 签到点击确认
                     message02 = self.base.get_text(self.base.alert_locator)
-                    self.logger.debugText(projectNumber=self.projectNumber, errorText='签到' + str(message02),
+                    self.logger.debugText(projectNumber=self.projectNumber, errorText='签到结果：' + str(message02),
                                           bidder=self.username[i])
                     self.createProjectMethod.open_deal_url()  # 跳转登录页面
 
@@ -200,12 +196,9 @@ class Deal_testcase(unittest.TestCase):
         for i in range(self.applyNumber):
             self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
             self.loginORrole.bidder_click()  # 点击投标人
-            try:
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql, 1)  # 选择工作台
-            except(Exception, BaseException):
-                error = traceback.format_exc()
-                self.logger.debugText(self.projectNumber, error, self.username[i])
-                self.createProjectMethod.open_deal_url()
+            isWorkbench = self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
+                                                                           1)  # 选择工作台
+            if isWorkbench is False:  # 未找到工作台
                 continue
             self.home_page_or_workbench.openBidEntrance_click()  # 点击开标入口
             self.createProjectMethod.handle_skip(-1)
@@ -224,8 +217,8 @@ class Deal_testcase(unittest.TestCase):
                     continue
                 else:
                     self.bidOpen.affirmDecode_click()  # 确认解密
-                    errtext = self.base.get_text(self.base.alert_locator)
-                    self.logger.debugText(projectNumber=self.projectNumber, errorText='解密：' + str(errtext),
+                    errText = self.base.get_text(self.base.alert_locator)
+                    self.logger.debugText(projectNumber=self.projectNumber, errorText='解密：' + str(errText),
                                           bidder=self.username[i])
                     time.sleep(0.2)
                     self.createProjectMethod.open_deal_url()
@@ -238,12 +231,9 @@ class Deal_testcase(unittest.TestCase):
         for i in range(self.applyNumber):
             self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
             self.loginORrole.bidder_click()  # 点击投标人
-            try:
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql, 1)
-            except(Exception, BaseException):
-                error = traceback.format_exc()
-                self.logger.debugText(self.projectNumber, error, self.username[i])
-                self.createProjectMethod.open_deal_url()
+            isWorkbench = self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
+                                                                           1)  # 选择工作台
+            if isWorkbench is False:  # 未找到工作台
                 continue
             self.home_page_or_workbench.openBidEntrance_click()  # 点击开标入口
             time.sleep(0.5)

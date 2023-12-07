@@ -25,7 +25,7 @@ class Test_sanming_data:
     extract_login_url = t.extract_login_url.replace('jiaoyi', 'sanming')  # 抽取系统登录地址
     workbeach_url = t.workbeach_url.replace('jiaoyi', 'sanming')  # 工作台地址
     back_url = t.back_url.replace('jiaoyi', 'sanming')  # 总后台地址
-    extract_username = "15212345678"
+    extract_username = "15212345677"
     extract_password = "ndx111"
     marginApplyWay = 2
     tenderMan = '江西鸿业生态环境建设集团有限公司'  # 招标代理创建项目时，填写的招标人

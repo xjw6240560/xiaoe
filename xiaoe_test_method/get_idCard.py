@@ -12,18 +12,24 @@ import re
 
 class Get_idCard(Base):
     url = 'https://www.lddgo.net/common/idgenerator'
+    province = '/html/body/div[1]/div[2]/div/div[2]/div[1]/div[1]/div/div/input'  # 选择省份
+    fujian = '/html/body/div[1]/div[2]/div/div[2]/div[1]/div[1]/div/dl/dd[14]'
     text = '//*[@id="generateResult"]'
     btn = '//*[@id="startGenerate"]'
     number = '//*[@id="generatorCount"]'
     number_locator = (By.XPATH, number)
     btn_locator = (By.XPATH, btn)
     text_locator = (By.XPATH, text)
+    province_locator = (By.XPATH, province)
+    fujian_locator = (By.XPATH, fujian)
     drive = webdriver.Edge()
     drive.get(url=url)
     drive.maximize_window()
 
     def get_idCard(self):
         self.send_keys(self.number_locator, '100')
+        self.click(self.province_locator)
+        self.click(self.fujian_locator)
         self.click(self.btn_locator)
         result = self.get_text(self.text_locator)
         l = re.findall('身份证号码:(.*?),出生日期', result)
