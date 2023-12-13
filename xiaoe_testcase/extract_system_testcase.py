@@ -38,7 +38,7 @@ class Extract_system(unittest.TestCase):
         beforetime = self.base.query_now_date()  # 获取数据库时间
         if int(nowtimeday) > int(beforetime[0]):
             self.base.update_now_date(nowtimeday)  # 更新最新的日期
-        self.login.login()
+        self.login.login(areaNo=self.deal_testcase.areaNo)
         self.base.handle_skip(0)
         self.home_page.engineering_or_purchase_click(self.projectType_sql)
         self.home_page.projectNumber_input_send_keys(self.deal_testcase.projectNumber)
@@ -80,7 +80,7 @@ class Extract_system(unittest.TestCase):
     """
 
     def test_save_expert(self):  # 保存专家账号
-        self.login.login()
+        self.login.login(areaNo=self.deal_testcase.areaNo)
         self.base.handle_skip(0)
         self.home_page.apply_select_click(self.projectType_sql)
         self.home_page.number_or_name_input_send_keys(self.deal_testcase.projectNumber)  # 输入项目名称

@@ -129,6 +129,7 @@ class Expert(Base):
                     self.update_isAgree("consent", username[i], projectNumber)  # 更新用户协议数据库
                 time.sleep(0.3)
                 a = random.randint(0, len(username) - 1)  # 随机生成推选评委
+                time.sleep(0.5)
                 result = self.elect_click(name=name[a])  # 点击推选
                 if result is False:
                     self.logger.debugText(projectNumber=projectNumber, errorText='未找到推选按钮或者评委已经推选！',

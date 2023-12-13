@@ -20,7 +20,7 @@ from selenium.webdriver.edge.service import Service
 from xiaoe_data import *
 
 
-class Base(Test_sanming_data):
+class Base(Test_xiaoe_data):
     logger = Logger()
     # 直接创建Service实例
     ser = Service()
@@ -577,8 +577,8 @@ class Base(Test_sanming_data):
         :return:
         """
         element = self.find_element(locator, 0.1)
-        result = self.is_disabled(locator=locator)
         if element is not False:
+            result = self.is_disabled(locator=locator)
             if result == 'true':
                 return False
             else:
@@ -602,6 +602,17 @@ class Base(Test_sanming_data):
             self.drive.execute_script("arguments[0].value=" + str(text) + "", button)
         else:
             return button
+
+    @staticmethod
+    def random_uploadPicture():  # 随机上传图片格式
+        result = random.randint(0, 2)
+        if result == 0:
+            fileUrl = r'file\background.jpeg'
+        elif result == 1:
+            fileUrl = r'file\测试电子回单.png'
+        else:
+            fileUrl = r'file\身份证国徽面.jpg'
+        return fileUrl
 
     def get_text(self, locator, position=-1):  # 将鼠标移动到指定元素并获取文本
         """

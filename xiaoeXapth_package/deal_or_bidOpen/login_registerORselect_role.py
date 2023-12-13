@@ -254,7 +254,7 @@ class LoginORrole(Base):
         self.send_keys(self.legalPersonName_locator, '谢先生')
 
     def legalPersonIdCardNo_send_keys(self):  # 输入法人身份证号
-        self.send_keys(self.legalPersonIdCardNo_locator, '361003193505091274')
+        self.send_keys(self.legalPersonIdCardNo_locator, '350581198411085953')
 
     def legalPersonMobile_send_keys(self):  # 输入法人手机号
         self.send_keys(self.legalPersonMobile_locator, '15212345678')
