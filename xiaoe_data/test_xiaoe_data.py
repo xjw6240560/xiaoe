@@ -25,8 +25,7 @@ class Test_xiaoe_data:
     # tenderMan = '厦门翔安建设发展有限公司'  # 招标代理创建项目时，填写的招标人
     # tenderManUnicode = '91350213751625538W'  # 招标代理创建项目时，填写的社会统一信用代码
     # tenderGencyName = '厦门城市开发建设有限公司'
-    extract_account_xiaoe = "15212345678"
-    extract_account_sanming = "15212345679"
+    extract_username = ['15212345678', '15312345678', '15412345678']
     extract_password = "ndx111"
     marginApplyWay = 2
     tenderMan = '江西鸿业生态环境建设集团有限公司'  # 招标代理创建项目时，填写的招标人

@@ -20,10 +20,16 @@ class Login(Base):
     login_button_locator = (By.XPATH, login_button)
 
     def username_send_keys(self, areaNo):  # 登录账号
-        if areaNo == 0:
-            self.send_keys(self.usname_locator, self.extract_account_xiaoe)
-        elif areaNo == 2:
-            self.send_keys(self.usname_locator, self.extract_account_sanming)
+        if areaNo in (0, 1, 2):
+            self.send_keys(self.usname_locator, self.extract_username[areaNo])
+        else:
+            self.logger.debugText(errorText='平台编号错误（0：小额，1：淮安，2：三明）：' + str(areaNo))
+        # if areaNo == 0:
+        #     self.send_keys(self.usname_locator, self.extract_username[0])
+        # elif areaNo == 1:
+        #     self.send_keys(self.usname_locator, self.extract_username[1])
+        # elif areaNo == 2:
+        #     self.send_keys(self.usname_locator, self.extract_username[2])
 
     def password_send_keys(self):  # 登录密码
         self.send_keys(self.password_locator, self.extract_password)

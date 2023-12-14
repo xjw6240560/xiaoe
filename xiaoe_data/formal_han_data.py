@@ -16,7 +16,7 @@ class Formal_han_data:
     extract_login_url = t.extract_login_url.replace('jiaoyi', 'biaohantong').replace('http', 'https')  # 专家抽取系统登陆地址
     workbeach_url = t.workbeach_url.replace('jiaoyi', 'biaohantong').replace('http', 'https')
     back_url = t.back_url.replace('jiaoyi', 'biaohantong').replace('http', 'https')  # 总后台地址
-    extract_username = "15212345678"
+    extract_username = ['15212345678', '15312345678', '15412345678']
     extract_password = "ndx111"
     marginApplyWay = 0
     tenderMan = '厦门翔安建设发展有限公司'  # 招标代理创建项目时，填写的招标人
