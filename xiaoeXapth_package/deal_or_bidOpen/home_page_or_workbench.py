@@ -1,8 +1,6 @@
 from base.base import Base
 import random
 import time
-from log.log import Logger
-import traceback
 from selenium.webdriver.common.by import By
 
 
@@ -107,8 +105,8 @@ class Home_page_or_workbench(Base):
         self.click(self.affirmApply_locator)
 
     def secondaryQuotationInput_send_keys(self):  # 输入投标价
-        bidprice = random.randint(1000000, 4000000)
-        self.send_keys(self.secondaryQuotationInput_locator, bidprice)
+        bidPrice = round(random.uniform(1000000, 4000000), 2)  # 产生一个两位小数的随机数
+        self.send_keys(self.secondaryQuotationInput_locator, bidPrice)
 
     def tender_workbench_click(self, projectNumber):  # 招标人点击工作台
         workbenchButton = "//div[contains(text(),'" + str(
@@ -202,7 +200,7 @@ class Home_page_or_workbench(Base):
         self.click(self.bidFileImg_locator)
 
     def bid_price_send_keys(self):  # 输入投标价
-        price = random.randint(100000, 4000000)
+        price = round(random.uniform(1000000, 4000000),2)
         # price = 0
         time.sleep(0.3)
         self.send_keys(self.bid_price_locator, price)

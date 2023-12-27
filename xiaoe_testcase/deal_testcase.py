@@ -1,8 +1,4 @@
-from xiaoeXapth_package.deal_or_bidOpen.create_project import CreateProjectMethod
-import time
 import unittest
-import traceback
-from log.log import Logger
 from xiaoeXapth_package.deal_or_bidOpen import *
 from base.base import Base
 
@@ -13,17 +9,17 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20231214172655"  # 项目编号
-    tenderOrganizationType = "0"  # 自主招标0或者委托招标1
+    projectNumber = "20231226165505"  # 项目编号
+    tenderOrganizationType = "1"  # 自主招标0或者委托招标1
     tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1
-    areaNo = 1  # 平台编号，0小额e招，1淮安，2三明
-    role = "0"  # 角色 0招标人、1招标代理
+    areaNo = 0  # 平台编号，0漳州，1淮安，2三明
+    role = "1"  # 角色 0招标人、1招标代理
 
     def setUp(self):
         self.base = Base()
         self.createProjectMethod = CreateProjectMethod()
-        self.loginORrole = LoginORrole()
+        self.loginOrRole = LoginOrRole()
         self.home_page_or_workbench = Home_page_or_workbench()
         self.bidOpen = BidOpen()
         self.evaluationBid_entrance = EvaluationBid_entrance()
@@ -58,7 +54,7 @@ class Deal_testcase(unittest.TestCase):
     """
 
     def test_01_engineering(self):  # 工程项目
-        self.loginORrole.jiaoyi_login(role=self.role, areaNo=self.areaNo)  # 登入交易平台
+        self.loginOrRole.jiaoyi_login(role=self.role, areaNo=self.areaNo)  # 登入交易平台
         self.createProjectMethod.handle_skip(-1)  # 跳转句柄
         self.home_page_or_workbench.engineerBusiness_click()  # 点击工程业务
         self.home_page_or_workbench.tenderProject_click()  # 点击招标项目
@@ -67,8 +63,6 @@ class Deal_testcase(unittest.TestCase):
         self.createProjectMethod.projectName_send_keys(projectType="engineering",
                                                        tenderOrganizationType=self.tenderOrganizationType,
                                                        tenderWay=self.tenderWay)  # 输入项目名称
-        self.createProjectMethod.projectAuditNumber_send_keys()  # 输入项目审批文号
-        self.createProjectMethod.InvestprojectUnicode_send_keys()  # 投资项目统一代码
         self.createProjectMethod.tenderType_click()  # 点击招标类型
         self.createProjectMethod.build_click()  # 点击施工
         # time.sleep(1000)
@@ -76,12 +70,9 @@ class Deal_testcase(unittest.TestCase):
         self.createProjectMethod.houseBuild_click()  # 点击房屋建设
         self.createProjectMethod.tenderWay_click()  # 点击招标方式
         self.createProjectMethod.tender_or_purchase_way(tenderWay=self.tenderWay, applyWay=self.applyWay)  # 选择招标方式
-        self.createProjectMethod.projectPlace_send_keys()  # 输入项目地址
         self.createProjectMethod.projectPrice_send_keys()  # 输入项目估算价
         self.createProjectMethod.projectDate_send_keys()  # 输入工期
-        self.createProjectMethod.tenderLinkMan_send_keys()  # 输入联系人
-        self.createProjectMethod.tenderLinkManNumber_send_keys()  # 输入联系人手机号
-        self.createProjectMethod.linkPlace_send_keys()  # 输入联系地址
+        self.createProjectMethod.addProjectMsg()
         self.createProjectMethod.tender_or_tenderAgent(role=self.role, projectNumber=projectNumber,
                                                        projectType='engineering',
                                                        tenderOrganizationType=self.tenderOrganizationType,
@@ -92,7 +83,7 @@ class Deal_testcase(unittest.TestCase):
     """
 
     def test_03_purchase(self):  # 采购项目
-        self.loginORrole.jiaoyi_login(role=self.role, areaNo=self.areaNo)  # 登入交易平台
+        self.loginOrRole.jiaoyi_login(role=self.role, areaNo=self.areaNo)  # 登入交易平台
         self.createProjectMethod.handle_skip(-1)  # 跳转句柄
         self.home_page_or_workbench.purchaseBusiness_click()  # 点击采购业务
         self.home_page_or_workbench.purchaseTenderProject_click()  # 点击招标项目
@@ -101,17 +92,12 @@ class Deal_testcase(unittest.TestCase):
         self.createProjectMethod.projectName_send_keys(projectType="purchase",
                                                        tenderOrganizationType=self.tenderOrganizationType,
                                                        tenderWay=self.tenderWay)  # 输入项目名称
-        self.createProjectMethod.projectAuditNumber_send_keys()  # 输入项目审批文号
-        self.createProjectMethod.InvestprojectUnicode_send_keys()  # 投资项目统一代码
         self.createProjectMethod.purchaseType_click()  # 采购类型
         self.createProjectMethod.purchaseBuild_click()  # 建筑材料
         self.createProjectMethod.purchaseWay_click()  # 采购方式
         self.createProjectMethod.tender_or_purchase_way(tenderWay=self.tenderWay, applyWay=self.applyWay)  # 选择采购方式
         self.createProjectMethod.purchasePrice_send_keys()  # 采购预算
-        self.createProjectMethod.projectPlace_send_keys()  # 输入项目地址
-        self.createProjectMethod.tenderLinkMan_send_keys()  # 输入联系人
-        self.createProjectMethod.tenderLinkManNumber_send_keys()  # 输入联系人手机号
-        self.createProjectMethod.linkPlace_send_keys()  # 输入联系地址
+        self.createProjectMethod.addProjectMsg()
         self.createProjectMethod.tender_or_tenderAgent(role=self.role, projectNumber=projectNumber,
                                                        projectType='purchase',
                                                        tenderOrganizationType=self.tenderOrganizationType,
@@ -125,8 +111,8 @@ class Deal_testcase(unittest.TestCase):
         for i in range(len(self.username)):
             # if i == 3:
             #     break
-            self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
-            self.loginORrole.bidder_click()  # 点击投标人
+            self.loginOrRole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
+            self.loginOrRole.bidder_click()  # 点击投标人
             try:
                 result = self.home_page_or_workbench.select_apply(projectNumber=self.projectNumber,  # 报名返回结果result
                                                                   projectType=self.projectType_sql,
@@ -144,8 +130,10 @@ class Deal_testcase(unittest.TestCase):
                 else:
                     raise '未找到报名按钮！'
             except:
-                self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
-                                                                 0)  # 投标人选择工作台
+                isWorkbench = self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
+                                                                               0)  # 投标人选择工作台
+                if isWorkbench is False:
+                    continue
             # time.sleep(1000)
             self.home_page_or_workbench.magin_and_tenderfile(projectNumber=self.projectNumber,
                                                              bidder=self.username[i], applynumber=i)  # 缴纳保证金和上传投标文件
@@ -157,8 +145,8 @@ class Deal_testcase(unittest.TestCase):
 
     def test_06_signIn_online(self):  # 签到
         for i in range(self.applyNumber):
-            self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
-            self.loginORrole.bidder_click()  # 点击投标人
+            self.loginOrRole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
+            self.loginOrRole.bidder_click()  # 点击投标人
             isWorkbench = self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
                                                                            1)  # 选择投标人工作台
             if isWorkbench is False:  # 未找到工作台
@@ -166,7 +154,7 @@ class Deal_testcase(unittest.TestCase):
             self.home_page_or_workbench.openBidEntrance_click()  # 点击开标入口
             time.sleep(1)
             self.createProjectMethod.handle_skip(-1)
-            if self.base.is_url(self.base.workbeach_url):
+            if self.base.is_url(self.base.workbench_url):
                 message = self.base.get_text(self.base.alert_locator)  # 获取提示信息
                 self.logger.debugText(self.projectNumber, message, self.username[i])
                 self.createProjectMethod.open_deal_url()
@@ -194,15 +182,15 @@ class Deal_testcase(unittest.TestCase):
 
     def test_07_apply_online(self):  # 解密投标文件
         for i in range(self.applyNumber):
-            self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
-            self.loginORrole.bidder_click()  # 点击投标人
+            self.loginOrRole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
+            self.loginOrRole.bidder_click()  # 点击投标人
             isWorkbench = self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
                                                                            1)  # 选择工作台
             if isWorkbench is False:  # 未找到工作台
                 continue
             self.home_page_or_workbench.openBidEntrance_click()  # 点击开标入口
             self.createProjectMethod.handle_skip(-1)
-            if self.base.is_url(self.base.workbeach_url):
+            if self.base.is_url(self.base.workbench_url):
                 message = self.base.get_text(self.base.alert_locator)  # 获取提示信息
                 self.logger.debugText(projectNumber=self.projectNumber, errorText='进入开标平台' + str(message),
                                       bidder=self.username[i])
@@ -229,8 +217,8 @@ class Deal_testcase(unittest.TestCase):
 
     def test_08_objection_or_affirmBidResult(self):  # 提出异议和确认唱标结果
         for i in range(self.applyNumber):
-            self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
-            self.loginORrole.bidder_click()  # 点击投标人
+            self.loginOrRole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
+            self.loginOrRole.bidder_click()  # 点击投标人
             isWorkbench = self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
                                                                            1)  # 选择工作台
             if isWorkbench is False:  # 未找到工作台
@@ -238,7 +226,7 @@ class Deal_testcase(unittest.TestCase):
             self.home_page_or_workbench.openBidEntrance_click()  # 点击开标入口
             time.sleep(0.5)
             self.createProjectMethod.handle_skip(-1)
-            if self.base.is_url(self.base.workbeach_url):
+            if self.base.is_url(self.base.workbench_url):
                 message = self.home_page_or_workbench.errorMessage_text()  # 获取提示信息
                 self.logger.debugText(self.projectNumber, message, self.username[i])
                 self.createProjectMethod.open_deal_url()
@@ -270,7 +258,7 @@ class Deal_testcase(unittest.TestCase):
     def test_add_evaluationBidWay(self):
         evaluationBidWay = 0  # 0表示综合,1表示均值,2表示最低,3表示最高
         judgeNumber = 3  # 评委数量
-        self.loginORrole.jiaoyi_login(self.role, areaNo=self.areaNo)  # 选择招标人或者招标代理
+        self.loginOrRole.jiaoyi_login(self.role, areaNo=self.areaNo)  # 选择招标人或者招标代理
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber, self.projectType_sql)  # 工程或者采购工作台选择
         try:
             self.home_page_or_workbench.evaluationBidEntrance_click()  # 点击评标入口
@@ -300,11 +288,11 @@ class Deal_testcase(unittest.TestCase):
         evaluationBidWay = 6  # 0表示综合,1表示均值,2表示最低,3表示最高,4代表竞争性磋商,5代表竞争性谈判，6代表单一采购来源
         judgeNumber = 5  # 评委数量
         if self.tenderOrganizationType_sql == '0':
-            self.loginORrole.login(username=self.username1[0], password=self.password[0], areaNo=self.areaNo)
-            self.loginORrole.tenderee_click()  # 点击招标人
+            self.loginOrRole.login(username=self.username1[0], password=self.password[0], areaNo=self.areaNo)
+            self.loginOrRole.tenderee_click()  # 点击招标人
         elif self.tenderOrganizationType_sql == '1':
-            self.loginORrole.login(username=self.username1[2], password=self.password[1], areaNo=self.areaNo)
-            self.loginORrole.tenderAgency_click()  # 点击招标代理
+            self.loginOrRole.login(username=self.username1[2], password=self.password[1], areaNo=self.areaNo)
+            self.loginOrRole.tenderAgency_click()  # 点击招标代理
         self.home_page_or_workbench.select_tender_workbench(self.projectNumber, self.projectType_sql)  # 工程或者采购工作台选择
         try:
             self.home_page_or_workbench.evaluationBidEntrance_click()  # 点击评标入口
@@ -391,8 +379,8 @@ class Deal_testcase(unittest.TestCase):
 
     def test_secondary_quotation(self):  # 二次报价
         for i in range(self.applyNumber):
-            self.loginORrole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
-            self.loginORrole.bidder_click()  # 点击投标人
+            self.loginOrRole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
+            self.loginOrRole.bidder_click()  # 点击投标人
             try:
                 self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql, 1)  # 选择工作台
             except(Exception, BaseException):

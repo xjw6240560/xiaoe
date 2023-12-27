@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from xiaoeXapth_package.deal_or_bidOpen.home_page_or_workbench import Home_page_or_workbench
-from xiaoeXapth_package.deal_or_bidOpen.login_registerORselect_role import LoginORrole
+from xiaoeXapth_package.deal_or_bidOpen.login_registerORselect_role import LoginOrRole
 from base.base import Base
 import traceback
 import time
@@ -8,14 +8,14 @@ import time
 
 class CreateProjectMethod(Base):
     home_page_or_workbench = Home_page_or_workbench()
-    loginORrole = LoginORrole()
+    loginOrRole = LoginOrRole()
     base = Base()
-    addtime = 20
+    addTime = 20
     addTenderProjectButton = "//div[contains(text(),'招标项目')]/following-sibling::button//span[contains(text(),'新增招标项目')]"  # 新增招标项目
     projectNumber = "//label[contains(text(),'招标项目编号:')]/following-sibling::div/div/input"  # 项目编号
     projectName = "//label[contains(text(),'招标项目名称:')]/following-sibling::div/div/input"  # 项目名称
     projectAuditNumber = "//label[contains(text(),'项目审批文号:')]/following-sibling::div/div/input"  # 项目审批文号
-    InvestprojectUnicode = "//label[contains(text(),'投资项目统一代码:')]/following-sibling::div/div/input"  # 投资项目统一代码
+    InvestProjectUnicode = "//label[contains(text(),'投资项目统一代码:')]/following-sibling::div/div/input"  # 投资项目统一代码
     tenderType = "//label[contains(text(),'招标类型:')]/following-sibling::div/div/div/input"  # 招标类型
     build = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'施工')]"  # 招标类型（施工）
     projectType = "//label[contains(text(),'项目类型:')]/following-sibling::div/div/div/input"  # 项目类型
@@ -40,6 +40,16 @@ class CreateProjectMethod(Base):
     tenderOrganizationType = "//label[contains(text(),'招标组织方式:')]/following-sibling::div/div/div/input"  # 招标组织方式
     oneselfTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'自主招标')]"  # 自主招标
     entrustTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'委托招标')]"  # 委托招标
+    industryType = "//label[contains(text(),'项目行业分类')]/following-sibling::div/div/div/input"  # 项目行业分类
+    industryType1 = "//div/div/div/ul/li/span[contains(text(),'农、林、牧、渔业')]"
+    industryType2 = "//div/div/div/ul/li/span[contains(text(),'农业')]"
+    province = "//label[contains(text(),'项目所在地区')]/following-sibling::div/div/div[1]/div"  # 项目所在省地区
+    provinceName = "//div/div/div/ul/li/span[contains(text(),'北京市')]/.."
+    city = "//label[contains(text(),'项目所在地区')]/following-sibling::div/div/div[2]/div"  # 项目所在市地区
+    cityName = "//div/div/div/ul/li/span[contains(text(),'东城区')]"
+    noticeType = "//label[contains(text(),'公告类型')]/following-sibling::div/div/div/input"  # 公告类型
+    noticeTypeName = "//div/div/div/ul/li/span[contains(text(),'招标公告')]"
+    projectPush = "//label[contains(text(),'项目推送')]/following-sibling::div/div/label[2]"  # 项目推送
     projectPlace = "//label[contains(text(),'项目地点')]/following-sibling::div/div/input"  # 项目地点
     projectPrice = "//label[contains(text(),'项目估算价')]/following-sibling::div/div/input"  # 项目估算价
     projectDate = "//label[contains(text(),'工期')]/following-sibling::div/div/input"  # 工期
@@ -97,7 +107,7 @@ class CreateProjectMethod(Base):
     projectNumber_locator = (By.XPATH, projectNumber)
     projectName_locator = (By.XPATH, projectName)
     projectAuditNumber_locator = (By.XPATH, projectAuditNumber)
-    InvestprojectUnicode_locator = (By.XPATH, InvestprojectUnicode)
+    InvestprojectUnicode_locator = (By.XPATH, InvestProjectUnicode)
     tenderType_locator = (By.XPATH, tenderType)
     build_locator = (By.XPATH, build)
     projectType_locator = (By.XPATH, projectType)
@@ -164,6 +174,16 @@ class CreateProjectMethod(Base):
     tenderNotice_locator = (By.XPATH, tenderNotice)
     tenderFile_locator = (By.XPATH, tenderFile)
     saveButton_locator = (By.XPATH, saveButton)
+    industryType_locator = (By.XPATH, industryType)
+    industryType1_locator = (By.XPATH, industryType1)
+    industryType2_locator = (By.XPATH, industryType2)
+    province_locator = (By.XPATH, province)
+    provinceName_locator = (By.XPATH, provinceName)
+    city_locator = (By.XPATH, city)
+    cityName_locator = (By.XPATH, cityName)
+    noticeType_locator = (By.XPATH, noticeType)
+    noticeTypeName_locator = (By.XPATH, noticeTypeName)
+    projectPush_locator = (By.XPATH, projectPush)
 
     def addTenderProject_click(self):  # 点击新增招标项目
         self.click(self.addTenderProjectButton_locator)
@@ -172,6 +192,36 @@ class CreateProjectMethod(Base):
         projectNumber = self.get_nowTime_formatting()
         self.send_keys(self.projectNumber_locator, projectNumber)
         return projectNumber
+
+    def industryType_click(self):
+        self.click(self.industryType_locator)
+
+    def industryType1_click(self):
+        self.click(self.industryType1_locator)
+
+    def industryType2_click(self):
+        self.click(self.industryType2_locator)
+
+    def province_click(self):
+        self.click(self.province_locator)
+
+    def provinceName_click(self):
+        self.click(self.provinceName_locator)
+
+    def city_click(self):
+        self.click(self.city_locator)
+
+    def cityName_click(self):
+        self.click(self.cityName_locator)
+
+    def noticeType_click(self):
+        self.click(self.noticeType_locator)
+
+    def noticeTypeName_click(self):
+        self.click(self.noticeTypeName_locator)
+
+    def projectPush_click(self):
+        self.click(self.projectPush_locator)
 
     def projectName_send_keys(self, projectType, tenderOrganizationType, tenderWay):  # 输入项目名称
         if projectType == "engineering":
@@ -368,25 +418,25 @@ class CreateProjectMethod(Base):
         self.send_keys(self.tenderFileBeginTime_locator, self.time1)
 
     def tenderFileEndTime_send_keys(self):  # 输入招标文件截止时间
-        self.send_keys(self.tenderFileEndTime_locator, self.get_nowtime(self.addtime))
+        self.send_keys(self.tenderFileEndTime_locator, self.get_nowtime(self.addTime))
 
     def applyBeginTime_send_keys(self):  # 输入报名开始时间
         self.send_keys(self.applybeginTime_locator, self.time1)
 
     def applyEndTime_send_keys(self):  # 输入报名截止时间
-        self.send_keys(self.applyEndTime_locator, self.get_nowtime(self.addtime))
+        self.send_keys(self.applyEndTime_locator, self.get_nowtime(self.addTime))
 
     def quizEndTime_send_keys(self):  # 提问截止时间
-        self.send_keys(self.quizEndTime_locator, self.get_nowtime(self.addtime))
+        self.send_keys(self.quizEndTime_locator, self.get_nowtime(self.addTime))
 
     def answerEndTime_send_keys(self):  # 答疑截止时间
-        self.send_keys(self.answerEndTime_locator, self.get_nowtime(self.addtime))
+        self.send_keys(self.answerEndTime_locator, self.get_nowtime(self.addTime))
 
     def bidFileEndTime_send_keys(self):  # 投标文件递交截止时间
-        self.send_keys(self.bidFileEndTime_locator, self.get_nowtime(self.addtime))
+        self.send_keys(self.bidFileEndTime_locator, self.get_nowtime(self.addTime))
 
     def bidOpenTime_send_keys(self):  # 开标时间
-        self.send_keys(self.bidOpenTime_locator, self.get_nowtime(self.addtime))
+        self.send_keys(self.bidOpenTime_locator, self.get_nowtime(self.addTime))
 
     def tenderFileCost_send_keys(self):  # 招标文件费
         self.send_keys(self.tenderFileCost_locator, "0.01")
@@ -410,7 +460,7 @@ class CreateProjectMethod(Base):
         self.send_keys(self.marginSum_locator, "10000")
 
     def marginEndTime_send_keys(self):  # 保证金缴纳截止时间
-        self.send_keys(self.marginEndTime_locator, self.get_nowtime(self.addtime))
+        self.send_keys(self.marginEndTime_locator, self.get_nowtime(self.addTime))
 
     def tenderNotice_send_keys(self):  # 点击招标公告
         self.js_xpath_modifyAttribute(self.tenderNotice_locator)  # 改变属性值
@@ -471,6 +521,25 @@ class CreateProjectMethod(Base):
             self.logger.debugText(projectNumber, '项目添加完成！')
         else:
             self.logger.debugText(errorText=errorText)
+
+    def addProjectMsg(self):
+        """招标人角色创建项目是需要维护的字段"""
+        self.projectPlace_send_keys()  # 输入项目地址
+        self.tenderLinkMan_send_keys()  # 输入联系人
+        self.tenderLinkManNumber_send_keys()  # 输入联系人手机号
+        self.linkPlace_send_keys()  # 输入联系地址
+        self.projectAuditNumber_send_keys()  # 输入项目审批文号
+        self.InvestprojectUnicode_send_keys()  # 投资项目统一代码
+        self.industryType_click()  # 点击行业分类
+        self.industryType1_click()  # 点击行业分类一级选项
+        self.industryType2_click()  # 点击行业分类二级选项
+        self.province_click()  # 点击省份下拉框
+        self.provinceName_click()  # 选择省份名字
+        self.city_click()  # 点击城市下拉框
+        self.cityName_click()  # 选择城市
+        self.noticeType_click()  # 点击公告类型下拉框
+        self.noticeTypeName_click()  # 选择公告类型名字
+        self.projectPush_click()  # 点击不推送项目
 
     def insert_projectData(self, projectNumber, projectType, tenderOrganizationType, tenderWay):  # 插入项目数据
         self.connect_mysql()
@@ -591,8 +660,8 @@ class CreateProjectMethod(Base):
                 self.saveButton_click()  # 点击保存
                 time.sleep(0.5)
                 self.open_deal_url()
-                self.loginORrole.login(self.username1[2], self.password[1], areaNo=areaNo)  # 登入交易平台
-                self.loginORrole.tenderAgency_click()  # 点击招标人
+                self.loginOrRole.login(self.username1[2], self.password[1], areaNo=areaNo)  # 登入交易平台
+                self.loginOrRole.tenderAgency_click()  # 点击招标人
                 self.handle_skip(-1)  # 跳转句柄
                 if projectType == 'engineering':
                     self.home_page_or_workbench.engineerBusiness_click()  # 点击工程业务
@@ -610,8 +679,8 @@ class CreateProjectMethod(Base):
             else:
                 print("招标类型不符")
         elif role == '1':
-            self.tenderMan_send_keys('江西转移有限公司')  # 输入招标人'江西转移有限公司'
-            self.tenderManUnicode_send_keys('ceshi1293123')  # 招标人统一信用代码'sdchu1293123'
+            self.tenderMan_send_keys('江西转移有限公司')  # 输入招标人'江西鸿业生态环境建设集团有限公司'
+            self.tenderManUnicode_send_keys('ZRU15827101518')  # 招标人统一信用代码'sdchu1293123'
             self.tenderManBank_send_keys()  # 招标人银行开户行
             self.tenderManBankNumber_send_keys()  # 招标人银行开户账号
             self.agentLinkMan_send_keys()  # 代理联系人

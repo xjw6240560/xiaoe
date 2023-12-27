@@ -15,11 +15,11 @@ class Formal_sanming_data(Test_xiaoe_data):
     expert_projectList_url = t.expert_projectList_url.replace('jiaoyi', 'minhztb').replace('http',
                                                                                            'https')  # 专家端选择项目列表地址
     extract_login_url = t.extract_login_url.replace('jiaoyi', 'minhztb').replace('http', 'https')  # 专家抽取系统登陆地址
-    workbeach_url = t.workbeach_url.replace('jiaoyi', 'minhztb').replace('http', 'https')  # 专家端进入项目列表
+    workbench_url = t.workbench_url.replace('jiaoyi', 'minhztb').replace('http', 'https')  # 专家端进入项目列表
     back_url = t.back_url.replace('jiaoyi', 'minhztb').replace('http', 'https')  # 总后台地址
     extract_username = "15212345678"
     extract_password = "ndx111"
     marginApplyWay = 0
     tenderMan = '测试企业'  # 招标代理创建项目时，填写的招标人
     tenderManUnicode = '4585452SDFGVCD454'  # 招标代理创建项目时，填写的社会统一信用代码
-    tenderGencyName = '测试企业'
+    tenderAgentName = '测试企业'

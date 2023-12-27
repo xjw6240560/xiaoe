@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 import time
 from log.log import Logger
 import random
-import traceback
 from xiaoeXapth_package.deal_or_bidOpen.evaluationBid_entrance import EvaluationBid_entrance
 
 

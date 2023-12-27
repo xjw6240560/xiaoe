@@ -20,7 +20,7 @@ from selenium.webdriver.edge.service import Service
 from xiaoe_data import *
 
 
-class Base(Formal_han_data):
+class Base(Test_sanming_data):
     logger = Logger()
     # 直接创建Service实例
     ser = Service()
