@@ -1,3 +1,4 @@
+import time
 import unittest
 from xiaoeXapth_package.deal_or_bidOpen import *
 from base.base import Base
@@ -9,12 +10,12 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20231226165505"  # 项目编号
-    tenderOrganizationType = "1"  # 自主招标0或者委托招标1
+    projectNumber = "20231229155016"  # 项目编号
+    tenderOrganizationType = "0"  # 自主招标0或者委托招标1
     tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1
-    areaNo = 0  # 平台编号，0漳州，1淮安，2三明
-    role = "1"  # 角色 0招标人、1招标代理
+    areaNo = 1  # 平台编号，0漳州，1淮安，2三明
+    role = "0"  # 角色 0招标人、1招标代理
 
     def setUp(self):
         self.base = Base()
@@ -109,8 +110,8 @@ class Deal_testcase(unittest.TestCase):
 
     def test_05_apply_offline(self):  # 报名(线下)状态优化
         for i in range(len(self.username)):
-            # if i == 3:
-            #     break
+            if i == 3:
+                break
             self.loginOrRole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
             self.loginOrRole.bidder_click()  # 点击投标人
             try:

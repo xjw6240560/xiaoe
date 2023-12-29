@@ -4,6 +4,7 @@ from xiaoeXapth_package.deal_or_bidOpen.login_registerORselect_role import Login
 from base.base import Base
 import traceback
 import time
+import random
 
 
 class CreateProjectMethod(Base):
@@ -63,13 +64,13 @@ class CreateProjectMethod(Base):
     agentLinkPlace = "//div[contains(text(),'招标代理信息')]/../following-sibling::div/div/div[5]/div/div/div/input"  # 招标代理角色联系地址
     tenderLinkManNumber = "//label[contains(text(),'招标人联系号码:')]/following-sibling::div/div/input"  # 招标联系人手机号
     linkPlace = "//label[contains(text(),'联系地址:')]/following-sibling::div/div/input"  # 联系地址
-    tenderGency = "//label[contains(text(),'招标代理:')]/following-sibling::div/div"  # 招标代理
+    tenderAgency = "//label[contains(text(),'招标代理:')]/following-sibling::div/div"  # 招标代理
     input_enterprise = "//span[contains(text(),'搜索')]/../preceding-sibling::div/input[@placeholder='请输入企业名称']"  # 输入招标代理企业名称
     search = "//span[contains(text(),'搜索')]"  # 点击搜索
-    selectTenderGency = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td//span[contains(text(),'选择')]"  # 选择招标代理
-    gencyLinkPlace = "//label[contains(text(),'代理联系人')]//ancestor::div[2]//following-sibling::div[2]/div/div/div/input"  # 代理联系地址
-    gencyLinkMan = "//label[text()='代理联系人:']/following-sibling::div/div[1]/input"  # 招标代理联系人
-    gencyLinkManNumber = "//label[text()='代理联系人联系号码:']/following-sibling::div/div/input"  # 代理联系人手机号
+    selectTenderAgency = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td//span[contains(text(),'选择')]"  # 选择招标代理
+    agencyLinkPlace = "//label[contains(text(),'代理联系人')]//ancestor::div[2]//following-sibling::div[2]/div/div/div/input"  # 代理联系地址
+    agencyLinkMan = "//label[text()='代理联系人:']/following-sibling::div/div[1]/input"  # 招标代理联系人
+    agencyLinkManNumber = "//label[text()='代理联系人联系号码:']/following-sibling::div/div/input"  # 代理联系人手机号
     sectionNumber = "//label[contains(text(),'标段编号:')]/following-sibling::div/div/input"  # 标段编号
     sectionName = "//label[contains(text(),'标段名称:')]/following-sibling::div/div/input"  # 标段名称
     tenderFileBeginTime = "//label[contains(text(),'招标文件领取开始时间:')]/following-sibling::div/div/input"  # 招标文件领取开始时间
@@ -146,13 +147,13 @@ class CreateProjectMethod(Base):
     tenderLinkMan_locator = (By.XPATH, tenderLinkMan)
     tenderLinkManNumber_locator = (By.XPATH, tenderLinkManNumber)
     linkPlace_locator = (By.XPATH, linkPlace)
-    tenderGency_locator = (By.XPATH, tenderGency)
+    tenderAgency_locator = (By.XPATH, tenderAgency)
     input_enterprise_locator = (By.XPATH, input_enterprise)
     search_locator = (By.XPATH, search)
-    selectTenderGency_locator = (By.XPATH, selectTenderGency)
-    gencyLinkPlace_loactor = (By.XPATH, gencyLinkPlace)
-    gencyLinkMan_locator = (By.XPATH, gencyLinkMan)
-    gencyLinkManNumber_locator = (By.XPATH, gencyLinkManNumber)
+    selectTenderAgency_locator = (By.XPATH, selectTenderAgency)
+    agencyLinkPlace_loactor = (By.XPATH, agencyLinkPlace)
+    agencyLinkMan_locator = (By.XPATH, agencyLinkMan)
+    agencyLinkManNumber_locator = (By.XPATH, agencyLinkManNumber)
 
     sectionNumber_locator = (By.XPATH, sectionNumber)
     sectionName_locator = (By.XPATH, sectionName)
@@ -373,7 +374,8 @@ class CreateProjectMethod(Base):
         self.click(self.projectPlace_locator)
 
     def projectPrice_send_keys(self):  # 输入项目估算价
-        self.send_keys(self.projectPrice_locator, "15684000")
+        projectPrice = round(random.uniform(10000, 4000000), 2)
+        self.send_keys(self.projectPrice_locator, projectPrice)
 
     def projectDate_send_keys(self):  # 输入工期
         self.send_keys(self.projectDate_locator, "120")
@@ -387,26 +389,26 @@ class CreateProjectMethod(Base):
     def linkPlace_send_keys(self):  # 输入联系地址
         self.send_keys(self.linkPlace_locator, "福建省漳州市")
 
-    def gencyLinkPlace_send_keys(self):  # 输入代理联系地址
-        self.send_keys(self.gencyLinkPlace_loactor, '厦门市湖里区鼎丰财富中心')
+    def agencyLinkPlace_send_keys(self):  # 输入代理联系地址
+        self.send_keys(self.agencyLinkPlace_loactor, '厦门市湖里区鼎丰财富中心')
 
-    def gencyLinkMan_send_keys(self):  # 输入代理联系人
-        self.send_keys(self.gencyLinkMan_locator, "谢先生")
+    def agencyLinkMan_send_keys(self):  # 输入代理联系人
+        self.send_keys(self.agencyLinkMan_locator, "谢先生")
 
-    def gencyLinkManNumber_send_keys(self):  # 输入代理联系人手机号
-        self.send_keys(self.gencyLinkManNumber_locator, '15212121212')
+    def agencyLinkManNumber_send_keys(self):  # 输入代理联系人手机号
+        self.send_keys(self.agencyLinkManNumber_locator, '15212121212')
 
-    def tenderGency_click(self):  # 点击招标代理
-        self.click(self.tenderGency_locator)
+    def tenderAgency_click(self):  # 点击招标代理
+        self.click(self.tenderAgency_locator)
 
     def input_enterprise_send_keys(self):  # 输入招标代理企业信息
-        self.send_keys(self.input_enterprise_locator, self.tenderGencyName)
+        self.send_keys(self.input_enterprise_locator, self.tenderAgentName)
 
     def search_click(self):  # 点击搜索
         self.click(self.search_locator)
 
-    def selectTenderGency_click(self):  # 选择招标代理
-        self.click(self.selectTenderGency_locator)
+    def selectTenderAgency_click(self):  # 选择招标代理
+        self.click(self.selectTenderAgency_locator)
 
     def sectionNumber_send_keys(self):  # 输入标段编号
         self.send_keys(self.sectionNumber_locator, "20230224345642312")
@@ -651,11 +653,11 @@ class CreateProjectMethod(Base):
             # 委托招标
             elif tenderOrganizationType == "1":
                 self.entrustTender_click()  # 委托招标
-                self.tenderGency_click()  # 点击招标代理
+                self.tenderAgency_click()  # 点击招标代理
                 time.sleep(0.3)
                 self.input_enterprise_send_keys()  # 输入招标代理名称
                 self.search_click()  # 点击搜索企业
-                self.selectTenderGency_click()  # 选择招标代理
+                self.selectTenderAgency_click()  # 选择招标代理
                 time.sleep(0.3)
                 self.saveButton_click()  # 点击保存
                 time.sleep(0.5)
@@ -670,17 +672,17 @@ class CreateProjectMethod(Base):
                     self.home_page_or_workbench.purchaseBusiness_click()  # 点击政采业务
                     self.home_page_or_workbench.purchaseTenderProject_click()  # 点击政采招标项目
                 self.home_page_or_workbench.tender_edit_click(projectNumber=projectNumber)  # 招标代理点击编辑
-                self.gencyLinkMan_send_keys()  # 输入代理联系人
-                self.gencyLinkManNumber_send_keys()  # 输入代理联系人手机号
+                self.agencyLinkMan_send_keys()  # 输入代理联系人
+                self.agencyLinkManNumber_send_keys()  # 输入代理联系人手机号
                 time.sleep(0.5)
-                self.gencyLinkPlace_send_keys()  # 输入代理联系地址
+                self.agencyLinkPlace_send_keys()  # 输入代理联系地址
                 self.perfectProjectMessage(role, projectNumber, projectType, tenderOrganizationType,
                                            tenderWay)  # 完善企业信息
             else:
                 print("招标类型不符")
         elif role == '1':
-            self.tenderMan_send_keys('江西转移有限公司')  # 输入招标人'江西鸿业生态环境建设集团有限公司'
-            self.tenderManUnicode_send_keys('ZRU15827101518')  # 招标人统一信用代码'sdchu1293123'
+            self.tenderMan_send_keys('建设集团有限公司')  # 输入招标人'江西鸿业生态环境建设集团有限公司'
+            self.tenderManUnicode_send_keys('sdchu1293123')  # 招标人统一信用代码'ZRU15827101518'
             self.tenderManBank_send_keys()  # 招标人银行开户行
             self.tenderManBankNumber_send_keys()  # 招标人银行开户账号
             self.agentLinkMan_send_keys()  # 代理联系人
