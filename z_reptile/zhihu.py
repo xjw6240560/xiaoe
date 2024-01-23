@@ -1,21 +1,15 @@
-# -*- coding: utf-8 -*-
-# @Time : 2023-12-08 11:08
-# @Author : 皮卡丘
-import requests
-from fake_useragent import UserAgent
-
-
-class Zhihu:
-    @staticmethod
-    def talk():
-        headers = {'UserAgent': UserAgent().random}
-        url = 'https://www.zhihu.com/api/v3/feed/topstory/recommend?action=down&ad_interval=1&after_id=5&desktop=true&page_number=5&session_token=f119c0bd70a0a9ea2f3e25e7d90589cb'
-        result = requests.get(url=url, headers=headers)
-        for i in result.json()['data']:
-            print('标题：' + i['target']['question']['title'])
-            print(i['target']['content'])
+class Solution:
+    def twoSum(self, nums, target):
+        for i in range(len(nums)):
+            # 计算需要找到的下一个目标数字
+            res = target - nums[i]
+            # 遍历剩下的元素，查找是否存在该数字
+            if res in nums[i + 1:]:
+                # 若存在，返回答案。这里由于是两数之和，可采用.index()方法
+                # 获得目标元素在nums[i+1:]这个子数组中的索引后，还需加上i+1才是该元素在nums中的索引
+                return [i, nums[i + 1:].index(res) + i + 1]
 
 
 if __name__ == '__main__':
-    zhihu = Zhihu()
-    zhihu.talk()
+    s = Solution()
+    print(s.twoSum([3, 3], 6))

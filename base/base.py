@@ -36,73 +36,6 @@ class Base(Test_han_data):
     csv_place = r"C:\Users\86176\Desktop\pythonScriptGenerate\data.csv"  # 数据地址
     script_place = r"C:\Users\86176\Desktop\pythonScriptGenerate\pythonScript.txt"  # 存放xpath地址
 
-    def open_userUrl_cookie(self):
-        # """
-        # 打开登录地址传入cookie，再打开首页地址
-        # :param login_url: 登录地址
-        # :param cust: cookie值
-        # :param JSESSIONID: cookie值
-        # :param sys: cookie值
-        # :param url: 首页地址
-        # :return:
-        # """
-        login_url = "http://uservue2.jinfu.baohan.com/#/login"
-        url = "http://uservue2.jinfu.baohan.com/#/"
-        JSESSIONID = {'name': 'JSESSIONID', 'value': 'DFD74E585E4BACEB9581151A2FAE20F6'}
-        cust = {'name': 'baohan-jinfu-cust',
-                'value': 'eyJhbGciOiJIUzI1NiIsImNhbGciOiJERUYifQ.eNpsjjEOwjAMRe_iGVCSNin0EEyMWRLiQlBJq7aRQIiZmRMgcQIOwHEY4Ba4lUAMbNZ79vc_QBst5MCl4CJJpcqmMAITHbHn7fo6nR_3C5HYYjPxoaiIHzRgMLZEDXnXRBxp8I5mkdFUVisf5mbbS_0bq4Fs-Ihv9oAbNOX8v-ofL_Z1r9iRivi2pQrWVGsTxhtqFAniroacq0ylkgnGact0A5BcpgPYdJ7OZrZAKxx1cpjKpZoyJ5kSSeZmEgtM4PgGAAD__w.nkJO-_sVGvkihzhjUieDjPFhMBtIMWEWLp65UH2BYsM'}
-        #       captcha = {'name':'baohan-jinfu-captcha','value':'F2WIMMZD7N1TP3L8W0SDLTLYCYIH9T2R'}
-        #       sys = {'name':'baohan-jinfu-sys','value':'eyJhbGciOiJIUzI1NiIsImNhbGciOiJERUYifQ.eNqsmktT40YQx7-LiiMhGBYDvrE2S1FLgtdA5RByGEtjM2Q8o8xjjXdrj8k1j1MuqVSuOaRSleN-ni0q3yItWTaWLat7TC5gST0PzXT_f9Mzeh9Z349aUeNgr9FsHB0fHTSj7Yj5BO59-vvHf7__5fHP3-COt9zsCDXQcP_9bcQV60t-G7Wc8Xz7NhIJ_H7RhF9SD4X6ko2yh7eL1d5G8FTNHszrzm-nzNqvtEnyR1t7bKuxu_V68HrSPGGfv7o-7_XGZxN3-bDT2Bnd3Lyz-2-OZPvNfpebzs755OXRxb0-27sSe4c-r81oyS1U9TV0NNVjbkoXbZ1Mu6BTblqx9sZdsLH1wt1GH7arrYR6q0XMWwl3TMj1dlIzdWmS7JewNfWlRic-dl8wxYacZns9STFL-KO6krmBNqOXQspA807-cgGF2t46PeLmBnyj5dOEOU4reE4czsUy02ENKdGdDhyUkZzasx6PuUjdSQx-oVzLsrfEglc8Nty95hO0uSyIzIg5oVVbgt-LwQQZ84USF2CIWGeRCq_udKwlOl6WSd7jqTau9Z3nZtLj1ktXb59PN1rxxIIStFLw71qjLFYplXlKo4vB3IqltjVt34HndqF3HeZY4bzZT1qB-rmahvWIK2yqYjDhZnPzgVBMxYLJEyl1nDsIVoVkYoSP42JgY8Z5p1IjLG_lQUOxfOOZFHPvr3eSpVIDUbwo0th8bM6VdcJ5SplYK2dY7AAsecQp0CjEjVLOLFOot3EFVOTcCDVsa-iQAWHCZ6svkjPPDNTP0Y4MZ4btO6YUx0M_LTTimo9SEDE8CmcQrJ-uJwRiI1diIKG3cwqC0kJ_L81NAHJyHg654iaoSMHEOHOF4mIDNoZQ65w0yqtkpNs_cZHeqyUuhhR9IiM-_FVsxN2yTEfMvsRHhE9PdEz0FVy0czHqsMnpQ3aXwEkaAKkePQMh1b4ExHqtKfEQljDxXHnIsHM6pdoGQA6FFYWKaCU5FyHtqcsCSlhEbBeoSAdoGYuwkAynItZYJRaRNUMFFZGUpYBivdU6JmKvUKJifRMrUKwPxxUk1pvPgejt3cmQCUWhIhF0BRapgb6Ix1q_WWEikzL7f-WY8zYYjEW7nZAFpeXOwZyH4VAPBhK8pbgMAeNAgwyMb9IwONJx-sQ3zFuq2BYENknO-uQmUMt8ABoSsSWAbeaZp7UyOAMcikGPw7IEMyyMSjhLi6kikyyYOSYfUGxVsFzs2VBDiYaM6GJYUrMwOvnKOAMh_rZNcpp1bKvvYSXZ8B2DVbahCl3QDed6Nd-AXzBzbEIkHNZMReIXlvURUj6q-j5hDnGS5eQvhFigtmZytmkq12cuvuvxgVfJBplceJYF961WDJoP3xak0n-ZFNRyJWiECXo9Yub7ddTNOsRdSmqeOVmAkofIODmvosgzrKyKkLTPqwkTeU7PWjLTE-_uSEIftC9X0vkLZOG_ZkeP5IGVOo9lbhUyjylUofIo7apFHgTunsfoiqCk9IXKBkg9uNi8eBvGbqjNJED7aQO-Umy5GzMJsThI6l114fgMfmFnEWWGTLfwu96xcR1aV2iSZSMSWY2tQcmUzNgU10GhS9odGukEAqtbnGSS9BR1pSWZ_F-FT2dTCOOK6BZRsgyHqrrjhCRZ-SHWaVlfNpOwDg_dRYFgfDW7j6XTlYIEvNAqJJ4LiUIne51IQYvdqU5lGweWKlPZ9GJeXytVNmQLZukG0tOFFaiUF3ARurEB_patDdtMxl4i-K0L7Ut49sw4IgdlifD5lxmXpiPs9BMNSilSbPGN0r7nQF1KZLarwug50TDdCqEGAunEfCUQaANS5Vob-YNXfZG5M2XmQk9TyacQFbNEEZF1MzVl_dWdHhNnCqY2FwVMDNY4cdirkdxi3atRx7T0etMFQvCC-znAOLfW51octrZt5wepYX62qX_0IONmll-LEScfscOy5CRNZdiMb5wdZGlSUIYwneh80zY3QlYGxFqH3M02OfIouTHSBr8TrS26TtKXCGjWQVgtELMM0gEMfa0RmnGEb1gFHbIEnKoEgWuTTwwCz16C9tXIG2m0nTPKUQt-oIJ9Soemieh2HBh8U3wdm48YPIYnOywZZSeXxZP5l7uP_3x8_Pj7419_PP70w6eff80Kf4i2I2Ft1Ir6TEOUfnYP4-XhJn9Io1ajebh73Dg8aOyDFXPZjeZxc6-R37h3AoodN44PGown_cMBexHz-PioyZv7_d14sPeCxYe70Yf_AAAA__8.me0fs_yG4if-_Qim23FqBdESf9YTxbVHRC-e0-8Q79I'}
-
-        self.drive.get(login_url)  # 打开登陆地址
-        self.drive.add_cookie(cust)  # 传入登录需要的cookie
-        self.drive.add_cookie(JSESSIONID)
-        #        self.drive.add_cookie(captcha)
-        time.sleep(1)
-        # self.drive.add_cookie(sys)
-        # n=drive.window_handles
-        # drive.switch_to.window(n[-1])
-        self.drive.get(url)
-        time.sleep(2)
-
-    def open_backgroundUrl(self):
-        # """
-        # 打开登录地址传入cookie，再打开首页地址
-        # :param login_url: 登录地址
-        # :param cust: cookie值
-        # :param JSESSIONID: cookie值
-        # :param sys: cookie值
-        # :param url: 首页地址
-        # :return:
-        # """
-        login_url = "http://op.jinfu.baohan.com/#/login"
-        url = "http://op.jinfu.baohan.com/#/"
-        cust = {'name': 'baohan-jinfu-cust',
-                'value': 'eyJhbGciOiJIUzI1NiIsImNhbGciOiJERUYifQ.eNpsjjGOwjAQRe8yNaxi4jh2DkFF6WZm7YBRcKIklkCIeus9ARIn4AAch4K9xU6QQFtsN3pv5s8_wpAIKhDFQiihjS4UzACTY_a4Xn6-vu-3M5M0-P4jxLplfrTgI1LjLVRjn_zMQnA8L0qemnYd4hJ3k7R_Yy2wjS_xzn7i3mOz_F9Nj1eHblLZiYuEYeAKhO0G43zLjRJDv--gEqrMtJG5VLyF4wSUKYx-gu0Y-MxjJjJyztWSJEpFuXOfRpVIOq8FEZx-AQAA__8.OjVewq0w1iH8yxUWgdGhbBHUctvm5FnsDtREpgpICNM'}
-        captcha = {'name': 'baohan-jinfu-captcha', 'value': 'F2WIMMZD7N1TP3L8W0SDLTLYCYIH9T2R'}
-        sys = {'name': 'baohan-jinfu-sys',
-               'value': 'eyJhbGciOiJIUzI1NiIsImNhbGciOiJERUYifQ.eNqsms1y2zYQx9-Fk6PrRrIjS7w5UuLxxK0V2Z4e6h4gEpLhQgALgFGUTI7ttR-nXjqdXnvodKbHPE_G07fokqIUUaK4C6YXWwQXHwR3_78FwLeBTcdBGLSetFudVrfXfdIJDgKWxlD24e8f__3-l4c_f4OS1HJzKNREQ_nb24ArNpb8NgidSfnBbSBi-H3cgV9ST4X6ks2ym7ebzd4GcFetbqzbzosTZu1X2sT5rUdt9qj1-NGLyYtF55R9_vz6fDSany3c5evD1uHs5uaNPXrZlf2XR0NuBofni6fdi3t91r4S7ZM0b81oyS009TUMNNFzbkoXfR0vh6ATbsJIp8ZdsLlNhbsN3h1UW8EfNZTMTbSZPRVSDrhjQoZSWGKlfmqdnnFzA9MYpknMHKdVPFevtIh4mLApscaliaGEbj80Ok4jF8ZccuqoRjziInGnEUyfcqFlr4gVr3hkuHvBF2h3ma-ZGXNCq74E9xCTBTLfGzUuwBCxzhwaHt3pSEtktiyTfMQTbVz4XcrNYsRtKl29ff6ikWYXFoIFN8rcOYRpA5-5NDeI74B99mRk-03_DyOpbY3tHXjwEEY7YI4VTpz9pFWof29fMAV2M66w1xaBCTfNzSdCMRUJJk-l1FHuLFgTkokZ8paizfCuN80HlBhheZgHD8XyZcqkWEcBtf281kQUD4l0tp6Xc2WdcCmlTqSVMyxyoMN55CnQKcSFEs4sU6incQUQ4dwINe1rGJABgcLf1FjEZykz0D5HBzJdGfbvmFIck4CkUIprPktAyjA9FiTVlpqppVrXP1eyVOilF9NsrxcJ98BTxjRP8wKBUfbWi4sGKKRjagVCPZlI8I3i0geJEw0hP79J_LBIH-EWFGOPOfmIRcyvdqFIVfptPFLrlUC5qvQsFo4EzFhfwUU_V6UBWzx7nZUS0EnsqKAjytAUd7YSCetjoQTCpHiHZMA5nVBtPcBm8vnG5pfEQyZloYoWwyIsFOreT4mLiO0GGL0Itw4E0PNv-yS32cfI-n4rEYnkDhWERPS7AGS91T4-LpOyEaTWzPJrMeNEWNb3tsNKcJB13T50ONVm4cFOWmwLT8H_SFMsBynhlCqDm2Cl1tlB7JQrbryqFJgdMxfdjfgkVXEDyvqgaMVZnzrLafepsaYrLM61YnJIpuxHVOKTWYVLbJTbmMTsS3jEjPeD8cpBlyArkSXAEe2mwOJMx_DIw2ILBMMj1moJkIiYlwgJchSt9YKMSfIKdhtpTSt-IjV1FgSWoytJTifmcpft0gyEXW63EdhJpuwuPC8Q5uxZWJLUvBKeWPZQQU-kygqf6CxU8xNE_p5HLpsILJMq8XPK3Upwcy28MXWpUy1PrQdIcS0rlqGpvTudMqEo9MRmuETPZcIxTB2bswUNnjGXHsSEgHISCc89zCw6xdampYjLugOnaAaxQYMtzdrZ2GURHUQEPBAwUoCBSoUiVyNyIfM5Mg5QOm1rtHeFKlFvDKGKxjAwxD6Oaji46nAek5iQ71o_K-t3M0QM6lxhHyGwB6tmg5TPV-VZcpRaT1DAIlYrn2VKgQ7Uh_fBA3ocLvlxbm3KM7Ej4gPtcocYNOhWAINAi_oEZWPTEn5hRyFlWvisEHL1hynN_mPvfw8Alt1hIK9T9Eu4R9FRqj5SFh8lCftU_UI1JVMeouSkaixU3GckyeGNstBPySWlzCLOUyXQyFupAjaRNaKwXONZqhZksYX57I4eYMPbPb_YKkDmThB3BTbSSCkv4AIL3W2B8FEHw51ZnHltqawC_P_kOhKmPhsxm8akMMPdsjrQaodcfRZIPlCuiDKKT--LIIgOGG3d6qIUP6QT-or48Qme7eqrtNtSAsMbgibf9uszGaUSSSSrv-vwSCsz2T5N3R3FozwdCN9e2nUc0svE8zFE3LbOjYGIp0kiF95R5fdsTYlS7FF47U8UmOvnh7XeCXzTc4irOz0nDnC5U-nnUf7DompYaWjgRnngNliE-I8Qc4qKScu3kXMjJIchttrQL2mt0yWZLsdo1kJQZWKCQtrhoku774rG_-jH68zH47DHC0FNPp_wPAzy2nQjb7jRNtsoxz34oQ72nSC6DEX38cDgm-Lr2HzG4DbcOWTxLNsYLu6sv9x9-Of9w_vfH_764-GnHz78_GtW-V1wEAhrgzAYMw1R-tk9zFcKhfx1EoStzsnjXve412mDFXNZQafX6XbzgnsnoFp73Buzo2jCT05ax1EnGrePnrCo3e5NjnvHjB0H7_4DAAD__w.LnTQas-C-G6g3ccW0rVl5_scbFGtjAEQoTFDGSCNNJY'}
-
-        self.drive.get(login_url)  # 打开登陆地址
-        self.drive.add_cookie(cust)  # 传入登录需要的cookie
-        self.drive.add_cookie(captcha)
-        time.sleep(1)
-        # self.drive.add_cookie(sys)
-        # n=drive.window_handles
-        # drive.switch_to.window(n[-1])
-        self.drive.get(url)
-        time.sleep(2)
-
-    def open_jinfu_users(self):
-        """
-        打开金服用户端登录页面
-        :return:
-        """
-        login_url = "http://uservue2.jinfu.baohan.com/#/login"
-        self.drive.get(login_url)  # 打开登陆地址
-
-    #        self.drive.maximize_window()
-
     def deal_cookie_login(self):
         # """
         # 打开登录地址传入cookie，再打开首页地址
@@ -412,7 +345,7 @@ class Base(Test_han_data):
         #        self.drive.maximize_window()
         time.sleep(1)
 
-    def savePictrue(self, locator):  # 保存图片
+    def savePicture(self, locator):  # 保存图片
         # """
         # 保存图片到指定路径
         # :param locator:
@@ -428,7 +361,7 @@ class Base(Test_han_data):
             return pic
 
     def return_picture(self, locator):  # 返回验证码
-        self.savePictrue(locator)
+        self.savePicture(locator)
         code = self.get_PicPassword()
         return code
 
@@ -674,16 +607,27 @@ class Base(Test_han_data):
 
     def upload_file(self, fileType):  # 上传文件
         time.sleep(2)
-        if fileType == "pdf":
-            send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\招标文件.pdf")
-        elif fileType == "img":
-            send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\保证金.jpg")
-        elif fileType == "xezf":
-            send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\tender_file.xezf")
-        elif fileType == "xetf":
-            send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\深圳CA.xetf")
-        else:
-            self.logger.debugText(errorText="文件类型错误：" + fileType)
+        # if fileType == "pdf":
+        #     send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\招标文件.pdf")
+        # elif fileType == "img":
+        #     send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\保证金.jpg")
+        # elif fileType == "xezf":
+        #     send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\tender_file.xezf")
+        # elif fileType == "xetf":
+        #     send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\深圳CA.xetf")
+        # else:
+        #     self.logger.debugText(errorText="文件类型错误：" + fileType)
+        match fileType:
+            case "pdf":
+                send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\招标文件.pdf")
+            case "img":
+                send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\保证金.jpg")
+            case "xezf":
+                send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\tender_file.xezf")
+            case "xetf":
+                send_keys(r"C:\Users\86176\Desktop\不同大小的文件和图片\深圳CA.xetf")
+            case _:
+                self.logger.debugText(errorText="文件类型错误：" + fileType)
         send_keys("{VK_RETURN}")
 
     def move_mouse(self, locator):  # 鼠标移动到指定元素
@@ -704,8 +648,8 @@ class Base(Test_han_data):
 
     @staticmethod
     def get_nowData(hours):  # 获取当前时间加n个小时
-        timenow = datetime.datetime.now().replace(hour=0, minute=0, second=0)
-        addTime = timenow + datetime.timedelta(hours=hours)
+        nowTime = datetime.datetime.now().replace(hour=0, minute=0, second=0)
+        addTime = nowTime + datetime.timedelta(hours=hours)
         return addTime.strftime("%Y-%m-%d %H:%M:%S")
 
     @staticmethod
@@ -714,9 +658,9 @@ class Base(Test_han_data):
         return now_date_day
 
     @staticmethod
-    def get_nowtime(min):  # 获取当前时间加n分钟
-        timenow = datetime.datetime.now()
-        addTime = timenow + datetime.timedelta(minutes=min)
+    def get_nowTime(min):  # 获取当前时间加n分钟
+        nowTime = datetime.datetime.now()
+        addTime = nowTime + datetime.timedelta(minutes=min)
         return addTime.strftime("%Y-%m-%d %H:%M:%S")
 
     @staticmethod

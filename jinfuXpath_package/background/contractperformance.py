@@ -1,5 +1,0 @@
-baohandingdan = "/html/body/div/div/div[2]/div[1]/ul/div[7]/li/div"
-hetonglvyue = "/html/body/div/div/div[2]/div[1]/ul/div[7]/li/ul/li[2]"
-zhankai = "/html/body/div/div/div[2]/div[2]/div[2]/form/button"
-chakan = "/html/body/div/div/div[2]/div[2]/div[2]/div[1]/div/div[3]/table/tbody/tr[1]/td[8]/div/button"
-fanhui = "/html/body/div/div/div[2]/div[2]/div[2]/button"

@@ -68,7 +68,7 @@ class Expert(Base):
         self.send_keys(self.username_input_locator, username)
         self.send_keys(self.password_input_locator, password)
         for j in range(150):
-            save_pic_result = self.savePictrue(self.img_locator)
+            save_pic_result = self.savePicture(self.img_locator)
             if save_pic_result is None:
                 pic = self.get_PicPassword()
                 self.send_keys(self.img_input_locator, pic)
@@ -101,9 +101,12 @@ class Expert(Base):
         self.in_project_click(projectNumber=projectNumber)
         time.sleep(0.5)
         message = self.get_text(self.alert_locator)
-        if message is not None:
-            self.logger.debugText(projectNumber=projectNumber, errorText=str(message))
+        # if message is not None:
+        #     self.logger.debugText(projectNumber=projectNumber, errorText=str(message))
         if self.is_url(self.expert_projectList_url):  # 判断有没有进入专家平台
+            if '评标方法为空' in message:
+                raise Exception(projectNumber + message)
+            self.logger.debugText(projectNumber=projectNumber, errorText=str(message))
             time.sleep(3)
             self.in_project_click(projectNumber=projectNumber)
 

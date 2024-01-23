@@ -1,6 +1,7 @@
 from base.base import Base
 from selenium.webdriver.common.by import By
 import time
+import functools
 
 
 class LoginOrRole(Base):
@@ -62,7 +63,7 @@ class LoginOrRole(Base):
     number_input_locator = (By.XPATH, number_input)
     password_locator = (By.XPATH, password_input)
     picture_locator = (By.XPATH, picture)
-    pictrue_input_locator = (By.XPATH, picture_input)
+    picture_input_locator = (By.XPATH, picture_input)
     login_btn_locator = (By.XPATH, login_button)
     log_text_locator = (By.XPATH, log_text)
 
@@ -124,6 +125,7 @@ class LoginOrRole(Base):
 
     def area_click(self, platform):
         """选择平台"""
+        self.platform_click()
         platformName = self.areaConvert(platform)
         area = "//ul//li//span[contains(text(),'" + platformName + "')]"
         area_locator = (By.XPATH, area)
@@ -133,21 +135,20 @@ class LoginOrRole(Base):
         self.send_keys(self.number_input_locator, "15212345678")
 
     def send_password(self):  # 输入密码
-        self.send_keys(self.pictrue_input_locator, "1")
+        self.send_keys(self.picture_input_locator, "1")
 
     def login_button_click(self):  # 点击登录按钮
         self.click(self.login_btn_locator)
 
     def login(self, username, password, areaNo):
-        self.platform_click()  # 点击平台选择下拉框
         self.area_click(platform=areaNo)  # 选择平台
         self.send_keys(self.username_locator, username)
         self.send_keys(self.password_locator, password)
         for i in range(200):
-            savePic_result = self.savePictrue(self.picture_locator)
+            savePic_result = self.savePicture(self.picture_locator)
             if savePic_result is None:
                 yzm = self.get_PicPassword()
-                self.send_keys(self.pictrue_input_locator, yzm)
+                self.send_keys(self.picture_input_locator, yzm)
                 self.click(self.login_btn_locator)
                 time.sleep(0.5)
                 message = self.get_text(self.alert_locator)
@@ -172,8 +173,8 @@ class LoginOrRole(Base):
         else:
             print("角色错误" + role)
 
-    def pictrue_input_send_keys(self):
-        self.send_keys(self.pictrue_input_locator, "1")
+    def picture_input_send_keys(self):
+        self.send_keys(self.picture_input_locator, "1")
 
     def code_login_click(self):  # 点击验证码登录
         self.click(self.code_login_locator)

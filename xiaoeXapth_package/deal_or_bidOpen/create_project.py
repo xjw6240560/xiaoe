@@ -224,61 +224,49 @@ class CreateProjectMethod(Base):
     def projectPush_click(self):
         self.click(self.projectPush_locator)
 
+    def getProjectType(self, projectType):  # 项目类型
+        match projectType:
+            case "engineering":
+                return '工程'
+            case "purchase":
+                return '政采'
+            case _:
+                self.logger.debugText(errorText=f'项目类型错误：{projectType}')
+
+    def getTenderOrganizationType(self, tenderOrganizationType):  # 招标组织方式
+        match tenderOrganizationType:
+            case "0":
+                return '自主'
+            case "1":
+                return '委托'
+            case _:
+                self.logger.debugText(errorText=f'招标组织方式：{tenderOrganizationType}')
+
+    def getTenderWay(self, tenderWay):  # 招标方式
+        match tenderWay:
+            case 0:
+                return '公开'
+            case 1:
+                return '邀请'
+            case 2:
+                return '竞争性磋商'
+            case 3:
+                return '竞争性谈判'
+            case 4:
+                return '单一采购来源'
+            case _:
+                self.logger.debugText(errorText=f'招标方式：{str(tenderWay)}')
+
     def projectName_send_keys(self, projectType, tenderOrganizationType, tenderWay):  # 输入项目名称
-        if projectType == "engineering":
-            if tenderOrganizationType == "0":
-                if tenderWay == 0:
-                    self.send_keys(self.projectName_locator, "工程自主公开招标项目" + self.get_nowTime_formatting())
-                elif tenderWay == 1:
-                    self.send_keys(self.projectName_locator, "工程自主邀请招标项目" + self.get_nowTime_formatting())
-                else:
-                    print("招标方式不正确：" + str(tenderWay))
-            elif tenderOrganizationType == "1":
-                if tenderWay == 0:
-                    self.send_keys(self.projectName_locator, "工程委托公开招标项目" + self.get_nowTime_formatting())
-                elif tenderWay == 1:
-                    self.send_keys(self.projectName_locator, "工程委托邀请招标项目" + self.get_nowTime_formatting())
-                else:
-                    print("招标方式不正确：" + str(tenderWay))
-            else:
-                print("招标组织方式不正确：" + str(tenderOrganizationType))
-        elif projectType == "purchase":
-            if tenderOrganizationType == "0":
-                if tenderWay == 0:
-                    self.send_keys(self.projectName_locator, "政采自主公开招标项目" + self.get_nowTime_formatting())
-                elif tenderWay == 1:
-                    self.send_keys(self.projectName_locator, "政采自主邀请招标项目" + self.get_nowTime_formatting())
-                elif tenderWay == 2:
-                    self.send_keys(self.projectName_locator,
-                                   "政采自主竞争性磋商招标项目" + self.get_nowTime_formatting())
-                elif tenderWay == 3:
-                    self.send_keys(self.projectName_locator,
-                                   "政采自主竞争性谈判招标项目" + self.get_nowTime_formatting())
-                elif tenderWay == 4:
-                    self.send_keys(self.projectName_locator,
-                                   "政采自主单一采购来源招标项目" + self.get_nowTime_formatting())
-                else:
-                    print("招标方式不正确：" + str(tenderWay))
-            elif tenderOrganizationType == "1":
-                if tenderWay == 0:
-                    self.send_keys(self.projectName_locator, "政采委托公开招标项目" + self.get_nowTime_formatting())
-                elif tenderWay == 1:
-                    self.send_keys(self.projectName_locator, "政采委托邀请招标项目" + self.get_nowTime_formatting())
-                elif tenderWay == 2:
-                    self.send_keys(self.projectName_locator,
-                                   "政采委托竞争性磋商招标项目" + self.get_nowTime_formatting())
-                elif tenderWay == 3:
-                    self.send_keys(self.projectName_locator,
-                                   "政采委托竞争性谈判招标项目" + self.get_nowTime_formatting())
-                elif tenderWay == 4:
-                    self.send_keys(self.projectName_locator,
-                                   "政采委托单一采购来源招标项目" + self.get_nowTime_formatting())
-                else:
-                    print("招标方式不正确：" + str(tenderWay))
-            else:
-                print("招标组织方式不正确：" + tenderOrganizationType)
+        projectTypeResult = self.getProjectType(projectType)
+        tenderOrganizationTypeResult = self.getTenderOrganizationType(tenderOrganizationType)
+        tenderWayResult = self.getTenderWay(tenderWay)
+        projectName = projectTypeResult + tenderOrganizationTypeResult + tenderWayResult + '招标项目'
+        if projectType == 'engineering' and tenderWay > 1:
+            errorText = f'工程项目没有-{tenderWayResult}-招标方式'
+            raise Exception(errorText)
         else:
-            print("项目类型不正确！")
+            self.send_keys(self.projectName_locator, projectName + self.get_nowTime_formatting())
 
     def projectAuditNumber_send_keys(self):  # 输入项目审批文号
         self.send_keys(self.projectAuditNumber_locator, "项目审批文号342300")
@@ -420,25 +408,25 @@ class CreateProjectMethod(Base):
         self.send_keys(self.tenderFileBeginTime_locator, self.time1)
 
     def tenderFileEndTime_send_keys(self):  # 输入招标文件截止时间
-        self.send_keys(self.tenderFileEndTime_locator, self.get_nowtime(self.addTime))
+        self.send_keys(self.tenderFileEndTime_locator, self.get_nowTime(self.addTime))
 
     def applyBeginTime_send_keys(self):  # 输入报名开始时间
         self.send_keys(self.applybeginTime_locator, self.time1)
 
     def applyEndTime_send_keys(self):  # 输入报名截止时间
-        self.send_keys(self.applyEndTime_locator, self.get_nowtime(self.addTime))
+        self.send_keys(self.applyEndTime_locator, self.get_nowTime(self.addTime))
 
     def quizEndTime_send_keys(self):  # 提问截止时间
-        self.send_keys(self.quizEndTime_locator, self.get_nowtime(self.addTime))
+        self.send_keys(self.quizEndTime_locator, self.get_nowTime(self.addTime))
 
     def answerEndTime_send_keys(self):  # 答疑截止时间
-        self.send_keys(self.answerEndTime_locator, self.get_nowtime(self.addTime))
+        self.send_keys(self.answerEndTime_locator, self.get_nowTime(self.addTime))
 
     def bidFileEndTime_send_keys(self):  # 投标文件递交截止时间
-        self.send_keys(self.bidFileEndTime_locator, self.get_nowtime(self.addTime))
+        self.send_keys(self.bidFileEndTime_locator, self.get_nowTime(self.addTime))
 
     def bidOpenTime_send_keys(self):  # 开标时间
-        self.send_keys(self.bidOpenTime_locator, self.get_nowtime(self.addTime))
+        self.send_keys(self.bidOpenTime_locator, self.get_nowTime(self.addTime))
 
     def tenderFileCost_send_keys(self):  # 招标文件费
         self.send_keys(self.tenderFileCost_locator, "0.01")
@@ -462,7 +450,7 @@ class CreateProjectMethod(Base):
         self.send_keys(self.marginSum_locator, "10000")
 
     def marginEndTime_send_keys(self):  # 保证金缴纳截止时间
-        self.send_keys(self.marginEndTime_locator, self.get_nowtime(self.addTime))
+        self.send_keys(self.marginEndTime_locator, self.get_nowTime(self.addTime))
 
     def tenderNotice_send_keys(self):  # 点击招标公告
         self.js_xpath_modifyAttribute(self.tenderNotice_locator)  # 改变属性值
@@ -598,48 +586,42 @@ class CreateProjectMethod(Base):
     def agentLinkPlace_send_keys(self):  # 招标代理角色联系地址
         self.send_keys(self.agentLinkPlace_locator, '江西省濂溪县桥头村')
 
-    def tender_or_purchase_way(self, tenderWay, applyWay, enterpriseNumber=3):  # 选择招标方式或者采购方式
-        if tenderWay == 0:
-            self.openTender_click()  # 点击公开招标
-        elif tenderWay == 1:
-            self.inviteTender_click()  # 点击邀请招标
-            self.inviteBid_click()  # 点击邀请投标人
-            self.addEnterprise(enterpriseNumber, enterpriseName=self.enterpriseName)
-            self.close_click()  # 点击关闭
-        elif tenderWay == 2:  # 竞争性磋商
-            if applyWay == 0:
-                self.competitionConsult_click()  # 点击竞争性磋商
+    def selectApplyWay(self, applyWay):  # 竞争性磋商和竞争性谈判招标方式选择：0：公开，1：邀请
+        match applyWay:
+            case 0:
                 self.consultApplyWay_click()  # 点击招标方式
                 self.public_registration_click()  # 点击公开报名
                 self.close_click()  # 点击关闭
-            elif applyWay == 1:
-                self.competitionConsult_click()  # 点击竞争性磋商
+            case 1:
                 self.consultApplyWay_click()  # 点击招标方式
                 self.invitation_unit_click()  # 点击邀请报名
-                self.addEnterprise(enterpriseNumber, enterpriseName=self.enterpriseName)
+                self.addEnterprise(number=4, enterpriseName=self.enterpriseName)
                 self.close_click()  # 点击关闭
-            else:
-                print("报名方式错误！！")
-        elif tenderWay == 3:  # 点击竞争性谈判
-            if applyWay == 0:
+            case _:
+                raise Exception(f'竞争性磋商和竞争性谈判招标方式选择：0：公开，1：邀请:-{applyWay}-')
+
+    def tender_or_purchase_way(self, tenderWay, applyWay):  # 选择招标方式或者采购方式
+        match tenderWay:
+            case 0:  # 公开招标
+                self.openTender_click()  # 点击公开招标
+            case 1:  # 邀请招标
+                self.inviteTender_click()  # 点击邀请招标
+                self.inviteBid_click()  # 点击邀请投标人
+                self.addEnterprise(number=4, enterpriseName=self.enterpriseName)
+                self.close_click()  # 点击关闭
+            case 2:  # 竞争性磋商
+                self.competitionConsult_click()  # 点击竞争性磋商
+                self.selectApplyWay(applyWay=applyWay)
+            case 3:  # 竞争性谈判
                 self.competition_negotiate_click()  # 点击竞争性谈判
-                time.sleep(1)
-                self.talkApplyWay_click()  # 点击招标方式
-                self.public_registration_click()  # 点击公开报名
+                self.selectApplyWay(applyWay=applyWay)
+            case 4:  # 单一采购来源
+                self.single_source_procurement_click()
+                self.choose_supplier_click()  # 点击选择供应商
+                self.addEnterprise(number=1, enterpriseName=self.enterpriseName)
                 self.close_click()  # 点击关闭
-            elif applyWay == 1:
-                self.competition_negotiate_click()  # 点击竞争性谈判
-                self.talkApplyWay_click()  # 点击招标方式
-                self.invitation_unit_click()  # 点击邀请报名
-                self.addEnterprise(enterpriseNumber, enterpriseName=self.enterpriseName)
-                self.close_click()  # 点击关闭
-        elif tenderWay == 4:  # 点击单一采购来源
-            self.single_source_procurement_click()
-            self.choose_supplier_click()  # 点击选择供应商
-            self.addEnterprise(1, enterpriseName=self.enterpriseName)
-            self.close_click()  # 点击关闭
-        else:
-            print("招标方式不正确：" + str(tenderWay))
+            case _:
+                raise Exception(f'招标方式错误：-{str(tenderWay)}-')
 
     def tender_or_tenderAgent(self, role, projectNumber, projectType, tenderOrganizationType,
                               tenderWay, areaNo):  # 根据角色创建不同的项目 0 招标人 1招标代理
@@ -681,8 +663,8 @@ class CreateProjectMethod(Base):
             else:
                 print("招标类型不符")
         elif role == '1':
-            self.tenderMan_send_keys('建设集团有限公司')  # 输入招标人'江西鸿业生态环境建设集团有限公司'
-            self.tenderManUnicode_send_keys('sdchu1293123')  # 招标人统一信用代码'ZRU15827101518'
+            self.tenderMan_send_keys('厦门翔安建设发展有限公司')  # 输入招标人'江西鸿业生态环境建设集团有限公司','建设集团有限公司'
+            self.tenderManUnicode_send_keys('91350213751625538W')  # 招标人统一信用代码'ZRU15827101518','sdfmsd3454654645
             self.tenderManBank_send_keys()  # 招标人银行开户行
             self.tenderManBankNumber_send_keys()  # 招标人银行开户账号
             self.agentLinkMan_send_keys()  # 代理联系人

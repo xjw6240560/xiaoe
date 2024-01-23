@@ -10,9 +10,9 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20231229155016"  # 项目编号
-    tenderOrganizationType = "0"  # 自主招标0或者委托招标1
-    tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
+    projectNumber = "20240123112559"  # 项目编号
+    tenderOrganizationType = "1"  # 自主招标0或者委托招标1
+    tenderWay = 2  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1
     areaNo = 1  # 平台编号，0漳州，1淮安，2三明
     role = "0"  # 角色 0招标人、1招标代理
@@ -110,8 +110,8 @@ class Deal_testcase(unittest.TestCase):
 
     def test_05_apply_offline(self):  # 报名(线下)状态优化
         for i in range(len(self.username)):
-            if i == 3:
-                break
+            # if i == 3:
+            #     break
             self.loginOrRole.login(username=self.username[i], password=self.password[0], areaNo=self.areaNo)
             self.loginOrRole.bidder_click()  # 点击投标人
             try:
@@ -286,7 +286,7 @@ class Deal_testcase(unittest.TestCase):
     """
 
     def test_09_add_evaluationBid_and_judge(self):  # 添加评标办法和添加评委(自主招标)
-        evaluationBidWay = 6  # 0表示综合,1表示均值,2表示最低,3表示最高,4代表竞争性磋商,5代表竞争性谈判，6代表单一采购来源
+        evaluationBidWay = 6  # 0表示综合,1表示均值,2表示最低,3表示最高,4代表竞争性磋商,5代表竞争性谈判，6单一采购来源
         judgeNumber = 5  # 评委数量
         if self.tenderOrganizationType_sql == '0':
             self.loginOrRole.login(username=self.username1[0], password=self.password[0], areaNo=self.areaNo)
@@ -334,8 +334,8 @@ class Deal_testcase(unittest.TestCase):
                                           errorText='组长为:' + result + "  身份证号为：" + str(expert_username[0]))
                     break
             except (Exception, BaseException):
-                exstr = traceback.format_exc()
-                self.logger.debugText(projectNumber=self.projectNumber, errorText=exstr)
+                errorTest = traceback.format_exc()
+                self.logger.debugText(projectNumber=self.projectNumber, errorText=errorTest)
                 self.expert.select_group(username=username, password=password, projectNumber=self.projectNumber,
                                          name=self.expert_name)
 
