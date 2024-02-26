@@ -3,6 +3,7 @@
 import unittest
 import time
 from base.base import Base
+from base.mysql import Mysql
 from xiaoeXapth_package.extract_system.login import Login
 from xiaoe_testcase.deal_testcase import Deal_testcase
 from xiaoeXapth_package.extract_system.expert_extract import Expert_extract
@@ -12,13 +13,14 @@ from xiaoeXapth_package.extract_system.home_page import Home_page
 class Extract_system(unittest.TestCase):
     def setUp(self):
         self.base = Base()
+        self.mysql = Mysql()
         self.login = Login()
         self.home_page = Home_page()
         self.expert_extract = Expert_extract()
         self.deal_testcase = Deal_testcase()
         # 查询项目信息
         try:
-            self.result1 = self.base.query_projectData(self.deal_testcase.projectNumber)
+            self.result1 = self.mysql.query_projectData(self.deal_testcase.projectNumber)
             self.projectType_sql = self.result1[0]
             self.tenderOrganizationType_sql = self.result1[1]
             self.evaluationBidWay = self.result1[2]
@@ -34,10 +36,10 @@ class Extract_system(unittest.TestCase):
     """
 
     def test_extract_expert(self):  # 抽取专家
-        nowtimeday = self.base.get_date_day()  # 获取当前日期
-        beforetime = self.base.query_now_date()  # 获取数据库时间
-        if int(nowtimeday) > int(beforetime[0]):
-            self.base.update_now_date(nowtimeday)  # 更新最新的日期
+        nowTimeDay = self.base.get_date_day()  # 获取当前日期
+        beforeTime = self.mysql.query_now_date()  # 获取数据库时间
+        if int(nowTimeDay) > int(beforeTime[0]):
+            self.mysql.update_now_date(nowTimeDay)  # 更新最新的日期
         self.login.login(areaNo=self.deal_testcase.areaNo)
         self.base.handle_skip(0)
         self.home_page.engineering_or_purchase_click(self.projectType_sql)
@@ -63,13 +65,13 @@ class Extract_system(unittest.TestCase):
         self.expert_extract.expert_classify_click()  # 点击专家分类
         self.expert_extract.expert_send_keys('3')  # 输入专家数量
         self.expert_extract.add_affirm_click()  # 点击确认
-        nowtime = self.base.query_now_date()
-        for i in range(int(nowtime[1]), 18):
+        nowTime = self.mysql.query_now_date()
+        for i in range(int(nowTime[1]), 18):
             self.expert_extract.evaluation_time_send_keys(i)  # 输入时间
             result = self.expert_extract.is_room_occupy(i)  # 判断评标室是否被占用
             if result is not None:
                 if result == "break":
-                    self.base.update_now_date(nowdate=nowtimeday, hour=i)
+                    self.mysql.update_now_date(nowdate=nowTimeDay, hour=i)
                     break
                 else:
                     continue

@@ -2,20 +2,24 @@ import time
 import unittest
 from xiaoeXapth_package.deal_or_bidOpen import *
 from base.base import Base
+from base.mysql import Mysql
 
 
 class Deal_testcase(unittest.TestCase):
     logger = Logger()
+    mysql = Mysql()
     username = Base.username
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20240123112559"  # 项目编号
-    tenderOrganizationType = "1"  # 自主招标0或者委托招标1
-    tenderWay = 2  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
+    projectNumber = "20240222151651"  # 项目编号
+    tenderOrganizationType = "0"  # 自主招标0或者委托招标1
+    tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1
-    areaNo = 1  # 平台编号，0漳州，1淮安，2三明
+    areaNo = 0  # 平台编号，0漳州，1淮安，2三明
     role = "0"  # 角色 0招标人、1招标代理
+    isElectronic = 0  # 是否是电子标 0电子标 1线下纸质标
+    quotationMethod = 0  # 0金额报价 1费率报价
 
     def setUp(self):
         self.base = Base()
@@ -28,7 +32,7 @@ class Deal_testcase(unittest.TestCase):
         self.createProjectMethod.open_deal_url()
         # 查询项目信息
         try:
-            self.result1 = self.base.query_projectData(self.projectNumber)
+            self.result1 = self.mysql.query_projectData(self.projectNumber)
             self.projectType_sql = self.result1[0]
             self.tenderOrganizationType_sql = self.result1[1]
             self.evaluationBidWay = self.result1[2]
@@ -42,7 +46,7 @@ class Deal_testcase(unittest.TestCase):
 
         # 查询专家账号和密码
         try:
-            self.result2 = self.base.select_expert(self.projectNumber)
+            self.result2 = self.mysql.select_expert(self.projectNumber)
             self.expert_username = self.result2[0]
             self.expert_password = self.result2[1]
             self.expert_name = self.result2[2]
@@ -59,7 +63,7 @@ class Deal_testcase(unittest.TestCase):
         self.createProjectMethod.handle_skip(-1)  # 跳转句柄
         self.home_page_or_workbench.engineerBusiness_click()  # 点击工程业务
         self.home_page_or_workbench.tenderProject_click()  # 点击招标项目
-        self.createProjectMethod.addTenderProject_click()  # 点击新增招标项目
+        self.createProjectMethod.addTenderProject_click()  # 点击新增项目
         projectNumber = self.createProjectMethod.projectNumber_send_keys()  # 输入项目编号
         self.createProjectMethod.projectName_send_keys(projectType="engineering",
                                                        tenderOrganizationType=self.tenderOrganizationType,
@@ -73,7 +77,7 @@ class Deal_testcase(unittest.TestCase):
         self.createProjectMethod.tender_or_purchase_way(tenderWay=self.tenderWay, applyWay=self.applyWay)  # 选择招标方式
         self.createProjectMethod.projectPrice_send_keys()  # 输入项目估算价
         self.createProjectMethod.projectDate_send_keys()  # 输入工期
-        self.createProjectMethod.addProjectMsg()
+        self.createProjectMethod.addProjectMsg(isElectronic=self.isElectronic, quotationMethod=self.quotationMethod)
         self.createProjectMethod.tender_or_tenderAgent(role=self.role, projectNumber=projectNumber,
                                                        projectType='engineering',
                                                        tenderOrganizationType=self.tenderOrganizationType,
@@ -98,7 +102,7 @@ class Deal_testcase(unittest.TestCase):
         self.createProjectMethod.purchaseWay_click()  # 采购方式
         self.createProjectMethod.tender_or_purchase_way(tenderWay=self.tenderWay, applyWay=self.applyWay)  # 选择采购方式
         self.createProjectMethod.purchasePrice_send_keys()  # 采购预算
-        self.createProjectMethod.addProjectMsg()
+        self.createProjectMethod.addProjectMsg(isElectronic=self.isElectronic, quotationMethod=self.quotationMethod)
         self.createProjectMethod.tender_or_tenderAgent(role=self.role, projectNumber=projectNumber,
                                                        projectType='purchase',
                                                        tenderOrganizationType=self.tenderOrganizationType,
@@ -119,6 +123,7 @@ class Deal_testcase(unittest.TestCase):
                                                                   projectType=self.projectType_sql,
                                                                   tenderWay=self.tenderWay,
                                                                   applyWay=self.applyWay)  # 点击报名
+                print(str(result) + '----------')
                 if result is not False:
                     time.sleep(0.2)
                     self.home_page_or_workbench.linkMan_send_keys()  # 输入联系人
@@ -136,8 +141,8 @@ class Deal_testcase(unittest.TestCase):
                 if isWorkbench is False:
                     continue
             # time.sleep(1000)
-            self.home_page_or_workbench.magin_and_tenderfile(projectNumber=self.projectNumber,
-                                                             bidder=self.username[i], applynumber=i)  # 缴纳保证金和上传投标文件
+            self.home_page_or_workbench.margin_and_tenderFile(projectNumber=self.projectNumber,
+                                                              bidder=self.username[i], applyNumber=i)  # 缴纳保证金和上传投标文件
             self.createProjectMethod.open_deal_url()  # 进入登录页面
 
     """
@@ -277,8 +282,8 @@ class Deal_testcase(unittest.TestCase):
             error = traceback.format_exc()
             self.logger.debugText(self.projectNumber, error)
             self.evaluationBid_entrance.close_click()
-        self.base.update_evaluationBidWay(evaluationBidWay=evaluationBidWay, judgeNumber=judgeNumber,
-                                          projectNumber=self.projectNumber)  # 更新评标办法
+        self.mysql.update_evaluationBidWay(evaluationBidWay=evaluationBidWay, judgeNumber=judgeNumber,
+                                           projectNumber=self.projectNumber)  # 更新评标办法
 
     """
     切换模板和添加评委
@@ -309,8 +314,8 @@ class Deal_testcase(unittest.TestCase):
             error = traceback.format_exc()
             self.logger.debugText(self.projectNumber, error)
             self.evaluationBid_entrance.close_click()
-        self.base.update_evaluationBidWay(evaluationBidWay=evaluationBidWay, judgeNumber=judgeNumber,
-                                          projectNumber=self.projectNumber)
+        self.mysql.update_evaluationBidWay(evaluationBidWay=evaluationBidWay, judgeNumber=judgeNumber,
+                                           projectNumber=self.projectNumber)
 
     """
     推选组长
@@ -328,8 +333,8 @@ class Deal_testcase(unittest.TestCase):
                     self.logger.debugText(projectNumber=self.projectNumber, errorText='没有推选出评委!!!')
                     raise Exception("没有推选出评委!!!")
                 else:
-                    expert_username = self.base.select_expert_username(projectNumber=self.projectNumber,
-                                                                       judgeName=result)
+                    expert_username = self.mysql.select_expert_username(projectNumber=self.projectNumber,
+                                                                        judgeName=result)
                     self.logger.debugText(projectNumber=self.projectNumber,
                                           errorText='组长为:' + result + "  身份证号为：" + str(expert_username[0]))
                     break
@@ -349,7 +354,7 @@ class Deal_testcase(unittest.TestCase):
         expert_password = self.expert_password  # 获取密码
         expert_name = self.expert_name  # 获取评委名称
         for i in range(len(expert_username)):
-            self.result1 = self.base.query_projectData(self.projectNumber)  # 查询项目数据
+            self.result1 = self.mysql.query_projectData(self.projectNumber)  # 查询项目数据
             enterpriseCount = self.result1[6]
             self.expert.login(username=expert_username[i], password=expert_password[i],
                               projectNumber=self.projectNumber)
@@ -417,8 +422,8 @@ class Deal_testcase(unittest.TestCase):
             if evaluationReportNumber == 0:
                 evaluationReportNumber = self.expert.signature_examine(projectNumber=self.projectNumber,
                                                                        username=expert_username[i])  # 点击确认
-                self.base.update_evaluationReportNumber(projectNumber=self.projectNumber,
-                                                        evaluationReportNumber=evaluationReportNumber)
+                self.mysql.update_evaluationReportNumber(projectNumber=self.projectNumber,
+                                                         evaluationReportNumber=evaluationReportNumber)
             else:
                 self.expert.signature_examine(evaluationReportNumber=evaluationReportNumber,
                                               projectNumber=self.projectNumber, username=expert_username[i])

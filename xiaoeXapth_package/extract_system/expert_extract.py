@@ -4,6 +4,7 @@ from base.base import Base
 import re
 import time
 from log.log import Logger
+from base.mysql import Mysql
 from selenium.webdriver.common.by import By
 from xiaoe_testcase.deal_testcase import Deal_testcase
 
@@ -11,6 +12,7 @@ from xiaoe_testcase.deal_testcase import Deal_testcase
 class Expert_extract(Base):
     deal_testcase = Deal_testcase()
     logger = Logger()
+    mysql = Mysql()
     tender_linkMan = "//label[contains(text(),'招标联系人')]/following-sibling::div/div/input"  # 输入招标联系人
     link_number = "//label[contains(text(),'联系电话')]/following-sibling::div/div/input"  # 输入联系电话
     evaluation_time = "//label[contains(text(),'评标时间')]/following-sibling::div/div/input"
@@ -109,8 +111,8 @@ class Expert_extract(Base):
 
             if status == "正常参加":
                 try:
-                    self.insert_expertData(projectNumber=projectNumber, username=username, password=password,
-                                           judgeName=name)
+                    self.mysql.insert_expertData(projectNumber=projectNumber, username=username, password=password,
+                                                 judgeName=name)
                     count = count + 1
                 except:
                     print("------------评委个数为" + str(count) + "------------")

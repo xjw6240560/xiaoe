@@ -2,6 +2,7 @@ from base.base import Base
 from selenium.webdriver.common.by import By
 import time
 from log.log import Logger
+from base.mysql import Mysql
 import random
 from xiaoeXapth_package.deal_or_bidOpen.evaluationBid_entrance import EvaluationBid_entrance
 
@@ -9,6 +10,7 @@ from xiaoeXapth_package.deal_or_bidOpen.evaluationBid_entrance import Evaluation
 class Expert(Base):
     evaluationBid_entrance = EvaluationBid_entrance()
     logger = Logger()
+    mysql = Mysql()
     username_input = "//input[@placeholder='请输入账号']"  # 账号输入框
     password_input = "//input[@placeholder='请输入密码']"  # 密码输入框
     img = "//input[@placeholder='请输入图形码']/ancestor::div[@class='w-full aui-padded-r-10']/following-sibling::div/img"  # 图片验证码
@@ -86,7 +88,7 @@ class Expert(Base):
                 self.logger.debugText(projectNumber=projectNumber, bidder=username, errorText='未找到图片二维码！！！')
 
     def protocol_agree(self, username, projectNumber):  # 同意协议
-        isAgree = self.select_isAgree(username, projectNumber)
+        isAgree = self.mysql.select_isAgree(username, projectNumber)
         if isAgree[0] == "disAgree":
             self.click(self.know_locator)
         elif isAgree[0] == "consent":
@@ -128,7 +130,7 @@ class Expert(Base):
                 self.protocol_agree(username=username[i], projectNumber=projectNumber)  # 同意用户协议
                 electGroup_result = self.electGroup_click()  # 点击推选组长
                 if electGroup_result is None:
-                    self.update_isAgree("consent", username[i], projectNumber)  # 更新用户协议数据库
+                    self.mysql.update_isAgree("consent", username[i], projectNumber)  # 更新用户协议数据库
                 time.sleep(0.3)
                 a = random.randint(0, len(username) - 1)  # 随机生成推选评委
                 time.sleep(0.5)
@@ -239,7 +241,7 @@ class Expert(Base):
                 if score_text == '不是分值类型！':
                     self.result_NoPass_or_pass_click(projectNumber)
             else:
-                self.update_enterprise_count(enterpriseCount=str(count), projectNumber=projectNumber)
+                self.mysql.update_enterprise_count(enterpriseCount=str(count), projectNumber=projectNumber)
                 break
 
     def submit_result_click(self):  # 点击提交审核结果

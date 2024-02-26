@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from xiaoeXapth_package.deal_or_bidOpen.home_page_or_workbench import Home_page_or_workbench
 from xiaoeXapth_package.deal_or_bidOpen.login_registerORselect_role import LoginOrRole
 from base.base import Base
+from base.mysql import Mysql
 import traceback
 import time
 import random
@@ -11,93 +12,100 @@ class CreateProjectMethod(Base):
     home_page_or_workbench = Home_page_or_workbench()
     loginOrRole = LoginOrRole()
     base = Base()
+    mysql = Mysql()
     addTime = 20
-    addTenderProjectButton = "//div[contains(text(),'招标项目')]/following-sibling::button//span[contains(text(),'新增招标项目')]"  # 新增招标项目
-    projectNumber = "//label[contains(text(),'招标项目编号:')]/following-sibling::div/div/input"  # 项目编号
-    projectName = "//label[contains(text(),'招标项目名称:')]/following-sibling::div/div/input"  # 项目名称
-    projectAuditNumber = "//label[contains(text(),'项目审批文号:')]/following-sibling::div/div/input"  # 项目审批文号
-    InvestProjectUnicode = "//label[contains(text(),'投资项目统一代码:')]/following-sibling::div/div/input"  # 投资项目统一代码
-    tenderType = "//label[contains(text(),'招标类型:')]/following-sibling::div/div/div/input"  # 招标类型
+    addTenderProjectButton = "//div[contains(text(),'招标项目')]/../following-sibling::div/div/div/div/div/button//span[contains(text(),'新增项目')]"  # 新增招标项目
+    projectNumber = "//div[contains(text(),'招标项目编号')]/following-sibling::div/div/div/div/input"  # 项目编号
+    projectName = "//div[contains(text(),'招标项目名称')]/following-sibling::div/div/div/div/input"  # 项目名称
+    projectAuditNumber = "//div[contains(text(),'项目审批文号')]/following-sibling::div/div/div/div/input"  # 项目审批文号
+    InvestProjectUnicode = "//div[contains(text(),'投资项目统一代码')]/following-sibling::div/div/div/div/input"  # 投资项目统一代码
+    tenderType = "//div[contains(text(),'招标类型')]/following-sibling::div/div/div/div/div/input"  # 招标类型
     build = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'施工')]"  # 招标类型（施工）
-    projectType = "//label[contains(text(),'项目类型:')]/following-sibling::div/div/div/input"  # 项目类型
+    projectType = "//div[contains(text(),'项目类型')]/following-sibling::div/div/div/div/div/input"  # 项目类型
     houseBuild = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'房屋建筑')]"  # 项目类型（房屋建设）
-    tenderWay = "//label[contains(text(),'招标方式:')]/following-sibling::div/div/div/div/input"  # 招标方式
+    tenderWay = "//div[contains(text(),'招标方式')]/following-sibling::div/div/div/div/div/div/input"  # 招标方式
     openTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'公开招标')]"  # 招标方式（公开招标）
     inviteTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'邀请招标')]"  # 招标方式（邀请招标）
     competitionConsult = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'竞争性磋商')]"  # 竞争性磋商谈判
     competition_negotiate = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'竞争性谈判')]"  # 点击竞争性谈判
     single_source_procurement = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'单一来源采购')]"  # 点击单一来源采购
-    inviteBid = "//label[contains(text(),'方式:')]/following-sibling::div/div/div/following-sibling::button/span[contains(text(),'邀请投标人')]"  # 邀请投标人按钮
-    consultApplyWay = "//label[contains(text(),'方式:')]/following-sibling::div/div/div/following-sibling::button[3]/span[contains(text(),'报名方式')]"  # 竞争性磋商报名方式
-    talkApplyWay = "//label[contains(text(),'方式:')]/following-sibling::div/div/div/following-sibling::button[4]/span[contains(text(),'报名方式')]"  # 竞争性谈判报名方式
+    inviteBid = "//div[contains(text(),'方式')]/following-sibling::div/div/div/following-sibling::button/span[contains(text(),'邀请投标人')]"  # 邀请投标人按钮
+    consultApplyWay = "//div[contains(text(),'方式')]/following-sibling::div/div/div/following-sibling::button[3]/span[contains(text(),'报名方式')]"  # 竞争性磋商报名方式
+    talkApplyWay = "//div[contains(text(),'方式')]/following-sibling::div/div/div/following-sibling::button[4]/span[contains(text(),'报名方式')]"  # 竞争性谈判报名方式
     public_registration = "//span[contains(text(),'选择方式：')]/following-sibling::div/label/span[2]/span[contains(text(),'公开报名')]"  # 公开报名
     invitation_unit = "//span[contains(text(),'选择方式：')]/following-sibling::div/label/span[2]/span[contains(text(),'邀请单位')]"  # 邀请单位
-    choose_supplier = "//label[contains(text(),'方式:')]/following-sibling::div/div/div/following-sibling::button/span[contains(text(),'选择供应商')]"  # 点击选择供应商
+    choose_supplier = "//div[contains(text(),'方式')]/following-sibling::div/div/div/following-sibling::button/span[contains(text(),'选择供应商')]"  # 点击选择供应商
     enterpriseInput = "//input[@placeholder = '请输入关键词']"  # 企业输入框
     find = "//button//span[contains(text(),'查找')]"  # 查找
     add = "//div//span[contains(text(),'添加')]"  # 添加企业
-    isApplyFee = "//label[contains(text(),'是否收取报名费')]/following-sibling::div/div/label//span[text()='否']"
+    isApplyFee = "//div[contains(text(),'是否收取报名费')]/following-sibling::div/div/label//span[text()='否']"
     close = "//div/preceding-sibling::div[text()='×']"  # 点击关闭
-    tenderOrganizationType = "//label[contains(text(),'招标组织方式:')]/following-sibling::div/div/div/input"  # 招标组织方式
+    tenderOrganizationType = "//div[contains(text(),'招标组织方式')]/following-sibling::div/div/div/div/div/input"  # 招标组织方式
     oneselfTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'自主招标')]"  # 自主招标
     entrustTender = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'委托招标')]"  # 委托招标
-    industryType = "//label[contains(text(),'项目行业分类')]/following-sibling::div/div/div/input"  # 项目行业分类
+    industryType = "//div[contains(text(),'项目行业分类')]/following-sibling::div/div/div/div/div/input"  # 项目行业分类
     industryType1 = "//div/div/div/ul/li/span[contains(text(),'农、林、牧、渔业')]"
     industryType2 = "//div/div/div/ul/li/span[contains(text(),'农业')]"
-    province = "//label[contains(text(),'项目所在地区')]/following-sibling::div/div/div[1]/div"  # 项目所在省地区
+    province = "//div[contains(text(),'项目所在地区')]/following-sibling::div/div/div/div/div"  # 项目所在省地区
     provinceName = "//div/div/div/ul/li/span[contains(text(),'北京市')]/.."
-    city = "//label[contains(text(),'项目所在地区')]/following-sibling::div/div/div[2]/div"  # 项目所在市地区
+    city = "//div[contains(text(),'项目所在地区')]/following-sibling::div//input[@placeholder='市']"  # 项目所在市地区
     cityName = "//div/div/div/ul/li/span[contains(text(),'东城区')]"
-    noticeType = "//label[contains(text(),'公告类型')]/following-sibling::div/div/div/input"  # 公告类型
+    noticeType = "//div[contains(text(),'公告类型')]/following-sibling::div/div/div/div/div/input"  # 公告类型
     noticeTypeName = "//div/div/div/ul/li/span[contains(text(),'招标公告')]"
-    projectPush = "//label[contains(text(),'项目推送')]/following-sibling::div/div/label[2]"  # 项目推送
-    projectPlace = "//label[contains(text(),'项目地点')]/following-sibling::div/div/input"  # 项目地点
-    projectPrice = "//label[contains(text(),'项目估算价')]/following-sibling::div/div/input"  # 项目估算价
-    projectDate = "//label[contains(text(),'工期')]/following-sibling::div/div/input"  # 工期
-    tenderLinkMan = "//label[contains(text(),'招标人联系人')]/following-sibling::div/div/input"  # 招标联系人
-    tenderMan = "//label[text()='招标人:']/following-sibling::div/div/input"  # 输入招标人
-    tenderManUnicode = "//label[text()='招标人统一信用代码:']/following-sibling::div/div/input"  # 招标人统一信用代码
-    tenderManBank = "//label[text()='招标人银行开户行:']/following-sibling::div/div/input"  # 招标人银行开户行
-    tenderManBankNumber = "//label[text()='招标人银行开户账号:']/following-sibling::div/div/input"  # 招标人银行开户账号
-    agentLinkMan = "//label[text()='代理联系人:']/following-sibling::div/div/input"  # 代理联系人
+    projectPush = "//div[contains(text(),'项目推送')]/following-sibling::div/div/div/div/label[2]"  # 项目推送
+    isElectronic = '//div[contains(text(),"是否电子标")]/following-sibling::div/div/div/div/div/input'  # 是否是电子标
+    platformElectronic = "//div/div/ul/li/span[contains(text(),'平台电子标')]"  # 平台电子标
+    offlinePaper = "//div/div/ul/li/span[contains(text(),'线下纸质标')]"  # 线下纸质标
+    quotationMethod = '//div[contains(text(),"报价方式")]/following-sibling::div/div/div/div/div/input'  # 报价方式
+    amountQuotation = "//div/div/ul/li/span[contains(text(),'金额报价(元)')]"  # 金额报价(元)
+    rateQuotation = "//div/div/ul/li/span[contains(text(),'费率报价(%)')]"  # 费率报价(%)
+    projectPlace = "//div[contains(text(),'项目地点')]/following-sibling::div/div/div/div/input"  # 项目地点
+    projectPrice = "//div[contains(text(),'项目估算价')]/following-sibling::div/div/div/div/input"  # 项目估算价
+    projectDate = "//div[contains(text(),'工期')]/following-sibling::div/div/div/div/input"  # 工期
+    tenderLinkMan = "//div[contains(text(),'招标人联系人')]/following-sibling::div/div/div/div/input"  # 招标联系人
+    tenderMan = "//label[text()='招标人:']/following-sibling::div/div/div/div/input"  # 输入招标人
+    tenderManUnicode = "//label[text()='招标人统一信用代码:']/following-sibling::div/div/div/div/input"  # 招标人统一信用代码
+    tenderManBank = "//label[text()='招标人银行开户行:']/following-sibling::div/div/div/div/input"  # 招标人银行开户行
+    tenderManBankNumber = "//label[text()='招标人银行开户账号:']/following-sibling::div/div/div/div/input"  # 招标人银行开户账号
+    agentLinkMan = "//label[text()='代理联系人:']/following-sibling::div/div/div/div/input"  # 代理联系人
     agentLinkManPhone = "//div[contains(text(),'招标代理信息')]/../following-sibling::div/div/div[4]/div/div/div/input"  # 代理联系人手机号
     agentLinkPlace = "//div[contains(text(),'招标代理信息')]/../following-sibling::div/div/div[5]/div/div/div/input"  # 招标代理角色联系地址
-    tenderLinkManNumber = "//label[contains(text(),'招标人联系号码:')]/following-sibling::div/div/input"  # 招标联系人手机号
-    linkPlace = "//label[contains(text(),'联系地址:')]/following-sibling::div/div/input"  # 联系地址
-    tenderAgency = "//label[contains(text(),'招标代理:')]/following-sibling::div/div"  # 招标代理
+    tenderLinkManNumber = "//div[contains(text(),'招标人联系号码')]/following-sibling::div/div/div/div/input"  # 招标联系人手机号
+    linkPlace = "//div[contains(text(),'联系地址')]/following-sibling::div/div/div/div/input"  # 联系地址
+    tenderAgency = "//div[contains(text(),'招标代理')]/following-sibling::div/div"  # 招标代理
     input_enterprise = "//span[contains(text(),'搜索')]/../preceding-sibling::div/input[@placeholder='请输入企业名称']"  # 输入招标代理企业名称
     search = "//span[contains(text(),'搜索')]"  # 点击搜索
     selectTenderAgency = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td//span[contains(text(),'选择')]"  # 选择招标代理
-    agencyLinkPlace = "//label[contains(text(),'代理联系人')]//ancestor::div[2]//following-sibling::div[2]/div/div/div/input"  # 代理联系地址
+    agencyLinkPlace = "//div[contains(text(),'代理联系人')]//ancestor::div[2]//following-sibling::div[2]/div/div/div/input"  # 代理联系地址
     agencyLinkMan = "//label[text()='代理联系人:']/following-sibling::div/div[1]/input"  # 招标代理联系人
-    agencyLinkManNumber = "//label[text()='代理联系人联系号码:']/following-sibling::div/div/input"  # 代理联系人手机号
-    sectionNumber = "//label[contains(text(),'标段编号:')]/following-sibling::div/div/input"  # 标段编号
-    sectionName = "//label[contains(text(),'标段名称:')]/following-sibling::div/div/input"  # 标段名称
-    tenderFileBeginTime = "//label[contains(text(),'招标文件领取开始时间:')]/following-sibling::div/div/input"  # 招标文件领取开始时间
-    tenderFileEndTime = "//label[contains(text(),'招标文件领取截止时间:')]/following-sibling::div/div/input"  # 招标文件领取截止时间
-    applybeginTime = "//label[contains(text(),'报名开始时间:')]/following-sibling::div/div/input"  # 报名开始时间
-    applyEndTime = "//label[contains(text(),'报名截止时间:')]/following-sibling::div/div/input"  # 报名截止时间
-    quizEndTime = "//label[contains(text(),'质疑截止时间:')]/following-sibling::div/div/input"  # 提问截止时间
-    answerEndTime = "//label[contains(text(),'答疑截止时间:')]/following-sibling::div/div/input"  # 答疑截止时间
-    bidFileEndTime = "//label[contains(text(),'投标文件递交截止时间:')]/following-sibling::div/div/input"  # 投标文件递交截止时间
-    bidOpenTime = "//label[contains(text(),'开标时间:')]/following-sibling::div/div/input"  # 开标时间
-    tenderFileCost = "//label[contains(text(),'招标文件费')]/following-sibling::div/div/input"  # 招标文件费用
-    marginPaymentWay = "//label[contains(text(),'保证金缴纳方式:')]/following-sibling::div/div/div/input"  # 保证金缴纳方式
+    agencyLinkManNumber = "//label[text()='代理联系人联系号码:']/following-sibling::div/div/div/div/input"  # 代理联系人手机号
+    sectionNumber = "//div[contains(text(),'标段编号')]/following-sibling::div/div/div/div/input"  # 标段编号
+    sectionName = "//div[contains(text(),'标段名称')]/following-sibling::div/div/div/div/input"  # 标段名称
+    tenderFileBeginTime = "//div[contains(text(),'招标文件领取开始时间')]/following-sibling::div/div/div/div/input"  # 招标文件领取开始时间
+    tenderFileEndTime = "//div[contains(text(),'招标文件领取截止时间')]/following-sibling::div/div/div/div/input"  # 招标文件领取截止时间
+    applyBeginTime = "//div[contains(text(),'报名开始时间')]/following-sibling::div/div/div/div/input"  # 报名开始时间
+    applyEndTime = "//div[contains(text(),'报名截止时间')]/following-sibling::div/div/div/div/input"  # 报名截止时间
+    quizEndTime = "//div[contains(text(),'质疑截止时间')]/following-sibling::div/div/div/div/input"  # 提问截止时间
+    answerEndTime = "//div[contains(text(),'答疑截止时间')]/following-sibling::div/div/div/div/input"  # 答疑截止时间
+    bidFileEndTime = "//div[contains(text(),'投标文件递交截止时间')]/following-sibling::div/div/div/div/input"  # 投标文件递交截止时间
+    bidOpenTime = "//div[contains(text(),'开标时间')]/following-sibling::div/div/div/div/input"  # 开标时间
+    tenderFileCost = "//div[contains(text(),'招标文件费')]/following-sibling::div/div/div/div/input"  # 招标文件费用
+    marginPaymentWay = "//div[contains(text(),'保证金缴纳方式')]/following-sibling::div/div/div/div/div/input"  # 保证金缴纳方式
     EVE = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'电子保函')]"  # 保证金缴纳方式(电子保函)
     offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[text()='线下缴纳']"  # 保证金缴纳方式(线下缴纳)
     EVE_or_offlinePayment = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'电子保函或线下缴纳')]"  # 选择线上和线下
     more = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'...')]"
-    marginSum = "//label[contains(text(),'保证金额')]/following-sibling::div/div/input"  # 保证金额
-    marginEndTime = "//label[contains(text(),'保证金缴纳截止时间:')]/following-sibling::div/div/input"  # 保证金缴纳截止日期
-    tenderNotice = "//label[contains(text(),'招标公告:')]/following-sibling::div/div/div/div/input"  # 上传招标公告
-    tenderFile = "//label[contains(text(),'招标文件:')]/following-sibling::div/div/div/div/input"  # 上传招标文件
+    marginSum = "//div[contains(text(),'保证金额')]/following-sibling::div/div/div/div/input"  # 保证金额
+    marginEndTime = "//div[contains(text(),'保证金缴纳截止时间')]/following-sibling::div/div/div/div/input"  # 保证金缴纳截止日期
+    tenderNotice = "//div[contains(text(),'招标公告')]/following-sibling::div/div/div/div/div/div/input"  # 上传招标公告
+    tenderFile = "//div[contains(text(),'招标文件')]/following-sibling::div/div/div/div/div/div/input"  # 上传招标文件
     saveButton = "//button[@class='el-button aui-margin-l-40 el-button--primary']//span[contains(text(),'保 存')]"  # 点击保存
 
     # 采购
-    purchaseType = "//label[contains(text(),'采购类型:')]/following-sibling::div/div/div/input"  # 采购类型
+    purchaseType = "//div[contains(text(),'采购类型')]/following-sibling::div/div/div/div/div/input"  # 采购类型
     purchaseBuild = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'工程类')]"  # 采购类型(工程类)
-    purchaseWay = "//label[contains(text(),'采购方式:')]/following-sibling::div/div/div/div/input"  # 采购方式
-    purchasePrice = "//label[contains(text(),'采购预算')]/following-sibling::div/div/input"  # 采购预算
+    purchaseWay = "//div[contains(text(),'采购方式')]/following-sibling::div/div/div/div/div/div/input"  # 采购方式
+    purchasePrice = "//div[contains(text(),'采购预算')]/following-sibling::div/div/div/div/input"  # 采购预算
 
     purchaseType_locator = (By.XPATH, purchaseType)
     purchaseBuild_locator = (By.XPATH, purchaseBuild)
@@ -108,12 +116,19 @@ class CreateProjectMethod(Base):
     projectNumber_locator = (By.XPATH, projectNumber)
     projectName_locator = (By.XPATH, projectName)
     projectAuditNumber_locator = (By.XPATH, projectAuditNumber)
-    InvestprojectUnicode_locator = (By.XPATH, InvestProjectUnicode)
+    InvestProjectUnicode_locator = (By.XPATH, InvestProjectUnicode)
     tenderType_locator = (By.XPATH, tenderType)
     build_locator = (By.XPATH, build)
     projectType_locator = (By.XPATH, projectType)
     houseBuild_locator = (By.XPATH, houseBuild)
     tenderWay_locator = (By.XPATH, tenderWay)
+
+    isElectronic_locator = (By.XPATH, isElectronic)
+    platformElectronic_locator = (By.XPATH, platformElectronic)
+    offlinePaper_locator = (By.XPATH, offlinePaper)
+    quotationMethod_locator = (By.XPATH, quotationMethod)
+    amountQuotation_locator = (By.XPATH, amountQuotation)
+    rateQuotation_locator = (By.XPATH, rateQuotation)
     consultApplyWay_locator = (By.XPATH, consultApplyWay)
     talkApplyWay_locator = (By.XPATH, talkApplyWay)
     public_registration_locator = (By.XPATH, public_registration)
@@ -151,7 +166,7 @@ class CreateProjectMethod(Base):
     input_enterprise_locator = (By.XPATH, input_enterprise)
     search_locator = (By.XPATH, search)
     selectTenderAgency_locator = (By.XPATH, selectTenderAgency)
-    agencyLinkPlace_loactor = (By.XPATH, agencyLinkPlace)
+    agencyLinkPlace_locator = (By.XPATH, agencyLinkPlace)
     agencyLinkMan_locator = (By.XPATH, agencyLinkMan)
     agencyLinkManNumber_locator = (By.XPATH, agencyLinkManNumber)
 
@@ -159,7 +174,7 @@ class CreateProjectMethod(Base):
     sectionName_locator = (By.XPATH, sectionName)
     tenderFileBeginTime_locator = (By.XPATH, tenderFileBeginTime)
     tenderFileEndTime_locator = (By.XPATH, tenderFileEndTime)
-    applybeginTime_locator = (By.XPATH, applybeginTime)
+    applyBeginTime_locator = (By.XPATH, applyBeginTime)
     applyEndTime_locator = (By.XPATH, applyEndTime)
     quizEndTime_locator = (By.XPATH, quizEndTime)
     answerEndTime_locator = (By.XPATH, answerEndTime)
@@ -271,8 +286,26 @@ class CreateProjectMethod(Base):
     def projectAuditNumber_send_keys(self):  # 输入项目审批文号
         self.send_keys(self.projectAuditNumber_locator, "项目审批文号342300")
 
-    def InvestprojectUnicode_send_keys(self):  # 投资项目统一代码
-        self.send_keys(self.InvestprojectUnicode_locator, "2983798236232")
+    def InvestProjectUnicode_send_keys(self):  # 投资项目统一代码
+        self.send_keys(self.InvestProjectUnicode_locator, "2983798236232")
+
+    def isElectronic_click(self):  # 是否是电子标
+        self.click(self.isElectronic_locator)
+
+    def platformElectronic_click(self):  # 平台电子标
+        self.click(self.platformElectronic_locator)
+
+    def offlinePaper_click(self):  # 线下纸质标
+        self.click(self.offlinePaper_locator)
+
+    def quotationMethod_click(self):  # 报价方式
+        self.click(self.quotationMethod_locator)
+
+    def amountQuotation_click(self):  # 金额报价
+        self.click(self.amountQuotation_locator)
+
+    def rateQuotation_click(self):  # 费率报价
+        self.click(self.rateQuotation_locator)
 
     def tenderType_click(self):  # 点击招标类型
         self.click(self.tenderType_locator)
@@ -378,7 +411,7 @@ class CreateProjectMethod(Base):
         self.send_keys(self.linkPlace_locator, "福建省漳州市")
 
     def agencyLinkPlace_send_keys(self):  # 输入代理联系地址
-        self.send_keys(self.agencyLinkPlace_loactor, '厦门市湖里区鼎丰财富中心')
+        self.send_keys(self.agencyLinkPlace_locator, '厦门市湖里区鼎丰财富中心')
 
     def agencyLinkMan_send_keys(self):  # 输入代理联系人
         self.send_keys(self.agencyLinkMan_locator, "谢先生")
@@ -390,7 +423,7 @@ class CreateProjectMethod(Base):
         self.click(self.tenderAgency_locator)
 
     def input_enterprise_send_keys(self):  # 输入招标代理企业信息
-        self.send_keys(self.input_enterprise_locator, self.tenderAgentName)
+        self.send_keys(self.input_enterprise_locator, Base.tenderAgentName)
 
     def search_click(self):  # 点击搜索
         self.click(self.search_locator)
@@ -411,7 +444,7 @@ class CreateProjectMethod(Base):
         self.send_keys(self.tenderFileEndTime_locator, self.get_nowTime(self.addTime))
 
     def applyBeginTime_send_keys(self):  # 输入报名开始时间
-        self.send_keys(self.applybeginTime_locator, self.time1)
+        self.send_keys(self.applyBeginTime_locator, self.time1)
 
     def applyEndTime_send_keys(self):  # 输入报名截止时间
         self.send_keys(self.applyEndTime_locator, self.get_nowTime(self.addTime))
@@ -503,23 +536,24 @@ class CreateProjectMethod(Base):
         commitAudit_result = self.find_element(self.home_page_or_workbench.commitAudit_locator, 3)  # 提交审核按钮，判断项目是否创建成功
         if commitAudit_result is not False:
             if role == '1':
-                self.insert_projectData(projectNumber=projectNumber, projectType=projectType,
-                                        tenderOrganizationType='1', tenderWay=tenderWay)  # 数据库创建项目
+                self.mysql.insert_projectData(projectNumber=projectNumber, projectType=projectType,
+                                              tenderOrganizationType='1', tenderWay=tenderWay)  # 数据库创建项目
             elif role == '0':
-                self.insert_projectData(projectNumber=projectNumber, projectType=projectType,
-                                        tenderOrganizationType=tenderOrganizationType, tenderWay=tenderWay)  # 数据库创建项目
+                self.mysql.insert_projectData(projectNumber=projectNumber, projectType=projectType,
+                                              tenderOrganizationType=tenderOrganizationType,
+                                              tenderWay=tenderWay)  # 数据库创建项目
             self.logger.debugText(projectNumber, '项目添加完成！')
         else:
             self.logger.debugText(errorText=errorText)
 
-    def addProjectMsg(self):
+    def addProjectMsg(self, isElectronic, quotationMethod):
         """招标人角色创建项目是需要维护的字段"""
         self.projectPlace_send_keys()  # 输入项目地址
         self.tenderLinkMan_send_keys()  # 输入联系人
         self.tenderLinkManNumber_send_keys()  # 输入联系人手机号
         self.linkPlace_send_keys()  # 输入联系地址
         self.projectAuditNumber_send_keys()  # 输入项目审批文号
-        self.InvestprojectUnicode_send_keys()  # 投资项目统一代码
+        self.InvestProjectUnicode_send_keys()  # 投资项目统一代码
         self.industryType_click()  # 点击行业分类
         self.industryType1_click()  # 点击行业分类一级选项
         self.industryType2_click()  # 点击行业分类二级选项
@@ -530,15 +564,24 @@ class CreateProjectMethod(Base):
         self.noticeType_click()  # 点击公告类型下拉框
         self.noticeTypeName_click()  # 选择公告类型名字
         self.projectPush_click()  # 点击不推送项目
+        self.isElectronic_click()  # 点击是否电子标
+        self.select_isElectronic(isElectronic=isElectronic)  # 选择是否平台电子标和报价方式
+        self.quotationMethod_click()  # 点击报价方式
+        self.select_quotationMethod(quotationMethod=quotationMethod)  # 选择报价方式
 
-    def insert_projectData(self, projectNumber, projectType, tenderOrganizationType, tenderWay):  # 插入项目数据
-        self.connect_mysql()
-        sql = 'insert into project (projectNumber,projectType,tenderOrganizationType,tenderWay) values(%s,%s,%s,%s)'
-        try:
-            self.insert_and_update_sql(sql, projectNumber, projectType, tenderOrganizationType, tenderWay)
-        except(Exception, BaseException):
-            error = traceback.format_exc()
-            self.logger.debugText(projectNumber=projectNumber, errorText=error)
+    def select_isElectronic(self, isElectronic):  # 选择是否平台电子标和报价方式
+        match isElectronic:
+            case 0:
+                self.platformElectronic_click()  # 点击平台电子标
+            case 1:
+                self.offlinePaper_click()  # 点击线下纸质标
+
+    def select_quotationMethod(self, quotationMethod):  # 选择报价方式
+        match quotationMethod:
+            case 0:
+                self.amountQuotation_click()  # 金额报价方式
+            case 1:
+                self.rateQuotation_click()  # 费率报价方式
 
     def marginPayment(self, status):  # 保证金缴纳
         self.more_click()  # 点击更多
@@ -563,7 +606,8 @@ class CreateProjectMethod(Base):
         self.click(self.purchaseWay_locator)
 
     def purchasePrice_send_keys(self):  # 采购预算
-        self.send_keys(self.purchasePrice_locator, "120.12")
+        projectPrice = round(random.uniform(10000, 4000000), 2)
+        self.send_keys(self.purchasePrice_locator, projectPrice)
 
     def tenderMan_send_keys(self, tenderMan=base.tenderMan):  # 输入招标人
         self.send_keys(self.tenderMan_locator, tenderMan)
@@ -663,8 +707,8 @@ class CreateProjectMethod(Base):
             else:
                 print("招标类型不符")
         elif role == '1':
-            self.tenderMan_send_keys('厦门翔安建设发展有限公司')  # 输入招标人'江西鸿业生态环境建设集团有限公司','建设集团有限公司'
-            self.tenderManUnicode_send_keys('91350213751625538W')  # 招标人统一信用代码'ZRU15827101518','sdfmsd3454654645
+            self.tenderMan_send_keys('建设集团有限公司')  # 输入招标人Base.tenderMan,'建设集团有限公司'
+            self.tenderManUnicode_send_keys('sdfmsd3454654645')  # 招标人统一信用代码Base.tenderManUnicode,'sdfmsd3454654645
             self.tenderManBank_send_keys()  # 招标人银行开户行
             self.tenderManBankNumber_send_keys()  # 招标人银行开户账号
             self.agentLinkMan_send_keys()  # 代理联系人

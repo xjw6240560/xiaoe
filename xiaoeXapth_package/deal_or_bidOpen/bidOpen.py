@@ -42,6 +42,7 @@ class BidOpen(Base):
     resultAffirm_locator = (By.XPATH, resultAffirm)
     refresh_locator = (By.XPATH, refresh)
 
+    @Base.retry
     def clickSignIn_click(self):  # 点击签到
         return self.click(self.clickSignIn_locator)
 
@@ -74,6 +75,7 @@ class BidOpen(Base):
     def affirm_click(self):  # 点击确认
         self.click(self.affirm_locator)
 
+    @Base.retry
     def decodeBidFile_click(self):  # 点击解密
         time.sleep(0.5)
         return self.click(self.decodeBidFile_locator)
@@ -124,10 +126,12 @@ class BidOpen(Base):
     def raiseObjectionAffirm_click(self):  # 点击确认提出异议
         self.click(self.raiseObjectionAffirm_locator)
 
+    @Base.retry
     def affirmBidResult_click(self):  # 点击确认唱标结果
         time.sleep(0.3)
-        self.click(self.affirmBidResult_locator)
+        return self.click(self.affirmBidResult_locator)
 
+    @Base.retry
     def resultAffirm_click(self):  # 点击唱标结果弹窗确认
         self.click(self.resultAffirm_locator)
 

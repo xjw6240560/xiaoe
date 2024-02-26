@@ -30,4 +30,4 @@ class Test_xiaoe_data:
     marginApplyWay = 2
     tenderMan = '江西鸿业生态环境建设集团有限公司'  # 招标代理创建项目时，填写的招标人
     tenderManUnicode = '91350200MA2YNRF9XT3'  # 招标代理创建项目时，填写的社会统一信用代码
-    tenderGencyName = '甘肃省胸补声蕊秘咨询股份有限公司'
+    tenderAgentName = '甘肃省胸补声蕊秘咨询股份有限公司'
