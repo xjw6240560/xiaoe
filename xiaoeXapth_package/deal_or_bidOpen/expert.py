@@ -106,7 +106,7 @@ class Expert(Base):
         # if message is not None:
         #     self.logger.debugText(projectNumber=projectNumber, errorText=str(message))
         if self.is_url(self.expert_projectList_url):  # 判断有没有进入专家平台
-            if '评标方法为空' in message:
+            if message is not None and '评标方法为空' in message:
                 raise Exception(projectNumber + message)
             self.logger.debugText(projectNumber=projectNumber, errorText=str(message))
             time.sleep(3)

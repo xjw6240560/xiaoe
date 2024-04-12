@@ -12,13 +12,13 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20240222151651"  # 项目编号
-    tenderOrganizationType = "0"  # 自主招标0或者委托招标1
+    projectNumber = "20240229091217"  # 项目编号
+    tenderOrganizationType = "1"  # 自主招标0或者委托招标1
     tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
-    applyWay = 0  # 公开0、邀请1
+    applyWay = 0  # 公开0、邀请1 #竞争性磋商和竞争性谈判的邀请和公开
     areaNo = 0  # 平台编号，0漳州，1淮安，2三明
     role = "0"  # 角色 0招标人、1招标代理
-    isElectronic = 0  # 是否是电子标 0电子标 1线下纸质标
+    isElectronic = 1  # 是否是电子标 0电子标 1线下纸质标
     quotationMethod = 0  # 0金额报价 1费率报价
 
     def setUp(self):
@@ -123,7 +123,6 @@ class Deal_testcase(unittest.TestCase):
                                                                   projectType=self.projectType_sql,
                                                                   tenderWay=self.tenderWay,
                                                                   applyWay=self.applyWay)  # 点击报名
-                print(str(result) + '----------')
                 if result is not False:
                     time.sleep(0.2)
                     self.home_page_or_workbench.linkMan_send_keys()  # 输入联系人
@@ -139,9 +138,11 @@ class Deal_testcase(unittest.TestCase):
                 isWorkbench = self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
                                                                                0)  # 投标人选择工作台
                 if isWorkbench is False:
+                    self.createProjectMethod.open_deal_url()  # 进入登录页面
                     continue
             # time.sleep(1000)
-            self.home_page_or_workbench.margin_and_tenderFile(projectNumber=self.projectNumber,
+            self.home_page_or_workbench.margin_and_tenderFile(quotationMethod=self.quotationMethod,
+                                                              projectNumber=self.projectNumber,
                                                               bidder=self.username[i], applyNumber=i)  # 缴纳保证金和上传投标文件
             self.createProjectMethod.open_deal_url()  # 进入登录页面
 
@@ -396,7 +397,8 @@ class Deal_testcase(unittest.TestCase):
                 continue
             self.home_page_or_workbench.secondaryQuotation_click()  # 点击二次报价按钮
             try:
-                self.home_page_or_workbench.secondaryQuotationInput_send_keys()  # 输入二次报价
+                self.home_page_or_workbench.secondaryQuotationInput_send_keys(
+                    quotationMethod=self.quotationMethod)  # 输入二次报价
             except(Exception, BaseException):
                 error = traceback.format_exc()
                 self.logger.debugText(self.projectNumber, error)

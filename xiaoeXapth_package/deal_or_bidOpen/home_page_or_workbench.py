@@ -106,8 +106,15 @@ class Home_page_or_workbench(Base):
     def affirmApply_click(self):  # 点击确认报名
         self.click(self.affirmApply_locator)
 
-    def secondaryQuotationInput_send_keys(self):  # 输入投标价
-        bidPrice = round(random.uniform(1000000, 4000000), 2)  # 产生一个两位小数的随机数
+    def secondaryQuotationInput_send_keys(self, quotationMethod):  # 输入投标价
+        global bidPrice
+        match quotationMethod:
+            case 0:
+                bidPrice = round(random.uniform(1000000, 4000000), 2)  # 产生一个两位小数的随机数
+            case 1:
+                bidPrice = round(random.uniform(0, 1), 2)  # 产生一个两位小数的随机数
+            case _:
+                print(f'quotationMethod类型错误（二次报价）：{quotationMethod}')
         self.send_keys(self.secondaryQuotationInput_locator, bidPrice)
 
     def tender_workbench_click(self, projectNumber):  # 招标人点击工作台
@@ -123,8 +130,7 @@ class Home_page_or_workbench(Base):
         self.click(self.search_button_locator)
 
     def tender_edit_click(self, projectNumber):  # 招标人编辑
-        edit = "//div[contains(text(),'" + str(
-            projectNumber) + "')]/../following-sibling::td[4]/div/span[text()='编辑']"  # 点击编辑
+        edit = f"//span[contains(text(),'{projectNumber}')]/ancestor::td/following-sibling::td[4]/div/button/span[contains(text(),'编辑')]"  # 点击编辑
         edit_locator = (By.XPATH, edit)
         self.click(edit_locator)
 
@@ -200,10 +206,19 @@ class Home_page_or_workbench(Base):
     def bidFileImg_click(self):  # 点击上传投标文件图片
         self.click(self.bidFileImg_locator)
 
-    def bid_price_send_keys(self):  # 输入投标价
-        price = round(random.uniform(1000000, 4000000), 2)
-        # price = 0
-        time.sleep(0.3)
+    def bid_price_send_keys(self, quotationMethod):  # 输入投标价
+        global price
+        match quotationMethod:
+            case 0:
+                price = round(random.uniform(1000000, 4000000), 2)
+                # price = 0
+                time.sleep(0.3)
+            case 1:
+                price = round(random.uniform(0, 1), 2)
+                # price = 0
+                time.sleep(0.3)
+            case _:
+                print(f'quotationMethod类型错误：{quotationMethod}')
         self.send_keys(self.bid_price_locator, price)
 
     def duration_send_keys(self):  # 输入工期
@@ -235,7 +250,7 @@ class Home_page_or_workbench(Base):
         self.js_xpath_modifyAttribute(self.secondaryQuotationFile_locator)
         self.send_keys(self.secondaryQuotationFile_locator, r"C:\Users\86176\Desktop\不同大小的文件和图片\招标文件.pdf")
 
-    def engpriseName_move(self):  # 悬浮在企业名称位置
+    def enterpriseName_move(self):  # 悬浮在企业名称位置
         self.move_mouse(self.enterpriseName_locator)
 
     def quitLogin_click(self):  # 点击退出登录
@@ -281,13 +296,13 @@ class Home_page_or_workbench(Base):
     # purchaseTenderInvite = "//*[@id='aside']/div[2]/ul/li[14]/ul/div[2]/li/div"  # 投标邀请
     # purchaseApplyProject = "//*[@id='aside']/div[2]/ul/li[14]/ul/div[3]/li/div"
     purchaseBusiness = "//div[@class='el-submenu__title']//span[contains(text(),'政采业务')]"  # 政采业务
-    purchaseTenderproject = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标项目')]"  # 招标项目(政采)
+    purchaseTenderProject = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标项目')]"  # 招标项目(政采)
     purchaseTenderNotice = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'招标公告')]"  # 招标公告
     purchaseTenderInvite = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'投标邀请')]"  # 投标邀请
     purchaseApplyProject = "//span[contains(text(),'政采业务')]/../following-sibling::ul/descendant::div[contains(text(),'报名项目')]"  # 报名项目
 
     purchaseBusiness_locator = (By.XPATH, purchaseBusiness)
-    purchaseTenderProject_locator = (By.XPATH, purchaseTenderproject)
+    purchaseTenderProject_locator = (By.XPATH, purchaseTenderProject)
     purchaseTenderNotice_locator = (By.XPATH, purchaseTenderNotice)
     purchaseTenderInvite_locator = (By.XPATH, purchaseTenderInvite)
     purchaseApplyProject_locator = (By.XPATH, purchaseApplyProject)
@@ -308,6 +323,8 @@ class Home_page_or_workbench(Base):
                 return self.openApplyProject(projectType, projectNumber)
             case 'invite':
                 return self.inviteApplyProject(projectType, projectNumber)
+            case _:
+                print("选择错误：select_apply")
 
     def openApplyProject(self, projectType, projectNumber):  # 选择招标公告
         match projectType:
@@ -335,45 +352,16 @@ class Home_page_or_workbench(Base):
     def isOpenInvite(tenderWay, applyWay):  # 判断是选择招标公告还是投标邀请
         if tenderWay == 0:
             return 'notice'
+        elif tenderWay == 1:
+            return 'invite'
         elif tenderWay in (2, 3) and applyWay == 0:
             return 'notice'
         elif tenderWay in (2, 3) and applyWay == 1:
             return 'invite'
         elif tenderWay == 4:
             return 'invite'
-
-    # def select_apply(self, projectNumber, projectType, tenderWay, applyWay):  # 点击报名
-    #     if projectType == "engineering":  # 工程
-    #         self.engineerBusiness_click()  # 点击工程项目
-    #         if tenderWay == 0:
-    #             self.engineerTenderNotice_click()  # 点击招标公告
-    #             return self.notice_apply_click(projectNumber)  # 点击报名按钮
-    #         elif tenderWay == 1:
-    #             self.engineerTenderInvite_click()  # 点击投标邀请
-    #             return self.bid_apply_click(projectNumber)  # 点击报名
-    #         else:
-    #             print("招标方式输入错入！工程项目没有：" + str(tenderWay))
-    #     elif projectType == "purchase":  # 政采
-    #         self.purchaseBusiness_click()  # 点击采购项目
-    #         if tenderWay in (0, 2, 3):
-    #             if applyWay == 0:
-    #                 self.purchaseTenderNotice_click()  # 点击招标公告（政采）
-    #                 return self.notice_apply_click(projectNumber)  # 点击报名按钮
-    #             elif applyWay == 1:
-    #                 self.purchaseTenderInvite_click()  # 点击政采招标邀请
-    #                 return self.bid_apply_click(projectNumber)  # 点击报名
-    #             else:
-    #                 self.logger.debugText(projectNumber=projectNumber,
-    #                                       errorText='招标方式:' + str(tenderWay) + '或者报名方式' + str(
-    #                                           applyWay) + '不符:')
-    #         elif tenderWay in (1, 4):
-    #             self.purchaseTenderInvite_click()  # 点击政采招标邀请
-    #             return self.bid_apply_click(projectNumber)  # 点击报名
-    #         else:
-    #             self.logger.debugText(projectNumber=projectNumber,
-    #                                   errorText='招标方式输入错误：' + str(tenderWay) + '，0表示公开招标，1表示邀请招标')
-    #     else:
-    #         print("项目类型错误" + projectType)
+        else:
+            print('选择错误')
 
     def purchaseBusiness_click(self):  # 点击采购业务
         time.sleep(0.5)
@@ -383,13 +371,12 @@ class Home_page_or_workbench(Base):
         self.click(self.purchaseTenderProject_locator)
 
     def notice_apply_click(self, projectNumber):  # 招标公告报名
-        applyButton = f"//span[contains(text(),'{str(projectNumber)}')]/ancestor::td/following-sibling::td[7]//button/span[contains(text(),'报名')]"  # 点击报名
+        applyButton = f"//span[contains(text(),'{str(projectNumber)}')]/ancestor::td/following-sibling::td[7]/div/button//span[text()='报名']"  # 点击报名
         apply_locator = (By.XPATH, applyButton)  # 选择报名项目编号
         return self.short_click(apply_locator)
 
     def bid_apply_click(self, projectNumber):  # 投标邀请报名
-        applyButton = "//div[contains(text(),'" + str(
-            projectNumber) + "')]/../following-sibling::td[4]/div/span[text()='报名']"  # 点击报名
+        applyButton = f"//span[contains(text(),'{projectNumber}')]/ancestor::td/following-sibling::td[7]/div/button//span[text()='报名']"  # 点击报名
         apply_locator = (By.XPATH, applyButton)  # 选择报名项目编号
         return self.short_click(apply_locator)
 
@@ -454,7 +441,7 @@ class Home_page_or_workbench(Base):
     def recall_affirm_click(self):  # 撤回文件确定
         self.click(self.recall_affirm_locator)
 
-    def margin_and_tenderFile(self, projectNumber, bidder, applyNumber):  # 缴纳保证金和上传投标文件
+    def margin_and_tenderFile(self, projectNumber, bidder, applyNumber, quotationMethod):  # 缴纳保证金和上传投标文件
         self.marginPay_click()  # 点击保证金缴纳
         self.offlinePay_click()  # 点击线下缴纳
         receiptImg_result = self.receiptImg_send_keys()  # 点击上传回单图片
@@ -471,7 +458,7 @@ class Home_page_or_workbench(Base):
         self.uploadBidFile_click()  # 点击上传投标文件
         bidFile_result = self.bid_file_send_keys()  # 上传投标文件
         if bidFile_result is None:
-            self.bid_price_send_keys()  # 输入投标价
+            self.bid_price_send_keys(quotationMethod)  # 输入投标价
             self.duration_send_keys()  # 输入工期
             self.quality_send_keys()  # 输入质量标准
             self.saveBidFile_click()  # 提交投标文件

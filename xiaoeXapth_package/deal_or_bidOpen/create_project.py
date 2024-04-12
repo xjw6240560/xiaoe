@@ -29,12 +29,12 @@ class CreateProjectMethod(Base):
     competitionConsult = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'竞争性磋商')]"  # 竞争性磋商谈判
     competition_negotiate = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'竞争性谈判')]"  # 点击竞争性谈判
     single_source_procurement = "//div[@class='el-select-dropdown__wrap el-scrollbar__wrap']/ul/li//span[contains(text(),'单一来源采购')]"  # 点击单一来源采购
-    inviteBid = "//div[contains(text(),'方式')]/following-sibling::div/div/div/following-sibling::button/span[contains(text(),'邀请投标人')]"  # 邀请投标人按钮
-    consultApplyWay = "//div[contains(text(),'方式')]/following-sibling::div/div/div/following-sibling::button[3]/span[contains(text(),'报名方式')]"  # 竞争性磋商报名方式
-    talkApplyWay = "//div[contains(text(),'方式')]/following-sibling::div/div/div/following-sibling::button[4]/span[contains(text(),'报名方式')]"  # 竞争性谈判报名方式
+    inviteBid = "//div[contains(text(),'方式')]/following-sibling::div/div/div/div/button/span[contains(text(),'邀请投标人')]"  # 邀请投标人按钮
+    consultApplyWay = "//div[contains(text(),'采购方式')]/./following-sibling::div/div/div/div/button[3]/span[contains(text(),'报名方式')]"  # 竞争性磋商报名方式
+    talkApplyWay = "//div[contains(text(),'采购方式')]/./following-sibling::div/div/div/div/button[4]/span[contains(text(),'报名方式')]"  # 竞争性谈判报名方式
     public_registration = "//span[contains(text(),'选择方式：')]/following-sibling::div/label/span[2]/span[contains(text(),'公开报名')]"  # 公开报名
     invitation_unit = "//span[contains(text(),'选择方式：')]/following-sibling::div/label/span[2]/span[contains(text(),'邀请单位')]"  # 邀请单位
-    choose_supplier = "//div[contains(text(),'方式')]/following-sibling::div/div/div/following-sibling::button/span[contains(text(),'选择供应商')]"  # 点击选择供应商
+    choose_supplier = "//div[contains(text(),'采购方式')]/./following-sibling::div/div/div/div/button[2]/span[contains(text(),'选择供应商')]"  # 点击选择供应商
     enterpriseInput = "//input[@placeholder = '请输入关键词']"  # 企业输入框
     find = "//button//span[contains(text(),'查找')]"  # 查找
     add = "//div//span[contains(text(),'添加')]"  # 添加企业
@@ -63,22 +63,22 @@ class CreateProjectMethod(Base):
     projectPrice = "//div[contains(text(),'项目估算价')]/following-sibling::div/div/div/div/input"  # 项目估算价
     projectDate = "//div[contains(text(),'工期')]/following-sibling::div/div/div/div/input"  # 工期
     tenderLinkMan = "//div[contains(text(),'招标人联系人')]/following-sibling::div/div/div/div/input"  # 招标联系人
-    tenderMan = "//label[text()='招标人:']/following-sibling::div/div/div/div/input"  # 输入招标人
-    tenderManUnicode = "//label[text()='招标人统一信用代码:']/following-sibling::div/div/div/div/input"  # 招标人统一信用代码
-    tenderManBank = "//label[text()='招标人银行开户行:']/following-sibling::div/div/div/div/input"  # 招标人银行开户行
-    tenderManBankNumber = "//label[text()='招标人银行开户账号:']/following-sibling::div/div/div/div/input"  # 招标人银行开户账号
-    agentLinkMan = "//label[text()='代理联系人:']/following-sibling::div/div/div/div/input"  # 代理联系人
-    agentLinkManPhone = "//div[contains(text(),'招标代理信息')]/../following-sibling::div/div/div[4]/div/div/div/input"  # 代理联系人手机号
-    agentLinkPlace = "//div[contains(text(),'招标代理信息')]/../following-sibling::div/div/div[5]/div/div/div/input"  # 招标代理角色联系地址
+    tenderMan = "//div[contains(text(),'招标人：')]/following-sibling::div/div/div/div/input"  # 输入招标人
+    tenderManUnicode = "//div[contains(text(),'招标人统一信用代码')]/following-sibling::div/div/div/div/input"  # 招标人统一信用代码
+    tenderManBank = "//div[contains(text(),'招标人银行开户行')]/following-sibling::div/div/div/div/input"  # 招标人银行开户行
+    tenderManBankNumber = "//div[contains(text(),'招标人银行开户账号')]/following-sibling::div/div/div/div/input"  # 招标人银行开户账号
+    agentLinkMan = "//div[contains(text(),'代理联系人：')]/following-sibling::div/div/div/div/input"  # 代理联系人
+    agentLinkManPhone = "//div[contains(text(),'代理联系人联系号码')]/following-sibling::div/div/div/div/input"  # 代理联系人手机号
+    agentLinkPlace = "//*[@id='main']/div/form/div[4]/div/div[2]/div/div[5]/div/div[2]/div/div/div[1]/input"  # 招标代理角色联系地址
     tenderLinkManNumber = "//div[contains(text(),'招标人联系号码')]/following-sibling::div/div/div/div/input"  # 招标联系人手机号
-    linkPlace = "//div[contains(text(),'联系地址')]/following-sibling::div/div/div/div/input"  # 联系地址
+    linkPlace = "//*[@id='main']/div/form/div[2]/div/div[2]/div[4]/div/div/div[2]/div/div/div/input"  # 联系地址
     tenderAgency = "//div[contains(text(),'招标代理')]/following-sibling::div/div"  # 招标代理
     input_enterprise = "//span[contains(text(),'搜索')]/../preceding-sibling::div/input[@placeholder='请输入企业名称']"  # 输入招标代理企业名称
     search = "//span[contains(text(),'搜索')]"  # 点击搜索
     selectTenderAgency = "//span[contains(text(),'1')]/ancestor::td/following-sibling::td//span[contains(text(),'选择')]"  # 选择招标代理
-    agencyLinkPlace = "//div[contains(text(),'代理联系人')]//ancestor::div[2]//following-sibling::div[2]/div/div/div/input"  # 代理联系地址
-    agencyLinkMan = "//label[text()='代理联系人:']/following-sibling::div/div[1]/input"  # 招标代理联系人
-    agencyLinkManNumber = "//label[text()='代理联系人联系号码:']/following-sibling::div/div/div/div/input"  # 代理联系人手机号
+    agencyLinkPlace = "//*[@id='main']/div/form/div[4]/div/div[2]/div/div[5]/div/div[2]/div/div/div/input"  # 代理联系地址
+    agencyLinkMan = "//div[contains(text(),'代理联系人：')]/./following-sibling::div/div/div//input"  # 招标代理联系人
+    agencyLinkManNumber = "//div[contains(text(),'代理联系人联系号码')]/./following-sibling::div/div/div//input"  # 代理联系人手机号
     sectionNumber = "//div[contains(text(),'标段编号')]/following-sibling::div/div/div/div/input"  # 标段编号
     sectionName = "//div[contains(text(),'标段名称')]/following-sibling::div/div/div/div/input"  # 标段名称
     tenderFileBeginTime = "//div[contains(text(),'招标文件领取开始时间')]/following-sibling::div/div/div/div/input"  # 招标文件领取开始时间
@@ -633,11 +633,11 @@ class CreateProjectMethod(Base):
     def selectApplyWay(self, applyWay):  # 竞争性磋商和竞争性谈判招标方式选择：0：公开，1：邀请
         match applyWay:
             case 0:
-                self.consultApplyWay_click()  # 点击招标方式
+                self.talkApplyWay_click()  # 点击招标方式
                 self.public_registration_click()  # 点击公开报名
                 self.close_click()  # 点击关闭
             case 1:
-                self.consultApplyWay_click()  # 点击招标方式
+                self.talkApplyWay_click()  # 点击招标方式
                 self.invitation_unit_click()  # 点击邀请报名
                 self.addEnterprise(number=4, enterpriseName=self.enterpriseName)
                 self.close_click()  # 点击关闭
