@@ -3,59 +3,60 @@
 
 # -*-coding:utf-8 -*-
 import os
+import shutil
 import logging
+from logging.handlers import RotatingFileHandler
 
-# 定义了blog_ui项目的绝对路径
+# 定义项目的绝对路径
 base_url = os.path.abspath(os.path.dirname(__file__)).split('base')[0]
 
 
 class Logger:
-    def __init__(self, path=base_url + '\logsest.log', clevel=logging.DEBUG, Flevel=logging.DEBUG):
-        # 判断log文件夹是否存在，不存在的话创建文件夹以及日志文件
-        project_dir = os.listdir(base_url)
-        dir_name = 'log'  # log文件夹
-        if dir_name not in project_dir:
-            create_path = base_url + '/' + dir_name
+    def __init__(self, path=os.path.join(base_url, 'logTest.log'), clevel=logging.DEBUG, Flevel=logging.DEBUG):
+        # 确保日志文件夹存在
+        dir_name = 'log'
+        create_path = os.path.join(base_url, dir_name)
+        if not os.path.exists(create_path):
             os.makedirs(create_path)
-            file = open(create_path + '/autotest.log,', 'w', encoding='utf-8')
-            file.close()
-        # 创建logger
-        self.logger = logging.getLogger(path)
+
+        # 设置日志记录器
+        self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.DEBUG)
-        # 防止创建多个logger对象
+
+        # 防止重复添加处理程序
         if not self.logger.handlers:
-            # 设置日志格式
             fmt = logging.Formatter('[%(asctime)s] [%(levelname)s] %(message)s', '%Y-%m-%d %H:%M:%S')
-            # 设置CMD日志
+
+            # 设置控制台处理程序
             sh = logging.StreamHandler()
             sh.setFormatter(fmt)
             sh.setLevel(clevel)
-            # 设置文件日志
-            fh = logging.FileHandler(path)
+
+            # 设置文件处理程序，并启用文件轮换
+            fh = RotatingFileHandler(path, maxBytes=1024 * 1024, backupCount=3, encoding='utf-8')
             fh.setFormatter(fmt)
             fh.setLevel(Flevel)
+
             self.logger.addHandler(sh)
             self.logger.addHandler(fh)
 
     def debugText(self, projectNumber='', errorText='', bidder='', otherText=''):
-        if errorText is not None:
-            if errorText.find("element not interactable") > 0:
-                self.logger.debug(
-                    "项目编号：" + projectNumber + "  投标人or专家：" + bidder + "\n" + '元素不可交互' + "\n" + errorText)
+        if errorText:
+            if "element not interactable" in errorText:
+                self.logger.debug(f"项目编号：{projectNumber}  投标人or专家：{bidder} - 元素不可交互 - {errorText}")
             else:
-                self.logger.debug("项目编号：" + projectNumber + "  投标人or专家：" + bidder + "\n" + errorText)
-        else:
-            if otherText != '':
-                self.logger.debug("项目编号：" + projectNumber + "  投标人or专家：" + bidder + "\n" + otherText)
+                self.logger.debug(f"项目编号：{projectNumber}  投标人or专家：{bidder} - {errorText}")
+        elif otherText:
+            self.logger.debug(f"项目编号：{projectNumber}  投标人or专家：{bidder} - {otherText}")
 
     def info(self, message):
         self.logger.info(message)
 
-    def war(self, message):
-        self.logger.warn(message)
+    def warning(self, message):
+        self.logger.warning(message)
 
     def error(self, message):
         self.logger.error(message)
 
-    def cri(self, message):
+    def critical(self, message):
         self.logger.critical(message)

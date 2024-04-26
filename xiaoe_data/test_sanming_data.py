@@ -25,9 +25,9 @@ class Test_sanming_data:
     extract_login_url = t.extract_login_url.replace('jiaoyi', 'sanming')  # 抽取系统登录地址
     workbench_url = t.workbench_url.replace('jiaoyi', 'sanming')  # 工作台地址
     back_url = t.back_url.replace('jiaoyi', 'sanming')  # 总后台地址
-    extract_username = ['15212345678', '15312345678', '15412345678']
+    extract_username = ['15212345678', '15312345678', '15412345678', '15727114760']
     extract_password = "ndx111"
-    marginApplyWay = 2
+    marginApplyWay = 1
     tenderMan = '江西鸿业生态环境建设集团有限公司'  # 招标代理创建项目时，填写的招标人
     tenderManUnicode = '91350200MA2YNRF9XT3'  # 招标代理创建项目时，填写的社会统一信用代码
     tenderGencyName = '陕西省科馋徒教育股份有限公司'

@@ -20,7 +20,7 @@ class Login(Base):
     login_button_locator = (By.XPATH, login_button)
 
     def username_send_keys(self, areaNo):  # 登录账号
-        if areaNo in (0, 1, 2):
+        if areaNo in (0, 1, 2, 3):
             self.send_keys(self.username_locator, self.extract_username[areaNo])
         else:
             self.logger.debugText(errorText='平台编号错误（0：小额，1：淮安，2：三明）：' + str(areaNo))

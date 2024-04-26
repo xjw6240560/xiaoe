@@ -12,14 +12,14 @@ class Deal_testcase(unittest.TestCase):
     enterpriseName = Base.enterpriseName
     username1 = Base.username1
     password = Base.password
-    projectNumber = "20240229091217"  # 项目编号
-    tenderOrganizationType = "1"  # 自主招标0或者委托招标1
+    projectNumber = "20240426093517"  # 项目编号
+    tenderOrganizationType = "0"  # 自主招标0或者委托招标1
     tenderWay = 0  # 公开招标0、邀请招标1、竞争性磋商2、竞争性谈判3、单一采购来源4
     applyWay = 0  # 公开0、邀请1 #竞争性磋商和竞争性谈判的邀请和公开
-    areaNo = 0  # 平台编号，0漳州，1淮安，2三明
+    areaNo = 3  # 平台编号，0漳州，1淮安，2三明,3十堰
     role = "0"  # 角色 0招标人、1招标代理
-    isElectronic = 1  # 是否是电子标 0电子标 1线下纸质标
-    quotationMethod = 0  # 0金额报价 1费率报价
+    isElectronic = 0  # 是否是电子标 0电子标 1线下纸质标
+    quotationMethod = 1  # 0金额报价 1费率报价
 
     def setUp(self):
         self.base = Base()
@@ -157,6 +157,7 @@ class Deal_testcase(unittest.TestCase):
             isWorkbench = self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
                                                                            1)  # 选择投标人工作台
             if isWorkbench is False:  # 未找到工作台
+                self.createProjectMethod.open_deal_url()
                 continue
             self.home_page_or_workbench.openBidEntrance_click()  # 点击开标入口
             time.sleep(1)
@@ -229,6 +230,7 @@ class Deal_testcase(unittest.TestCase):
             isWorkbench = self.home_page_or_workbench.select_bid_workbench(self.projectNumber, self.projectType_sql,
                                                                            1)  # 选择工作台
             if isWorkbench is False:  # 未找到工作台
+                self.createProjectMethod.open_deal_url()
                 continue
             self.home_page_or_workbench.openBidEntrance_click()  # 点击开标入口
             time.sleep(0.5)

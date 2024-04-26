@@ -18,7 +18,7 @@ from selenium.webdriver.edge.service import Service
 from xiaoe_data import *
 
 
-class Base(Test_xiaoe_data):
+class Base(Test_sanming_data):
     logger = Logger()
     # 直接创建Service实例
     path = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedgedriver.exe'

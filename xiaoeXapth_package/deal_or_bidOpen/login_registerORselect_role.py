@@ -120,6 +120,8 @@ class LoginOrRole(Base):
             return '淮安'
         elif areaNo == 2:
             return '三明'
+        elif areaNo == 3:
+            return '十堰'
         else:
             print('平台编号不符：' + str(areaNo))
 
