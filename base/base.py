@@ -380,7 +380,7 @@ class Base(Test_sanming_data):
         :param locator:
         :return:
         """
-        time.sleep(1)
+        time.sleep(0.5)
         element = self.find_element(locator=locator, timeout=1, position=position)
         action_chains = ActionChains(self.drive)
         try:

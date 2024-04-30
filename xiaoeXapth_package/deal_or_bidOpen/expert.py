@@ -75,9 +75,8 @@ class Expert(Base):
                 pic = self.get_PicPassword()
                 self.send_keys(self.img_input_locator, pic)
                 self.click(self.login_button_locator)  # 点击登录按钮
-                time.sleep(0.2)
                 message = self.get_text(self.alert_locator)
-                number_result = self.find_element(self.number_locator, 2)  # 登录之后的列表序号，用于判断是否登陆成功
+                number_result = self.find_element(self.number_locator, 0.5)  # 登录之后的列表序号，用于判断是否登陆成功
                 if number_result is not False:
                     self.logger.debugText(projectNumber=projectNumber, bidder=username, errorText='专家登录成功！')
                     break

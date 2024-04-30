@@ -633,7 +633,7 @@ class CreateProjectMethod(Base):
     def selectApplyWay(self, applyWay):  # 竞争性磋商和竞争性谈判招标方式选择：0：公开，1：邀请
         match applyWay:
             case 0:
-                self.talkApplyWay_click()  # 点击招标方式
+                self.consultApplyWay_click()  # 点击招标方式
                 self.public_registration_click()  # 点击公开报名
                 self.close_click()  # 点击关闭
             case 1:

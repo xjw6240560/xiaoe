@@ -92,12 +92,9 @@ class Expert_extract(Base):
     def save_judge_username_password(self, projectNumber):  # 保存评委账号和密码
         count = 0  # 统计专家个数
         for i in range(1, 100):
-            expert_name = "//button//span[text() = '专家抽取名单']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '" + str(
-                i) + "']/ancestor::td/following-sibling::td[1]"  # 获取专家姓名
-            expert_username = "//button//span[text() = '专家抽取名单']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '" + str(
-                i) + "']/ancestor::td/following-sibling::td[2]"  # 获取专家账号
-            expert_status = "//button//span[text() = '专家抽取名单']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '" + str(
-                i) + "']/ancestor::td/following-sibling::td[7]"  # 获取专家状态
+            expert_name = f"//button//span[text() = '专家抽取名单']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '{i}']/ancestor::td/following-sibling::td[1]"  # 获取专家姓名
+            expert_username = f"//button//span[text() = '专家抽取名单']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '{i}']/ancestor::td/following-sibling::td[2]"  # 获取专家账号
+            expert_status = f"//button//span[text() = '专家抽取名单']/ancestor::div/following-sibling::div[2]/div/div/div/div//div[text() = '{i}']/ancestor::td/following-sibling::td[7]"  # 获取专家状态
             password = "ndx111"
 
             expert_name_locator = (By.XPATH, expert_name)

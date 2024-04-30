@@ -90,7 +90,7 @@ class Extract_system(unittest.TestCase):
         time.sleep(0.3)
         self.home_page.in_project_click()  # 点击进入项目
         self.expert_extract.extract_result_click()  # 点击抽取结果
-        self.expert_extract.save_judge_username_password(self.deal_testcase.projectNumber)
+        self.expert_extract.save_judge_username_password(self.deal_testcase.projectNumber)  # 保存专家账号
 
     def tearDown(self):
         self.base.close()
